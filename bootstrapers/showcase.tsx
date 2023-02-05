@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { showcaseContentsQuery } from '@bcrumbs.net/bc-api';
-import { AgencyTheme } from '@bc-mono/showcase-organisms';
+import { AgencyTheme } from '@bcrumbs.net/showcase-organisms';
 
 // import Agency from '../themes/agency';
 // import Crypto from '../themes/_crypto';

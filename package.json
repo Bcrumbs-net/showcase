@@ -1,0 +1,39 @@
+{
+  "name": "showcase",
+  "version": "0.0.1",
+  "description": "Build up a modern showcase website for your business in minutes, and store your data on the CMS you want.",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export",
+    "now-build": "next build && next export -o dist",
+    "netlify-build": "next build && next export"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bcrumbs-net/showcase.git"
+  },
+  "author": "Ahmad Mhaish",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bcrumbs-net/showcase/issues"
+  },
+  "homepage": "https://github.com/Bcrumbs-net/showcase#readme",
+  "dependencies": {
+    "@apollo/client": "^3.5.10",
+    "@bcrumbs.net/bc-api": "^0.0.2",
+    "@redq/reuse-modal": "^1.1.9",
+    "next": "12.1.0",
+    "prop-types": "^15.7.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons-kit": "^1.2.1",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.2",
+    "babel-plugin-styled-components": "1.10.7",
+    "typescript": "~4.4.3"
+  }
+}

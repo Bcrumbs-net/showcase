@@ -10,6 +10,9 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  typescript:{
+    tsconfigPath: './tsconfig.github.json'
+  }
 };
 
 module.exports = withNx(nextConfig);
