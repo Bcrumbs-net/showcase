@@ -1,6 +1,6 @@
 {
   "name": "showcase",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Build up a modern showcase website for your business in minutes, and store your data on the CMS you want.",
   "scripts": {
     "dev": "next",
@@ -22,8 +22,9 @@
   "homepage": "https://github.com/Bcrumbs-net/showcase#readme",
   "dependencies": {
     "@apollo/client": "^3.5.10",
-    "@bcrumbs.net/bc-api": "^0.0.2",
-    "@redq/reuse-modal": "^1.1.9",
+    "@bcrumbs.net/bc-api": "^0.0.3",
+    "@bcrumbs.net/showcase-atoms": "^0.0.2",
+    "@redq/reuse-modal": "^2.0.0",
     "next": "12.1.0",
     "prop-types": "^15.7.2",
     "react": "17.0.2",

@@ -1,39 +1,48 @@
-import { useShowcaseConfig } from '@bcrumbs.net/bc-api';
+import { showcaseConfig, showcaseClient, showcaseContentsQuery } from '@bcrumbs.net/bc-api';
 import ShowcaseBootstrapper from '../bootstrapers/showcase';
 import { checkIfKnownDomain } from '../utils/checkIfKnownDomain';
 
-export const TemplateRouter = props => {
+export async function getServerSideProps({ req, query }) {
+  // Fetching configuration
+  const domain = req.headers['host'];
+  const targetDomain = checkIfKnownDomain(domain);
+  const path = query.path;
+  const configResponse = await showcaseClient.query({
+    query: showcaseConfig,
+    variables: { domain: ';' + targetDomain + ';' },
+  });
+  const config = JSON.parse(configResponse.data.configuration);
+
+  // Fetching data
+  const dataResponse = await showcaseClient.query({
+    query: showcaseContentsQuery,
+    variables: {
+      rootId: config.root,
+      deep: config.deep || 3,
+      path,
+    },
+  });
+
+  return {
+    props: {
+      config,
+      data: dataResponse.data?.contents
+    },
+  };
+}
+
+export const TemplateRouter = ({ config, data, query }) => {
   let path;
 
-  if (props.query?.path) {
-    path = `/${props.query.path}`;
+  if (query?.path) {
+    path = `/${query.path}`;
   }
 
-  if (props.query?.path2) {
-    path += `/${props.query.path2}`;
+  if (query?.path2) {
+    path += `/${query.path2}`;
   }
 
-  const targetDomain = checkIfKnownDomain(props.domain);
-
-  try {
-    const configResult = useShowcaseConfig(targetDomain);
-
-    if (configResult.loading) {
-      return <div>Loading ... </div>;
-    }
-
-    if (configResult.error) {
-      return (
-        <div>Error loading configuration: {configResult.error.message}</div>
-      );
-    }
-
-    const config = JSON.parse(configResult.data.configuration);
-
-    return <ShowcaseBootstrapper config={config} path={path} />;
-  } catch (ex) {
-    return <div>Error: {ex.message}</div>;
-  }
-}
+  return <ShowcaseBootstrapper config={config} path={path} data={data} />;
+};
 
 export default TemplateRouter;
