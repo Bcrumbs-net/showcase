@@ -1,4 +1,4 @@
-import { AgencyTheme } from '@bcrumbs.net/showcase-organisms';
+import { AgencyTheme } from '../../lib';
 // import Agency from '../themes/agency';
 // import Crypto from '../themes/_crypto';
 // import SaaSClassic from '../themes/_saasclassic';

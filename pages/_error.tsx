@@ -21,6 +21,7 @@ class Error extends React.Component<{ statusCode: string }> {
             rel="stylesheet"
           />
         </Head>
+        {/*@ts-ignore: Unreachable code error */}
         <ResetCSS />
         <div>
           {this.props.statusCode ? (

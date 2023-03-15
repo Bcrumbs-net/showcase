@@ -1,0 +1,12 @@
+// health check URL
+function Ping() {
+  return 'Healthy';
+}
+
+// This gets called on every request
+export async function getServerSideProps(context) {
+  context.res.end('Working perfectly');
+  return { props: {} };
+}
+
+export default Ping;

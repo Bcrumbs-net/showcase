@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const withNx = require('@nrwl/next/plugins/with-nx');
+//const withNx = require('@nrwl/next/plugins/with-nx');
 
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
@@ -12,7 +12,8 @@ const nextConfig = {
   },
   typescript:{
     tsconfigPath: './tsconfig.github.json'
-  }
+  },
+  experimental: { esmExternals: 'loose' }
 };
 
-module.exports = withNx(nextConfig);
+module.exports = nextConfig;

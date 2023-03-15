@@ -4,6 +4,7 @@ import { Fragment, ReactElement } from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
+//@ts-ignore
 export default class CustomDocument extends Document<{
   styleTags: ReactElement[];
 }> {

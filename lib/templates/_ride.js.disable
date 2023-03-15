@@ -1,0 +1,147 @@
+import React, { Fragment } from 'react';
+import Head from 'next/head';
+import { ThemeProvider } from 'styled-components';
+import { rideTheme } from '../../theme/ride';
+import { ResetCSS } from '../../assets/css/style';
+import { GlobalStyle, ContentWrapper } from '../containers/Ride/ride.style';
+import BCComponent from '../pool';
+import BCLink from '../containers/_Shared/BCLink';
+import QUERY from '../graphql/showcase-query';
+import { useQuery } from '@apollo/react-hooks';
+
+export default props => {
+  const { config, path } = props;
+  try {
+    const queryResult = useQuery(QUERY, {
+      variables: {
+        rootId: config.root,
+        deep: config.deep,
+        path,
+      },
+    });
+    if (queryResult.loading) {
+      return <div>loading..</div>;
+    }
+    if (queryResult.error) {
+      return <div>Error load data: {queryResult.error.message}</div>;
+    }
+    if (
+      queryResult.data &&
+      queryResult.data.contents &&
+      queryResult.data.contents.length > 0
+    ) {
+      let data = queryResult.data.contents[0];
+
+      // let menuSection = data.children.filter(m => m.name === 'Menu_Items')
+      //   ? data.children.filter(m => m.name === 'Menu_Items')[0]
+      //   : null;
+      // console.log('Menu Seciton:', menuSection);
+      // let socialProfileSection = data.children.filter(
+      //   m => m.name === 'SOCIAL_PROFILES'
+      // )
+      //   ? data.children.filter(m => m.name === 'SOCIAL_PROFILES')[0]
+      //   : null;
+      // let bannerSection = data.children.filter(m => m.name === 'Banner')
+      //   ? data.children.filter(m => m.name === 'Banner')[0]
+      //   : null;
+      // let featureSection = data.children.filter(m => m.name === 'Features')
+      //   ? data.children.filter(m => m.name === 'Features')[0]
+      //   : null;
+      // let rideOptionSection = data.children.filter(m => m.name == 'RideOption')
+      //   ? data.children.filter(m => m.name === 'RideOption')[0]
+      //   : null;
+      // let locationSection = data.children.filter(
+      //   m => m.name === 'LocationSection'
+      // )
+      //   ? data.children.filter(m => m.name === 'LocationSection')[0]
+      //   : null;
+      // let featureSlider = data.children.filter(m => m.name === 'FeatureSlider')
+      //   ? data.children.filter(m => m.name === 'FeatureSlider')[0]
+      //   : null;
+      // let latestNewsSection = data.children.filter(m => m.name === 'LatestNews')
+      //   ? data.children.filter(m => m.name === 'LatestNews')[0]
+      //   : null;
+      // let howIsWorksSection = data.children.filter(
+      //   m => m.name === 'How is works'
+      // )
+      //   ? data.children.filter(m => m.name === 'How is works')[0]
+      //   : null;
+      // let testimonialSection = data.children.filter(
+      //   m => m.name === 'Testimonial'
+      // )
+      //   ? data.children.filter(m => m.name === 'Testimonial')[0]
+      //   : null;
+
+      // let menuLeftSection = data.children.filter(m => m.name === 'Menu_Left_Items')
+      // ? data.children.filter(m => m.name === 'Menu_Left_Items')[0]
+      // :null;
+
+      // let menuWidgetSection = data.children.filter(m => m.name === 'MenuWidget')
+      // ? data.children.filter(m => m.name === 'MenuWidget')[0]
+      // :null;
+      // let languageNamesSection = data.children.filter(m => m.name === 'Language_NAMES')
+      // ? data.children.filter(m => m.name === 'Language_NAMES')[0]
+      // :null;
+
+      // let followownPathSection = data.children.filter( m => m.name === 'Follow your own Path')
+      // ? data.children.filter( m => m.name === 'Follw you own Path')[0]
+      // :null;
+
+      // let howDoesGodriveWorkSection = data.children.filter(m => m.name === 'How does Godrive Work')
+      // ? data.children.filter(m => m.name === 'How does Godrive Work')[0]
+      // :null;
+
+      let isAR = config.lang == 'AR';
+      console.log('Tree:', data);
+      return (
+        <ThemeProvider theme={rideTheme}>
+          <Fragment>
+            <Head>
+              <title>{data.title}</title>
+              <meta name="theme-color" content="#ec5555" />
+              <meta name="Description" content="data.metaDescription" />
+              {isAR ? (
+                /*<link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600;700&display=swap" rel="stylesheet"></link>*/
+                <link
+                  href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
+                  rel="stylesheet"
+                ></link>
+              ) : (
+                <link
+                  href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+                  rel="stylesheet"
+                />
+              )}
+
+              {/* Load google fonts */}
+              <link
+                href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Lato:300,400,700"
+                rel="stylesheet"
+              />
+            </Head>
+            <ResetCSS />
+            <GlobalStyle />
+            <ContentWrapper>
+              {data.children &&
+                data.children
+                  .filter(m => m.online)
+                  .map((model, index) => (
+                    <BCComponent
+                      key={`BCComponent${index}`}
+                      modelId={model.modelId}
+                      model={model}
+                      isAR={isAR}
+                    />
+                  ))}
+              <BCLink />
+            </ContentWrapper>
+          </Fragment>
+        </ThemeProvider>
+      );
+    } else {
+      return <div>No data found</div>;
+    }
+  } catch (ex) {
+    return <div>Error: {ex.message}</div>;
+  }
+};

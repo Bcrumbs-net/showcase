@@ -57,7 +57,6 @@ ErrorSec.defaultProps = {
   },
   title: {
     fontSize: ['26px', '32px', '38px', '48px'],
-    fontWeight: '400',
     color: '#0f2137',
     letterSpacing: '-0.025em',
     mb: ['20px', '25px', '25px', '25px', '35px'],

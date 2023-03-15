@@ -1,0 +1,55 @@
+import { Text, Link, Image } from '@bcrumbs.net/showcase-atoms';
+
+/* eslint-disable-next-line */
+interface LogoProps {
+  logoSrc?: string;
+  title: string;
+  logoWrapperStyle?: object;
+  logoStyle?: object;
+  titleStyle?: object;
+  withAchor?: boolean;
+  anchorProps?: object;
+}
+
+export const Logo = ({
+  logoWrapperStyle,
+  logoStyle,
+  titleStyle,
+  withAchor,
+  anchorProps,
+  logoSrc,
+  title,
+  ...props
+}: LogoProps) => (
+  <Link {...props} {...logoWrapperStyle}>
+    {withAchor ? (
+      <a {...anchorProps}>
+        {logoSrc ? (
+          <Image src={logoSrc} alt={title} {...logoStyle} />
+        ) : (
+          <Text content={title} {...titleStyle} />
+        )}
+      </a>
+    ) : logoSrc ? (
+      <Image src={logoSrc} alt={title} {...logoStyle} />
+    ) : (
+      <Text content={title} {...titleStyle} />
+    )}
+  </Link>
+);
+
+Logo.defaultProps = {
+  logoWrapperStyle: {
+    display: 'inline-block',
+    mr: '1rem',
+    'a:hover,a:focus': {
+      textDecoration: 'none',
+    },
+  },
+  titleStyle: {
+    display: 'inline-block',
+    fontSize: '2rem',
+    lineHeight: 'inherit',
+    whiteSpace: 'nowrap',
+  },
+};
