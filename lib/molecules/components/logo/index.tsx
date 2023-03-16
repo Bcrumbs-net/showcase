@@ -1,4 +1,4 @@
-import { Text, Link, Image } from '@bcrumbs.net/showcase-atoms';
+import { Text, Link, Image } from '../../../atoms';
 
 /* eslint-disable-next-line */
 interface LogoProps {

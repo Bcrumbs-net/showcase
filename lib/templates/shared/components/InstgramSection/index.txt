@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Container } from '@bcrumbs.net/showcase-atoms';
-import { Text } from '@bcrumbs.net/showcase-atoms';
-import { Heading } from '@bcrumbs.net/showcase-atoms';
-
+import { Box, Container, Text, Heading } from '../../../../atoms';
 import { FeatureBlock } from '@bcrumbs.net/showcase-molecules';
 import FBPageSectionWrapper from './instgramSection.style';
 

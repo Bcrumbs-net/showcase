@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Icon from 'react-icons-kit';
-import { Box, Text, Heading, Image, Button } from '@bcrumbs.net/showcase-atoms';
+import { Box, Text, Heading, Image, Button } from '../../lib/atoms';
 import ErrorImage from '../../public/assets/image/404.svg';
 import { home } from 'react-icons-kit/entypo/home';
 import { ccw } from 'react-icons-kit/entypo/ccw';

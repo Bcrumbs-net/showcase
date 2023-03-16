@@ -23,8 +23,6 @@
   "dependencies": {
     "@apollo/client": "^3.5.10",
     "@bcrumbs.net/bc-api": "^0.0.3",
-    "@bcrumbs.net/showcase-atoms": "0.0.3",
-    "@bcrumbs.net/showcase-molecules": "0.0.4",
     "@glidejs/glide": "^3.3.0",
     "@redq/reuse-modal": "^2.0.0",
     "apollo": "^2.33.9",

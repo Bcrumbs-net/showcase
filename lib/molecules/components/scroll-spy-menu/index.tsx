@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import Scrollspy from 'react-scrollspy';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import { DrawerContext } from '@bcrumbs.net/showcase-atoms';
+import { DrawerContext } from '../../../atoms';
 
 interface ScrollSpyMenuProps {
   /** className of the ScrollSpyMenu. */
