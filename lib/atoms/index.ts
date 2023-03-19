@@ -5,8 +5,6 @@ export * from './components/button';
 export * from './components/card';
 export * from './components/checkbox';
 export * from './components/container';
-//export * from './components/date-picker'; Disabled because of its large size
-//export * from './components/date-range-picker'; Disabled because of its large size
 export * from './components/drawer';
 export * from './components/drawer-context';
 export * from './components/heading';
@@ -18,7 +16,6 @@ export * from './components/navbar';
 export * from './components/radio';
 export * from './components/radio-group';
 export * from './components/input-group';
-// export * from './components/range'; Disabled because of its large size
 export * from './components/rating';
 export * from './components/scroll-spy-menu';
 export * from './components/select';

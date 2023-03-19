@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { AppProps } from 'next/app';
 import { ApolloClient } from '@apollo/client';
-import { Modal } from '@redq/reuse-modal';
-import '@redq/reuse-modal/es/index.css';
+//import { Modal } from '@redq/reuse-modal';
+//import '@redq/reuse-modal/es/index.css';
 import '../public/assets/css/flaticon.css';
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import 'react-accessible-accordion/dist/fancy-example.css';
@@ -19,7 +19,7 @@ function BCShowcase({
   return (
     <ApolloProvider client={apollo}>
       <Fragment>
-        <Modal />
+        {/* <Modal /> */}
         <AnyComponent {...pageProps}/>
       </Fragment>
     </ApolloProvider>
