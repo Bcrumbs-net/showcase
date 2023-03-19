@@ -33,5 +33,5 @@ BCShowcase.getInitialProps = async ({ Component, ctx }) => {
   return { pageProps };
 };
 
-// @ts-expect-error TypeScript is complaining
+// @ts-ignore TypeScript is complaining
 export default withShowcaseClient(BCShowcase);

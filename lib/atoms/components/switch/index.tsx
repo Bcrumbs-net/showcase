@@ -88,7 +88,7 @@ export const Switch = ({
   return (
     <SwitchStyle
       className={addAllClasses.join(' ')}
-      // @ts-expect-error: TS is complaining about color property
+      // @ts-ignore: TS is complaining about color property
       switchColor={switchColor}
       switchSize={switchSize}
       barColor={barColor}

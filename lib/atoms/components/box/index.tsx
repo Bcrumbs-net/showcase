@@ -52,7 +52,7 @@ const BoxWrapper = styled('div')<{ flexBox: boolean }>(
 );
 
 export const Box = ({ children, ...props }: React.PropsWithChildren<BoxProps>) => (
-  // @ts-expect-error: TS is complaining about color property
+  // @ts-ignore: TS is complaining about color property
   <BoxWrapper {...props}>{children}</BoxWrapper>
 );
 

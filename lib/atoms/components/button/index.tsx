@@ -84,7 +84,7 @@ export const Button = ({
     <ButtonStyle
       type={type}
       className={addAllClasses.join(' ')}
-      // @ts-expect-error: Property 'icon' does not exist on type
+      // @ts-ignore: Property 'icon' does not exist on type
       icon={icon}
       disabled={disabled}
       icon-position={position}

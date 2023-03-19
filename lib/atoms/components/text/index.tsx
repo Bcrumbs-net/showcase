@@ -33,7 +33,7 @@ const TextWrapper = styled('p')(
 );
 
 export const Text = ({ content, ...props }: TextProps) => (
-  // @ts-expect-error: TS is complaining about color property
+  // @ts-ignore: TS is complaining about color property
   <TextWrapper {...props}>
     {content && content.indexOf('\n') >= 0
       ? content.split('\n').map(function(item, idx) {

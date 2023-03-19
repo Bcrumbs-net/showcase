@@ -66,7 +66,7 @@ export const ScrollSpyMenu = ({
     <Scrollspy
       items={scrollItems}
       className={addAllClasses.join(' ')}
-      // @ts-expect-error: TS is complaining about color property
+      // @ts-ignore: TS is complaining about color property
       drawerClose={drawerClose}
       {...props}
     >
