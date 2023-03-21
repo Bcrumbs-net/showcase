@@ -1,25 +1,25 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import { base, themed } from "../base";
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { base, themed } from '../base';
 import {
   flexWrap,
   flexDirection,
   alignItems,
   justifyContent,
-} from "styled-system";
+} from 'styled-system';
 
 /* eslint-disable-next-line */
 export interface BoxProps {
   flexBox?: boolean;
   as?:
-    | "div"
-    | "article"
-    | "section"
-    | "address"
-    | "header"
-    | "footer"
-    | "nav"
-    | "main";
+    | 'div'
+    | 'article'
+    | 'section'
+    | 'address'
+    | 'header'
+    | 'footer'
+    | 'nav'
+    | 'main';
   width?: string | number | string | number[];
   height?: string | number | string | number[];
   fontSize?: string | number | string | number[];
@@ -36,18 +36,18 @@ export interface BoxProps {
   borderColor?: string | number | string | number[];
 }
 
-const BoxWrapper = styled("div")<{ flexBox: boolean }>(
+const BoxWrapper = styled('div')<{ flexBox: boolean }>(
   base,
-  themed("Box"),
+  themed('Box'),
   (props) =>
     props.flexBox &&
     css(
-      { display: "flex" },
+      { display: 'flex' },
       flexWrap,
       flexDirection,
       alignItems,
       justifyContent,
-      themed("FlexBox")
+      themed('FlexBox')
     )
 );
 
@@ -57,5 +57,5 @@ export const Box = ({ children, ...props }: React.HTMLProps<BoxProps>) => (
 );
 
 Box.defaultProps = {
-  as: "div",
+  as: 'div',
 };

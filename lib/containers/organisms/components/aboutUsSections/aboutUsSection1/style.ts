@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { themeGet } from "styled-system";
+import styled from 'styled-components';
+import { themeGet } from 'styled-system';
 
 const AboutUsSectionWrapper = styled.section`
   padding: 80px 0 50px;
@@ -38,7 +38,7 @@ const AboutUsSectionWrapper = styled.section`
     align-items: center;
     margin-bottom: 14px;
     .icon__wrapper {
-      color: ${themeGet("colors.primary", "#10ac84")};
+      color: ${themeGet('colors.primary', '#10ac84')};
       margin: 0 10px;
     }
     .content__wrapper {

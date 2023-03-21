@@ -1,11 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 import FeatureBlockWrapper, {
   IconWrapper,
   ContentWrapper,
   ButtonWrapper,
-} from "./featureBlock.style";
+} from './featureBlock.style';
 
 interface FeatureBlockProps {
+  id?: string;
   /** ClassName of the FeatureBlock */
   className?: string;
   /** title prop contain a react component. You can use our Heading component from reusecore */
@@ -15,7 +16,7 @@ interface FeatureBlockProps {
   /** button prop contain a react component. You can use our Button component from reusecore */
   button?: React.ReactElement;
   /** Set icon position of the FeatureBlock */
-  iconPosition?: "top" | "left" | "right";
+  iconPosition?: 'top' | 'left' | 'right';
   /** wrapperStyle prop contain these style system props:  display, flexWrap, width, height, alignItems,
    * justifyContent, position, overflow, space, color, borders, borderColor, boxShadow and borderRadius. */
   wrapperStyle?: object;
@@ -37,6 +38,7 @@ interface FeatureBlockProps {
 }
 
 export const FeatureBlock = ({
+  id,
   className,
   icon,
   image,
@@ -56,7 +58,7 @@ export const FeatureBlock = ({
   ...props
 }: FeatureBlockProps) => {
   // Add all classs to an array
-  const addAllClasses = ["feature__block"];
+  const addAllClasses = ['feature__block'];
 
   // Add icon position class
   if (iconPosition) {
@@ -83,12 +85,13 @@ export const FeatureBlock = ({
 
   return (
     <FeatureBlockWrapper
-      className={addAllClasses.join(" ")}
+      className={addAllClasses.join(' ')}
+      id={id}
       {...wrapperStyle}
       {...props}
       style={{
-        direction: isAR ? "rtl" : "ltr",
-        cursor: onClick ? "pointer" : "default",
+        direction: isAR ? 'rtl' : 'ltr',
+        cursor: onClick ? 'pointer' : 'default',
       }}
       onClick={onClick ? onClick : () => null}
     >
@@ -100,7 +103,7 @@ export const FeatureBlock = ({
           <ContentWrapper
             className="content__wrapper"
             {...contentStyle}
-            style={style || { textAlign: isAR ? "right" : "left" }}
+            style={style || { textAlign: isAR ? 'right' : 'left' }}
           >
             {title}
             {description}
@@ -118,5 +121,5 @@ export const FeatureBlock = ({
 };
 
 FeatureBlock.defaultProps = {
-  iconPosition: "top",
+  iconPosition: 'top',
 };
