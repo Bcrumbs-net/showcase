@@ -3,39 +3,40 @@ import InputField, { EyeButton } from './input.style';
 
 /* eslint-disable-next-line */
 export interface InputProps {
-    /** className of the Input component. */
-    className?: string;
-    /** Set input label value. */
-    label?: string;
-    /** The input value, required for a controlled component. */
-    value?: "string" | "number";
-    /** Make default input into material style input. */
-    isMaterial?: boolean;
-    /** Password show hide icon button prop [*only for password field]. */
-    passwordShowHide?: boolean;
-    /** Set input type of the input element. Default type is text. */
-    inputType?: "text" | "email" | "password" | "number" | "textarea";
-    /** Add icon in input field. This prop will not work with password
-     * and textarea field.
-     */
-    icon?: any;
-    /** Set input field icon position. Default position is 'left'. */
-    iconPosition?: "left" | "right";
-    /**
-     * @ignore
-     */
-    onBlur?(...args: unknown[]): unknown;
-    /**
-     * @ignore
-     */
-    onFocus?(...args: unknown[]): unknown;
-    /**
-     * Callback fired when the value is changed.
-     *
-     * @param {object} event The event source of the callback.
-     * You can pull out the new value by accessing `event.target.value`.
-     */
-    onChange?(...args: unknown[]): unknown;
+  /** className of the Input component. */
+  className?: string;
+  /** Set input label value. */
+  label?: string;
+  /** The input value, required for a controlled component. */
+  value?: 'string' | 'number';
+  /** Make default input into material style input. */
+  isMaterial?: boolean;
+  /** Password show hide icon button prop [*only for password field]. */
+  passwordShowHide?: boolean;
+  /** Set input type of the input element. Default type is text. */
+  inputType?: 'text' | 'email' | 'password' | 'number' | 'textarea';
+  /** Add icon in input field. This prop will not work with password
+   * and textarea field.
+   */
+  icon?: any;
+  /** Set input field icon position. Default position is 'left'. */
+  iconPosition?: 'left' | 'right';
+  /**
+   * @ignore
+   */
+  onBlur?(...args: unknown[]): unknown;
+  /**
+   * @ignore
+   */
+  onFocus?(...args: unknown[]): unknown;
+  /**
+   * Callback fired when the value is changed.
+   *
+   * @param {object} event The event source of the callback.
+   * You can pull out the new value by accessing `event.target.value`.
+   */
+  placeholder?: string;
+  onChange?(...args: unknown[]): unknown;
 }
 
 export const Input = ({
@@ -50,6 +51,7 @@ export const Input = ({
   iconPosition,
   passwordShowHide,
   className,
+  placeholder,
   ...props
 }: InputProps) => {
   // use toggle hooks
@@ -187,6 +189,7 @@ export const Input = ({
             value={state.value}
             onChange={handleOnChange}
             onBlur={handleOnBlur}
+            placeholder={placeholder}
             onFocus={handleOnFocus}
           />
           {icon && <span className="input-icon">{icon}</span>}

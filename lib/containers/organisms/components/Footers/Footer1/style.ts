@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { themeGet } from 'styled-system';
-import FooterIamge from '../../../assets/image/agency/footer-bg.png';
+import FooterIamge from '../../../../../assets/image/agency/footer-bg.png';
 
 const FooterWrapper = styled.section`
   padding: 80px 0;
   margin-top: 40px;
-  background-image: url(${FooterIamge});
+  background-image: url(${FooterIamge.src});
   background-repeat: no-repeat;
   background-position: center 50px;
   border-top: 1px solid #efefef;

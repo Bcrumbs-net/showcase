@@ -8,11 +8,11 @@ import {
   Image,
   Button,
   CheckBox,
-} from '../../../atoms';
+} from '../../../../../atoms';
 import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/TabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
-import LoginModalWrapper from './loginModal.style';
+import LoginModalWrapper from './style';
 import 'rc-tabs/assets/index.css';
 import LogoImage from '../../../assets/image/agency/logo.png';
 import LoginImage from '../../../assets/image/agency/login-bg.jpg';
@@ -48,7 +48,11 @@ const LoginModal = ({
     <LoginModalWrapper>
       <Box className="row" {...row}>
         <Box className="col imageCol" {...col}>
-          <Image className="patternImage" src={LoginImage} alt="Login Banner" />
+          <Image
+            className="patternImage"
+            src={LoginImage.src}
+            alt="Login Banner"
+          />
         </Box>
         <Box className="col tabCol" {...col}>
           <Box {...contentWrapper}>
@@ -65,7 +69,7 @@ const LoginModal = ({
                   {...descriptionStyle}
                 />
                 <Button
-                  icon={<Image src={GoogleLogo} alt="Google Icon" />}
+                  icon={<Image src={GoogleLogo.src} alt="Google Icon" />}
                   title="Sign in with Google"
                   iconPosition="left"
                   className="google-login__btn"
@@ -90,7 +94,7 @@ const LoginModal = ({
                   {...descriptionStyle}
                 />
                 <Button
-                  icon={<Image src={GoogleLogo} alt="Google Icon" />}
+                  icon={<Image src={GoogleLogo.src} alt="Google Icon" />}
                   title="Sign up with Google"
                   iconPosition="left"
                   className="google-login__btn"

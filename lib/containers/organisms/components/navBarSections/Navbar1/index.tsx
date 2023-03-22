@@ -1,15 +1,17 @@
 import { useContext } from 'react';
 //import PropTypes from 'prop-types';
 import {
-  Drawer, NavbarWrapper, DrawerContext, HamburgMenu
-} from '../../../atoms';
+  Drawer,
+  NavbarWrapper,
+  DrawerContext,
+  HamburgMenu,
+} from '../../../../../atoms';
 //import { openModal, closeModal } from '@redq/reuse-modal';
-import { ScrollSpyMenu, Logo } from '../../../molecules';
+import { ScrollSpyMenu, Logo } from '../../../../../molecules';
+import CopyrightSection from '../../CopyrightsSections/CopyrightsSection1';
 import { Container } from './navbar.style';
 //import SearchPanel from '../SearchPanel';
 //import LoginModal from '../LoginModal';
-import CopyrightSection from '../CopyrightsSection';
-
 // Default close button for modal
 // const CloseModalButton = () => (
 //   <Button
@@ -29,8 +31,14 @@ import CopyrightSection from '../CopyrightsSection';
 //     icon={<i className="flaticon-plus-symbol" />}
 //   />
 // );
+interface INavbar {
+  navbarStyle: object;
+  logoStyle: object;
+  model: any;
+  isAR: boolean;
+}
 
-const Navbar = ({ navbarStyle, logoStyle, model, isAR }) => {
+const Navbar = ({ navbarStyle, logoStyle, model, isAR }: INavbar) => {
   const { state, dispatch } = useContext(DrawerContext);
 
   // Search modal handler
@@ -86,13 +94,13 @@ const Navbar = ({ navbarStyle, logoStyle, model, isAR }) => {
     });
   };
 
-  let data = model.data.reduce(function(map, obj) {
+  let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
   let socialModel;
   if (model.children && model.children.length > 0) {
-    let socialModelQuery = model.children.filter(m => m.modelId == 403193);
+    let socialModelQuery = model.children.filter((m) => m.modelId == 403193);
     if (socialModelQuery && socialModelQuery.length > 0)
       socialModel = socialModelQuery[0];
   }

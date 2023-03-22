@@ -9,6 +9,7 @@ interface LogoProps {
   titleStyle?: object;
   withAchor?: boolean;
   anchorProps?: object;
+  href?: string;
 }
 
 export const Logo = ({
@@ -19,11 +20,12 @@ export const Logo = ({
   anchorProps,
   logoSrc,
   title,
+  href,
   ...props
 }: LogoProps) => (
   <Link {...props} {...logoWrapperStyle}>
     {withAchor ? (
-      <a {...anchorProps}>
+      <a href={href} {...anchorProps}>
         {logoSrc ? (
           <Image src={logoSrc} alt={title} {...logoStyle} />
         ) : (

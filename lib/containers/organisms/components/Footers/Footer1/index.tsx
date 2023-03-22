@@ -1,8 +1,20 @@
 import Link from 'next/link';
-import { Box, Text, Heading, Container } from '../../../atoms';
-import { Logo } from '../../../molecules';
-import FooterWrapper, { List, ListItem } from './footer.style';
+import { Logo } from '../../../../../molecules';
+import { Box, Text, Heading, Container } from '../../../../../atoms';
+
+import FooterWrapper, { List, ListItem } from './style';
 //import CopyrightSection from '../CopyrightsSection';
+interface FooterProps {
+  row?: object;
+  col?: object;
+  colOne?: object;
+  colTwo?: object;
+  titleStyle?: any;
+  textStyle?: object;
+  logoStyle?: object;
+  model: any;
+  isAR: boolean;
+}
 
 const Footer = ({
   row,
@@ -14,7 +26,7 @@ const Footer = ({
   textStyle,
   model,
   isAR,
-}) => {
+}: FooterProps) => {
   let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
@@ -95,17 +107,6 @@ const Footer = ({
     </FooterWrapper>
   );
 };
-
-// Footer style props
-// Footer.propTypes = {
-//   row: PropTypes.object,
-//   col: PropTypes.object,
-//   colOne: PropTypes.object,
-//   colTwo: PropTypes.object,
-//   titleStyle: PropTypes.object,
-//   textStyle: PropTypes.object,
-//   logoStyle: PropTypes.object,
-// };
 
 // Footer default style
 Footer.defaultProps = {

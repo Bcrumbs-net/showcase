@@ -1,8 +1,31 @@
-import PropTypes from 'prop-types';
-import { Box, Text, Heading, Card, Image, Container } from '../../../atoms';
+import {
+  Box,
+  Text,
+  Heading,
+  Card,
+  Image,
+  Container,
+} from '../../../../../atoms';
 import Fade from 'react-reveal/Fade';
-import { FeatureBlock } from '../../../molecules';
+import { FeatureBlock } from '../../../../../molecules';
 import QualitySectionWrapper from './qualitySection.style';
+
+interface QualitySectionProps {
+  row?: object;
+  col?: object;
+  featureCol?: object;
+  title?: object;
+  description?: object;
+  button?: object;
+  textArea?: object;
+  imageArea?: object;
+  imageAreaRow?: object;
+  imageWrapper?: any;
+  featureTitle?: object;
+  featureDescription?: object;
+  iconStyle?: object;
+  model: any;
+}
 
 const QualitySection = ({
   row,
@@ -18,7 +41,7 @@ const QualitySection = ({
   featureDescription,
   iconStyle,
   model,
-}) => {
+}: QualitySectionProps) => {
   let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
@@ -73,7 +96,7 @@ const QualitySection = ({
           })}
         </Box>
       </Container>
-      <Container fluid noGutter className="info-sec-container">
+      <Container fullWidth noGutter className="info-sec-container">
         <Box className="row" {...row} {...imageAreaRow}>
           <Box className="col" {...col} {...imageArea}>
             <Card {...imageWrapper}>
@@ -86,15 +109,6 @@ const QualitySection = ({
       </Container>
     </QualitySectionWrapper>
   );
-};
-
-QualitySection.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  featureCol: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
-  button: PropTypes.object,
 };
 
 QualitySection.defaultProps = {

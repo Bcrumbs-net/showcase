@@ -1,9 +1,22 @@
-import PropTypes from 'prop-types';
-import {
-  Box, Text, Heading, Container
-} from '../../../atoms';
-import { FeatureBlock } from '../../../molecules';
-import FeatureSectionWrapper from './featureSection.style';
+import { Box, Text, Heading, Container } from '../../../../../atoms';
+import { FeatureBlock } from '../../../../../molecules';
+import FeatureSectionWrapper from './style';
+
+interface FeatureSectionProps {
+  sectionHeader?: object;
+  row?: object;
+  col?: object;
+  sectionTitle?: object;
+  sectionSubTitle?: object;
+  featureTitle?: object;
+  featureDescription?: object;
+  iconStyle: object;
+  imgStyle: object;
+  contentStyle: object;
+  blockWrapperStyle: object;
+  model: any;
+  isAR: boolean;
+}
 
 const FeatureSection = ({
   row,
@@ -19,7 +32,7 @@ const FeatureSection = ({
   blockWrapperStyle,
   model,
   isAR,
-}) => {
+}: FeatureSectionProps) => {
   let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
@@ -68,17 +81,6 @@ const FeatureSection = ({
       </Container>
     </FeatureSectionWrapper>
   );
-};
-
-// FeatureSection style props
-FeatureSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  featureTitle: PropTypes.object,
-  featureDescription: PropTypes.object,
 };
 
 // FeatureSection default style

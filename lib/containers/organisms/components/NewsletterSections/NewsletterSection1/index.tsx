@@ -1,15 +1,20 @@
-import PropTypes from 'prop-types';
-import { Box, Heading, Input, Button, Container } from '../../../atoms';
-import NewsletterSectionWrapper, {
-  NewsletterForm,
-} from './newsletterSection.style';
+import { Box, Heading, Input, Button, Container } from '../../../../../atoms';
+import NewsletterSectionWrapper, { NewsletterForm } from './style';
+
+interface NewsletterSectionProps {
+  sectionHeader?: object;
+  sectionTitle?: object;
+  sectionSubTitle?: object;
+  btnStyle: object;
+  model: any;
+}
 
 const NewsletterSection = ({
   sectionHeader,
   sectionTitle,
   btnStyle,
   model,
-}) => {
+}: NewsletterSectionProps) => {
   let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
@@ -34,13 +39,6 @@ const NewsletterSection = ({
       </Container>
     </NewsletterSectionWrapper>
   );
-};
-
-// NewsletterSection style props
-NewsletterSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
 };
 
 // NewsletterSection default style

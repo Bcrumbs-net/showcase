@@ -1,11 +1,23 @@
 import { Fragment } from 'react';
 import { FaLinkedinIn } from 'react-icons/fa';
-import PropTypes from 'prop-types';
-import {
-  Box, Text, Heading, Image, Container
-} from '../../../atoms';
-import { FeatureBlock } from '../../../molecules';
-import TeamSectionWrapper, { SocialLinks } from './teamSection.style';
+import { Box, Text, Heading, Image, Container } from '../../../../../atoms';
+import { FeatureBlock } from '../../../../../molecules';
+import TeamSectionWrapper, { SocialLinks } from './style';
+
+interface TeamSectionProps {
+  sectionHeader?: object;
+  row?: object;
+  col?: object;
+  sectionTitle?: object;
+  sectionSubTitle?: object;
+  memberName?: any;
+  memberPhoto?: object;
+  designation?: object;
+  contentStyle?: object;
+  profileUrl?: object;
+  model?: any;
+  isAR: boolean;
+}
 
 const TeamSection = ({
   row,
@@ -20,7 +32,7 @@ const TeamSection = ({
   profileUrl,
   model,
   isAR,
-}) => {
+}: TeamSectionProps) => {
   let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
@@ -150,17 +162,6 @@ const TeamSection = ({
       </Container>
     </TeamSectionWrapper>
   );
-};
-
-// TeamSection style props
-TeamSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  memberName: PropTypes.object,
-  designation: PropTypes.object,
 };
 
 // TeamSection default style

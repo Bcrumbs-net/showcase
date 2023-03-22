@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Heading, Container } from '../../../atoms';
+import { Box, Text, Heading, Container } from '../../../../../atoms';
 import {
   Accordion,
   AccordionItem,
@@ -9,13 +9,24 @@ import {
   IconWrapper,
   OpenIcon,
   CloseIcon,
-  IconWrapperAR
-} from '../../../molecules';
+  IconWrapperAR,
+} from '../../../../../molecules';
 import { Icon } from 'react-icons-kit';
 import { plus } from 'react-icons-kit/entypo/plus';
 import { minus } from 'react-icons-kit/entypo/minus';
-import FaqSectionWrapper from './faqSection.style';
+import FaqSectionWrapper from './style';
 
+interface IFaqSectionProps {
+  sectionHeader?: object;
+  row?: object;
+  col?: object;
+  sectionTitle?: object;
+  sectionSubTitle?: object;
+  titleStyle: any;
+  descriptionStyle: any;
+  model: any;
+  isAR: boolean;
+}
 const FaqSection = ({
   sectionHeader,
   sectionTitle,
@@ -24,7 +35,7 @@ const FaqSection = ({
   descriptionStyle,
   model,
   isAR,
-}) => {
+}: IFaqSectionProps) => {
   let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;

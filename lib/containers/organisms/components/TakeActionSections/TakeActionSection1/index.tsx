@@ -1,8 +1,19 @@
-import PropTypes from 'prop-types';
-import {
-  Box, Text, Heading, Button, Container
-} from '../../../atoms';
+import { Box, Text, Heading, Button, Container } from '../../../../../atoms';
 import { ButtonWrapper } from './takeaction.style';
+
+interface TakeActionSectionProps {
+  sectionWrapper?: object;
+  secTitleWrapper?: object;
+  secTitle?: object;
+  secDescription?: object;
+  replyWrapper?: object;
+  replyTime?: object;
+  buttonStyle?: object;
+  secButtonStyle?: object;
+  buttonWrapper?: object;
+  model: any;
+  isAR: boolean;
+}
 
 const TakeActionSection = ({
   sectionWrapper,
@@ -16,8 +27,8 @@ const TakeActionSection = ({
   buttonWrapper,
   model,
   isAR,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}: TakeActionSectionProps) => {
+  let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
@@ -42,7 +53,7 @@ const TakeActionSection = ({
   );
   return (
     <Box {...sectionWrapper} as="section" id={model.name}>
-      <Container noGutter mobileGutter width="1200px">
+      <Container noGutter mobileGutter width={1200}>
         <Box
           {...secTitleWrapper}
           style={{
@@ -63,18 +74,6 @@ const TakeActionSection = ({
       </Container>
     </Box>
   );
-};
-
-TakeActionSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secTitle: PropTypes.object,
-  secDescription: PropTypes.object,
-  replyWrapper: PropTypes.object,
-  replyTime: PropTypes.object,
-  buttonStyle: PropTypes.object,
-  secButtonStyle: PropTypes.object,
-  buttonWrapper: PropTypes.object,
 };
 
 TakeActionSection.defaultProps = {

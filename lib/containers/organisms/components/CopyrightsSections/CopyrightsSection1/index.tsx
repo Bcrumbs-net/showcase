@@ -1,5 +1,4 @@
-import CopyrightWrapper from './copyrightSection.style';
-
+import CopyrightWrapper from './style';
 
 const CopyrightSection = ({ model }) => {
   return (
@@ -7,9 +6,9 @@ const CopyrightSection = ({ model }) => {
       <ul>
         {model.children &&
           model.children
-            .filter(m => m.online)
+            .filter((m) => m.online)
             .map((profileItem, index) => {
-              let profile = profileItem.data.reduce(function(map, obj) {
+              let profile = profileItem.data.reduce(function (map, obj) {
                 map[obj.Key] = obj.Value;
                 return map;
               }, {});
