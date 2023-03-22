@@ -1,10 +1,7 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Box, Heading, Image,Button, Container
-} from '../../../atoms';
+
 import Fade from 'react-reveal/Fade';
-import { GlideCarousel, GlideSlide } from '../../../molecules';
 
 import SectionWrapper, {
   TeamCard,
@@ -12,8 +9,19 @@ import SectionWrapper, {
   ImageLink,
   TextWrapper,
   CarouselWrapper,
-} from './blogSliderSection.style';
-
+} from './style';
+import { Box, Heading, Image, Button, Container } from '../../../../../atoms';
+import { GlideCarousel, GlideSlide } from '../../../../../molecules';
+interface IBlogSliderSection {
+  sectionHeader: any;
+  sectionTitle: any;
+  button: any;
+  blogTitle: any;
+  blogMeta: any;
+  btnStyle: any;
+  model: any;
+  isAR: any;
+}
 const BlogSliderSection = ({
   sectionHeader,
   sectionTitle,
@@ -23,7 +31,7 @@ const BlogSliderSection = ({
   btnStyle,
   model,
   isAR,
-}) => {
+}: IBlogSliderSection) => {
   const glideOptions = {
     type: 'carousel',
     perView: 3,
@@ -43,13 +51,13 @@ const BlogSliderSection = ({
       },
     },
   };
-  let data = model.data.reduce(function(map, obj) {
+  let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
   return (
     <SectionWrapper id={model.name}>
-      <Container width="1360px">
+      <Container width={1360}>
         <Box {...sectionHeader}>
           <Heading content={data.sectionTitle} {...sectionTitle} />
         </Box>
@@ -77,7 +85,7 @@ const BlogSliderSection = ({
               <Fragment>
                 {model.children &&
                   model.children.map((blogSection, index) => {
-                    let blogSectionMap = blogSection.data.reduce(function(
+                    let blogSectionMap = blogSection.data.reduce(function (
                       map,
                       obj
                     ) {
@@ -95,7 +103,11 @@ const BlogSliderSection = ({
                           }}
                         >
                           <ImageWrapper className="image_wrapper">
-                            <a href={blogSectionMap.postLink} target="_blank" rel="noreferrer">
+                            <a
+                              href={blogSectionMap.postLink}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
                               <Image
                                 src={blogSectionMap.thumbnail_url}
                                 alt={blogSectionMap.title}
