@@ -5,6 +5,18 @@ import { FeatureBlock } from '../../../../../molecules';
 
 import AboutUsSectionWrapper from './style';
 
+interface IAboutUsSectionProps {
+  row?: object;
+  col?: object;
+  textArea?: object;
+  title?: object;
+  description?: object;
+  btnStyle?: object;
+  model: any;
+  isAR: boolean;
+  featureTitle: any;
+}
+
 const AboutUsSection = ({
   row,
   col,
@@ -15,7 +27,7 @@ const AboutUsSection = ({
   btnStyle,
   model,
   isAR,
-}) => {
+}: IAboutUsSectionProps) => {
   let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;

@@ -13,14 +13,14 @@ import SectionWrapper, {
 import { Box, Heading, Image, Button, Container } from '../../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../../molecules';
 interface IBlogSliderSection {
-  sectionHeader: any;
-  sectionTitle: any;
-  button: any;
-  blogTitle: any;
-  blogMeta: any;
-  btnStyle: any;
+  sectionHeader: object;
+  sectionTitle: object;
+  button: string;
+  blogTitle: string;
+  blogMeta: string;
+  btnStyle: object;
   model: any;
-  isAR: any;
+  isAR: string;
 }
 const BlogSliderSection = ({
   sectionHeader,
@@ -145,14 +145,6 @@ const BlogSliderSection = ({
 };
 
 // BlogSection style props
-BlogSliderSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  blogTitle: PropTypes.object,
-  blogMeta: PropTypes.object,
-  button: PropTypes.object,
-  btnStyle: PropTypes.object,
-};
 
 // BlogSection default style
 BlogSliderSection.defaultProps = {

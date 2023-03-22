@@ -5,6 +5,19 @@ import BannerWrapper, { DiscountLabel, BannerMask, Hspace } from './style';
 import { Box, Text, Heading, Button, Container } from '../../../../../atoms';
 import { FeatureBlock } from '../../../../../molecules';
 
+interface BannerSectionProps {
+  row: object;
+  col: object;
+  title?: object;
+  btnStyle?: object;
+  description?: object;
+  contentStyle?: object;
+  discountText?: object;
+  discountAmount?: object;
+  outlineBtnStyle?: object;
+  model: any;
+  isAR: boolean;
+}
 const BannerSection = ({
   row,
   col,
@@ -16,7 +29,7 @@ const BannerSection = ({
   outlineBtnStyle,
   model,
   isAR,
-}) => {
+}: BannerSectionProps) => {
   let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;

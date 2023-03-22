@@ -12,7 +12,18 @@ import {
   Container,
 } from '../../../../../atoms';
 import { FeatureBlock } from '../../../../../molecules';
-
+interface IBlogSliderSection {
+  row: object;
+  sectionHeader: object;
+  sectionTitle: object;
+  buttonRow: object;
+  blogTitle: any;
+  blogMeta: object;
+  btnStyle: object;
+  model: any;
+  isAR: boolean;
+  sectionSubTitle: object;
+}
 const BlogSection = ({
   row,
   buttonRow,
@@ -24,7 +35,7 @@ const BlogSection = ({
   btnStyle,
   model,
   isAR,
-}) => {
+}: IBlogSliderSection) => {
   const [showAll, setShowAll] = useState(false);
 
   const data = model.data.reduce(function (map, obj) {
