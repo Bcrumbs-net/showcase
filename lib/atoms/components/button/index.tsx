@@ -2,7 +2,6 @@
 import { Fragment } from 'react';
 import ButtonStyle from './button.style';
 import { Loader } from '../loader';
-import { themeGet } from 'styled-system';
 
 /* eslint-disable-next-line */
 export interface ButtonProps {

@@ -1,4 +1,4 @@
-import { AgencyTheme } from '../../lib';
+import { AgencyTheme } from './templates';
 // import Agency from '../themes/agency';
 // import Crypto from '../themes/_crypto';
 // import SaaSClassic from '../themes/_saasclassic';
