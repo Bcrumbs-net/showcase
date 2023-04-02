@@ -203,5 +203,3 @@ export const ContentWrapper = styled.div`
     }
   }
 `;
-
-export const ButtonGroup = styled.div``;

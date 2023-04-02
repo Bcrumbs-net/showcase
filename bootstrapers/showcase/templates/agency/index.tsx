@@ -6,7 +6,6 @@ import { ThemeProvider } from 'styled-components';
 import { agencyTheme } from './themeStyles';
 import { ResetCSS } from '../../assets/css/style';
 import { GlobalStyle, AgencyWrapper } from './globalStyle';
-// import NewsletterSection from '../../../lib/containers/Agency/NewsletterSection';
 import ComponentResolver from '../../mappers';
 import BCLink from '../shared/components/BCLink';
 
@@ -93,9 +92,6 @@ export const AgencyTheme = ({
                   />
                 ))}
             <BCLink />
-            {/*newsletterSection ? (
-                <NewsletterSection model={newsletterSection} />
-              ) : null*/}
           </AgencyWrapper>
           {/* End of agency wrapper section */}
         </Fragment>

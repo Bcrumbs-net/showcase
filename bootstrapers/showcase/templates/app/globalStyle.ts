@@ -3,7 +3,7 @@ import { themeGet } from 'styled-system';
 
 import Substract from '../../assets/image/app/substract.png';
 import SubstractHover from '../../assets/image/app/substract-hover.png';
-import BannerPattern from '../../assets/image/app/pattern.png';
+
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -857,88 +857,7 @@ const AppWrapper = styled.div`
   }
 `;
 
-const BannerSquareShape = styled.div`
-  width: 980px;
-  height: 1110px;
-  background: #1a73e8;
-  border-radius: 50px;
-  -webkit-transform: rotate(105deg);
-  -ms-transform: rotate(105deg);
-  transform: rotate(107deg);
-  position: absolute;
-  left: 58%;
-  top: -28%;
-  z-index: -1;
-  pointer-events: none;
-  background-image: url(${BannerPattern});
-  @media (max-width: 1300px) {
-    width: 870px;
-    height: 1000px;
-    transform: rotate(103deg);
-    position: absolute;
-    left: 64%;
-  }
-  @media (max-width: 1100px) {
-    display: none;
-  }
-`;
-const BannerCircleShape = styled.div`
-  width: 500px;
-  height: 500px;
-  background: #ffc845;
-  border-radius: 50%;
-  position: absolute;
-  left: 55%;
-  top: 47%;
-  z-index: -1;
-  transform: translateY(-50%);
-  pointer-events: none;
-  @media (max-width: 1300px) {
-    width: 400px;
-    height: 400px;
-    left: 63%;
-  }
-  @media (max-width: 1100px) {
-    width: 400px;
-    height: 400px;
-    left: 60%;
-  }
-  @media (max-width: 991px) {
-    width: 345px;
-    height: 345px;
-    left: 54%;
-  }
-  @media (max-width: 767px) {
-    display: none;
-  }
-`;
-const PaymentCircleShape = styled.div`
-  width: 700px;
-  height: 700px;
-  background: #ffc845;
-  border-radius: 50%;
-  position: absolute;
-  left: 5%;
-  top: 47%;
-  z-index: -1;
-  transform: translateY(-50%);
-  pointer-events: none;
-  @media (max-width: 1440px) {
-    width: 550px;
-    height: 550px;
-  }
-  @media (max-width: 1100px) {
-    width: 450px;
-    height: 450px;
-  }
-  @media (max-width: 991px) {
-    width: 350px;
-    height: 350px;
-  }
-  @media (max-width: 767px) {
-    display: none;
-  }
-`;
+
 const ConditionWrapper = styled.div`
   position: relative;
 `;
@@ -946,8 +865,5 @@ const ConditionWrapper = styled.div`
 export {
   GlobalStyle,
   AppWrapper,
-  BannerSquareShape,
-  BannerCircleShape,
-  PaymentCircleShape,
   ConditionWrapper,
 };
