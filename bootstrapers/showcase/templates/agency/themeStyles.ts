@@ -1,4 +1,5 @@
 import colors from './colors';
+
 export const agencyTheme = ({
   transparent,
   primaryHover,
