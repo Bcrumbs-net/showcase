@@ -1,3 +1,4 @@
+import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 import {
   AgencyTheme,
   CryptoTheme,
@@ -11,10 +12,10 @@ import {
 } from './templates';
 
 export const ShowcaseThemeResolver = (props: {
-  config: any;
+  config: Config;
   path: string;
   templateId: number;
-  data: any;
+  data: GraphContent[];
 }) => {
   switch (props.templateId) {
     case 1:

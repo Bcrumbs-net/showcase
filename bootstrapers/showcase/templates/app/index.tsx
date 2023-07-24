@@ -8,6 +8,7 @@ import { GlobalStyle, AppWrapper, ConditionWrapper } from './globalStyle';
 import { ResetCSS } from '../../assets/css/style';
 import ComponentResolver from '../../mappers';
 import BCLink from '../shared/components/BCLink';
+import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 
 function getSize() {
   return {
@@ -42,13 +43,13 @@ export const AppTheme = ({
   path,
   data: queryData,
 }: {
-  config: any;
+  config: Config;
   path: string;
   templateId: number;
-  data: any;
+  data: GraphContent[];
 }) => {
   const data = queryData[0];
-  const rootModelData = data.data.reduce(function (map: any, obj: any) {
+  const rootModelData: Record<string, string> = data.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});

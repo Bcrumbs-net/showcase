@@ -1,37 +1,48 @@
-import { showcaseConfig, showcaseClient, showcaseContentsQuery } from '@bcrumbs.net/bc-api';
+import {
+  showcaseConfig,
+  showcaseClient,
+  showcaseContentsQuery,
+  GraphContent,
+  Config,
+} from '@bcrumbs.net/bc-api';
 import ShowcaseBootstrapper from '../bootstrapers/showcase';
-import { checkIfKnownDomain } from '../utils/checkIfKnownDomain';
+import {
+  checkIfKnownDomain,
+  logWebsiteVisit,
+  fetchWebsiteConfig,
+  fetchWebsiteContents,
+} from '../bootstrapers/showcase/utils';
 
 export async function getServerSideProps({ req, query }) {
   // Fetching configuration
   const domain = req.headers['host'];
   const targetDomain = checkIfKnownDomain(domain);
   const path = query.path;
-  const configResponse = await showcaseClient.query({
-    query: showcaseConfig,
-    variables: { domain: ';' + targetDomain + ';' },
-  });
-  const config = JSON.parse(configResponse.data.configuration);
-
-  // Fetching data
-  const dataResponse = await showcaseClient.query({
-    query: showcaseContentsQuery,
-    variables: {
-      rootId: config.root,
-      deep: config.deep || 3,
-      path,
-    },
-  });
-
+  // Logging the visit
+  logWebsiteVisit(targetDomain);
+  // Getting needed data
+  const config = await fetchWebsiteConfig(targetDomain);
+  const contents = await fetchWebsiteContents(config, path);
   return {
     props: {
       config,
-      data: dataResponse.data?.contents
+      data: contents,
     },
   };
 }
 
-export const TemplateRouter = ({ config, data, query }) => {
+export const TemplateRouter = ({
+  config,
+  data,
+  query,
+}: {
+  config: Config;
+  query: {
+    path: string;
+    path2: string;
+  };
+  data: GraphContent[];
+}) => {
   let path;
 
   if (query?.path) {
