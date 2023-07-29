@@ -31,7 +31,7 @@ export const ShowcaseThemeResolver = (props: {
     case 11:
       return <PortfolioTheme {...props} />;
     case 3:
-       return <SaaSTheme {...props} />;
+      return <SaaSTheme {...props} />;
     case 13:
       return <FoodTheme {...props} />;
     // case 15:

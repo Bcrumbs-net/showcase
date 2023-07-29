@@ -19,7 +19,7 @@ export async function getServerSideProps({ req, query }) {
   const targetDomain = checkIfKnownDomain(domain);
   const path = query.path;
   // Logging the visit
-  logWebsiteVisit(targetDomain);
+  logWebsiteVisit(domain);
   // Getting needed data
   const config = await fetchWebsiteConfig(targetDomain);
   const contents = await fetchWebsiteContents(config, path);
