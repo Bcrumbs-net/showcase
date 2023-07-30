@@ -18,7 +18,7 @@ export async function renderSectionAsImage({
       Authorization: 'Basic ' + btoa(`${UserID}:${ApiKey}`),
     },
     body: new URLSearchParams({
-      url: `https://showcase.bcrumbs.net/_section?sectionId=${sectionId}&templateId=${templateId}&templateContextId=${templateContextId}&companyId=${companyId}`,
+      url: `https://test-showcase.bcrumbs.net/_section?sectionId=${sectionId}&templateId=${templateId}&templateContextId=${templateContextId}&companyId=${companyId}`,
     }),
   });
 
