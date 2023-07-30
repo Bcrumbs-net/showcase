@@ -39,7 +39,7 @@ export const charityTheme = ({
     secondaryHover: secondaryHover || colors.secondaryHover,
     yellow: yellow || colors.yellow,
     yellowHover: yellowHover || colors.yellowHover,
-    borderColor: borderColor || colors.borderColor,
+    borderColor: borderColor || colors.border,
     white: white || colors.white,
     primary: primary || colors.primary,
     heading: heading || colors.heading,

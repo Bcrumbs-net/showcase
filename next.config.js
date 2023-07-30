@@ -10,13 +10,13 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
-  typescript:{
-    tsconfigPath: './tsconfig.github.json'
+  typescript: {
+    tsconfigPath: './tsconfig.github.json',
   },
   experimental: { esmExternals: 'loose' },
   compiler: {
     styledComponents: true,
-  }
+  },
 };
 
 module.exports = nextConfig;

@@ -141,7 +141,10 @@ const CharityWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url(${footerBg});
+  background-image: url(${
+    // @ts-ignore
+    footerBg
+  });
   background-repeat: no-repeat;
   background-size: 100% 1310px;
   background-position: bottom center;

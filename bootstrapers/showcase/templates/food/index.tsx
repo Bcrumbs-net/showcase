@@ -20,10 +20,14 @@ export const FoodTheme = ({
   data: GraphContent[];
 }) => {
   const data = queryData[0];
-  const rootModelData: Record<string, string> = data.data.reduce(function (map, obj) {
+  const rootModelData: Record<string, string> = data.data.reduce(function (
+    map,
+    obj
+  ) {
     map[obj.Key] = obj.Value;
     return map;
-  }, {});
+  },
+  {});
   const isAR = config.lang === 'AR';
 
   return (
@@ -65,13 +69,15 @@ export const FoodTheme = ({
                 rel="stylesheet"
               />
             )}
-            <script
-              async
-              defer
-              crossOrigin="anonymous"
-              src={`https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=${data.facebookAppId}&autoLogAppEvents=1`}
-              nonce="d5wHYRBY"
-            ></script>
+            {rootModelData.facebookAppId ? (
+              <script
+                async
+                defer
+                crossOrigin="anonymous"
+                src={`https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=${rootModelData.facebookAppId}&autoLogAppEvents=1`}
+                nonce="d5wHYRBY"
+              ></script>
+            ) : null}
           </Head>
           {/*@ts-ignore: Unreachable code error*/}
           <ResetCSS />

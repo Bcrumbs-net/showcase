@@ -419,7 +419,10 @@ const InteriorWrapper = styled.div`
       position: absolute;
       top: calc(50% - 1px);
       left: -15px;
-      background-color: ${('colors.primary', '#FDEF00')};
+      background-color: ${
+        // @ts-ignore
+        ('colors.primary', '#FDEF00')
+      };
       transition: all 0.3s ease;
 
       &::before,
@@ -429,7 +432,10 @@ const InteriorWrapper = styled.div`
         width: 10px;
         height: 2px;
         border-radius: 4px;
-        background-color: ${('colors.primary', '#FDEF00')};
+        background-color: ${
+          // @ts-ignore
+          ('colors.primary', '#FDEF00')
+        };
         position: absolute;
         right: 0;
         transition: transform 0.2s ease 0.1s;

@@ -345,7 +345,10 @@ export const ContentWrapper = styled.div`
       .process_item {
         &:before {
           content: '';
-          background-image: url(${Line});
+          background-image: url(${
+            // @ts-ignore
+            Line
+          });
           width: 165px;
           height: 35px;
           display: block;

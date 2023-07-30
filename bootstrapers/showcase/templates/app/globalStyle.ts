@@ -4,7 +4,6 @@ import { themeGet } from 'styled-system';
 import Substract from '../../assets/image/app/substract.png';
 import SubstractHover from '../../assets/image/app/substract-hover.png';
 
-
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Open Sans', sans-serif;
@@ -472,7 +471,10 @@ const AppWrapper = styled.div`
           width: 15px;
           height: 2px;
           transition: width 0.25s ease-in-out;
-          background-image: url(${Substract});
+          background-image: url(${
+            // @ts-ignore
+            Substract
+          });
           width: 20px;
           height: 30px;
           background-repeat-x: repeat;
@@ -857,13 +859,8 @@ const AppWrapper = styled.div`
   }
 `;
 
-
 const ConditionWrapper = styled.div`
   position: relative;
 `;
 
-export {
-  GlobalStyle,
-  AppWrapper,
-  ConditionWrapper,
-};
+export { GlobalStyle, AppWrapper, ConditionWrapper };
