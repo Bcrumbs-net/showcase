@@ -3,7 +3,7 @@ import { fetchSectionData } from '../../bootstrapers/showcase/utils';
 import { ShowcaseThemeResolver } from '../../bootstrapers/showcase/ShowcaseThemeResolver';
 
 export async function getServerSideProps({ req, query }) {
-  if (!query.sectionId || !query.templateId || !query.templateContextId || !query.companyId) {
+  if (!query.sectionId || !query.templateId || !query.templateContextId) {
     return {
       props: {
         data: null,
@@ -14,8 +14,7 @@ export async function getServerSideProps({ req, query }) {
   const templateId = +query.templateId;
   const sectionId = +query.sectionId;
   const templateContextId = +query.templateContextId;
-  const companyId = +query.companyId;
-  const sectionData = await fetchSectionData(sectionId, companyId);
+  const sectionData = await fetchSectionData(sectionId, templateContextId);
 
   return {
     props: {

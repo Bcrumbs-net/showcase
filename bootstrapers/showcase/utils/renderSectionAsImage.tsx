@@ -5,12 +5,10 @@ export async function renderSectionAsImage({
   sectionId,
   templateId,
   templateContextId,
-  companyId,
 }: {
   sectionId: number;
   templateId: number;
   templateContextId: number;
-  companyId: number;
 }) {
   const result = await fetch('https://hcti.io/v1/image', {
     method: 'POST',
@@ -18,7 +16,7 @@ export async function renderSectionAsImage({
       Authorization: 'Basic ' + btoa(`${UserID}:${ApiKey}`),
     },
     body: new URLSearchParams({
-      url: `https://test-showcase.bcrumbs.net/_section?sectionId=${sectionId}&templateId=${templateId}&templateContextId=${templateContextId}&companyId=${companyId}`,
+      url: `https://test-showcase.bcrumbs.net/_section?sectionId=${sectionId}&templateId=${templateId}&templateContextId=${templateContextId}`,
     }),
   });
 

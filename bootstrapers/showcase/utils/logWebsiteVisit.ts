@@ -1,4 +1,4 @@
-import { showcaseClient, registeUsage } from "@bcrumbs.net/bc-api";
+import { dconfigClient, registeUsage } from "@bcrumbs.net/bc-api";
 
 /**
  *
@@ -16,7 +16,7 @@ export async function logWebsiteVisit(targetDomain: string) {
     return;
   }
 
-  await showcaseClient.mutate({
+  await dconfigClient.mutate({
     mutation: registeUsage,
     variables: { body: { domain: targetDomain } },
   });

@@ -1,21 +1,33 @@
-import { renderSectionAsImage } from '../../bootstrapers/showcase/utils';
+import {
+  renderSectionAsImage,
+  fetchTemplateSectionsThumbsMap,
+  updateTemplateSectionThumbFunc,
+} from '../../bootstrapers/showcase/utils';
 
 export default async function handler({ query }, res) {
-  if (
-    !query.sectionId ||
-    !query.templateId ||
-    !query.templateContextId ||
-    !query.companyId
-  ) {
+  if (!query.sectionId || !query.templateId || !query.templateContextId) {
     res.status(404).json({ text: 'Section not found!' });
   }
 
-  const url = await renderSectionAsImage({
-    sectionId: query.sectionId,
-    templateId: query.templateId,
-    templateContextId: query.templateContextId,
-    companyId: query.companyId,
-  });
+  const sectionsThumbMap = await fetchTemplateSectionsThumbsMap(
+    +query.templateContextId
+  );
 
-  res.status(200).json({ text: url });
+  if (sectionsThumbMap && sectionsThumbMap[query.sectionId]) {
+    res.status(200).json({ text: sectionsThumbMap[query.sectionId] });
+  } else {
+    const url = await renderSectionAsImage({
+      sectionId: query.sectionId,
+      templateId: query.templateId,
+      templateContextId: query.templateContextId,
+    });
+
+    updateTemplateSectionThumbFunc({
+      sectionId: query.sectionId,
+      contextCompanyId: query.templateContextId,
+      value: url,
+    });
+
+    res.status(200).json({ text: url });
+  }
 }

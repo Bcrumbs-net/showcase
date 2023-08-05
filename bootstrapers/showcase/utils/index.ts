@@ -4,3 +4,5 @@ export * from './fetchWebsiteContents';
 export * from './fetchSectionData';
 export * from './logWebsiteVisit';
 export * from './renderSectionAsImage';
+export * from './fetchTemplateSectionsThumbsMap';
+export * from './updateTemplateSectionThumb';
