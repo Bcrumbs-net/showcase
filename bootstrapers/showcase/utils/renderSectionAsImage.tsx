@@ -13,7 +13,7 @@ export async function renderSectionAsImage({
   const result = await fetch('https://hcti.io/v1/image', {
     method: 'POST',
     headers: {
-      Authorization: 'Basic ' + btoa(`${UserID}:${ApiKey}`),
+      Authorization: 'Basic ' + Buffer.from(`${UserID}:${ApiKey}`).toString('base64'),
     },
     body: new URLSearchParams({
       url: `https://test-showcase.bcrumbs.net/_section?sectionId=${sectionId}&templateId=${templateId}&templateContextId=${templateContextId}`,
