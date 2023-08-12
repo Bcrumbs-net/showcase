@@ -13,7 +13,11 @@ export default async function handler({ query }, res) {
     +query.templateContextId
   );
 
-  if (sectionsThumbMap && sectionsThumbMap[query.sectionId]) {
+  if (
+    sectionsThumbMap &&
+    sectionsThumbMap[query.sectionId] &&
+    sectionsThumbMap[query.sectionId] != 'undefined'
+  ) {
     res.status(200).json({ text: sectionsThumbMap[query.sectionId] });
   } else {
     const url = await renderSectionAsImage({
@@ -22,11 +26,13 @@ export default async function handler({ query }, res) {
       templateContextId: query.templateContextId,
     });
 
-    updateTemplateSectionThumbFunc({
-      sectionId: query.sectionId,
-      contextCompanyId: query.templateContextId,
-      value: url,
-    });
+    if (url && url !== 'undefined') {
+      updateTemplateSectionThumbFunc({
+        sectionId: query.sectionId,
+        contextCompanyId: query.templateContextId,
+        value: url,
+      });
+    }
 
     res.status(200).json({ text: url });
   }
