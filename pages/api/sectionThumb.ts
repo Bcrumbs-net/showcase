@@ -28,7 +28,7 @@ export default async function handler({ query }, res) {
       });
 
       if (url && url !== 'undefined') {
-        updateTemplateSectionThumbFunc({
+        await updateTemplateSectionThumbFunc({
           sectionId: query.sectionId,
           contextCompanyId: query.templateContextId,
           value: url,
