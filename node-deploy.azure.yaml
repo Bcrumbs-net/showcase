@@ -40,4 +40,8 @@ spec:
             requests:
               cpu: #{cpu}#
               memory: #{memory}#
-
+          env:
+            - name: HtmlcsstoimageID
+              value: "71f74ca4-8958-48c6-a80c-e0b93a179fa7"
+            - name: HtmlcsstoimageKey
+              value: "e2350266-7629-4925-b8ba-51c62096b62a"
