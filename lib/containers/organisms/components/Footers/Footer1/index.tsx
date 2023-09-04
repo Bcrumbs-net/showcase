@@ -27,7 +27,7 @@ const Footer = ({
   model,
   isAR,
 }: FooterProps) => {
-  let data = model.data.reduce(function (map, obj) {
+  const data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});

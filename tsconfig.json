@@ -18,8 +18,6 @@
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    "next-env.d.ts",
-    "lib/containers/organisms/components/FeatureSection/FeatureSection1/style.ts"
-, "lib/containers/organisms/components/QualitySections/QualitySection1/index.tsx"  ],
+    "next-env.d.ts", ],
   "exclude": ["node_modules"]
 }

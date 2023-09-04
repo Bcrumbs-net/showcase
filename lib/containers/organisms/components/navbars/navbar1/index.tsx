@@ -8,7 +8,7 @@ import {
 } from '../../../../../atoms';
 //import { openModal, closeModal } from '@redq/reuse-modal';
 import { ScrollSpyMenu, Logo } from '../../../../../molecules';
-import CopyrightSection from '../../CopyrightsSections/CopyrightsSection1';
+import CopyrightSection from './copyrights';
 import { Container } from './navbar.style';
 //import SearchPanel from '../SearchPanel';
 //import LoginModal from '../LoginModal';
@@ -94,13 +94,13 @@ const Navbar = ({ navbarStyle, logoStyle, model, isAR }: INavbar) => {
     });
   };
 
-  let data = model.data.reduce(function (map, obj) {
+  const data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
   let socialModel;
   if (model.children && model.children.length > 0) {
-    let socialModelQuery = model.children.filter((m) => m.modelId == 403193);
+    const socialModelQuery = model.children.filter((m) => m.modelId == 403193);
     if (socialModelQuery && socialModelQuery.length > 0)
       socialModel = socialModelQuery[0];
   }

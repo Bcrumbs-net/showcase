@@ -8,7 +8,7 @@ const CopyrightSection = ({ model }) => {
           model.children
             .filter((m) => m.online)
             .map((profileItem, index) => {
-              let profile = profileItem.data.reduce(function (map, obj) {
+              const profile = profileItem.data.reduce(function (map, obj) {
                 map[obj.Key] = obj.Value;
                 return map;
               }, {});

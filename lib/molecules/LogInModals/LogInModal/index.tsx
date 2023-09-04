@@ -1,14 +1,5 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Box,
-  Text,
-  Heading,
-  Input,
-  Image,
-  Button,
-  CheckBox,
-} from '../../../../../atoms';
 import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/TabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
@@ -17,6 +8,13 @@ import 'rc-tabs/assets/index.css';
 import LogoImage from '../../../assets/image/agency/logo.png';
 import LoginImage from '../../../assets/image/agency/login-bg.jpg';
 import GoogleLogo from '../../../assets/image/agency/google-icon.jpg';
+import { Box,
+    Text,
+      Heading,
+      Input,
+      Image,
+      Button,
+      CheckBox, } from '../../../atoms';
 
 const LoginModal = ({
   row,

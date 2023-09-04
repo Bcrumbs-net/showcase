@@ -8,7 +8,7 @@ import {
 } from '../../../../../atoms';
 import Fade from 'react-reveal/Fade';
 import { FeatureBlock } from '../../../../../molecules';
-import QualitySectionWrapper from './qualitySection.style';
+import QualitySectionWrapper from './style';
 
 interface QualitySectionProps {
   row?: object;
