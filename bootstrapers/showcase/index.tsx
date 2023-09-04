@@ -1,3 +1,4 @@
+import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 import { ShowcaseThemeResolver } from './ShowcaseThemeResolver';
 
 const ShowcaseBootstraper = ({
@@ -5,9 +6,9 @@ const ShowcaseBootstraper = ({
   path,
   data,
 }: {
-  config: any;
+  config: Config;
   path: string;
-  data: any;
+  data: GraphContent[];
 }) => {
   let subConfig;
   let templateId = config?.templateId;

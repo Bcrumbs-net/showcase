@@ -1,3 +1,5 @@
 node_modules
 .next
 .prettierrc
+azure-pipelines.yml
+.env.local

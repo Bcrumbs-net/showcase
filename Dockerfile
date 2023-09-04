@@ -10,4 +10,4 @@ COPY . .
 RUN npm run build
 # Running the app
 EXPOSE 80
-CMD [ "npm", "run", "start", "-p", "80"]
+CMD [ "yarn", "start"]
