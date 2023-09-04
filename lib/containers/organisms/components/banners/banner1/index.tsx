@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Particles from '../../../../Agency/Particle';
+import Particles from 'react-particles-js';
 import BannerWrapper, { DiscountLabel, BannerMask, Hspace } from './style';
 import { Box, Text, Heading, Button, Container } from '../../../../../atoms';
 import { FeatureBlock } from '../../../../../molecules';
