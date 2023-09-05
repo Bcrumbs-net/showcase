@@ -1,5 +1,5 @@
 import SaaSVisitorSection from '../../../lib/containers/Saas/VisitorSection';
-import AgencyAboutUsSection from '../../../lib/containers/Agency/AboutUsSection';
+import AgencyAboutUsSection from '../../../lib/organisms/components/featuresLists/featureList2';
 import FoodAboutUsSection from '../../../lib/containers/Food/AboutUsSection';
 import SaaSClassicPartnerSection from "../../../lib/containers/SaasClassic/Partner";
 import CryptoControlSections from "../../../lib/containers/Crypto/ControlSection";

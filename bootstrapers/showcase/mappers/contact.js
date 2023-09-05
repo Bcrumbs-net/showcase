@@ -1,6 +1,6 @@
 import PortfolioContactSection from '../../../lib/containers/Portfolio/Contact';
 import FoodContactSection from '../../../lib/containers/Food/ContactUsSection';
-import TakeActionSection from '../../../lib/containers/Agency/TakeActionSection';
+import TakeActionSection from '../../../lib/organisms/components/callToActions/callToAction1';
 
 const resolveComponents = () => {
   return {

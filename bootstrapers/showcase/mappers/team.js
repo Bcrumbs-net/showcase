@@ -1,4 +1,4 @@
-import AgencyTeamSection from '../../../lib/containers/Agency/TeamSection';
+import AgencyTeamSection from '../../../lib/organisms/components/teamLists/teamList1';
 
 const resolveComponents = () => {
   return {

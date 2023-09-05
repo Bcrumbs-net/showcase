@@ -6,7 +6,7 @@ import SaaSNavbar from "../../../lib/containers/Saas/Navbar";
 import RideNavbar from "../../../lib/containers/Ride/Navbar";
 import CharityNavbar from "../../../lib/containers/Charity/Navbar";
 import DrawerSection from "../../../lib/containers/Charity/DrawerSection";
-import AgencyNavbar from "../../../lib/containers/Agency/Navbar";
+import AgencyNavbar from "../../../lib/organisms/components/navbars/navbar1";
 import AppNavbar from "../../../lib/containers/App/Navbar";
 import FoodNavbar from "../../../lib/containers/Food/Navbar";
 import SaaSClassicNavbar from "../../../lib/containers/SaasClassic/Navbar";

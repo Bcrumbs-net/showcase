@@ -1,5 +1,5 @@
 import SaaSFaqSection from '../../../lib/containers/Saas/FaqSection';
-import AgencyFaqSection from '../../../lib/containers/Agency/FaqSection';
+import AgencyFaqSection from '../../../lib/organisms/components/faqs/faq1';
 
 const resolveComponents = () => {
   return {

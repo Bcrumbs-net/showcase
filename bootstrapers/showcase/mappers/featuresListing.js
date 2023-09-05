@@ -1,6 +1,6 @@
 import SaaSFeatureSection from '../../../lib/containers/Saas/FeatureSection';
 import SaaSServiceSection from '../../../lib/containers/Saas/ServiceSection';
-import AgencyFeatureSection from '../../../lib/containers/Agency/FeatureSection';
+import AgencyFeatureSection from '../../../lib/organisms/components/featuresLists/featureList3';
 import RideFeatureSection from '../../../lib/containers/Ride/Feature';
 import FeatureSlider from '../../../lib/containers/Ride/FeatureSlider';
 import CharityFeatureSection from '../../../lib/containers/Charity/FeatureSection';
