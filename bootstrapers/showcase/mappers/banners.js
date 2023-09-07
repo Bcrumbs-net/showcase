@@ -2,7 +2,7 @@ import PortfolioBannerSection from '../../../lib/containers/Portfolio/Banner';
 import SaaSBannerSection from '../../../lib/containers/Saas/BannerSection';
 import RideBannerSecion from '../../../lib/containers/Ride/Banner';
 import CharityBannerSection from '../../../lib/containers/Charity/BannerSection';
-import BannerSection from '../../../lib/organisms/components/banners/banner1';
+import AgencyBannerSection from '../../../lib/organisms/components/banners/banner1';
 import AppBannerSection from '../../../lib/containers/App/Banner';
 import FoodFullScreenBanner from '../../../lib/containers/Food/FullScreenBanner';
 import CryptoBannerSection from '../../../lib/containers/Crypto/BannerSection';
@@ -21,7 +21,7 @@ const resolveComponents = () => {
       category: 'Banner',
     },
     403269: {
-      render: (props) => <BannerSection {...props} />,
+      render: (props) => <AgencyBannerSection {...props} />,
       name: 'Agency Banner',
       category: 'Banner',
     },

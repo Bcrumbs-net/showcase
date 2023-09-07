@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BlogSectionWrapper from './style';
 import { Container, Box, Heading, Button,Text,Image,Link } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
-interface IBlogSliderSection {
+interface BlogSliderSectionProps {
   row: object;
   sectionHeader: object;
   sectionTitle: object;
@@ -26,7 +26,7 @@ const BlogSection = ({
   btnStyle,
   model,
   isAR,
-}: IBlogSliderSection) => {
+}: BlogSliderSectionProps) => {
   const [showAll, setShowAll] = useState(false);
 
   const data = model.data.reduce(function (map, obj) {

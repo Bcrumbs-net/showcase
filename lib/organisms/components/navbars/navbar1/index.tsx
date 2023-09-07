@@ -26,14 +26,14 @@ import { Logo ,ScrollSpyMenu} from '../../../../molecules';
 //     icon={<i className="flaticon-plus-symbol" />}
 //   />
 // );
-interface INavbar {
+interface NavbarProps  {
   navbarStyle: object;
   logoStyle: object;
   model: any;
   isAR: boolean;
 }
 
-const Navbar = ({ navbarStyle, logoStyle, model, isAR }: INavbar) => {
+const Navbar = ({ navbarStyle, logoStyle, model, isAR }: NavbarProps ) => {
   const { state, dispatch } = useContext(DrawerContext);
 
   // Search modal handler

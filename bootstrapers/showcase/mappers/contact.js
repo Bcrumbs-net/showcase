@@ -1,6 +1,6 @@
 import PortfolioContactSection from '../../../lib/containers/Portfolio/Contact';
 import FoodContactSection from '../../../lib/containers/Food/ContactUsSection';
-import TakeActionSection from '../../../lib/organisms/components/callToActions/callToAction1';
+import AgencyTakeActionSection from '../../../lib/organisms/components/callToActions/callToAction1';
 
 const resolveComponents = () => {
   return {
@@ -15,7 +15,7 @@ const resolveComponents = () => {
       category: 'Contact',
     },
     403484: {
-      render: props => <TakeActionSection {...props} />,
+      render: props => <AgencyTakeActionSection {...props} />,
       name: 'Agency Contact',
       category: 'Contact',
     },

@@ -8,13 +8,7 @@ import 'rc-tabs/assets/index.css';
 import LogoImage from '../../../assets/image/agency/logo.png';
 import LoginImage from '../../../assets/image/agency/login-bg.jpg';
 import GoogleLogo from '../../../assets/image/agency/google-icon.jpg';
-import { Box,
-    Text,
-      Heading,
-      Input,
-      Image,
-      Button,
-      CheckBox, } from '../../../atoms';
+import { Button, Box,Text, Heading,Image, Input, CheckBox } from '../../../atoms';
 
 const LoginModal = ({
   row,

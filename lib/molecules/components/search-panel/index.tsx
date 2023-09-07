@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { Icon } from 'react-icons-kit';
 import { iosSearchStrong } from 'react-icons-kit/ionicons/iosSearchStrong';
-import SearchPanelWrapper from './style';
 import { Heading,Text ,Input} from '../../../atoms';
+import SearchPanelWrapper from './style';
 
 const SearchPanel = ({ titleStyle, hintStyle }) => {
   return (

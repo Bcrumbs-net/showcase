@@ -11,9 +11,7 @@ import SectionWrapper, {
 } from './style';
 import { Container, Box, Heading, Button , Image} from '../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../molecules';
-// import { Box, Heading, Image, Button, Container } from '../../../../../atoms';
-// import { GlideCarousel, GlideSlide } from '../../../../../molecules';
-interface IBlogSliderSection {
+interface BlogSliderSectionProps {
   sectionHeader: object;
   sectionTitle: object;
   button: string;
@@ -32,7 +30,7 @@ const BlogSliderSection = ({
   btnStyle,
   model,
   isAR,
-}: IBlogSliderSection) => {
+}: BlogSliderSectionProps) => {
   const glideOptions = {
     type: 'carousel',
     perView: 3,
