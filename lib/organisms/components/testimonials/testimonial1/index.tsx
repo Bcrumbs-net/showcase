@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 import TestimonialSectionWrapper, {
   TextWrapper,
   ImageWrapper,
@@ -7,6 +7,21 @@ import TestimonialSectionWrapper, {
 import { Container, Box, Heading, Button,Image,Text } from '../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../molecules';
 
+interface TestimonialSectionProps {
+  sectionHeader:object;
+  sectionTitle:object;
+  row: object;
+  col: object;
+  sectionSubTitle:object;
+  btnWrapperStyle:object;
+  commentStyle:object;
+  nameStyle:object;
+  btnStyle:object;
+  designationStyle:object;
+  testimonialUrl:object;
+  model:any;
+
+}
 const TestimonialSection = ({
   sectionHeader,
   sectionTitle,
@@ -18,7 +33,7 @@ const TestimonialSection = ({
   designationStyle,
   testimonialUrl,
   model,
-}) => {
+}:TestimonialSectionProps) => {
   // Glide js options
   const glideOptions = {
     type: 'carousel',
@@ -27,7 +42,7 @@ const TestimonialSection = ({
     animationDuration: 700,
   };
   const data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
+    map[obj.Key]= obj.Value;
     return map;
   }, {});
   return (
