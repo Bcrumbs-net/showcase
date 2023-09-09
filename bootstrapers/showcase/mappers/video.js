@@ -1,6 +1,6 @@
 import AgencyVideoSection from '../../../lib/containers/Agency/VideoSection';
 import FoodVideoSecion from '../../../lib/containers/Food/FullScreenVideoSection';
-import VideoLibrary from '../../../lib/containers/Agency/VideoLibrary';
+import VideoLibrary from '../../../lib/organisms/components/videolibrary/videolibrary1';
 
 const resolveComponents = () => {
   return {
