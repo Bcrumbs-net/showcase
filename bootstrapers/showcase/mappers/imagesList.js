@@ -1,4 +1,4 @@
-import AgencyBlogSection from '../../../lib/containers/Agency/BlogSection';
+import AgencyBlogSection from '../../../lib/organisms/components/portfolios/portfolio1';
 import FoodPortfolioSection from '../../../lib/containers/Food/PortfolioSection';
 
 const resolveComponents = () => {

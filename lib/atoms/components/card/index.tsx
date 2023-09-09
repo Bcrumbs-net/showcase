@@ -36,9 +36,10 @@ const CardWrapper = styled('div')(
 export const Card = ({
   children,
   ...props
-}: React.PropsWithChildren<CardProps>) => (
-  <CardWrapper {...props}>{children}</CardWrapper>
-);
+}: {
+  children: React.ReactNode;
+  props: React.HTMLProps<CardProps>;
+}) => <CardWrapper {...props}>{children}</CardWrapper>;
 
 Card.defaultProps = {
   boxShadow: '0px 20px 35px rgba(0, 0, 0, 0.05)',

@@ -1,4 +1,4 @@
-import AgencyQualitySection from '../../../lib/containers/Agency/QualitySection';
+import AgencyQualitySection from '../../../lib/organisms/components/featuresLists/featureList1';
 
 const resolveComponents = () => {
   return {

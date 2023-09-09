@@ -39,7 +39,7 @@ export interface BoxProps {
 const BoxWrapper = styled('div')<{ flexBox: boolean }>(
   base,
   themed('Box'),
-  props =>
+  (props) =>
     props.flexBox &&
     css(
       { display: 'flex' },
@@ -51,7 +51,7 @@ const BoxWrapper = styled('div')<{ flexBox: boolean }>(
     )
 );
 
-export const Box = ({ children, ...props }: React.PropsWithChildren<BoxProps>) => (
+export const Box = ({ children, ...props }: React.HTMLProps<BoxProps>) => (
   // @ts-ignore: TS is complaining about color property
   <BoxWrapper {...props}>{children}</BoxWrapper>
 );

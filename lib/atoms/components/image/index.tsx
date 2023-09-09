@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { base, themed } from '../base';
 
@@ -17,9 +18,9 @@ export interface ImageProps {
   alt: string;
 }
 
-export const Image = ({ src, alt, ...props }: ImageProps) => (
-  <ImageWrapper src={src} alt={alt} {...props} />
-);
+export const Image = ({
+  ...props
+}: React.ImgHTMLAttributes<HTMLImageElement>) => <ImageWrapper {...props} />;
 
 Image.defaultProps = {
   m: 0,
