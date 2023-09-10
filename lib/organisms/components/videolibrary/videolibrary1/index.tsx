@@ -92,8 +92,10 @@ const VideoLibrary = ({
                   iconPosition="left"
                   title={
                     <Heading
+                    // props={{ textAlign: isAR ? 'right' : 'left' }}
                       content={videoMap.sectionTitle}
                       {...videoTitle}
+
                       style={{ textAlign: isAR ? 'right' : 'left' }}
                     />
                   }
@@ -132,7 +134,7 @@ VideoLibrary.defaultProps = {
   },
   // section header default style
   sectionHeader: {
-    mb: ['40px', '56px'],
+    mb: ['40px', '56px'], 
   },
   // sub section default style
   sectionSubTitle: {
