@@ -92,10 +92,9 @@ const VideoLibrary = ({
                   iconPosition="left"
                   title={
                     <Heading
-                    // props={{ textAlign: isAR ? 'right' : 'left' }}
                       content={videoMap.sectionTitle}
                       {...videoTitle}
-
+                      // @ts-ignore TypeScript is complaining
                       style={{ textAlign: isAR ? 'right' : 'left' }}
                     />
                   }
