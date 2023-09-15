@@ -1,16 +1,6 @@
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import Link from 'next/link';
-import {
-  Box,
-  Text,
-  Heading,
-  Image,
-  Button,
-  Input,
-  Container
-} from '../../../atoms';
-import { FeatureBlock } from '../../../molecules';
-import ParticlesComponent from '../particles';
+import ParticlesComponent from '../banner2/particles';
 // import { email } from 'react-icons-kit/ionicons/email';
 import { Icon } from 'react-icons-kit';
 import { ic_arrow_forward } from 'react-icons-kit/md/ic_arrow_forward';
@@ -21,8 +11,27 @@ import {
   EmailInputWrapper,
   BannerSquareShape,
   BannerCircleShape
-} from './banner.style';
+} from './style';
+import { Box, Container, Heading, Input, Button ,Text,Image} from '../../../../atoms';
+import { FeatureBlock } from '../../../../molecules';
 
+  
+interface DomainSectionProps {
+  row: object;
+  col: object;
+  title?: object;
+  btnStyle?: object;
+  description?: object;
+  contentStyle?: object;
+  button?:object;
+  image?:object;
+  imageArea?:object;
+  btnStyleTwo?:object;
+  discountText?: object;
+  discountAmount?: object;
+  SectionWrapper?:object;
+  model: any;
+}
 const DomainSection = ({
   SectionWrapper,
   row,
@@ -37,7 +46,7 @@ const DomainSection = ({
   discountAmount,
   discountText,
   model,
-}) => {
+}:DomainSectionProps) => {
   let data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
@@ -53,7 +62,7 @@ const DomainSection = ({
             <Box>
               <DiscountWrapper>
                 <DiscountLabel>
-                  <Text
+                  <Text 
                     {...discountAmount}
                     content={data.discountAmount}
                     className="discountAmount"

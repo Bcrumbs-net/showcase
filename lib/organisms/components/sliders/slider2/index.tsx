@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import ImageGallery from 'react-image-gallery';
-import { Box, Text, Heading, Container } from '../../../atoms';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import FeatureSliderWrapper from './featureSlider.style';
+import FeatureSliderWrapper from './style';
 import Image1 from '../../../assets/image/app/slide-2.png';
 import Image2 from '../../../assets/image/app/slide-1.png';
 import Image3 from '../../../assets/image/app/slide-3.png';
@@ -14,6 +13,7 @@ import Thumb3 from '../../../assets/image/app/2.svg';
 import Thumb4 from '../../../assets/image/app/3.svg';
 import Thumb5 from '../../../assets/image/app/4.svg';
 import Thumb6 from '../../../assets/image/app/5.svg';
+import { Container, Box, Heading,Text } from '../../../../atoms';
 
 // import DomainSection from '../container/Hosting/Domain';
 const images = [
@@ -61,12 +61,19 @@ const images = [
   },
 ];
 
+interface FeatureSliderProps {
+  sectionHeader?: object;
+  sectionTitle?: object;
+  sectionSubTitle?:object;
+  model: any;
+}
+
 const FeatureSlider = ({
   sectionSubTitle,
   sectionTitle,
   sectionHeader,
   model,
-}) => {
+}:FeatureSliderProps) => {
   let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;

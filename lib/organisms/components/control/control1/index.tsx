@@ -9,8 +9,27 @@ import {
   Image,
   Button,
   Container
-} from '../../../atoms';
-import { FeatureBlock } from '../../../molecules';
+} from '../../../../atoms';
+import { FeatureBlock } from '../../../../molecules';
+
+interface ControllSectionProps {
+  row: object;
+  col: object;
+  title: object;
+  description: object;
+  button?: object;
+  btnStyle?: object;
+  sectionWrapper?: object;
+  textArea?: object;
+  textAreaRow?: object;
+  imageArea?:object;
+  imageAreaRow?:object;
+  imageWrapper?:object;
+  imageWrapperOne?:object;
+  imageWrapperTwo?:object;
+  sectionSubTitle?:object;
+  model: any;
+}
 
 const ControllSection = ({
   sectionWrapper,
@@ -29,7 +48,7 @@ const ControllSection = ({
   sectionSubTitle,
   btnStyle,
   model,
-}) => {
+}:ControllSectionProps) => {
   let data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;

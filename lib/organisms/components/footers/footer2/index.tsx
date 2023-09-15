@@ -1,8 +1,21 @@
 import PropTypes from 'prop-types';
-import { Box, Text, Heading, Container } from '../../../atoms';
-import { Logo } from '../../../molecules';
-import FooterWrapper, { List, ListItem } from './footer.style';
+import FooterWrapper, { List, ListItem } from './style';
+import { Container, Box, Heading ,Text} from '../../../../atoms';
+import { Logo } from '../../../../molecules';
 
+interface FooterProps {
+  row: object;
+  col: object;
+  colOne: object;
+  colTwo: object;
+  titleStyle?: object;
+  textStyle?: object;
+  logoStyle?: object;
+  contentStyle?: object;
+  copyrightMenu?:object;
+  copyright?:object;
+  model: any;
+}
 const Footer = ({
   row,
   col,
@@ -14,8 +27,8 @@ const Footer = ({
   copyrightMenu,
   copyright,
   model,
-}) => {
-  let data = model.data.reduce(function (map, obj) {
+}:FooterProps) => {
+  const data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});

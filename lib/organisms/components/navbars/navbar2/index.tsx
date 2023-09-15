@@ -2,12 +2,12 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button, Drawer, NavbarWrapper, DrawerContext, HamburgMenu
-} from '../../../atoms';
-import { ScrollSpyMenu, Logo } from '../../../molecules';
+} from '../../../../atoms';
+import { ScrollSpyMenu, Logo } from '../../../../molecules';
 import { Container } from './navbar.style';
 // import { openModal, closeModal } from '@redq/reuse-modal';
-import SearchPanel from '../SearchPanel';
-import LoginModal from '../LoginModal';
+import SearchPanel from '../../../../containers/App/SearchPanel';
+import LoginModal from '../../../../containers/App/LoginModal';
 
 // Default close button for modal
 const CloseModalButton = () => (null

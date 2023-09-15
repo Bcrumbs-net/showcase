@@ -1,7 +1,21 @@
 import PropTypes from 'prop-types';
-import { Box, Text, Heading, Container } from '../../../atoms';
-import { FeatureBlock } from '../../../molecules';
-import FeatureSectionWrapper from './featureSection.style';
+import Fade from 'react-reveal/Fade';
+import FeatureSectionTwoWrapper from './style';
+import { Container, Box, Heading ,Image,Text} from '../../../../atoms';
+import { FeatureBlock } from '../../../../molecules';
+
+interface FeatureSectionProps {
+  row?: object;
+  col?: object;
+  sectionHeader?: object;
+  featureTitle?: object;
+  iconStyle?: object;
+  sectionTitle?: object;
+  contentStyle?:object;
+  blockWrapperStyle?:object;
+  sectionSubTitle?:object;
+  model: any;
+}
 
 const FeatureSection = ({
   row,
@@ -10,12 +24,11 @@ const FeatureSection = ({
   sectionTitle,
   sectionSubTitle,
   featureTitle,
-  featureDescription,
   iconStyle,
   contentStyle,
   blockWrapperStyle,
   model,
-}) => {
+}:FeatureSectionProps) => {
   let data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
@@ -31,30 +44,29 @@ const FeatureSection = ({
     });
   }
   return (
-    <FeatureSectionWrapper id="services">
+    <FeatureSectionTwoWrapper>
       <Container>
         <Box {...sectionHeader}>
-          <Heading {...sectionSubTitle} content={data.sectionTitle} />
-          <Text {...sectionTitle} content={data.sectionSubTitle} />
+          <Text {...sectionSubTitle} content={data.sectionSubTitle} />
+          <Heading {...sectionTitle} content={data.subtitle} />
         </Box>
         <Box className="row" {...row}>
           {featureItems.map((feature, index) => (
-            <Box className="col" {...col} key={'FeatureSection' + index}>
-              <FeatureBlock
-                icon={<i className={feature.icon} />}
-                wrapperStyle={blockWrapperStyle}
-                iconStyle={iconStyle}
-                contentStyle={contentStyle}
-                title={<Heading content={feature.title} {...featureTitle} />}
-                description={
-                  <Text content={feature.description} {...featureDescription} />
-                }
-              />
+            <Box className="col" {...col} key={index}>
+              <Fade bottom delay={index * 120}>
+                <FeatureBlock
+                  icon={<Image src={feature.image} alt="Demo Image" />}
+                  wrapperStyle={blockWrapperStyle}
+                  iconStyle={iconStyle}
+                  contentStyle={contentStyle}
+                  title={<Heading content={feature.title} {...featureTitle} />}
+                />
+              </Fade>
             </Box>
           ))}
         </Box>
       </Container>
-    </FeatureSectionWrapper>
+    </FeatureSectionTwoWrapper>
   );
 };
 
@@ -66,36 +78,35 @@ FeatureSection.propTypes = {
   sectionTitle: PropTypes.object,
   sectionSubTitle: PropTypes.object,
   featureTitle: PropTypes.object,
-  featureDescription: PropTypes.object,
 };
 
 // FeatureSection default style
 FeatureSection.defaultProps = {
   // section header default style
   sectionHeader: {
-    mb: ['30px', '30px', '30px', '56px'],
+    mb: ['56px', '56px'],
   },
   // sub section default style
   sectionSubTitle: {
-    content: 'OUR SERVICES',
+    content: 'KEY FEATURES',
     as: 'span',
     display: 'block',
+    textAlign: 'center',
     fontSize: '14px',
     letterSpacing: '0.13em',
     fontWeight: '700',
     color: '#1a73e8',
     mb: '10px',
-    textAlign: ['center'],
   },
   // section title default style
   sectionTitle: {
-    content: 'Featured Service that We Provide',
+    content: 'Key Features Of our App',
+    textAlign: 'center',
     fontSize: ['20px', '24px', '24px', '24px', '30px'],
     fontWeight: '400',
     color: '#0f2137',
     letterSpacing: '-0.025em',
     mb: '0',
-    textAlign: ['center'],
   },
   // feature row default style
   row: {
@@ -104,27 +115,26 @@ FeatureSection.defaultProps = {
   },
   // feature col default style
   col: {
-    width: [1, 1 / 2, 1 / 3, 1 / 3, 1 / 3],
+    width: [1 / 2, 1 / 2, 1 / 3, 1 / 3, 1 / 3],
   },
   // feature block wrapper default style
   blockWrapperStyle: {
-    p: ['20px', '20px', '20px', '40px'],
+    p: ['10px', '20px', '20px', '40px'],
   },
   // feature icon default style
   iconStyle: {
-    width: '84px',
-    height: '84px',
+    width: '75px',
+    height: '75px',
     m: '0 auto',
     borderRadius: '50%',
     bg: '#fff',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: '36px',
+    fontSize: '32px',
     color: '#29cf8a',
     overflow: 'hidden',
-    mb: ['20px', '20px', '20px', '30px'],
-    border: '1px solid rgba(36, 74, 117,0.1)',
+    mb: '15px',
   },
   // feature content default style
   contentStyle: {
@@ -132,18 +142,12 @@ FeatureSection.defaultProps = {
   },
   // feature title default style
   featureTitle: {
-    fontSize: ['18px', '20px'],
+    fontSize: ['16px', '18px'],
     fontWeight: '400',
     color: '#0f2137',
     lineHeight: '1.5',
-    mb: ['10px', '10px', '10px', '20px'],
+    mb: '20px',
     letterSpacing: '-0.020em',
-  },
-  // feature description default style
-  featureDescription: {
-    fontSize: ['14px', '15px'],
-    lineHeight: '1.75',
-    color: '#343d48',
   },
 };
 
