@@ -9,8 +9,8 @@ import {
   Image,
   Button,
   Container
-} from '../../../atoms';
-import { FeatureBlock } from '../../../molecules';
+} from '../../../../atoms';
+import { FeatureBlock } from '../../../../molecules';
 import styled from 'styled-components';
 
 const PaymentCircleShape = styled.div`
@@ -41,6 +41,24 @@ const PaymentCircleShape = styled.div`
   }
 `;
 
+interface PaymentSectionProps {
+  row?: object;
+  col?: object;
+  title?: object;
+  description?: object;
+  sectionWrapper?: object;
+  button?: object;
+  btnStyle: object;
+  imageArea?: object;
+  textAreaRow?: object;
+  textArea?: object;
+  imageAreaRow?: object;
+  imageWrapper?: object;
+  imageWrapperOne?: object;
+  imageWrapperTwo?: object;
+  sectionSubTitle:object;
+  model: any;
+}
 const PaymentSection = ({
   sectionWrapper,
   row,
@@ -58,8 +76,8 @@ const PaymentSection = ({
   sectionSubTitle,
   btnStyle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}:PaymentSectionProps) => {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
@@ -78,6 +96,7 @@ const PaymentSection = ({
             <Card
               {...imageWrapper}
               {...imageWrapperTwo}
+              //@ts-ignore
               className="cardExtraImage"
             >
               <Fade right>

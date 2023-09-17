@@ -1,5 +1,5 @@
 import SaaSPartnerSection from '../../../lib/containers/Saas/PartnerSection';
-import PartnerHistory from '../../../lib/containers/App/PartnerHistory';
+import PartnerHistory from '../../../lib/organisms/components/partnerHistory/partnerHistory1';
 
 const resolveComponents = () => {
   return {

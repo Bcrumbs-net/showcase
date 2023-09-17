@@ -4,7 +4,7 @@ import {
   Button, Drawer, NavbarWrapper, DrawerContext, HamburgMenu
 } from '../../../../atoms';
 import { ScrollSpyMenu, Logo } from '../../../../molecules';
-import { Container } from './navbar.style';
+import { Container } from './style';
 // import { openModal, closeModal } from '@redq/reuse-modal';
 import SearchPanel from '../../../../containers/App/SearchPanel';
 import LoginModal from '../../../../containers/App/LoginModal';
@@ -27,7 +27,14 @@ const CloseModalButtonAlt = () => (
   //   icon={<i className="flaticon-plus-symbol" />}
   // />
 );
-const Navbar = ({ navbarStyle, logoStyle, buttonStyle, model }) => {
+interface NavbarProps {
+  wrapperStyle2?: object;
+  navbarStyle?: object;
+  logoStyle?: object;
+  buttonStyle: object;
+  model: any;
+}
+const Navbar = ({ navbarStyle, logoStyle, buttonStyle, model }:NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
   // Search modal handler
   const handleSearchModal = () => {
@@ -79,7 +86,7 @@ const Navbar = ({ navbarStyle, logoStyle, buttonStyle, model }) => {
       type: 'TOGGLE',
     });
   };
-  let data = model.data.reduce(function(map, obj) {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});

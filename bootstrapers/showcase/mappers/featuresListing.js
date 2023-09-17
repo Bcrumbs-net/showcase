@@ -4,9 +4,9 @@ import AgencyFeatureSection from '../../../lib/organisms/components/featuresList
 import RideFeatureSection from '../../../lib/containers/Ride/Feature';
 import FeatureSlider from '../../../lib/containers/Ride/FeatureSlider';
 import CharityFeatureSection from '../../../lib/containers/Charity/FeatureSection';
-import AppFeature from '../../../lib/containers/App/FeatureSection';
-import AppFeatureSlider from '../../../lib/containers/App/FeatureSlider';
-import AppFeatureSliderTwo from '../../../lib/containers/App/FeatureSliderTwo';
+import AppFeature from '../../../lib/organisms/components/featuresLists/featureList4';
+import AppFeatureSlider from '../../../lib/organisms/components/sliders/slider2';
+import AppFeatureSliderTwo from '../../../lib/organisms/components/sliders/slider3';
 import CryptoTransactionFeatures from '../../../lib/containers/Crypto/Transaction';
 import CryptoBetaFeatures from '../../../lib/containers/Crypto/BetaSection';
 import SaaSClassicServiceSection from "../../../lib/containers/SaasClassic/Service";

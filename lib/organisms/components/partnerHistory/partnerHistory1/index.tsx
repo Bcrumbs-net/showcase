@@ -1,12 +1,26 @@
-import PropTypes from 'prop-types';
-import { Box, Text, Heading, Card, Image, Button, Container } from '../../../atoms';
-import { FeatureBlock } from '../../../molecules';
-import PartnerHistoryWrapper, { CounterUpArea } from './partnerHistory.style';
+import PropTypes, { object } from 'prop-types';
+import { Box, Text, Heading, Card, Image, Button, Container } from '../../../../atoms';
+import { FeatureBlock } from '../../../../molecules';
+import PartnerHistoryWrapper, { CounterUpArea } from './style';
 // import GoogleImg from '../../assets/image/app/google.svg';
 // import AppleImg from '../../assets/image/app/apple.svg';
 // import DribbleImg from '../../assets/image/app/dribbble.svg';
 // import MailchimpImg from '../../assets/image/app/mailchimp.svg';
-import BackgroundImg from '../../../assets/image/app/partner-bg.png';
+import BackgroundImg from '../../../../assets/image/app/partner-bg.png';
+
+interface PartnerHistoryProps {
+  row?: object;
+  col?: object;
+  cardStyle?: object;
+  title?: object;
+  description?: object;
+  sectionHeader?: object;
+  cardArea?: object;
+  sectionSubTitle?: object;
+  btnStyle: object;
+  sectionTitle:object;
+  model: any;
+}
 
 const PartnerHistory = ({
   row,
@@ -18,17 +32,18 @@ const PartnerHistory = ({
   sectionSubTitle,
   cardArea,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}:PartnerHistoryProps) => {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
   return (
     <PartnerHistoryWrapper id="partners">
       <Image
+        // @ts-ignore
         src={BackgroundImg}
-        className="backgroungImg"
         alt="backgroungImg"
+        className="backgroungImg"
       />
       <Container>
         <Box className="row" {...row}>
@@ -48,7 +63,9 @@ const PartnerHistory = ({
                   return map;
                 }, {});
                 return (
-                  <Card className="card" {...cardStyle} key={'PartnerHistoryCard' + index}>
+                  <Card
+                     //@ts-ignore
+                     className="card" {...cardStyle} key={'PartnerHistoryCard' + index}>
                     <Image src={clientMap.image} alt={clientMap.alt} />
                     <Text content={clientMap.content} />
                   </Card>

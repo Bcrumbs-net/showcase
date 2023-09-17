@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import Mail from '../../../assets/image/app/mail.svg';
-import BannerPattern from '../../../assets/image/app/pattern.png';
-
+import Mail from '../../../../assets/image/app/mail.svg';
+import BannerPattern from '../../../../assets/image/app/pattern.png';
 export const DiscountWrapper = styled.div`
   text-align: left;
 `;

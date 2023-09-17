@@ -10,6 +10,19 @@ import LoginImage from '../../../assets/image/agency/login-bg.jpg';
 import GoogleLogo from '../../../assets/image/agency/google-icon.jpg';
 import { Button, Box,Text, Heading,Image, Input, CheckBox } from '../../../atoms';
 
+interface LoginModalProps {
+  row?: object;
+  col?: object;
+  titleStyle?: object;
+  hintTextStyle?: object;
+  contentWrapper?: object;
+  logoStyle?: object;
+  descriptionStyle: object;
+  googleButtonStyle: object;
+  btnStyle: object;
+  outlineBtnStyle: object;
+}
+
 const LoginModal = ({
   row,
   col,
@@ -20,7 +33,7 @@ const LoginModal = ({
   outlineBtnStyle,
   descriptionStyle,
   googleButtonStyle,
-}) => {
+}:LoginModalProps) => {
   const LoginButtonGroup = () => (
     <Fragment>
       <Button className="default" title="LOGIN" {...btnStyle} />
@@ -48,7 +61,9 @@ const LoginModal = ({
         </Box>
         <Box className="col tabCol" {...col}>
           <Box {...contentWrapper}>
-            <Image src={LogoImage} {...logoStyle} alt="Logo" />
+            <Image 
+              // @ts-ignore
+              src={LogoImage} {...logoStyle} alt="Logo" />
             <Tabs
               defaultActiveKey="loginForm"
               renderTabBar={() => <ScrollableInkTabBar />}
@@ -117,6 +132,8 @@ LoginModal.propTypes = {
   contentWrapper: PropTypes.object,
   descriptionStyle: PropTypes.object,
   googleButtonStyle: PropTypes.object,
+
+  
 };
 
 // LoginModal default style

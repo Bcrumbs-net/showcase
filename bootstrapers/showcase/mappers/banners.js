@@ -3,7 +3,7 @@ import SaaSBannerSection from '../../../lib/containers/Saas/BannerSection';
 import RideBannerSecion from '../../../lib/containers/Ride/Banner';
 import CharityBannerSection from '../../../lib/containers/Charity/BannerSection';
 import AgencyBannerSection from '../../../lib/organisms/components/banners/banner1';
-import AppBannerSection from '../../../lib/containers/App/Banner';
+import AppBannerSection from '../../../lib/organisms/components/banners/banner2';
 import FoodFullScreenBanner from '../../../lib/containers/Food/FullScreenBanner';
 import CryptoBannerSection from '../../../lib/containers/Crypto/BannerSection';
 import SaaSClassicBannerSection from "../../../lib/containers/SaasClassic/Banner";

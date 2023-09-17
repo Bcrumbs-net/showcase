@@ -2,8 +2,8 @@ import PortfolioFooter from '../../../lib/containers/Portfolio/Footer';
 import SaaSFooter from '../../../lib/containers/Saas/Footer';
 import RideFooter from '../../../lib/containers/Ride/Footer';
 import CharityFooter from '../../../lib/containers/Charity/Footer';
-import AgencyFooter from '../../../lib/organisms/components/Footers/Footer1';
-import AppFooter from '../../../lib/containers/App/Footer';
+import AgencyFooter from '../../../lib/organisms/components/footers/footer1';
+import AppFooter from '../../../lib/organisms/components//footers/footer2';
 import SaaSClaasicFooter from "../../../lib/containers/SaasClassic/Footer";
 import CryptoFooter from "../../../lib/containers/Crypto/Footer";
 

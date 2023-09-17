@@ -1,16 +1,23 @@
 import PropTypes from 'prop-types';
-import { Box, Container } from '../../../atoms';
+import { Box, Container } from '../../../../atoms';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import SliderDes from '../sliderDescription';
+import SliderDes from '../../sliders/descriptions/descrirtion1';
 
+interface TestimonialSectionProps {
+  sectionWrapper:object;
+  title:object;
+  row:object;
+  sectionSubTitle:object;
+  model:any;
+}
 const TestimonialSection = ({
   sectionWrapper,
   row,
   sectionSubTitle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}:TestimonialSectionProps) => {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
