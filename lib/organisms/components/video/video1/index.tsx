@@ -6,9 +6,24 @@ import {
   Image,
   Button,
   Container,
-} from '../../../atoms';
+} from '../../../../atoms';
 // import { openModal, closeModal } from '@redq/reuse-modal';
-import VideoSectionWrapper from './videoSection.style';
+import VideoSectionWrapper from './style';
+
+
+interface VideoSectionProps {
+  sectionHeader:object;
+  sectionTitle:object;
+  row: object;
+  col: object;
+  sectionSubTitle:object;
+  memberName:object;
+  designation:object;
+  buttonStyle:object;
+  videoItem:object;
+  videoIcon:object;
+  model:any;
+}
 
 const VideoSection = ({
   sectionHeader,
@@ -16,8 +31,8 @@ const VideoSection = ({
   buttonStyle,
   sectionSubTitle,
   model,
-}) => {
-  let data = model.data.reduce(function (map, obj) {
+}:VideoSectionProps) => {
+  const data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});

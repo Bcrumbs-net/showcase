@@ -1,4 +1,4 @@
-import AgencyWorkHistory from '../../../lib/containers/Agency/WorkHistory';
+import AgencyWorkHistory from '../../../lib/organisms/components/workHistory/workHistory1';
 
 const resolveComponents = () => {
   return {

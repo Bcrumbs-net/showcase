@@ -70,7 +70,7 @@ const BannerSection = ({
       id={model.name}
     >
       <BannerMask>
-        <Particles />
+        {/* <Particles /> */}
         <Container>
           <Box className="row" {...row}>
             <Box

@@ -35,18 +35,18 @@ const AboutUsSection = ({
     <AboutUsSectionWrapper id={model.name}>
       <Box className="row" {...row}>
         <Box className="col" {...col}>
-          <Card props={{ className: 'group-gallery' }}>
+          <Card className= "group-gallery" >
             <Box className="col1">
               <Fade top delay={30}>
                 <Image src={data.GroupImage1} alt="Feature Image" />
               </Fade>
-              <Fade left delay={60}>
-                <Image src={data.GroupImage2} alt="Feature Image" />
+              <Fade bottom delay={90}>
+                <Image src={data.GroupImage3} alt="Feature Image" />
               </Fade>
             </Box>
             <Box className="col2">
-              <Fade bottom delay={90}>
-                <Image src={data.GroupImage3} alt="Feature Image" />
+              <Fade left delay={60}>
+                <Image src={data.GroupImage2} alt="Feature Image" />
               </Fade>
             </Box>
           </Card>

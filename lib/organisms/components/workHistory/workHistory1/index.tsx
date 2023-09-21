@@ -6,11 +6,25 @@ import {
   Card,
   Button,
   Container,
-} from '../../../atoms';
+} from '../../../../atoms';
 import Link from 'next/link';
 import CountUp from 'react-countup';
-import { FeatureBlock } from '../../../molecules';
-import WorkHistoryWrapper, { CounterUpArea } from './workHistory.style';
+import { FeatureBlock } from '../../../../molecules';
+import WorkHistoryWrapper, { CounterUpArea } from './style';
+
+interface WorkHistorySectionProps {
+  sectionHeader:object;
+  sectionTitle:object;
+  row: object;
+  col: object;
+  sectionSubTitle:object;
+  btnStyle:object;
+  description:object;
+  cardStyle:object;
+  title:object;
+  content:object;
+  model:any;
+}
 
 const WorkHistory = ({
   row,
@@ -21,8 +35,8 @@ const WorkHistory = ({
   btnStyle,
   content,
   model,
-}) => {
-  let data = model.data.reduce(function (map, obj) {
+}:WorkHistorySectionProps) => {
+  const data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
@@ -57,8 +71,8 @@ const WorkHistory = ({
 
                 return (
                   <Card
+                  props={{ className: 'card' }}
                     key={`workHistoryMap-${index}`}
-                    className="card"
                     {...cardStyle}
                   >
                     <h3>
@@ -72,7 +86,10 @@ const WorkHistory = ({
                   </Card>
                 );
               })}
-              <Card className="card" {...cardStyle}>
+              <Card 
+               props={{ className: 'card' }}
+               {...cardStyle}
+               >
                 <Text content="& Much More" />
                 {data.btnUrl ? (
                   <Link href={data.btnUrl}>

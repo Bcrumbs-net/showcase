@@ -55,7 +55,7 @@ const BannerMask = styled.div`
   width: 100%;
   height: 100%;
   min-height: 100vh;
-  padding-top: 210px;
+  padding-top: 110px;
   padding-bottom: 160px;
   background-repeat: no-repeat;
   @media only screen and (max-width: 480px) {

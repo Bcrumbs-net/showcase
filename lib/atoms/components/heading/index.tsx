@@ -26,7 +26,7 @@ export interface HeadingProps {
   mb?: string | number | string | number[];
   fontFamily?: string | number | string | number[];
   fontWeight?: string | number | string | number[];
-  textAlign?: string | number | string | number[];
+  textAlign?: string | number |boolean| string | number[];
   lineHeight?: string | number | string | number[];
   letterSpacing?: string | number | string | number[];
 }

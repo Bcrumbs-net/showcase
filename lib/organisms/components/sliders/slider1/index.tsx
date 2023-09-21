@@ -93,6 +93,7 @@ const BlogSliderSection = ({
                     },
                     {});
                     return (
+                       // @ts-ignore TypeScript is complaining
                       <GlideSlide key={`project_key${blogSectionMap.id}`}>
                         <TeamCard
                           className="team_card"

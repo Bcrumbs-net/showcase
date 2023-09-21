@@ -1,8 +1,25 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Heading, Image, Container } from '../../../atoms';
-import VideoSectionWrapper from './videoLibrary.style';
-import { FeatureBlock } from '../../../molecules';
+import { Box, Heading, Image, Container } from '../../../../atoms';
+import VideoSectionWrapper from './style';
+import { FeatureBlock } from '../../../../molecules';
+
+interface VideoLibrarySectionProps {
+  sectionHeader:object;
+  sectionTitle:object;
+  row: object;
+  col: object;
+  sectionSubTitle:object;
+  memberName:object;
+  designation:object;
+  col1:object;
+  col2:object;
+  videoTitle:object;
+  videoItem:object;
+  videoIcon:object;
+  model:any;
+  isAR:boolean;
+}
 
 const VideoLibrary = ({
   sectionHeader,
@@ -16,18 +33,18 @@ const VideoLibrary = ({
   videoIcon,
   model,
   isAR,
-}) => {
+}:VideoLibrarySectionProps) => {
   let initialVideoUrl = '';
   if (model.children && model.children.length > 0) {
-    let initialVideo = model.children[0];
-    let videoMap = initialVideo.data.reduce(function (map, obj) {
+    const initialVideo = model.children[0];
+    const videoMap = initialVideo.data.reduce(function (map, obj) {
       map[obj.Key] = obj.Value;
       return map;
     }, {});
     initialVideoUrl = videoMap.videoUrl;
   }
   const [activeVideo, setActiveVideo] = useState(initialVideoUrl);
-  let data = model.data.reduce(function (map, obj) {
+  const data = model.data.reduce(function (map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
@@ -77,6 +94,7 @@ const VideoLibrary = ({
                     <Heading
                       content={videoMap.sectionTitle}
                       {...videoTitle}
+                      // @ts-ignore TypeScript is complaining
                       style={{ textAlign: isAR ? 'right' : 'left' }}
                     />
                   }
@@ -115,7 +133,7 @@ VideoLibrary.defaultProps = {
   },
   // section header default style
   sectionHeader: {
-    mb: ['40px', '56px'],
+    mb: ['40px', '56px'], 
   },
   // sub section default style
   sectionSubTitle: {
