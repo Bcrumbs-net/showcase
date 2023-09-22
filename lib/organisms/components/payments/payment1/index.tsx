@@ -111,8 +111,8 @@ const PaymentSection = ({
           <Box {...col} {...textArea}>
             <Text content={data.sectionSubTitle} {...sectionSubTitle} />
             <FeatureBlock
-              title={<Heading content={data.title} {...title} />}
-              description={<Text content={data.description} {...description} />}
+              title={<Heading content={data.title} {...title} className="title"/>}
+              description={<Text content={data.description} {...description} className="description" />}
               button={
                 <Link href={data.href}>
                   <a>
@@ -193,7 +193,7 @@ PaymentSection.defaultProps = {
     mb: '10px',
   },
   title: {
-    fontSize: ['24px', '26px', '30px', '36px', '48px'],
+    fontSize: ['26px', '30px', '30px', '48px', '60px'],
     fontWeight: '300',
     color: '#0f2137',
     letterSpacing: '-0.010em',

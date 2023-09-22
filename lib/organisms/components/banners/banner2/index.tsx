@@ -47,10 +47,12 @@ const DomainSection = ({
   discountText,
   model,
 }:DomainSectionProps) => {
-  let data = model.data.reduce(function(map, obj) {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
+console.log(DomainSection.defaultProps.title)
+
   return (
     <Box {...SectionWrapper}>
       <ParticlesComponent />
@@ -68,13 +70,20 @@ const DomainSection = ({
                     className="discountAmount"
                   />
                   <Text {...discountText} content={data.discountText} />
-                  {/* <Text {...discountText}/> */}
                 </DiscountLabel>
               </DiscountWrapper>
             </Box>
             <FeatureBlock
-              title={<Heading content={data.title} />}
-              description={<Text content={data.subTitle} />}
+              title={<Heading
+                {...title}
+                content={data.title}
+                className="title" 
+                />}
+              description={<Text 
+                {...description}
+                content={data.subTitle} 
+                className="description"
+                />}
             />
             <EmailInputWrapper>
               <Input
@@ -110,7 +119,6 @@ const DomainSection = ({
     </Box>
   );
 };
-
 DomainSection.propTypes = {
   SectionWrapper: PropTypes.object,
   row: PropTypes.object,
@@ -148,7 +156,7 @@ DomainSection.defaultProps = {
     mt: '-80px',
   },
   imageArea: {
-    width: ['0%', '0%', '43%', '35%', '50%'],
+    width: ['0%', '0%', '43%', '35%', '40%'],
     ml: 'auto',
   },
   title: {

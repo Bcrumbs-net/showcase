@@ -81,7 +81,7 @@ TestimonialSection.defaultProps = {
     content: 'CLIENT TESTIMONIAL',
     as: 'span',
     display: 'block',
-    textAlign: ['center', 'left'],
+    textAlign: [ 'left'],
     fontSize: '14px',
     letterSpacing: '0.11em',
     fontWeight: '700',

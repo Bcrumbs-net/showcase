@@ -59,9 +59,17 @@ const FeatureSection = ({
                 wrapperStyle={blockWrapperStyle}
                 iconStyle={iconStyle}
                 contentStyle={contentStyle}
-                title={<Heading content={feature.title} {...featureTitle} />}
+                title={<Heading 
+                  {...featureTitle}
+                  content={feature.title} 
+                  className="featureTitle"
+                  />
+                }
                 description={
-                  <Text content={feature.description} {...featureDescription} />
+                  <Text 
+                  {...featureDescription}
+                  content={feature.description} 
+                  className="featureDescription"/>
                 }
               />
             </Box>
@@ -146,6 +154,7 @@ FeatureSection.defaultProps = {
   },
   // feature title default style
   featureTitle: {
+    textAlign: 'center',
     fontSize: ['18px', '20px'],
     fontWeight: '400',
     color: '#0f2137',
@@ -158,6 +167,7 @@ FeatureSection.defaultProps = {
     fontSize: ['14px', '15px'],
     lineHeight: '1.75',
     color: '#343d48',
+    textAlign: 'center',
   },
 };
 
