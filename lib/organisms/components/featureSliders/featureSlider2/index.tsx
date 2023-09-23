@@ -50,21 +50,7 @@ const FeatureSection = ({
           <Text {...sectionSubTitle} content={data.sectionSubTitle} />
           <Heading {...sectionTitle} content={data.subtitle} />
         </Box>
-        <Box className="row" {...row}>
-          {featureItems.map((feature, index) => (
-            <Box className="col" {...col} key={index}>
-              <Fade bottom delay={index * 120}>
-                <FeatureBlock
-                  icon={<Image src={feature.image} alt="Demo Image" />}
-                  wrapperStyle={blockWrapperStyle}
-                  iconStyle={iconStyle}
-                  contentStyle={contentStyle}
-                  title={<Heading content={feature.title} {...featureTitle} />}
-                />
-              </Fade>
-            </Box>
-          ))}
-        </Box>
+       
       </Container>
     </FeatureSectionTwoWrapper>
   );

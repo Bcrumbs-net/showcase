@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Box, Container } from '../../../../atoms';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import SliderDes from '../../sliders/descriptions/descrirtion1';
+import SliderDes from './description';
 
 interface TestimonialSectionProps {
   sectionWrapper:object;
@@ -53,12 +53,14 @@ const TestimonialSection = ({
     >
       <Container>
         <Box className="testimonialDesWrapper">
-          <ImageGallery
-            items={testimonialLst}
-            originalClass="Testimonial-img"
-            showPlayButton={false}
-            showFullscreenButton={false}
-          />
+          <div className='image-gallery-slide center'>
+            <ImageGallery
+              items={testimonialLst}
+              originalClass="Testimonial-img"
+              showPlayButton={false}
+              showFullscreenButton={false}
+            />
+          </div>
         </Box>
       </Container>
     </Box>
@@ -81,7 +83,7 @@ TestimonialSection.defaultProps = {
     content: 'CLIENT TESTIMONIAL',
     as: 'span',
     display: 'block',
-    textAlign: [ 'left'],
+    textAlign: ['center' ,'left'],
     fontSize: '14px',
     letterSpacing: '0.11em',
     fontWeight: '700',
@@ -89,6 +91,7 @@ TestimonialSection.defaultProps = {
     textTransform: 'uppercase',
     mb: '10px',
   },
+  
 };
 
 export default TestimonialSection;

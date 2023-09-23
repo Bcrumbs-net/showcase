@@ -62,6 +62,7 @@ const FeatureSection = ({
                 title={<Heading 
                   {...featureTitle}
                   content={feature.title} 
+                  //@ts-ignore
                   className="featureTitle"
                   />
                 }
@@ -69,6 +70,7 @@ const FeatureSection = ({
                   <Text 
                   {...featureDescription}
                   content={feature.description} 
+                  //@ts-ignore
                   className="featureDescription"/>
                 }
               />

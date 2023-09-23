@@ -67,6 +67,7 @@ console.log(DomainSection.defaultProps.title)
                   <Text 
                     {...discountAmount}
                     content={data.discountAmount}
+                    //@ts-ignore
                     className="discountAmount"
                   />
                   <Text {...discountText} content={data.discountText} />
@@ -77,11 +78,13 @@ console.log(DomainSection.defaultProps.title)
               title={<Heading
                 {...title}
                 content={data.title}
+                //@ts-ignore
                 className="title" 
                 />}
               description={<Text 
                 {...description}
                 content={data.subTitle} 
+                //@ts-ignore
                 className="description"
                 />}
             />

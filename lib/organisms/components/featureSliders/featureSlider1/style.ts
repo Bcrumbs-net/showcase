@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Mockup from '../../../../assets/image/app/iphone-mockup.png';
 
-// const StyledMockup = styled(Mockup)``;
 
 const FeatureSliderWrapper = styled.div`
   position: relative;
@@ -95,7 +94,7 @@ const FeatureSliderWrapper = styled.div`
       height: 749px;
       &::before {
         content: '';
-        background-image: url(${Mockup});
+        background-image: url(${Mockup.src});
         position: absolute;
         width: 100%;
         height: 100%;
@@ -120,6 +119,8 @@ const FeatureSliderWrapper = styled.div`
       .image-gallery-swipe {
         padding: 19px 24px 22px 23px;
         overflow: hidden;
+        
+        
       }
     }
     .image-gallery-thumbnails-wrapper {

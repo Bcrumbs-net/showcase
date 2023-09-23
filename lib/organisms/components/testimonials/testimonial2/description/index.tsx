@@ -8,6 +8,8 @@ const sliderDes = props => {
       </div>
     </>
   );
+
 };
+
 
 export default sliderDes;
