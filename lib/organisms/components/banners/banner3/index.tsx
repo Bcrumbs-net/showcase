@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Particles from './particles';
 import BannerWrapper, {
   DiscountLabel,
   BannerObject,
@@ -10,6 +9,7 @@ import BannerObject1 from '../../../assets/image/saas/banner/bannerObject1.png';
 import BannerObject2 from '../../../assets/image/saas/banner/bannerObject2.png';
 import { Button, Container, Box, Heading,Text,Image } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
+import ParticlesComponent from './particles';
 
 interface BannerSectionProps {
   row: object;
@@ -73,7 +73,7 @@ const BannerSection = ({
   }
   return (
     <CustomBannerWrapper id={model.name}>
-      <Particles />
+      <ParticlesComponent/>
       <Container>
         <Box className="row" {...row}>
           <Box className="col" {...col}>
