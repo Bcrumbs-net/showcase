@@ -1,6 +1,5 @@
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import Link from 'next/link';
-import FooterWrapper, { List, ListItem } from './style';
 import { Container, Box, Heading ,Image,Text} from '../../../../atoms';
 import { Logo } from '../../../../molecules';
 import CopyrightSection from '../../navbars/navbar1/copyrights';

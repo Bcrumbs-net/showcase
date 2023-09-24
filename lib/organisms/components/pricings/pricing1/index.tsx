@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Icon from 'react-icons-kit';
-import { Box, Text, Heading, Image, Container, Button } from '../../../atoms';
-import { GlideCarousel, GlideSlide} from '../../../molecules';
-
+import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
+import { GlideCarousel, GlideSlide} from '../../../../molecules';
 import {
   MONTHLY_PRICING_TABLE,
   YEARLY_PRICING_TABLE,
-} from '../../../data/Saas';
-
+} from '../../../../data/Saas';
 import PricingTable, {
   PricingHead,
   PricingPrice,
@@ -18,10 +16,26 @@ import PricingTable, {
   PricingList,
   ListItem,
   PricingButtonWrapper,
-} from './pricing.style';
-
+} from './style';
 import { checkmark } from 'react-icons-kit/icomoon/checkmark';
 
+interface PricingSectionProps{
+  row: object;
+  col: object;
+  sectionWrapper: object;
+  secTitleWrapper: object;
+  secHeading: object;
+  secText: object;
+  nameStyle: object;
+  descriptionStyle: object;
+  priceStyle: object;
+  priceLabelStyle: object;
+  buttonStyle: object;
+  btnStyle: object;
+  buttonFillStyle: object;
+  listContentStyle: object;
+  model: any;
+}
 const PricingSection = ({
   sectionWrapper,
   row,
@@ -37,8 +51,8 @@ const PricingSection = ({
   buttonFillStyle,
   listContentStyle,
   model,
-}) => {
-  let dataMap = model.data.reduce(function(map, obj) {
+}:PricingSectionProps) => {
+  const dataMap = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
@@ -137,8 +151,10 @@ const PricingSection = ({
                       return map;
                     }, {});
                     return (
+                      //@ts-ignore
                       <GlideSlide key={`pricing-table-${index}`}>
                         <PricingTable
+                        //@ts-ignore
                           freePlan={pricingTable.freePlan}
                           className="pricing_table"
                         >

@@ -12,14 +12,20 @@ import {
   Image,
   Button,
   Container
-} from '../../../atoms';
-import { FeatureBlock } from '../../../molecules';
-
-import VisitorSectionWrapper, { SectionObject } from './visitor.style';
-
+} from '../../../../atoms';
+import { FeatureBlock } from '../../../../molecules';
+import VisitorSectionWrapper, { SectionObject } from './style';
 import ImageOne from '../../../assets/image/saas/saasvisitor1.png';
 import ImageBg from '../../../assets/image/saas/visitor_bg.png';
 
+interface VisitorSectionProps {
+  title:object;
+  description:object;
+  textArea:object;
+  imageWrapper:object;
+  btnStyle:object;
+  model:any;
+}
 const VisitorSection = ({
   title,
   description,
@@ -27,8 +33,8 @@ const VisitorSection = ({
   imageWrapper,
   btnStyle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}:VisitorSectionProps) => {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
@@ -59,11 +65,19 @@ const VisitorSection = ({
   return (
     <CustomVisitorSectionWrapper id={model.name}>
       <SectionObject>
-        <Card className="objectWrapper" {...imageWrapper}>
+        <Card 
+        //@ts-ignore
+        className="objectWrapper" 
+        {...imageWrapper}
+        >
           <Zoom>
             <Image src={data.back_image} alt="BgImage" />
           </Zoom>
-          <Card className="dashboardWrapper" {...imageWrapper}>
+          <Card 
+          //@ts-ignore
+          className="dashboardWrapper" 
+          {...imageWrapper}
+          >
             <Fade left>
               <Image src={data.image} alt="VisitorDashboard1" />
             </Fade>

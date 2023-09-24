@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Fade from 'react-reveal/Fade';
 import Slide from 'react-reveal/Slide';
-import { Box, Text, Heading, Image, Container, Button } from '../../../atoms';
-
+import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
 import {
   TimelineWrapper,
   TimelineItem,
@@ -12,12 +11,27 @@ import {
   TimelineContent,
   TimelineDot,
   Hidden,
-} from './timeline.style';
-
-import { Timeline } from '../../../data/Saas';
-
+} from './style';
+import { Timeline } from '../../../../data/Saas';
 import Illustration from '../../../assets/image/saas/illustration.png';
 
+interface TimelineSectionProps {
+  sectionWrapper:object;
+  sectionHeader:object;
+  sectionTitle:object;
+  sectionSubTitle:object;
+  row:object;
+  col:object;
+  button:object;
+  textArea:object;
+  imageArea:object;
+  imageTwo:object;
+  buttonWrapper:object;
+  indexStyle:object;
+  timelineTitle:object;
+  timelineDescription:object;
+  model:any;
+}
 const TimelineSection = ({
   sectionWrapper,
   sectionHeader,
@@ -34,8 +48,8 @@ const TimelineSection = ({
   timelineTitle,
   timelineDescription,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}:TimelineSectionProps) => {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
