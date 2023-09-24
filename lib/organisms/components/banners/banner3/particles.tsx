@@ -1,12 +1,12 @@
 import React from 'react';
 import Particles from 'react-particles-js';
 
-import Particle1 from '../../../assets/image/saas/particles/particle-1.png';
-import Particle2 from '../../../assets/image/saas/particles/particle-2.png';
-import Particle3 from '../../../assets/image/saas/particles/particle-3.png';
-import Particle4 from '../../../assets/image/saas/particles/particle-4.png';
-import Particle5 from '../../../assets/image/saas/particles/particle-5.png';
-import Particle6 from '../../../assets/image/saas/particles/particle-6.png';
+import Particle1 from '../../../../assets/image/saas/particles/particle-1.png';
+import Particle2 from '../../../../assets/image/saas/particles/particle-2.png';
+import Particle3 from '../../../../assets/image/saas/particles/particle-3.png';
+import Particle4 from '../../../../assets/image/saas/particles/particle-4.png';
+import Particle5 from '../../../../assets/image/saas/particles/particle-5.png';
+import Particle6 from '../../../../assets/image/saas/particles/particle-6.png';
 
 const ParticlesComponent = () => {
   return (

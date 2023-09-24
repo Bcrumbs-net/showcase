@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { themeGet } from 'styled-system';
-import BannerBG from '../../../assets/image/saas/saas-banner.jpg';
+import BannerBG from '../../../../assets/image/saas/saas-banner.jpg';
 
 const BannerWrapper = styled.section`
   padding-top: 160px;
