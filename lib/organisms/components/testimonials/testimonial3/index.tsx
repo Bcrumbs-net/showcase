@@ -1,17 +1,30 @@
 import { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { Text, Container } from '../../../atoms';
-import { Heading } from '../../../atoms';
-import { Button } from "../../../atoms";
-import { Image } from '../../../atoms';
-import { GlideCarousel, GlideSlide } from '../../../molecules';
+import PropTypes, { object } from 'prop-types';
+import { Text, Container } from '../../../../atoms';
+import { Heading } from '../../../../atoms';
+import { Button } from "../../../../atoms";
+import { Image } from '../../../../atoms';
+import { GlideCarousel, GlideSlide } from '../../../../molecules';
 import TestimonialSectionWrapper, {
   TextWrapper,
   ImageWrapper,
   RoundWrapper,
   ClientName,
-} from './testimonialSection.style';
+} from './style';
 
+interface TestimonialSectionProps {
+  sectionHeader:object;
+  sectionTitle:object;
+  sectionSubTitle:object;
+  row:object;
+  col:object;
+  btnWrapperStyle:object;
+  commentStyle:object;
+  nameStyle:object;
+  btnStyle:object;
+  designationStyle:object;
+  model:any;
+}
 const TestimonialSection = ({
   sectionSubTitle,
   btnWrapperStyle,
@@ -20,8 +33,8 @@ const TestimonialSection = ({
   btnStyle,
   designationStyle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}:TestimonialSectionProps) => {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
@@ -64,6 +77,7 @@ const TestimonialSection = ({
                   return map;
                 }, {});
                 return (
+                  //@ts-ignore
                   <GlideSlide key={index}>
                     <Fragment>
                       <TextWrapper>

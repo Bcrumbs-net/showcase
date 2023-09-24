@@ -1,14 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Box, Container } from '../../../atoms';
-import { Text } from '../../../atoms';
-import { Heading } from '../../../atoms';
-import { FeatureBlock } from '../../../molecules';
-import { Service } from '../../../data/Saas';
+import { Box, Container } from '../../../../atoms';
+import { Text } from '../../../../atoms';
+import { Heading } from '../../../../atoms';
+import { FeatureBlock } from '../../../../molecules';
+import { Service } from '../../../../data/Saas';
+import ServiceSectionWrapper from './style';
 
-import ServiceSectionWrapper from './service.style';
-
+interface ServiceSectionProps{
+  row:object;
+  col:object;
+  sectionHeader:object;
+  sectionTitle:object;
+  sectionSubTitle:object;
+  featureTitle:object;
+  featureDescription:object;
+  iconStyle:object;
+  contentStyle:object;
+  blockWrapperStyle:object;
+  model:any;
+}
 const ServiceSection = ({
   row,
   col,
@@ -21,8 +33,8 @@ const ServiceSection = ({
   contentStyle,
   blockWrapperStyle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}:ServiceSectionProps) => {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});

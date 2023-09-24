@@ -1,5 +1,5 @@
 import SaaSFeatureSection from '../../../lib/containers/Saas/FeatureSection';
-import SaaSServiceSection from '../../../lib/containers/Saas/ServiceSection';
+import SaaSServiceSection from '../../../lib/organisms/components/services/service1';
 import AgencyFeatureSection from '../../../lib/organisms/components/featuresLists/featureList3';
 import RideFeatureSection from '../../../lib/containers/Ride/Feature';
 import FeatureSlider from '../../../lib/containers/Ride/FeatureSlider';

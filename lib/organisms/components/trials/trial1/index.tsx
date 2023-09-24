@@ -1,9 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Box, Text, Heading, Image, Container, Button, Logo } from '../../../atoms';
+import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
 import VendorLogos from '../../../assets/image/saas/vendor-logos.png';
 
+interface TrialSectionProps {
+  sectionWrapper:object;
+  row:object;
+  title:object;
+  description:object;
+  textArea:object;
+  imageArea:object;
+  ImageOne:object;
+  btnStyle:object;
+  outlineBtnStyle:object;
+  model:any;
+}
 const TrialSection = ({
   sectionWrapper,
   row,
@@ -15,7 +27,7 @@ const TrialSection = ({
   btnStyle,
   outlineBtnStyle,
   model,
-}) => {
+}:TrialSectionProps) => {
   const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;

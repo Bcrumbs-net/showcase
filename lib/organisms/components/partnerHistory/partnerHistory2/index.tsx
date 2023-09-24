@@ -2,11 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Box, Text, Heading, Image, Container, Button } from '../../../atoms';
-
-import PartnerSectionWrapper from './partner.style';
+import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
+import PartnerSectionWrapper from './style';
 import Partner from '../../../assets/image/saas/partner.png';
 
+interface PartnerSectionProps {
+  row: object;
+  col: object;
+  title?: object;
+  description?: object;
+  button?: object;
+  textArea?: object;
+  imageArea?: object;
+  model: any;
+}
 const PartnerSection = ({
   row,
   col,
@@ -16,8 +25,8 @@ const PartnerSection = ({
   textArea,
   imageArea,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}:PartnerSectionProps) => {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
