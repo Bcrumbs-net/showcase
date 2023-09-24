@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import {
   Box, Drawer, NavbarWrapper, DrawerContext, HamburgMenu, Container
-} from '../../../atoms';
-import { MENU_ITEMS } from '../../../data/Saas';
-import { ScrollSpyMenu, Logo } from '../../../molecules';
+} from '../../../../atoms';
+import { MENU_ITEMS } from '../../../../data/Saas';
+import { ScrollSpyMenu, Logo } from '../../../../molecules';
 import LogoImage from '../../../assets/image/saas/logo.png';
 
 const Navbar = ({ navbarStyle, logoStyle, row, menuWrapper, model, isAR }) => {
@@ -36,7 +36,7 @@ const Navbar = ({ navbarStyle, logoStyle, row, menuWrapper, model, isAR }) => {
               className="main_menu"
               model={model}
               isAR={isAR}
-              offset={-70}
+              offset={-70} drawerClose={undefined}            
             />
             <Drawer
               width="420px"

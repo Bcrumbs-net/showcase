@@ -1,12 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { Box, Text, Heading, Container } from '../../../atoms';
-import { Logo } from '../../../molecules';
-import FooterWrapper, { List, ListItem } from './footer.style';
+import FooterWrapper, { List, ListItem } from './style';
 import LogoImage from '../../../assets/image/saas/logo.png';
-import { Footer_Data } from '../../../data/Saas';
+import { Footer_Data } from '../../../../data/Saas';
+import { Container,Text, Box, Heading } from '../../../../atoms';
+import { Logo } from '../../../../molecules';
 
+interface FooterProps {
+  row?: object;
+  col?: object;
+  colOne?: object;
+  colTwo?: object;
+  titleStyle?: any;
+  textStyle?: object;
+  logoStyle?: object;
+  model: any;
+  isAR: boolean;
+}
 const Footer = ({
   row,
   col,
@@ -17,8 +28,8 @@ const Footer = ({
   textStyle,
   model,
   isAR,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}:FooterProps) => {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
@@ -27,7 +38,7 @@ const Footer = ({
       <Container className="footer_container">
         <Box className="row" {...row}>
           <Box {...colOne}>
-            <Logo href="/" logoSrc={data.logo} logoStyle={logoStyle} />
+            <Logo href="/" logoSrc={data.logo} logoStyle={logoStyle} title={''} />
             <Text content={data.email} {...textStyle} />
             <Text content={data.phone} {...textStyle} />
           </Box>

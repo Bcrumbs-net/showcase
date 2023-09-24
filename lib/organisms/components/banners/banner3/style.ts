@@ -5,7 +5,7 @@ import BannerBG from '../../../assets/image/saas/saas-banner.jpg';
 const BannerWrapper = styled.section`
   padding-top: 160px;
   padding-bottom: 60px;
-  background-image: url(${BannerBG});
+  background-image: url(${BannerBG.src});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

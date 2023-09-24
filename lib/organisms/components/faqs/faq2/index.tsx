@@ -1,23 +1,26 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { Box, Text, Heading, Image, Container, Button } from '../../../atoms';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTitle,
-  AccordionBody,
-  IconWrapper,
-  OpenIcon,
-  CloseIcon,
-} from '../../../molecules';
 import { Icon } from 'react-icons-kit';
 import { plus } from 'react-icons-kit/entypo/plus';
 import { minus } from 'react-icons-kit/entypo/minus';
-import FaqSectionWrapper from './faqSection.style';
+import FaqSectionWrapper from './style';
+import { Text,Image, Container, Box, Heading, Button } from '../../../../atoms';
+import { Accordion,AccordionItem,AccordionTitle, IconWrapper, OpenIcon, CloseIcon, AccordionBody } from '../../../../molecules';
+import { Faq } from '../../../../data/Saas';
 
-import { Faq } from '../../../data/Saas';
-
+interface FaqSectionProps {
+  sectionHeader?: object;
+  row?: object;
+  col?: object;
+  sectionTitle?: object;
+  sectionSubTitle?: object;
+  buttonWrapper?: object;
+  button?: object;
+  titleStyle: any;
+  descriptionStyle: any;
+  model: any;
+}
 const FaqSection = ({
   sectionHeader,
   sectionTitle,
@@ -27,8 +30,8 @@ const FaqSection = ({
   buttonWrapper,
   button,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}:FaqSectionProps) => {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
@@ -55,6 +58,7 @@ const FaqSection = ({
                   return (
                     <AccordionItem
                       key={index}
+                      //@ts-ignore
                       expanded={faqSectionMap.expend == 'True'}
                     >
                       <Fragment>
