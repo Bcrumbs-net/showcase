@@ -1,13 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Box, Container } from '../../../atoms';
-import { Text } from '../../../atoms';
-import { Heading } from '../../../atoms';
-import { FeatureBlock } from '../../../molecules';
-import { Features } from '../../../data/Saas';
+import { Features } from '../../../../data/Saas';
+import FeatureSectionWrapper from './style';
+import { Text,Container, Box, Heading } from '../../../../atoms';
+import { FeatureBlock } from '../../../../molecules';
 
-import FeatureSectionWrapper from './featureSection.style';
+interface FeatureSectionProps {
+  sectionHeader?: object;
+  row?: object;
+  col?: object;
+  sectionTitle?: object;
+  sectionSubTitle?: object;
+  featureTitle?: object;
+  featureDescription?: object;
+  iconStyle: object;
+  contentStyle: object;
+  blockWrapperStyle: object;
+  model: any;
+}
 
 const FeatureSection = ({
   row,
@@ -21,8 +32,8 @@ const FeatureSection = ({
   contentStyle,
   blockWrapperStyle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}:FeatureSectionProps) => {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});

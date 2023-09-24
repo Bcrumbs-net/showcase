@@ -32,7 +32,7 @@ const FooterWrapper = styled.footer`
     padding-bottom: 80px;
     position: relative;
     @media (min-width: 576px) {
-      background-image: url(${FooterImage});
+      background-image: url(${FooterImage.src});
     }
     @media (max-width: 990px) {
       padding-bottom: 20px;

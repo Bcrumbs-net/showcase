@@ -1,22 +1,28 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Box, Container } from '../../../atoms';
-import { Text } from '../../../atoms';
-import { Image } from '../../../atoms';
-import { Heading } from '../../../atoms';
-import { Button } from "../../../atoms";
-import { FeatureBlock } from '../../../molecules';
-
-import Particles from '../Particle';
+import Particles from './particles';
 import BannerWrapper, {
   DiscountLabel,
   BannerObject,
-} from './bannerSection.style';
-
+} from './style';
 import BannerObject1 from '../../../assets/image/saas/banner/bannerObject1.png';
 import BannerObject2 from '../../../assets/image/saas/banner/bannerObject2.png';
+import { Button, Container, Box, Heading,Text,Image } from '../../../../atoms';
+import { FeatureBlock } from '../../../../molecules';
 
+interface BannerSectionProps {
+  row: object;
+  col: object;
+  title?: object;
+  btnStyle?: object;
+  description?: object;
+  discountText?: object;
+  discountAmount?: object;
+  outlineBtnStyle?: object;
+  model: any;
+  isAR: boolean;
+}
 const BannerSection = ({
   row,
   col,
@@ -28,8 +34,8 @@ const BannerSection = ({
   outlineBtnStyle,
   model,
   isAR,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
+}:BannerSectionProps) => {
+  const data = model.data.reduce(function(map, obj) {
     map[obj.Key] = obj.Value;
     return map;
   }, {});
