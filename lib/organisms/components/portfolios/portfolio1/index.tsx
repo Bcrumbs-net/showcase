@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import PropTypes from 'prop-types';
 import BlogSectionWrapper from './style';
 import { Container, Box, Heading, Button,Text,Image,Link } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 interface BlogSliderSectionProps {
   row: object;
   sectionHeader: object;
@@ -11,8 +13,9 @@ interface BlogSliderSectionProps {
   blogTitle: any;
   blogMeta: object;
   btnStyle: object;
-  model: any;
+  model: GraphContent;
   isAR: boolean;
+  data: Record<string, string>;
   sectionSubTitle: object;
 }
 const BlogSection = ({
@@ -26,14 +29,9 @@ const BlogSection = ({
   btnStyle,
   model,
   isAR,
+  data
 }: BlogSliderSectionProps) => {
   const [showAll, setShowAll] = useState(false);
-
-  const data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
-
   let targetSections = [];
 
   if (model.children && model.children.length > 0) {
@@ -181,4 +179,4 @@ BlogSection.defaultProps = {
   },
 };
 
-export default BlogSection;
+export default withModelToDataObjProp(BlogSection);

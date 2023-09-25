@@ -1,8 +1,10 @@
 import { Fragment } from 'react';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import { FaLinkedinIn } from 'react-icons/fa';
 import TeamSectionWrapper, { SocialLinks } from './style';
 import { Container, Box, Heading,Image,Text } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface TeamSectionProps {
   sectionHeader?: object;
@@ -15,8 +17,9 @@ interface TeamSectionProps {
   designation?: object;
   contentStyle?: object;
   profileUrl?: object;
-  model?: any;
+  model: GraphContent;
   isAR: boolean;
+  data: Record<string, string>;
 }
 
 const TeamSection = ({
@@ -32,11 +35,8 @@ const TeamSection = ({
   profileUrl,
   model,
   isAR,
+  data
 }: TeamSectionProps) => {
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <TeamSectionWrapper id={model.name}>
       <Container>
@@ -230,4 +230,4 @@ TeamSection.defaultProps = {
   },
 };
 
-export default TeamSection;
+export default withModelToDataObjProp(TeamSection);

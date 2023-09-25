@@ -1,9 +1,11 @@
 import { Fragment } from 'react';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import PropTypes from 'prop-types';
 import Particles from 'react-particles-js';
 import BannerWrapper, { DiscountLabel, BannerMask, Hspace } from './style';
 import { FeatureBlock } from '../../../../molecules';
-import { Button,Box, Text, Heading,Container } from '../../../../atoms';
+import { Button, Box, Text, Heading, Container } from '../../../../atoms';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface BannerSectionProps {
   row: object;
@@ -15,8 +17,9 @@ interface BannerSectionProps {
   discountText?: object;
   discountAmount?: object;
   outlineBtnStyle?: object;
-  model: any;
+  model: GraphContent;
   isAR: boolean;
+  data: Record<string, string>;
 }
 const BannerSection = ({
   row,
@@ -29,11 +32,8 @@ const BannerSection = ({
   outlineBtnStyle,
   model,
   isAR,
+  data,
 }: BannerSectionProps) => {
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   const ButtonGroup = () => (
     <Fragment>
       {data.primaryBtnText ? (
@@ -166,4 +166,4 @@ BannerSection.defaultProps = {
   },
 };
 
-export default BannerSection;
+export default withModelToDataObjProp(BannerSection);

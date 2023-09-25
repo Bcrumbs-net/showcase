@@ -1,12 +1,16 @@
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import { Container, Box, Heading, Input, Button } from '../../../../atoms';
 import NewsletterSectionWrapper, { NewsletterForm } from './style';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface NewsletterSectionProps {
   sectionHeader?: object;
   sectionTitle?: object;
   sectionSubTitle?: object;
   btnStyle: object;
-  model: any;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 
 const NewsletterSection = ({
@@ -14,11 +18,8 @@ const NewsletterSection = ({
   sectionTitle,
   btnStyle,
   model,
+  data
 }: NewsletterSectionProps) => {
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <NewsletterSectionWrapper id={model.name}>
       <Container>
@@ -65,4 +66,4 @@ NewsletterSection.defaultProps = {
   },
 };
 
-export default NewsletterSection;
+export default withModelToDataObjProp(NewsletterSection);

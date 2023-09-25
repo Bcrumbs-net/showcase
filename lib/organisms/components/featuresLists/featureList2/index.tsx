@@ -1,9 +1,10 @@
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal/Fade';
 import AboutUsSectionWrapper from './style';
 import { Box, Card, Heading, Button,Image,Text } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
-
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 interface IAboutUsSectionProps {
   row?: object;
   col?: object;
@@ -11,8 +12,9 @@ interface IAboutUsSectionProps {
   title?: object;
   description?: object;
   btnStyle?: object;
-  model: any;
+  model: GraphContent;
   isAR: boolean;
+  data: Record<string, string>;
   featureTitle: any;
 }
 
@@ -173,4 +175,4 @@ AboutUsSection.defaultProps = {
   },
 };
 
-export default AboutUsSection;
+export default withModelToDataObjProp(AboutUsSection);

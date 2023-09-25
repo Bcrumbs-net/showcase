@@ -1,24 +1,26 @@
 import { useState } from 'react';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import PropTypes from 'prop-types';
 import { Box, Heading, Image, Container } from '../../../../atoms';
 import VideoSectionWrapper from './style';
 import { FeatureBlock } from '../../../../molecules';
-
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 interface VideoLibrarySectionProps {
-  sectionHeader:object;
-  sectionTitle:object;
+  sectionHeader: object;
+  sectionTitle: object;
   row: object;
   col: object;
-  sectionSubTitle:object;
-  memberName:object;
-  designation:object;
-  col1:object;
-  col2:object;
-  videoTitle:object;
-  videoItem:object;
-  videoIcon:object;
-  model:any;
-  isAR:boolean;
+  sectionSubTitle: object;
+  memberName: object;
+  designation: object;
+  col1: object;
+  col2: object;
+  videoTitle: object;
+  videoItem: object;
+  videoIcon: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 
 const VideoLibrary = ({
@@ -33,21 +35,22 @@ const VideoLibrary = ({
   videoIcon,
   model,
   isAR,
-}:VideoLibrarySectionProps) => {
+  data,
+}: VideoLibrarySectionProps) => {
   let initialVideoUrl = '';
   if (model.children && model.children.length > 0) {
     const initialVideo = model.children[0];
-    const videoMap = initialVideo.data.reduce(function (map, obj) {
+    const videoMap: Record<string, string> = initialVideo.data.reduce(function (
+      map,
+      obj
+    ) {
       map[obj.Key] = obj.Value;
       return map;
-    }, {});
+    },
+    {});
     initialVideoUrl = videoMap.videoUrl;
   }
   const [activeVideo, setActiveVideo] = useState(initialVideoUrl);
-  const data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
 
   const renderVideo = () => (
     <iframe
@@ -73,7 +76,7 @@ const VideoLibrary = ({
           </Box>
           <Box className="col" {...col2}>
             {model.children.map((video, index) => {
-              let videoMap = video.data.reduce(function (map, obj) {
+              const videoMap: Record<string, string> = video.data.reduce(function (map, obj) {
                 map[obj.Key] = obj.Value;
                 return map;
               }, {});
@@ -133,7 +136,7 @@ VideoLibrary.defaultProps = {
   },
   // section header default style
   sectionHeader: {
-    mb: ['40px', '56px'], 
+    mb: ['40px', '56px'],
   },
   // sub section default style
   sectionSubTitle: {
@@ -194,4 +197,4 @@ VideoLibrary.defaultProps = {
   },
 };
 
-export default VideoLibrary;
+export default withModelToDataObjProp(VideoLibrary);

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import {
   Box,
   Text,
@@ -9,7 +10,7 @@ import {
 } from '../../../../atoms';
 // import { openModal, closeModal } from '@redq/reuse-modal';
 import VideoSectionWrapper from './style';
-
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface VideoSectionProps {
   sectionHeader:object;
@@ -22,7 +23,9 @@ interface VideoSectionProps {
   buttonStyle:object;
   videoItem:object;
   videoIcon:object;
-  model:any;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 
 const VideoSection = ({
@@ -31,11 +34,8 @@ const VideoSection = ({
   buttonStyle,
   sectionSubTitle,
   model,
+  data
 }:VideoSectionProps) => {
-  const data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   const IntroVideo = () => (
     <iframe
       title="ReactivePro"
@@ -144,4 +144,4 @@ VideoSection.defaultProps = {
   },
 };
 
-export default VideoSection;
+export default withModelToDataObjProp(VideoSection);

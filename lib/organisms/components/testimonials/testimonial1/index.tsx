@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import PropTypes from 'prop-types';
 import TestimonialSectionWrapper, {
   TextWrapper,
@@ -6,7 +7,7 @@ import TestimonialSectionWrapper, {
 } from './style';
 import { Container, Box, Heading, Button,Image,Text } from '../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../molecules';
-
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 interface TestimonialSectionProps {
   sectionHeader:object;
   sectionTitle:object;
@@ -19,9 +20,11 @@ interface TestimonialSectionProps {
   btnStyle:object;
   designationStyle:object;
   testimonialUrl:object;
-  model:any;
-
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
+
 const TestimonialSection = ({
   sectionHeader,
   sectionTitle,
@@ -33,6 +36,7 @@ const TestimonialSection = ({
   designationStyle,
   testimonialUrl,
   model,
+  data
 }:TestimonialSectionProps) => {
   // Glide js options
   const glideOptions = {
@@ -41,10 +45,6 @@ const TestimonialSection = ({
     perView: 1,
     animationDuration: 700,
   };
-  const data = model.data.reduce(function (map, obj) {
-    map[obj.Key]= obj.Value;
-    return map;
-  }, {});
   return (
     <TestimonialSectionWrapper id={model.name}>
       <Container>
@@ -203,4 +203,4 @@ TestimonialSection.defaultProps = {
   },
 };
 
-export default TestimonialSection;
+export default withModelToDataObjProp(TestimonialSection);

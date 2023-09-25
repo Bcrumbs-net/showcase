@@ -1,7 +1,8 @@
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import { Container, Box, Heading ,Text} from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
 import FeatureSectionWrapper from './style';
-
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 interface FeatureSectionProps {
   sectionHeader?: object;
   row?: object;
@@ -14,8 +15,9 @@ interface FeatureSectionProps {
   imgStyle: object;
   contentStyle: object;
   blockWrapperStyle: object;
-  model: any;
+  model: GraphContent;
   isAR: boolean;
+  data: Record<string, string>;
 }
 
 const FeatureSection = ({
@@ -170,4 +172,4 @@ FeatureSection.defaultProps = {
   },
 };
 
-export default FeatureSection;
+export default withModelToDataObjProp(FeatureSection);

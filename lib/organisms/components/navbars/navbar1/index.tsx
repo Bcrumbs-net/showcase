@@ -1,10 +1,12 @@
 import { useContext } from 'react';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 //import PropTypes from 'prop-types';
 //import { openModal, closeModal } from '@redq/reuse-modal';
 import CopyrightSection from './copyrights';
 import { Container } from './navbar.style';
 import { DrawerContext, NavbarWrapper, Drawer, HamburgMenu } from '../../../../atoms';
 import { Logo ,ScrollSpyMenu} from '../../../../molecules';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 //import SearchPanel from '../SearchPanel';
 //import LoginModal from '../LoginModal';
 // Default close button for modal
@@ -29,11 +31,12 @@ import { Logo ,ScrollSpyMenu} from '../../../../molecules';
 interface NavbarProps  {
   navbarStyle: object;
   logoStyle: object;
-  model: any;
+  model: GraphContent;
   isAR: boolean;
+  data: Record<string, string>;
 }
 
-const Navbar = ({ navbarStyle, logoStyle, model, isAR }: NavbarProps ) => {
+const Navbar = ({ navbarStyle, logoStyle, model, isAR, data }: NavbarProps ) => {
   const { state, dispatch } = useContext(DrawerContext);
 
   // Search modal handler
@@ -89,10 +92,6 @@ const Navbar = ({ navbarStyle, logoStyle, model, isAR }: NavbarProps ) => {
     });
   };
 
-  const data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   let socialModel;
   if (model.children && model.children.length > 0) {
     const socialModelQuery = model.children.filter((m) => m.modelId == 403193);
@@ -163,4 +162,4 @@ Navbar.defaultProps = {
   },
 };
 
-export default Navbar;
+export default withModelToDataObjProp(Navbar);

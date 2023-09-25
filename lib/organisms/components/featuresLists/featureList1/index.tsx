@@ -1,7 +1,9 @@
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import Fade from 'react-reveal/Fade';
 import QualitySectionWrapper from './style';
-import { Container, Box, Heading, Card ,Image, Text} from '../../../../atoms';
+import { Container, Box, Heading, Card, Image, Text } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface QualitySectionProps {
   row?: object;
@@ -17,7 +19,9 @@ interface QualitySectionProps {
   featureTitle?: object;
   featureDescription?: object;
   iconStyle?: object;
-  model: any;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 
 const QualitySection = ({
@@ -190,4 +194,4 @@ QualitySection.defaultProps = {
   },
 };
 
-export default QualitySection;
+export default withModelToDataObjProp(QualitySection);

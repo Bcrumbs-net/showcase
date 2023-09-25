@@ -1,5 +1,7 @@
-import {  Box, Text, Heading, Button, Container } from '../../../../atoms';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import { Box, Text, Heading, Button, Container } from '../../../../atoms';
 import { ButtonWrapper } from './takeaction.style';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface TakeActionSectionProps {
   sectionWrapper?: object;
@@ -11,8 +13,9 @@ interface TakeActionSectionProps {
   buttonStyle?: object;
   secButtonStyle?: object;
   buttonWrapper?: object;
-  model: any;
+  model: GraphContent;
   isAR: boolean;
+  data: Record<string, string>;
 }
 
 const TakeActionSection = ({
@@ -27,11 +30,8 @@ const TakeActionSection = ({
   buttonWrapper,
   model,
   isAR,
+  data
 }: TakeActionSectionProps) => {
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   const ButtonGroup = () => (
     <ButtonWrapper>
       {data.secondaryButtonLabel ? (
@@ -142,4 +142,4 @@ TakeActionSection.defaultProps = {
   },
 };
 
-export default TakeActionSection;
+export default withModelToDataObjProp(TakeActionSection);

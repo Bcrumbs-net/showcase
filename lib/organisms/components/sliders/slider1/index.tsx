@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import PropTypes from 'prop-types';
 
 import Fade from 'react-reveal/Fade';
@@ -11,6 +12,7 @@ import SectionWrapper, {
 } from './style';
 import { Container, Box, Heading, Button , Image} from '../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../molecules';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 interface BlogSliderSectionProps {
   sectionHeader: object;
   sectionTitle: object;
@@ -18,8 +20,9 @@ interface BlogSliderSectionProps {
   blogTitle: string;
   blogMeta: string;
   btnStyle: object;
-  model: any;
-  isAR: string;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 const BlogSliderSection = ({
   sectionHeader,
@@ -30,6 +33,7 @@ const BlogSliderSection = ({
   btnStyle,
   model,
   isAR,
+  data
 }: BlogSliderSectionProps) => {
   const glideOptions = {
     type: 'carousel',
@@ -50,10 +54,6 @@ const BlogSliderSection = ({
       },
     },
   };
-  const data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <SectionWrapper id={model.name}>
       <Container width={1360}>
@@ -186,4 +186,4 @@ BlogSliderSection.defaultProps = {
   },
 };
 
-export default BlogSliderSection;
+export default withModelToDataObjProp(BlogSliderSection);

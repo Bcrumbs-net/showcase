@@ -1,17 +1,21 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {Box, Text, Heading, Container } from '../../../../atoms';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import { Box, Text, Heading, Container } from '../../../../atoms';
 import { Accordion, AccordionItem } from 'react-accessible-accordion';
 import {
-   AccordionTitle, 
-   IconWrapperAR,
-    OpenIcon, CloseIcon, 
-    IconWrapper, AccordionBody 
-  } from '../../../../molecules';
-  import { Icon } from 'react-icons-kit';
-  import { plus } from 'react-icons-kit/entypo/plus';
-  import { minus } from 'react-icons-kit/entypo/minus';
-  import FaqSectionWrapper from './style';
+  AccordionTitle,
+  IconWrapperAR,
+  OpenIcon,
+  CloseIcon,
+  IconWrapper,
+  AccordionBody,
+} from '../../../../molecules';
+import { Icon } from 'react-icons-kit';
+import { plus } from 'react-icons-kit/entypo/plus';
+import { minus } from 'react-icons-kit/entypo/minus';
+import FaqSectionWrapper from './style';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface IFaqSectionProps {
   sectionHeader?: object;
@@ -21,8 +25,9 @@ interface IFaqSectionProps {
   sectionSubTitle?: object;
   titleStyle: any;
   descriptionStyle: any;
-  model: any;
+  model: GraphContent;
   isAR: boolean;
+  data: Record<string, string>;
 }
 const FaqSection = ({
   sectionHeader,
@@ -32,11 +37,8 @@ const FaqSection = ({
   descriptionStyle,
   model,
   isAR,
+  data
 }: IFaqSectionProps) => {
-  const data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <FaqSectionWrapper id={model.name}>
       <Container>
@@ -49,7 +51,7 @@ const FaqSection = ({
             <Fragment>
               {model.children &&
                 model.children.map((faqSection, index) => {
-                  let faqSectionMap = faqSection.data.reduce(function (
+                  const faqSectionMap: Record<string, string> = faqSection.data.reduce(function (
                     map,
                     obj
                   ) {
@@ -171,4 +173,4 @@ FaqSection.defaultProps = {
   },
 };
 
-export default FaqSection;
+export default withModelToDataObjProp(FaqSection);

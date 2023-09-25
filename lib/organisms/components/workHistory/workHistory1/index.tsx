@@ -1,3 +1,4 @@
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import PropTypes from 'prop-types';
 import {
   Box,
@@ -11,7 +12,7 @@ import Link from 'next/link';
 import CountUp from 'react-countup';
 import { FeatureBlock } from '../../../../molecules';
 import WorkHistoryWrapper, { CounterUpArea } from './style';
-
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 interface WorkHistorySectionProps {
   sectionHeader:object;
   sectionTitle:object;
@@ -23,7 +24,9 @@ interface WorkHistorySectionProps {
   cardStyle:object;
   title:object;
   content:object;
-  model:any;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 
 const WorkHistory = ({
@@ -35,11 +38,9 @@ const WorkHistory = ({
   btnStyle,
   content,
   model,
-}:WorkHistorySectionProps) => {
-  const data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  data
+}: WorkHistorySectionProps) => {
+
   return (
     <WorkHistoryWrapper id={model.name}>
       <Container>
@@ -60,7 +61,7 @@ const WorkHistory = ({
           <Box className="col" {...col}>
             <CounterUpArea>
               {model.children.map((workHistory, index) => {
-                const workHistoryMap = workHistory.data.reduce(function (
+                const workHistoryMap: Record<string, string> = workHistory.data.reduce(function (
                   map,
                   obj
                 ) {
@@ -162,4 +163,4 @@ WorkHistory.defaultProps = {
   },
 };
 
-export default WorkHistory;
+export default withModelToDataObjProp(WorkHistory);
