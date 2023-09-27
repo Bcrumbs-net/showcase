@@ -12,6 +12,8 @@ import {
 } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
 import styled from 'styled-components';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 const PaymentCircleShape = styled.div`
   width: 700px;
@@ -57,7 +59,8 @@ interface PaymentSectionProps {
   imageWrapperOne?: object;
   imageWrapperTwo?: object;
   sectionSubTitle:object;
-  model: any;
+  model: GraphContent;
+  data: Record<string, string>;
 }
 const PaymentSection = ({
   sectionWrapper,
@@ -76,11 +79,8 @@ const PaymentSection = ({
   sectionSubTitle,
   btnStyle,
   model,
+  data,
 }:PaymentSectionProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <Box {...sectionWrapper} id="payments">
       <PaymentCircleShape />
@@ -226,4 +226,4 @@ PaymentSection.defaultProps = {
   },
 };
 
-export default PaymentSection;
+export default withModelToDataObjProp(PaymentSection);

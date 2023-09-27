@@ -3,24 +3,24 @@ import { Box, Container } from '../../../../atoms';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import SliderDes from './description';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface TestimonialSectionProps {
   sectionWrapper:object;
   title:object;
   row:object;
   sectionSubTitle:object;
-  model:any;
+  model: GraphContent;
+  data: Record<string, string>;
 }
 const TestimonialSection = ({
   sectionWrapper,
   row,
   sectionSubTitle,
   model,
+  data,
 }:TestimonialSectionProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   let testimonialLst = [];
   if (model.children && model.children.length > 0) {
     testimonialLst = model.children.map((testimonialData, index) => {
@@ -53,14 +53,12 @@ const TestimonialSection = ({
     >
       <Container>
         <Box className="testimonialDesWrapper">
-          <div className='image-gallery-slide center'>
             <ImageGallery
               items={testimonialLst}
               originalClass="Testimonial-img"
               showPlayButton={false}
               showFullscreenButton={false}
             />
-          </div>
         </Box>
       </Container>
     </Box>
@@ -94,4 +92,4 @@ TestimonialSection.defaultProps = {
   
 };
 
-export default TestimonialSection;
+export default withModelToDataObjProp(TestimonialSection);

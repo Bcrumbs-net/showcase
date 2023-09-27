@@ -6,8 +6,10 @@ import {
 import { ScrollSpyMenu, Logo } from '../../../../molecules';
 import { Container } from './style';
 // import { openModal, closeModal } from '@redq/reuse-modal';
-import SearchPanel from '../../../../containers/App/SearchPanel';
-import LoginModal from '../../../../containers/App/LoginModal';
+import SearchPanel from '../../../../molecules/components/search-panel';
+import LoginModal from '../../../../molecules/components/login-modal';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 // Default close button for modal
 const CloseModalButton = () => (null
@@ -32,9 +34,10 @@ interface NavbarProps {
   navbarStyle?: object;
   logoStyle?: object;
   buttonStyle: object;
-  model: any;
+  model: GraphContent;
+  data: Record<string, string>;
 }
-const Navbar = ({ navbarStyle, logoStyle, buttonStyle, model }:NavbarProps) => {
+const Navbar = ({ navbarStyle, logoStyle, buttonStyle, model,data }:NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
   // Search modal handler
   const handleSearchModal = () => {
@@ -86,10 +89,6 @@ const Navbar = ({ navbarStyle, logoStyle, buttonStyle, model }:NavbarProps) => {
       type: 'TOGGLE',
     });
   };
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
 
   return (
     <NavbarWrapper {...navbarStyle}>
@@ -154,4 +153,4 @@ Navbar.defaultProps = {
   },
 };
 
-export default Navbar;
+export default withModelToDataObjProp(Navbar);

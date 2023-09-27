@@ -11,6 +11,8 @@ import {
   Container
 } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface ControllSectionProps {
   row: object;
@@ -28,7 +30,8 @@ interface ControllSectionProps {
   imageWrapperOne?:object;
   imageWrapperTwo?:object;
   sectionSubTitle?:object;
-  model: any;
+  model: GraphContent;
+  data: Record<string, string>;
 }
 
 const ControllSection = ({
@@ -48,11 +51,8 @@ const ControllSection = ({
   sectionSubTitle,
   btnStyle,
   model,
+  data,
 }:ControllSectionProps) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <Box {...sectionWrapper} id="control">
       <Container fullWidth noGutter className="control-sec-container">
@@ -186,4 +186,4 @@ ControllSection.defaultProps = {
   },
 };
 
-export default ControllSection;
+export default withModelToDataObjProp(ControllSection);

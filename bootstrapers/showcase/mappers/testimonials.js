@@ -2,7 +2,7 @@ import PortfolioTestimonialSection from '../../../lib/containers/Portfolio/Testi
 import SaaSTestimonialSection from '../../../lib/containers/Saas/TestimonialSection';
 import RideTestimonialSecion from '../../../lib/containers/Ride/TestimonialSection';
 import AgencyTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial1';
-import AppTestimonialSection from '../../../lib/containers/App/Testimonial';
+import AppTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial2';
 import SaaSClassicTestimonialSection from "../../../lib/containers/SaasClassic/Testimonial";
 import CryptoTestimonialSecion from "../../../lib/containers/Crypto/BannerSlider";
 

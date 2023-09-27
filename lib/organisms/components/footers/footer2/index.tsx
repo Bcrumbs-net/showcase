@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import FooterWrapper, { List, ListItem } from './style';
 import { Container, Box, Heading ,Text} from '../../../../atoms';
 import { Logo } from '../../../../molecules';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface FooterProps {
   row: object;
@@ -14,7 +16,8 @@ interface FooterProps {
   contentStyle?: object;
   copyrightMenu?:object;
   copyright?:object;
-  model: any;
+  model: GraphContent;
+  data: Record<string, string>;
 }
 const Footer = ({
   row,
@@ -27,11 +30,8 @@ const Footer = ({
   copyrightMenu,
   copyright,
   model,
+  data,
 }:FooterProps) => {
-  const data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   let footerItems = [];
   if (model.children && model.children.length > 0) {
     footerItems = model.children.map((footerData) => {
@@ -187,4 +187,4 @@ Footer.defaultProps = {
   },
 };
 
-export default Footer;
+export default withModelToDataObjProp(Footer);

@@ -7,6 +7,8 @@ import PartnerHistoryWrapper, { CounterUpArea } from './style';
 // import DribbleImg from '../../assets/image/app/dribbble.svg';
 // import MailchimpImg from '../../assets/image/app/mailchimp.svg';
 import BackgroundImg from '../../../../assets/image/app/partner-bg.png';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface PartnerHistoryProps {
   row?: object;
@@ -19,7 +21,8 @@ interface PartnerHistoryProps {
   sectionSubTitle?: object;
   btnStyle: object;
   sectionTitle:object;
-  model: any;
+  model: GraphContent;
+  data: Record<string, string>;
 }
 
 const PartnerHistory = ({
@@ -32,11 +35,8 @@ const PartnerHistory = ({
   sectionSubTitle,
   cardArea,
   model,
+  data,
 }:PartnerHistoryProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <PartnerHistoryWrapper id="partners">
       <Image
@@ -154,4 +154,4 @@ PartnerHistory.defaultProps = {
   },
 };
 
-export default PartnerHistory;
+export default withModelToDataObjProp(PartnerHistory);

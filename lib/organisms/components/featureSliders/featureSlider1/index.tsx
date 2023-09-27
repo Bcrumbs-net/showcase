@@ -14,6 +14,8 @@ import Thumb4 from '../../../../assets/image/app/3.svg';
 import Thumb5 from '../../../../assets/image/app/4.svg';
 import Thumb6 from '../../../../assets/image/app/5.svg';
 import { Container, Box, Heading,Text } from '../../../../atoms';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 // import DomainSection from '../container/Hosting/Domain';
 const images = [
@@ -65,7 +67,8 @@ interface FeatureSliderProps {
   sectionHeader?: object;
   sectionTitle?: object;
   sectionSubTitle?:object;
-  model: any;
+  model: GraphContent;
+  data: Record<string, string>;
 }
 
 const FeatureSlider = ({
@@ -73,11 +76,8 @@ const FeatureSlider = ({
   sectionTitle,
   sectionHeader,
   model,
+  data,
 }:FeatureSliderProps) => {
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   let images = [];
   if (model.children && model.children.length > 0) {
     images = model.children.map((featureSlider, index) => {
@@ -149,4 +149,4 @@ FeatureSlider.defaultProps = {
   },
 };
 
-export default FeatureSlider;
+export default withModelToDataObjProp(FeatureSlider);

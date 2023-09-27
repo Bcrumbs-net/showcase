@@ -14,10 +14,13 @@ import {
 } from './style';
 import { Box, Container, Heading, Input, Button ,Text,Image} from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+
 
   
 interface DomainSectionProps {
-  row: object;
+  row: object;s
   col: object;
   title?: object;
   btnStyle?: object;
@@ -30,7 +33,8 @@ interface DomainSectionProps {
   discountText?: object;
   discountAmount?: object;
   SectionWrapper?:object;
-  model: any;
+  model: GraphContent;
+  data: Record<string, string>;
 }
 const DomainSection = ({
   SectionWrapper,
@@ -46,13 +50,8 @@ const DomainSection = ({
   discountAmount,
   discountText,
   model,
+  data,
 }:DomainSectionProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
-console.log(DomainSection.defaultProps.title)
-
   return (
     <Box {...SectionWrapper}>
       <ParticlesComponent />
@@ -231,5 +230,4 @@ DomainSection.defaultProps = {
     ml: '10px',
   },
 };
-
-export default DomainSection;
+export default  withModelToDataObjProp(DomainSection);

@@ -3,6 +3,8 @@ import Fade from 'react-reveal/Fade';
 import FeatureSectionTwoWrapper from './style';
 import { Container, Box, Heading ,Image,Text} from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface FeatureSectionProps {
   row?: object;
@@ -14,7 +16,8 @@ interface FeatureSectionProps {
   contentStyle?:object;
   blockWrapperStyle?:object;
   sectionSubTitle?:object;
-  model: any;
+  model: GraphContent;
+  data: Record<string, string>;
 }
 
 const FeatureSection = ({
@@ -28,11 +31,8 @@ const FeatureSection = ({
   contentStyle,
   blockWrapperStyle,
   model,
+  data,
 }:FeatureSectionProps) => {
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   let featureItems = [];
   if (model.children && model.children.length > 0) {
     featureItems = model.children.map((featureData, index) => {
@@ -137,4 +137,4 @@ FeatureSection.defaultProps = {
   },
 };
 
-export default FeatureSection;
+export default withModelToDataObjProp(FeatureSection);
