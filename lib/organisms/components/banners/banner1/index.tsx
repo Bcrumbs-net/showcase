@@ -1,11 +1,11 @@
 import { Fragment } from 'react';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import PropTypes from 'prop-types';
-import Particles from 'react-particles-js';
 import BannerWrapper, { DiscountLabel, BannerMask, Hspace } from './style';
 import { FeatureBlock } from '../../../../molecules';
 import { Button, Box, Text, Heading, Container } from '../../../../atoms';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import ParticlesComponent from './particles';
 
 interface BannerSectionProps {
   row: object;
