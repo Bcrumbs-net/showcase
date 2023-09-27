@@ -25,13 +25,13 @@ const FaqSectionWrapper = styled.section`
         border-bottom: 0;
       }
 
-      .accordion__header {
-        padding: 20px 30px;
-      }
+    .accordion__header {
+      padding: 20px 30px;
+    }
 
-      .accordion__body {
-        padding: 5px 30px 20px;
-      }
+    .accordion__body {
+      padding: 5px 30px 20px;
+    }
     }
   }
 `;

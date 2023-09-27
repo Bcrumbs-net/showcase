@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import PropTypes from 'prop-types';
-import Particles from 'react-particles-js';
+import ParticlesComponent from './particles';
 import BannerWrapper, { DiscountLabel, BannerMask, Hspace } from './style';
 import { FeatureBlock } from '../../../../molecules';
 import { Button, Box, Text, Heading, Container } from '../../../../atoms';
@@ -70,7 +70,8 @@ const BannerSection = ({
       id={model.name}
     >
       <BannerMask>
-        {/* <Particles /> */}
+        <ParticlesComponent />
+       
         <Container>
           <Box className="row" {...row}>
             <Box

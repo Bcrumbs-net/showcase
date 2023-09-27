@@ -1,11 +1,11 @@
 import Particles from 'react-particles-js';
-import Particle1 from '../../../assets/image/agency/particles/particle-1.png';
-import Particle2 from '../../../assets/image/agency/particles/particle-2.png';
-import Particle3 from '../../../assets/image/agency/particles/particle-3.png';
-import Particle4 from '../../../assets/image/agency/particles/particle-4.png';
-import Particle5 from '../../../assets/image/agency/particles/particle-5.png';
-import Particle6 from '../../../assets/image/agency/particles/particle-2.png';
-import Particle7 from '../../../assets/image/agency/particles/particle-4.png';
+import Particle1 from '../../../../assets/image/agency/particles/particle-1.png';
+import Particle2 from '../../../../assets/image/agency/particles/particle-2.png';
+import Particle3 from '../../../../assets/image/agency/particles/particle-3.png';
+import Particle4 from '../../../../assets/image/agency/particles/particle-4.png';
+import Particle5 from '../../../../assets/image/agency/particles/particle-5.png';
+import Particle6 from '../../../../assets/image/agency/particles/particle-2.png';
+import Particle7 from '../../../../assets/image/agency/particles/particle-4.png';
 
 const ParticlesComponent = () => {
   return (
