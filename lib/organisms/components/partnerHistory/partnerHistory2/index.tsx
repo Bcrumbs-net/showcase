@@ -4,6 +4,8 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
 import PartnerSectionWrapper from './style';
+import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
+import PartnerSectionWrapper from './style';
 import Partner from '../../../assets/image/saas/partner.png';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';

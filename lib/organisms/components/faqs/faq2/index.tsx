@@ -59,6 +59,7 @@ const FaqSection = ({
                     <AccordionItem
                       key={index}
                       //@ts-ignore
+                      //@ts-ignore
                       expanded={faqSectionMap.expend == 'True'}
                     >
                       <Fragment>

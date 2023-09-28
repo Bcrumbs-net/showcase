@@ -5,9 +5,12 @@ import Link from 'next/link';
 import Icon from 'react-icons-kit';
 import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
 import { GlideCarousel, GlideSlide} from '../../../../molecules';
+import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
+import { GlideCarousel, GlideSlide} from '../../../../molecules';
 import {
   MONTHLY_PRICING_TABLE,
   YEARLY_PRICING_TABLE,
+} from '../../../../data/Saas';
 } from '../../../../data/Saas';
 import PricingTable, {
   PricingHead,
@@ -16,6 +19,7 @@ import PricingTable, {
   PricingList,
   ListItem,
   PricingButtonWrapper,
+} from './style';
 } from './style';
 import { checkmark } from 'react-icons-kit/icomoon/checkmark';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
