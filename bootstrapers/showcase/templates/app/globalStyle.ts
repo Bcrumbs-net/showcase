@@ -446,8 +446,8 @@ const AppWrapper = styled.div`
                 }
               }
               .testimonialDetails {
+                text-align: left;
                 @media (max-width: 480px) {
-                  text-align: center;
                 }
                 .testimonialName {
                   font-size: 18px;
