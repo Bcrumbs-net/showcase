@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
 import VendorLogos from '../../../assets/image/saas/vendor-logos.png';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface TrialSectionProps {
   sectionWrapper:object;
@@ -14,7 +16,9 @@ interface TrialSectionProps {
   ImageOne:object;
   btnStyle:object;
   outlineBtnStyle:object;
-  model:any;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 const TrialSection = ({
   sectionWrapper,
@@ -27,11 +31,9 @@ const TrialSection = ({
   btnStyle,
   outlineBtnStyle,
   model,
+  isAR,
+  data,
 }:TrialSectionProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
 
   let CustomBoxWrapper;
   if (data.backgroundColor) {
@@ -160,4 +162,4 @@ TrialSection.defaultProps = {
   },
 };
 
-export default TrialSection;
+export default withModelToDataObjProp(TrialSection) ;

@@ -10,6 +10,8 @@ import BannerObject2 from '../../../assets/image/saas/banner/bannerObject2.png';
 import { Button, Container, Box, Heading,Text,Image } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
 import ParticlesComponent from './particles';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface BannerSectionProps {
   row: object;
@@ -20,8 +22,9 @@ interface BannerSectionProps {
   discountText?: object;
   discountAmount?: object;
   outlineBtnStyle?: object;
-  model: any;
+  model: GraphContent;
   isAR: boolean;
+  data: Record<string, string>;
 }
 const BannerSection = ({
   row,
@@ -34,11 +37,8 @@ const BannerSection = ({
   outlineBtnStyle,
   model,
   isAR,
+  data,
 }:BannerSectionProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   const ButtonGroup = () => (
     <Fragment>
       {data.pri_button_label && data.pri_button_url ? (
@@ -73,8 +73,8 @@ const BannerSection = ({
   }
   return (
     <CustomBannerWrapper id={model.name}>
-      <ParticlesComponent/>
-      <Container>
+    <ParticlesComponent/>
+      <Container className='ContainerWrapper'>
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <DiscountLabel>
@@ -168,4 +168,4 @@ BannerSection.defaultProps = {
   },
 };
 
-export default BannerSection;
+export default withModelToDataObjProp(BannerSection);

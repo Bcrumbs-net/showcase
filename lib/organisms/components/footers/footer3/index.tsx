@@ -6,6 +6,8 @@ import LogoImage from '../../../assets/image/saas/logo.png';
 import { Footer_Data } from '../../../../data/Saas';
 import { Container,Text, Box, Heading } from '../../../../atoms';
 import { Logo } from '../../../../molecules';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface FooterProps {
   row?: object;
@@ -15,8 +17,9 @@ interface FooterProps {
   titleStyle?: any;
   textStyle?: object;
   logoStyle?: object;
-  model: any;
+  model: GraphContent;
   isAR: boolean;
+  data: Record<string, string>;
 }
 const Footer = ({
   row,
@@ -28,11 +31,8 @@ const Footer = ({
   textStyle,
   model,
   isAR,
+  data,
 }:FooterProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <FooterWrapper id={model.name}>
       <Container className="footer_container">
@@ -153,4 +153,4 @@ Footer.defaultProps = {
   },
 };
 
-export default Footer;
+export default withModelToDataObjProp(Footer);

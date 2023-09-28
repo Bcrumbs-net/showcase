@@ -18,6 +18,8 @@ import PricingTable, {
   PricingButtonWrapper,
 } from './style';
 import { checkmark } from 'react-icons-kit/icomoon/checkmark';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface PricingSectionProps{
   row: object;
@@ -34,7 +36,9 @@ interface PricingSectionProps{
   btnStyle: object;
   buttonFillStyle: object;
   listContentStyle: object;
-  model: any;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 const PricingSection = ({
   sectionWrapper,
@@ -51,16 +55,12 @@ const PricingSection = ({
   buttonFillStyle,
   listContentStyle,
   model,
+  isAR,
+  data,
 }:PricingSectionProps) => {
-  const dataMap = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
-
   const [state, setState] = useState({
     data: model.children.length > 0 ? model.children[0].name : null,
   });
-
   /*const [loading, setLoading] = useState(false);
   useEffect(() => {
     setTimeout(function () {
@@ -68,7 +68,7 @@ const PricingSection = ({
     }, 500);
   });*/
 
-  const data = state.data;
+  const data1 = state.data;
 
   const pricingCarouselOptions = {
     type: 'slider',
@@ -116,8 +116,8 @@ const PricingSection = ({
     <Box {...sectionWrapper} id={model.name}>
       <Container>
         <Box {...secTitleWrapper}>
-          <Text {...secText} content={dataMap.title} />
-          <Heading {...secHeading} content={dataMap.subtitle} />
+          <Text {...secText} content={data.title} />
+          <Heading {...secHeading} content={data.subtitle} />
           <PricingButtonWrapper>
             {model.children.map((item, index) => {
               let pricingTable = item.data.reduce(function(map, obj) {
@@ -128,7 +128,7 @@ const PricingSection = ({
                 <Button
                   key={`PricingTabBtn${index}`}
                   title={pricingTable.title}
-                  className={data === item.name ? 'active-item' : ''}
+                  className={data1 === item.name ? 'active-item' : ''}
                   onClick={() => setState({ data: item.name })}
                 />
               );
@@ -142,9 +142,9 @@ const PricingSection = ({
             controls={false}
           >
             <>
-              {model.children.find(m => m.name == data) &&
+              {model.children.find(m => m.name == data1) &&
                 model.children
-                  .find(m => m.name == data)
+                  .find(m => m.name == data1)
                   .children.map((item, index) => {
                     let pricingTable = item.data.reduce(function(map, obj) {
                       map[obj.Key] = obj.Value;
@@ -349,4 +349,4 @@ PricingSection.defaultProps = {
   },
 };
 
-export default PricingSection;
+export default withModelToDataObjProp(PricingSection);

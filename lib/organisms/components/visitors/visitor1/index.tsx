@@ -17,6 +17,8 @@ import { FeatureBlock } from '../../../../molecules';
 import VisitorSectionWrapper, { SectionObject } from './style';
 import ImageOne from '../../../assets/image/saas/saasvisitor1.png';
 import ImageBg from '../../../assets/image/saas/visitor_bg.png';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface VisitorSectionProps {
   title:object;
@@ -24,7 +26,9 @@ interface VisitorSectionProps {
   textArea:object;
   imageWrapper:object;
   btnStyle:object;
-  model:any;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 const VisitorSection = ({
   title,
@@ -33,11 +37,9 @@ const VisitorSection = ({
   imageWrapper,
   btnStyle,
   model,
+  isAR,
+  data,
 }:VisitorSectionProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   let CustomVisitorSectionWrapper;
   if (data.backgroundColor) {
     CustomVisitorSectionWrapper = styled(VisitorSectionWrapper)`
@@ -147,4 +149,4 @@ VisitorSection.defaultProps = {
   },
 };
 
-export default VisitorSection;
+export default withModelToDataObjProp(VisitorSection) ;

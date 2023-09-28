@@ -8,6 +8,8 @@ import FaqSectionWrapper from './style';
 import { Text,Image, Container, Box, Heading, Button } from '../../../../atoms';
 import { Accordion,AccordionItem,AccordionTitle, IconWrapper, OpenIcon, CloseIcon, AccordionBody } from '../../../../molecules';
 import { Faq } from '../../../../data/Saas';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface FaqSectionProps {
   sectionHeader?: object;
@@ -19,7 +21,8 @@ interface FaqSectionProps {
   button?: object;
   titleStyle: any;
   descriptionStyle: any;
-  model: any;
+  model: GraphContent;
+  data: Record<string, string>;
 }
 const FaqSection = ({
   sectionHeader,
@@ -30,11 +33,8 @@ const FaqSection = ({
   buttonWrapper,
   button,
   model,
+  data,
 }:FaqSectionProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <FaqSectionWrapper id={model.name}>
       <Container>
@@ -174,4 +174,4 @@ FaqSection.defaultProps = {
   },
 };
 
-export default FaqSection;
+export default withModelToDataObjProp(FaqSection);

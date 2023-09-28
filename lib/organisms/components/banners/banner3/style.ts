@@ -14,7 +14,7 @@ const BannerWrapper = styled.section`
   position: relative;
   overflow: hidden;
   @media (max-width: 990px) {
-    padding-top: 180px;
+    padding-top: 300px;
     padding-bottom: 60px;
     min-height: auto;
   }

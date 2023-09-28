@@ -7,6 +7,8 @@ import { Heading } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
 import { Service } from '../../../../data/Saas';
 import ServiceSectionWrapper from './style';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface ServiceSectionProps{
   row:object;
@@ -19,7 +21,9 @@ interface ServiceSectionProps{
   iconStyle:object;
   contentStyle:object;
   blockWrapperStyle:object;
-  model:any;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 const ServiceSection = ({
   row,
@@ -33,11 +37,9 @@ const ServiceSection = ({
   contentStyle,
   blockWrapperStyle,
   model,
+  isAR,
+  data,
 }:ServiceSectionProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <ServiceSectionWrapper id={model.name}>
       <Container>
@@ -166,4 +168,4 @@ ServiceSection.defaultProps = {
   },
 };
 
-export default ServiceSection;
+export default withModelToDataObjProp(ServiceSection);

@@ -6,21 +6,34 @@ import {
 import { MENU_ITEMS } from '../../../../data/Saas';
 import { ScrollSpyMenu, Logo } from '../../../../molecules';
 import LogoImage from '../../../assets/image/saas/logo.png';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
-const Navbar = ({ navbarStyle, logoStyle, row, menuWrapper, model, isAR }) => {
+interface NavbarProps{
+  navbarStyle:object;
+  logoStyle:object;
+  row:object;
+  menuWrapper:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const Navbar = ({ 
+  navbarStyle,
+   logoStyle, 
+   row, 
+   menuWrapper, 
+   model, 
+   isAR,
+   data
+   }:NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
-
   // Toggle drawer
   const toggleHandler = () => {
     dispatch({
       type: 'TOGGLE',
     });
   };
-
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <NavbarWrapper {...navbarStyle}>
       <Container>
@@ -107,4 +120,4 @@ Navbar.defaultProps = {
   },
 };
 
-export default Navbar;
+export default withModelToDataObjProp(Navbar);

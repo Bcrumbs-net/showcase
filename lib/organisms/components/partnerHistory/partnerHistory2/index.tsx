@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
 import PartnerSectionWrapper from './style';
 import Partner from '../../../assets/image/saas/partner.png';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface PartnerSectionProps {
   row: object;
@@ -14,7 +16,9 @@ interface PartnerSectionProps {
   button?: object;
   textArea?: object;
   imageArea?: object;
-  model: any;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 const PartnerSection = ({
   row,
@@ -25,11 +29,9 @@ const PartnerSection = ({
   textArea,
   imageArea,
   model,
+  isAR,
+  data,
 }:PartnerSectionProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   let CustomPartnerSectionWrapper;
   if (data.backgroundColor) {
     CustomPartnerSectionWrapper = styled(PartnerSectionWrapper)`
@@ -120,4 +122,4 @@ PartnerSection.defaultProps = {
   },
 };
 
-export default PartnerSection;
+export default withModelToDataObjProp(PartnerSection);

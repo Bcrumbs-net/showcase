@@ -5,6 +5,8 @@ import { Features } from '../../../../data/Saas';
 import FeatureSectionWrapper from './style';
 import { Text,Container, Box, Heading } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface FeatureSectionProps {
   sectionHeader?: object;
@@ -17,7 +19,8 @@ interface FeatureSectionProps {
   iconStyle: object;
   contentStyle: object;
   blockWrapperStyle: object;
-  model: any;
+  model: GraphContent;
+  data: Record<string, string>;
 }
 
 const FeatureSection = ({
@@ -32,11 +35,8 @@ const FeatureSection = ({
   contentStyle,
   blockWrapperStyle,
   model,
+  data,
 }:FeatureSectionProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <FeatureSectionWrapper id={model.name}>
       <Container>
@@ -164,4 +164,4 @@ FeatureSection.defaultProps = {
   },
 };
 
-export default FeatureSection;
+export default withModelToDataObjProp(FeatureSection);

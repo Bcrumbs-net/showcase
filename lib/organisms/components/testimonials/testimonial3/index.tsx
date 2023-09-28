@@ -11,6 +11,8 @@ import TestimonialSectionWrapper, {
   RoundWrapper,
   ClientName,
 } from './style';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface TestimonialSectionProps {
   sectionHeader:object;
@@ -23,7 +25,9 @@ interface TestimonialSectionProps {
   nameStyle:object;
   btnStyle:object;
   designationStyle:object;
-  model:any;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 const TestimonialSection = ({
   sectionSubTitle,
@@ -33,11 +37,9 @@ const TestimonialSection = ({
   btnStyle,
   designationStyle,
   model,
+  isAR,
+  data,
 }:TestimonialSectionProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   // Glide js options
   const glideOptions = {
     type: 'carousel',
@@ -194,4 +196,4 @@ TestimonialSection.defaultProps = {
   },
 };
 
-export default TestimonialSection;
+export default withModelToDataObjProp(TestimonialSection);

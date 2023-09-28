@@ -14,6 +14,8 @@ import {
 } from './style';
 import { Timeline } from '../../../../data/Saas';
 import Illustration from '../../../assets/image/saas/illustration.png';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface TimelineSectionProps {
   sectionWrapper:object;
@@ -30,7 +32,9 @@ interface TimelineSectionProps {
   indexStyle:object;
   timelineTitle:object;
   timelineDescription:object;
-  model:any;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 const TimelineSection = ({
   sectionWrapper,
@@ -48,11 +52,9 @@ const TimelineSection = ({
   timelineTitle,
   timelineDescription,
   model,
+  isAR,
+  data,
 }:TimelineSectionProps) => {
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <Box {...sectionWrapper} id={model.name}>
       <Container>
@@ -251,4 +253,4 @@ TimelineSection.defaultProps = {
   },
 };
 
-export default TimelineSection;
+export default withModelToDataObjProp(TimelineSection);
