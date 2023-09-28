@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import FooterWrapper, { List, ListItem } from './style';
-import FooterWrapper, { List, ListItem } from './style';
 import LogoImage from '../../../assets/image/saas/logo.png';
 import { Footer_Data } from '../../../../data/Saas';
 import { Container,Text, Box, Heading } from '../../../../atoms';

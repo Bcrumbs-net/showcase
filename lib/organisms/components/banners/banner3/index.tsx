@@ -5,7 +5,6 @@ import BannerWrapper, {
   DiscountLabel,
   BannerObject,
 } from './style';
-} from './style';
 import BannerObject1 from '../../../assets/image/saas/banner/bannerObject1.png';
 import BannerObject2 from '../../../assets/image/saas/banner/bannerObject2.png';
 import { Button, Container, Box, Heading,Text,Image } from '../../../../atoms';
