@@ -45,7 +45,7 @@ const ServiceSection = ({
       <Container>
         <Box {...sectionHeader}>
           <Text content={data.title} {...sectionSubTitle} />
-          <Heading content={data.subtitle} {...sectionTitle} />
+          <Heading content={data.subTitle} {...sectionTitle} />
         </Box>
         <Box className="row" {...row}>
           {model.children &&
@@ -53,7 +53,9 @@ const ServiceSection = ({
               let subData = feature.data.reduce(function(map, obj) {
                 map[obj.Key] = obj.Value;
                 return map;
-              }, {});
+                
+              },
+              {});
               return (
                 <Box className="col" {...col} key={index}>
                   <FeatureBlock

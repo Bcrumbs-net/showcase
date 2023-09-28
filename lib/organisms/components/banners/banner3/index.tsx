@@ -74,7 +74,7 @@ const BannerSection = ({
   return (
     <CustomBannerWrapper id={model.name}>
     <ParticlesComponent/>
-      <Container className='ContainerWrapper'>
+      <Container >
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <DiscountLabel>
