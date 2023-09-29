@@ -1,21 +1,22 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
+import React, { Fragment } from 'react';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
+import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
+import SocialProfile from '../../socialProfiles/socialProfile1';
 import {
-  Box,
-  Text,
-  Heading,
-  Image,
-  Container,
-  Button,
-} from "../../../../atoms";
-import SocialProfile from "../../socialProfiles/socialProfile1";
-import { FooterWrapper, Newsletter, FooterNav, FooterNavItem } from "./style";
-import { FOOTER_MENU } from "../../../../data/Portfolio/data";
-import { SOCIAL_PROFILES } from "../../../../data/Portfolio/data";
-import { heart } from "react-icons-kit/fa/heart";
-import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+  FooterWrapper,
+  Newsletter,
+  FooterNav,
+  FooterNavItem,
+} from './style';
+import { FOOTER_MENU } from '../../../../data/Portfolio/data';
+import { SOCIAL_PROFILES } from '../../../../data/Portfolio/data';
+import { heart } from 'react-icons-kit/fa/heart';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface FooterProps {
   row: object;
@@ -49,8 +50,8 @@ const Footer = ({
   autoMargin,
   model,
   isAR,
-  data,
-}: FooterProps) => {
+  data
+}:FooterProps) => {
   return (
     <FooterWrapper id={model.name}>
       <Container noGutter mobileGutter width="1200px">

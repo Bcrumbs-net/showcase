@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import Link from "next/link";
-import Tabs, { TabPane } from "rc-tabs";
-import TabContent from "rc-tabs/lib/TabContent";
-import ScrollableInkTabBar from "rc-tabs/lib/ScrollableInkTabBar";
-import { Box, Text, Heading, Image, Container } from "../../../../atoms";
-import { GlideCarousel, GlideSlide } from "../../../../molecules";
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import Link from 'next/link';
+import Tabs, { TabPane } from 'rc-tabs';
+import TabContent from 'rc-tabs/lib/TabContent';
+import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
+import { Box, Text, Heading, Image, Container } from '../../../../atoms';
+import { GlideCarousel, GlideSlide} from '../../../../molecules';
 import {
   PortfolioShowcaseWrapper,
   PortfolioShowcaseItem,
@@ -166,8 +166,8 @@ const PortfolioShowcase = ({
                               </Fragment>
                             );
                             return (
-                              <GlideSlide
-                                key={`${tabItem.name}-${portfolioItemObj.name}-${index}`}
+                              <GlideSlide 
+                                key={`${tabItem.name}-${portfolioItemObj.name}-${index}` }
                               >
                                 <PortfolioShowcaseItem>
                                   {portfolioItem.image ? (
