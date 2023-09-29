@@ -2,13 +2,30 @@ import React from 'react';
 import Link from 'next/link';
 import Icon from 'react-icons-kit';
 import { socialDribbbleOutline } from 'react-icons-kit/ionicons/socialDribbbleOutline';
-import { SocialProfileWrapper, SocialProfileItem } from './socialProfile.style';
+import { SocialProfileWrapper, SocialProfileItem } from './style';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
-const SocialProfile = ({ items, className, iconSize, model }) => {
+interface SocialProfileProps{
+  items:object; 
+  className:object; 
+  iconSize:object; 
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const SocialProfile = ({ 
+  items, 
+  className, 
+  iconSize, 
+  model ,
+  data,
+  isAR
+}:SocialProfileProps) => {
   const addAllClasses = ['social_profiles'];
 
   if (className) {
-    addAllClasses.push(className);
+    addAllClasses.push(className+"");
   }
 
   return (
@@ -39,4 +56,4 @@ const SocialProfile = ({ items, className, iconSize, model }) => {
   );
 };
 
-export default SocialProfile;
+export default withModelToDataObjProp(SocialProfile) ;
