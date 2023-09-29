@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/TabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
-import { Box, Text, Heading, Image, Container } from '../../../atoms';
-import { GlideCarousel, GlideSlide} from '../../../molecules';
+import { Box, Text, Heading, Image, Container } from '../../../../atoms';
+import { GlideCarousel, GlideSlide} from '../../../../molecules';
 import {
   PortfolioShowcaseWrapper,
   PortfolioShowcaseItem,
@@ -13,10 +13,26 @@ import {
   BuiltWith,
   PortfolioMeta,
   MetaItem,
-} from './portfolioShowcase.style';
-import { PrevButton, NextButton } from '../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
-import { PORTFOLIO_SHOWCASE } from '../../../data/Portfolio/data';
+} from './style';
+import { PrevButton, NextButton } from '../../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
+import { PORTFOLIO_SHOWCASE } from '../../../../data/Portfolio/data';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface PortfolioShowcaseProps{
+  sectionWrapper:object;
+  secTitleWrapper:object;
+  secTitle:object;
+  secDescription:object;
+  portfolioImage:object;
+  portfolioDetails:object;
+  portfolioDetailsFullWidth:object;
+  titleStyle:object;
+  detailsStyle:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const PortfolioShowcase = ({
   sectionWrapper,
   secTitleWrapper,
@@ -28,11 +44,9 @@ const PortfolioShowcase = ({
   titleStyle,
   detailsStyle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  data,
+  isAR
+}:PortfolioShowcaseProps) => {
   //Carousel Options
   const carouselOptions = {
     type: data.children && data.children.length > 1 ? 'carousel' : 'slider',
@@ -149,8 +163,8 @@ const PortfolioShowcase = ({
                               </Fragment>
                             );
                             return (
-                              <GlideSlide
-                                key={`${tabItem.name}-${portfolioItemObj.name}-${index}`}
+                              <GlideSlide 
+                                key={`${tabItem.name}-${portfolioItemObj.name}-${index}` }
                               >
                                 <PortfolioShowcaseItem>
                                   {portfolioItem.image ? (
@@ -289,4 +303,4 @@ PortfolioShowcase.defaultProps = {
   },
 };
 
-export default PortfolioShowcase;
+export default withModelToDataObjProp(PortfolioShowcase) ;

@@ -1,4 +1,4 @@
-import PortfolioContactSection from '../../../lib/containers/Portfolio/Contact';
+import PortfolioContactSection from '../../../lib/organisms/components/contacts/contact1';
 import FoodContactSection from '../../../lib/containers/Food/ContactUsSection';
 import AgencyTakeActionSection from '../../../lib/organisms/components/callToActions/callToAction1';
 

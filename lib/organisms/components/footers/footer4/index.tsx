@@ -1,18 +1,37 @@
 import React, { Fragment } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { Box, Text, Heading, Image, Container, Button } from '../../../atoms';
-import SocialProfile from '../SocialProfile';
+import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
+import SocialProfile from '../../socialProfiles/socialProfile1';
 import {
   FooterWrapper,
   Newsletter,
   FooterNav,
   FooterNavItem,
-} from './footer.style';
-import { FOOTER_MENU } from '../../../data/Portfolio/data';
-import { SOCIAL_PROFILES } from '../../../data/Portfolio/data';
+} from './style';
+import { FOOTER_MENU } from '../../../../data/Portfolio/data';
+import { SOCIAL_PROFILES } from '../../../../data/Portfolio/data';
 import { heart } from 'react-icons-kit/fa/heart';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface FooterProps{
+  row:object;
+  col:object;
+  titleStyle:object;
+  linkStyle:object;
+  newsletterButton:object;
+  copyrightStyle:object;
+  contactItem:object;
+  flexBox:object;
+  contactTitle:object;
+  contactInfo:object;
+  noMargin:object;
+  autoMargin:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const Footer = ({
   row,
   col,
@@ -27,11 +46,9 @@ const Footer = ({
   noMargin,
   autoMargin,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data
+}:FooterProps) => {
   return (
     <FooterWrapper id={model.name}>
       <Container noGutter mobileGutter width="1200px">
@@ -211,4 +228,4 @@ Footer.defaultProps = {
   },
 };
 
-export default Footer;
+export default withModelToDataObjProp(Footer);

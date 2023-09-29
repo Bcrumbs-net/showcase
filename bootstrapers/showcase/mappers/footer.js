@@ -1,4 +1,4 @@
-import PortfolioFooter from '../../../lib/containers/Portfolio/Footer';
+import PortfolioFooter from '../../../lib/organisms/components/footers/footer4';
 import SaaSFooter from '../../../lib/containers/Saas/Footer';
 import RideFooter from '../../../lib/containers/Ride/Footer';
 import CharityFooter from '../../../lib/containers/Charity/Footer';

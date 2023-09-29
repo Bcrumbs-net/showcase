@@ -1,12 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-icons-kit';
-import { Box, Text, Heading, Image, Button, Container } from '../../../atoms';
+import { Box, Text, Heading, Image, Button, Container } from '../../../../atoms';
 import { plus } from 'react-icons-kit/feather/plus';
-import { ButtonWrapper } from '../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
-import ProcessItem from './process.style';
-import { PROCESS_STEPS, SERVICE_LIST } from '../../../data/Portfolio/data';
+import { ButtonWrapper } from '../../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
+import ProcessItem from './style';
+import { PROCESS_STEPS, SERVICE_LIST } from '../../../../data/Portfolio/data';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface ProcessSectionProps{
+  sectionWrapper:object;
+  secTitleWrapper:object;
+  secTitle:object;
+  secDescription:object;
+  processRow:object;
+  processCol:object;
+  processImageStyle:object;
+  processTitleStyle:object;
+  processDescriptionStyle:object;
+  learningRow:object;
+  learningContentArea:object;
+  learningListArea:object;
+  learningTitle:object;
+  learningSubTitle:object;
+  learningDescription:object;
+  buttonWrapper:object;
+  buttonLabelStyle:object;
+  buttonStyle:object;
+  learningList:object;
+  listItem:object;
+  listText:object;
+  listTitle:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+  data2: Record<string, string>;
+  model2:GraphContent;
+}
 const ProcessSection = ({
   sectionWrapper,
   secTitleWrapper,
@@ -32,15 +63,10 @@ const ProcessSection = ({
   listTitle,
   model,
   model2,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
-  let data2 = model2.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data,
+  data2,
+}:ProcessSectionProps) => {
   return (
     <Box {...sectionWrapper} as="section" id={model.name}>
       <Container noGutter mobileGutter width="1200px">
@@ -48,7 +74,6 @@ const ProcessSection = ({
           <Heading {...secTitle} content={data.title} />
           <Text {...secDescription} content={data.subtitle} />
         </Box>
-
         <Box {...processRow}>
           {model.children &&
             model.children.map((itemObj, index) => {
@@ -310,4 +335,4 @@ ProcessSection.defaultProps = {
   },
 };
 
-export default ProcessSection;
+export default withModelToDataObjProp(ProcessSection);

@@ -3,12 +3,24 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import {
   Button, Drawer, NavbarWrapper, DrawerContext, Box, HamburgMenu, Container
-} from '../../../atoms';
-import { MENU_ITEMS } from '../../../data/Portfolio/data';
-import { ScrollSpyMenu, Logo } from '../../../molecules';
+} from '../../../../atoms';
+import { MENU_ITEMS } from '../../../../data/Portfolio/data';
+import { ScrollSpyMenu, Logo } from '../../../../molecules';
 import LogoImage from '../../../assets/image/portfolio/logo.png';
 import LogoImageAlt from '../../../assets/image/portfolio/logo-alt.png';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface NavbarProps{
+  navbarStyle:object;
+  logoStyle:object;
+  button:object;
+  row:object;
+  menuWrapper:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const Navbar = ({
   navbarStyle,
   logoStyle,
@@ -16,7 +28,9 @@ const Navbar = ({
   row,
   menuWrapper,
   model,
-}) => {
+  isAR,
+  data
+}:NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
 
   // Toggle drawer
@@ -25,10 +39,6 @@ const Navbar = ({
       type: 'TOGGLE',
     });
   };
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <NavbarWrapper {...navbarStyle} className="portfolio_navbar">
       <Container noGutter mobileGutter width="1200px">
@@ -130,4 +140,4 @@ Navbar.defaultProps = {
   },
 };
 
-export default Navbar;
+export default withModelToDataObjProp(Navbar) ;

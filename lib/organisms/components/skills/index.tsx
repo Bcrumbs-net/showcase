@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Line } from 'rc-progress';
 import { Icon } from 'react-icons-kit';
 import { Box, Text, Heading, Image, Container } from '../../../atoms';
-
 import {
   SkillItem,
   SkillDetails,
@@ -13,10 +12,27 @@ import {
   SkillIcon,
   SkillAbout,
   PortfolioLink,
-} from './skill.style';
+} from './style';
 import { SKILLS } from '../../../data/Portfolio/data';
 import { ic_thumb_up } from 'react-icons-kit/md/ic_thumb_up';
+import withModelToDataObjProp from '../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
+interface SkillSectionProps{
+  sectionWrapper:object;
+  secTitleWrapper:object;
+  secTitle:object;
+  secDescription:object;
+  row:object;
+  col:object;
+  skillTitle:object;
+  skillDescription:object;
+  skillSuccessRate:object;
+  successRateText:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const SkillSection = ({
   sectionWrapper,
   secTitleWrapper,
@@ -29,11 +45,9 @@ const SkillSection = ({
   skillSuccessRate,
   successRateText,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data
+}:SkillSectionProps) => {
   return (
     <Box {...sectionWrapper} as="section" id={model.name}>
       <Container noGutter mobileGutter width="1200px">
@@ -47,6 +61,8 @@ const SkillSection = ({
             model.children.map((itemObj, index) => {
               let item = itemObj.data.reduce(function(map, obj) {
                 map[obj.Key] = obj.Value;
+                console.log('item',map.successRate
+                )
                 return map;
               }, {});
               return (
@@ -95,8 +111,8 @@ const SkillSection = ({
                         <ProgressBar>
                           <Line
                             percent={item.successRate}
-                            strokeWidth="1.8"
-                            trailWidth="1.8"
+                            strokeWidth={1.8}
+                            trailWidth={1.8}
                             strokeColor="#3444f1"
                             trailColor="#e3e7f2"
                           />
@@ -200,4 +216,4 @@ SkillSection.defaultProps = {
   },
 };
 
-export default SkillSection;
+export default withModelToDataObjProp(SkillSection);
