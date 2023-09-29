@@ -1,4 +1,4 @@
-import PortfolioTestimonialSection from '../../../lib/containers/Portfolio/Testimonial';
+import PortfolioTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial4';
 import SaaSTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial3';
 import RideTestimonialSecion from '../../../lib/containers/Ride/TestimonialSection';
 import AgencyTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial1';

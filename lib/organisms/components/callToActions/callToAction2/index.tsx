@@ -1,10 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Heading, Image, Container, Button } from '../../../atoms';
+import { ButtonWrapper } from '../../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
+import { CallToActionWrapper } from './style';
+import { Text, Image,Box, Container, Heading, Button } from '../../../../atoms';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
-import { ButtonWrapper } from '../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
-import { CallToActionWrapper } from './callToAction.style';
-
+interface CallToActionProps{
+  sectionWrapper:object;
+  textArea:object;
+  buttonArea:object;
+  buttonStyle:object;
+  title:object;
+  description:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const CallToAction = ({
   sectionWrapper,
   textArea,
@@ -13,11 +25,9 @@ const CallToAction = ({
   title,
   description,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data
+}:CallToActionProps) => {
   return (
     <Box {...sectionWrapper} as="section" id={model.name}>
       <Container noGutter mobileGutter width="1200px">
@@ -85,4 +95,4 @@ CallToAction.defaultProps = {
   },
 };
 
-export default CallToAction;
+export default withModelToDataObjProp(CallToAction) ;

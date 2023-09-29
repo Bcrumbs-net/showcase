@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Heading, Image, Container, Button } from '../../../atoms';
-
-import { GlideCarousel, GlideSlide} from '../../../molecules';
-
-import { AWARDS } from '../../../data/Portfolio/data';
-
-import { PrevButton, NextButton } from '../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
+import { AWARDS } from '../../../../data/Portfolio/data';
 import {
   AwardSectionWrapper,
   AwardItem,
@@ -14,8 +8,27 @@ import {
   AwardeeLogo,
   AwardeeDetails,
   AwardImageWrapper,
-} from './awards.style';
+} from './style';
+import { PrevButton, NextButton } from '../../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
+import { Image,Container,Text, Box, Heading ,Button} from '../../../../atoms';
+import { GlideCarousel, GlideSlide } from '../../../../molecules';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface AwardsSectionProps{
+  secTitleWrapper:object;
+  secTitle:object;
+  secDescription:object;
+  awardLogoStyle:object;
+  awardNameStyle:object;
+  awardDetailsStyle:object;
+  awardeeLogoStyle:object;
+  awardeeNameStyle:object;
+  awardDateStyle:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const AwardsSection = ({
   secTitleWrapper,
   secTitle,
@@ -27,11 +40,9 @@ const AwardsSection = ({
   awardeeNameStyle,
   awardDateStyle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data
+}:AwardsSectionProps) => {
   //Carousel Options
   const carouselOptions = {
     type: data.children && data.children.length > 5 ? 'carousel' : 'slider',
@@ -53,7 +64,7 @@ const AwardsSection = ({
   };
   return (
     <AwardSectionWrapper id={model.name}>
-      <Container noGutter mobileGutter width="1200px">
+      <Container noGutter mobileGutter width={1200+"px"}>
         <Box {...secTitleWrapper}>
           <Heading {...secTitle} content={data.title} />
           <Text {...secDescription} content={data.subtitle} />
@@ -192,4 +203,4 @@ AwardsSection.defaultProps = {
   },
 };
 
-export default AwardsSection;
+export default withModelToDataObjProp(AwardsSection);

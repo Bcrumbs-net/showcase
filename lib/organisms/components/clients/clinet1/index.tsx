@@ -1,10 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Heading, Image, Container, Button } from '../../../atoms';
+import { CLIENTS } from '../../../../data/Portfolio/data';
+import { ClientsImage } from './style';
+import { Box, Container, Heading ,Image,Button,Text} from '../../../../atoms';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
-import { CLIENTS } from '../../../data/Portfolio/data';
-import { ClientsImage } from './clients.style';
-
+interface ClientsSectionProps{
+  sectionWrapper:object;
+  secTitleWrapper:object;
+  secTitle:object;
+  secDescription:object;
+  row:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const ClientsSection = ({
   sectionWrapper,
   secTitleWrapper,
@@ -12,11 +23,9 @@ const ClientsSection = ({
   secDescription,
   row,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  data,
+  isAR
+}:ClientsSectionProps) => {
   return (
     <Box {...sectionWrapper} as="section" id={model.name}>
       <Container noGutter width="1200px">
@@ -87,4 +96,4 @@ ClientsSection.defaultProps = {
   },
 };
 
-export default ClientsSection;
+export default withModelToDataObjProp(ClientsSection) ;

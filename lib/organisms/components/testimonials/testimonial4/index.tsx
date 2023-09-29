@@ -2,18 +2,32 @@ import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-icons-kit';
-import { Box, Text, Heading, Image, Container } from '../../../atoms';
-import { GlideCarousel, GlideSlide} from '../../../molecules';
-import { PrevButton, NextButton } from '../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
+import { Box, Text, Heading, Image, Container } from '../../../../atoms';
+import { GlideCarousel, GlideSlide} from '../../../../molecules';
+import { PrevButton, NextButton } from '../../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
 import {
   TestimonialWrapper,
   TestimonialItem,
   TestimonialHead,
   TestimonialThumb,
-} from './testimonial.style';
-import { TESTIMONIAL } from '../../../data/Portfolio/data';
+} from './style';
+import { TESTIMONIAL } from '../../../../data/Portfolio/data';
 import { twitter } from 'react-icons-kit/icomoon/twitter';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface TestimonialSectionProps{
+  sectionWrapper:object;
+  secTitleWrapper:object;
+  secTitle:object;
+  secDescription:object;
+  reviewStyle:object;
+  nameStyle:object;
+  designationStyle:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const TestimonialSection = ({
   sectionWrapper,
   secTitleWrapper,
@@ -23,11 +37,9 @@ const TestimonialSection = ({
   nameStyle,
   designationStyle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data
+}:TestimonialSectionProps) => {
   //Carousel Options
   const carouselOptions = {
     type: data.children && data.children.length > 5 ? 'carousel' : 'slider',
@@ -173,4 +185,4 @@ TestimonialSection.defaultProps = {
   },
 };
 
-export default TestimonialSection;
+export default withModelToDataObjProp(TestimonialSection);
