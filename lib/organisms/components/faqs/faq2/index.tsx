@@ -39,8 +39,8 @@ const FaqSection = ({
     <FaqSectionWrapper id={model.name}>
       <Container>
         <Box {...sectionHeader}>
-          <Text {...sectionTitle} content={data.title} />
-          <Heading {...sectionSubTitle} content={data.subTitle} />
+          <Text {...sectionSubTitle } content={data.subTitle} />
+          <Heading {...sectionTitle} content={data.title } />
         </Box>
         <Box className="row">
           <Accordion>
