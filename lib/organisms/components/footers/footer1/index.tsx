@@ -1,9 +1,10 @@
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import Link from 'next/link';
-import FooterWrapper, { List, ListItem } from './style';
 import { Container, Box, Heading ,Image,Text} from '../../../../atoms';
 import { Logo } from '../../../../molecules';
 import CopyrightSection from '../../navbars/navbar1/copyrights';
+import FooterWrapper from './style';
+import { List, ListItem } from './style';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 interface FooterProps {
   row?: object;

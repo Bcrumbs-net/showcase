@@ -1,5 +1,5 @@
 import PortfolioFooter from '../../../lib/containers/Portfolio/Footer';
-import SaaSFooter from '../../../lib/containers/Saas/Footer';
+import SaaSFooter from '../../../lib/organisms/components/footers/footer3';
 import RideFooter from '../../../lib/containers/Ride/Footer';
 import CharityFooter from '../../../lib/containers/Charity/Footer';
 import AgencyFooter from '../../../lib/organisms/components/footers/footer1';

@@ -1,5 +1,5 @@
 import PortfolioTestimonialSection from '../../../lib/containers/Portfolio/Testimonial';
-import SaaSTestimonialSection from '../../../lib/containers/Saas/TestimonialSection';
+import SaaSTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial3';
 import RideTestimonialSecion from '../../../lib/containers/Ride/TestimonialSection';
 import AgencyTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial1';
 import AppTestimonialSection from '../../../lib/containers/App/Testimonial';

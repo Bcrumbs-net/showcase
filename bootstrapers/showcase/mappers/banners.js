@@ -1,5 +1,5 @@
 import PortfolioBannerSection from '../../../lib/containers/Portfolio/Banner';
-import SaaSBannerSection from '../../../lib/containers/Saas/BannerSection';
+import SaaSBannerSection from '../../../lib/organisms/components/banners/banner3';
 import RideBannerSecion from '../../../lib/containers/Ride/Banner';
 import CharityBannerSection from '../../../lib/containers/Charity/BannerSection';
 import AgencyBannerSection from '../../../lib/organisms/components/banners/banner1';
