@@ -39,8 +39,8 @@ const FaqSection = ({
     <FaqSectionWrapper id={model.name}>
       <Container>
         <Box {...sectionHeader}>
-          <Text {...sectionSubTitle} content={data.title} />
-          <Heading {...sectionTitle} content={data.subTitle} />
+          <Text {...sectionTitle} content={data.title} />
+          <Heading {...sectionSubTitle} content={data.subTitle} />
         </Box>
         <Box className="row">
           <Accordion>
@@ -58,7 +58,6 @@ const FaqSection = ({
                   return (
                     <AccordionItem
                       key={index}
-                      //@ts-ignore
                       //@ts-ignore
                       expanded={faqSectionMap.expend == 'True'}
                     >

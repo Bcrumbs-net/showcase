@@ -155,7 +155,6 @@ const PricingSection = ({
                       <GlideSlide key={`pricing-table-${index}`}>
                         <PricingTable
                         //@ts-ignore
-                        //@ts-ignore
                           freePlan={pricingTable.freePlan}
                           className="pricing_table"
                         >
