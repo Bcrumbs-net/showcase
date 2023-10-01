@@ -64,7 +64,7 @@ const AwardsSection = ({
   };
   return (
     <AwardSectionWrapper id={model.name}>
-      <Container noGutter mobileGutter width={1200+"px"}>
+      <Container noGutter mobileGutter width="1200px">
         <Box {...secTitleWrapper}>
           <Heading {...secTitle} content={data.title} />
           <Text {...secDescription} content={data.subtitle} />
