@@ -1,5 +1,5 @@
 import PortfolioContactSection from '../../../lib/organisms/components/contacts/contact1';
-import FoodContactSection from '../../../lib/containers/Food/ContactUsSection';
+import FoodContactSection from '../../../lib/organisms/components/featuresLists/featureList7';
 import AgencyTakeActionSection from '../../../lib/organisms/components/callToActions/callToAction1';
 
 const resolveComponents = () => {

@@ -1,12 +1,20 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Heading, Container, Box } from '../../../atoms';
-import BannerSectionWrapper, { ImageWrapper } from './bannerSection.style';
-import { GlideCarousel, GlideSlide} from '../../../molecules';
-import { Button } from "../../../atoms";
-import { Image } from '../../../atoms';
+import { Heading,Button,Image, Container, Box } from '../../../../atoms';
+import BannerSectionWrapper, { ImageWrapper } from './style';
+import { GlideCarousel, GlideSlide} from '../../../../molecules';
 
-const FullScreenBannerSection = ({ btnWrapperStyle, btnStyle, model }) => {
+interface FullScreenBannerSectionProps{
+  btnWrapperStyle:object; 
+  btnStyle:object; 
+  model: any;
+  isAR: boolean;
+}
+const FullScreenBannerSection = ({ 
+  btnWrapperStyle, 
+  btnStyle, 
+  model,
+}:FullScreenBannerSectionProps) => {
   // Glide js options
   const glideOptions = {
     type: 'slider',
@@ -46,6 +54,7 @@ const FullScreenBannerSection = ({ btnWrapperStyle, btnStyle, model }) => {
                   return map;
                 }, {});
                 return (
+                  //@ts-ignore
                   <GlideSlide key={index}>
                     <ImageWrapper>
                       <a href={sliderMap.url}>

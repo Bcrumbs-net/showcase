@@ -1,15 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal/Fade';
-import { Box, Container } from '../../../atoms';
-import { Text } from '../../../atoms';
-import { Heading } from '../../../atoms';
-import { Card } from "../../../atoms";
-import { Image } from '../../../atoms';
-import { Button } from "../../../atoms";
-import { FeatureBlock } from '../../../molecules';
-import AboutUsSectionWrapper from './aboutUsSection.style';
+import AboutUsSectionWrapper from './style';
+import { Container, Box, Heading, Card, Button ,Image,Text} from '../../../../atoms';
+import { FeatureBlock } from '../../../../molecules';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface AboutUsSectionProps {
+  row?: object;
+  col35?: object;
+  col65?: object;
+  featureCol?: object;
+  title?: object;
+  description?: object;
+  sectionHeader?: object;
+  textArea?: object;
+  featureTitle?: object;
+  sectionTitle?: object;
+  btnStyle?: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 
 const AboutUsSection = ({
   row,
@@ -24,11 +37,8 @@ const AboutUsSection = ({
   btnStyle,
   model,
   isAR,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  data,
+}:AboutUsSectionProps) => {
   return (
     <AboutUsSectionWrapper id={model.name}>
       <Container>
@@ -37,7 +47,9 @@ const AboutUsSection = ({
         </Box>
         <Box className="row" {...row}>
           <Box className="col" {...col35}>
-            <Card className="group-gallery">
+            <Card 
+            //@ts-ignore
+            className="group-gallery">
               <Fade bottom delay={90}>
                 <Image src={data.image} alt="Feature Image" />
               </Fade>
@@ -156,4 +168,4 @@ AboutUsSection.defaultProps = {
   },
 };
 
-export default AboutUsSection;
+export default withModelToDataObjProp(AboutUsSection);

@@ -1,14 +1,16 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import Fade from 'react-reveal/Fade';
-import { Box, Heading, Image, Container, Button } from '../../../atoms';
-import { GlideCarousel, GlideSlide} from '../../../molecules';
-import ProductModal from '../ProductModal';
+import { Box, Heading, Image, Container, Button } from '../../../../atoms';
+import { GlideCarousel, GlideSlide} from '../../../../molecules';
+import ProductModal from '../../products/product1';
 import SectionWrapper, {
   TeamCard,
   ImageWrapper,
   CarouselWrapper,
-} from './blogSliderSection.style';
+} from './style';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 // import { openModal, closeModal } from '@redq/reuse-modal';
 
 // Default close button for modal
@@ -67,6 +69,16 @@ const glideOptions = {
   },
 };
 
+interface BlogSliderSectionProps{
+  sectionHeader:object;
+  sectionTitle:object;
+  button:object;
+  blogTitle:object;
+  blogMeta:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const BlogSliderSection = ({
   sectionHeader,
   sectionTitle,
@@ -75,11 +87,8 @@ const BlogSliderSection = ({
   blogMeta,
   model,
   isAR,
-}) => {
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  data
+}:BlogSliderSectionProps) => {
   return (
     <SectionWrapper id={model.name}>
       <Container>
@@ -120,6 +129,7 @@ const BlogSliderSection = ({
                       },
                       {});
                       return (
+                        //@ts-ignore
                         <GlideSlide key={`project_key${blogSectionMap.id}`}>
                           <TeamCard className="team_card">
                             <ImageWrapper
@@ -191,4 +201,4 @@ BlogSliderSection.defaultProps = {
   },
 };
 
-export default BlogSliderSection;
+export default withModelToDataObjProp(BlogSliderSection);

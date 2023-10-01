@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image } from '../../../atoms';
-import ProductModalWrapper from './productModal.style';
+import { Image } from '../../../../atoms';
+import ProductModalWrapper from './style';
 import 'rc-tabs/assets/index.css';
 
 const ProductModal = ({ imagePath }) => {

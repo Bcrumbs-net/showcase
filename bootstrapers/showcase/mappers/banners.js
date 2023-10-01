@@ -4,7 +4,7 @@ import RideBannerSecion from '../../../lib/containers/Ride/Banner';
 import CharityBannerSection from '../../../lib/containers/Charity/BannerSection';
 import AgencyBannerSection from '../../../lib/organisms/components/banners/banner1';
 import AppBannerSection from '../../../lib/organisms/components/banners/banner2';
-import FoodFullScreenBanner from '../../../lib/containers/Food/FullScreenBanner';
+import FoodFullScreenBanner from '../../../lib/organisms/components/banners/banner5';
 import CryptoBannerSection from '../../../lib/organisms/components/banners/banner6';
 import SaaSClassicBannerSection from "../../../lib/organisms/components/banners/banner7";
 

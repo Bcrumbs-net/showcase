@@ -1,14 +1,29 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Heading, Image, Container, Button } from '../../../atoms';
-import data from '../../../data/Agency';
-
-import { GlideCarousel, GlideSlide} from '../../../molecules';
+import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
+import data from '../../../../data/Agency';
+import { GlideCarousel, GlideSlide} from '../../../../molecules';
 import TestimonialSectionWrapper, {
   TextWrapper,
   ImageWrapper,
-} from './newsSection.style';
+} from './style';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface NewsSectionProps{
+  sectionHeader:object;
+  sectionTitle:object;
+  sectionSubTitle:object;
+  btnWrapperStyle:object;
+  commentStyle:object;
+  nameStyle:object;
+  btnStyle:object;
+  designationStyle:object;
+  testimonialUrl:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const NewsSection = ({
   sectionHeader,
   sectionTitle,
@@ -20,7 +35,8 @@ const NewsSection = ({
   designationStyle,
   testimonialUrl,
   model,
-}) => {
+  data
+}:NewsSectionProps) => {
   // Glide js options
   const glideOptions = {
     type: 'carousel',
@@ -28,10 +44,6 @@ const NewsSection = ({
     perView: 1,
     animationDuration: 700,
   };
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <TestimonialSectionWrapper id={model.name}>
       <Container>
@@ -68,6 +80,7 @@ const NewsSection = ({
                   return map;
                 }, {});
                 return (
+                  //@ts-ignore
                   <GlideSlide key={index}>
                     <Fragment>
                       <TextWrapper>
@@ -133,7 +146,7 @@ NewsSection.defaultProps = {
   // client comment style
   commentStyle: {
     color: '#343d48',
-    fontWeight: '300',
+    fontWeight: '400',
     fontSize: ['20px', '24px'],
     lineHeight: '1.67',
     mb: '47px',
@@ -172,4 +185,4 @@ NewsSection.defaultProps = {
   },
 };
 
-export default NewsSection;
+export default withModelToDataObjProp(NewsSection);

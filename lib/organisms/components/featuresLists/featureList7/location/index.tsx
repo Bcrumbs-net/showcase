@@ -1,13 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Heading, Image, Container, Button, Logo } from '../../../atoms';
-import LocationSectionWrapper from './locationSection.style';
+import { Box, Text, Heading, Image, Container, Button} from '../../../../../atoms';
+import LocationSectionWrapper from './style';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
-const FullScreenLocationSection = ({ sectionHeader, sectionTitle, model }) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+interface FullScreenLocationSectionProps{
+  sectionHeader:object; 
+  sectionTitle:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const FullScreenLocationSection = ({ 
+  sectionHeader, 
+  sectionTitle, 
+  model,
+  data
+}:FullScreenLocationSectionProps) => {
   return (
     <LocationSectionWrapper id={model.name}>
       <Container>
@@ -51,4 +61,4 @@ FullScreenLocationSection.defaultProps = {
   },
 };
 
-export default FullScreenLocationSection;
+export default withModelToDataObjProp(FullScreenLocationSection);

@@ -1,4 +1,4 @@
-import TabbedProductsSection from '../../../lib/containers/Food/TabbedProductsSection';
+import TabbedProductsSection from '../../../lib/organisms/components/products/product1/tabbedproducts';
 import SaasClassicUpdateScreen from "../../../lib/organisms/components/tabsGallerys/tabsGallery1";
 
 const resolveComponents = () => {
