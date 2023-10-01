@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Line } from 'rc-progress';
 import { Icon } from 'react-icons-kit';
-import { Box, Text, Heading, Image, Container } from '../../../atoms';
+import { Box, Text, Heading, Image, Container } from '../../../../atoms';
 import {
   SkillItem,
   SkillDetails,
@@ -13,9 +13,9 @@ import {
   SkillAbout,
   PortfolioLink,
 } from './style';
-import { SKILLS } from '../../../data/Portfolio/data';
+import { SKILLS } from '../../../../data/Portfolio/data';
 import { ic_thumb_up } from 'react-icons-kit/md/ic_thumb_up';
-import withModelToDataObjProp from '../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface SkillSectionProps{
@@ -61,8 +61,6 @@ const SkillSection = ({
             model.children.map((itemObj, index) => {
               let item = itemObj.data.reduce(function(map, obj) {
                 map[obj.Key] = obj.Value;
-                console.log('item',map.successRate
-                )
                 return map;
               }, {});
               return (
