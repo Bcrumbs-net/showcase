@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Textarea, Text, Input, Container } from '../../../atoms';
+import { Box, Textarea, Text, Input, Container } from '../../../../atoms';
 import SectionWrapper, {
   ContentArea,
   Heading,
   ButtonGroup,
   ContactForm,
   SubmitButton,
-} from './contactSection.style';
-import { paymentPolicy, currencyOptions } from '../../../data/Charity';
+} from './style';
+import { paymentPolicy, currencyOptions } from '../../../../data/Charity';
 import heartImage from '../../../assets/image/charity/heart-alt.svg';
 import { Icon } from 'react-icons-kit';
 import { mapMarker } from 'react-icons-kit/fa/mapMarker';
@@ -18,18 +18,28 @@ import { instagram } from 'react-icons-kit/fa/instagram';
 import { twitter } from 'react-icons-kit/fa/twitter';
 import { youtube } from 'react-icons-kit/fa/youtube';
 import { envelope } from 'react-icons-kit/fa/envelope';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
-const ContactSection = ({ row, col, model }) => {
+interface ContactSectionProps{
+  row:object; 
+  col:object; 
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const ContactSection = ({
+   row, 
+   col, 
+   model,
+   data 
+  }:ContactSectionProps) => {
   const initialValues = {
     Contact_us_Name: '',
     Contact_us_Email: '',
     Contact_us_Phone: '',
     Contact_us_Message: '',
   };
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   let branchItems = [];
   if (model.children && model.children.length > 0) {
     branchItems = model.children.map((branchData, index) => {
@@ -246,4 +256,4 @@ ContactSection.defaultProps = {
   },
 };
 
-export default ContactSection;
+export default withModelToDataObjProp(ContactSection) ;

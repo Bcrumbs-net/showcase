@@ -1,6 +1,6 @@
 import SaaSVisitorSection from '../../../lib/containers/Saas/VisitorSection';
 import AgencyAboutUsSection from '../../../lib/organisms/components/featuresLists/featureList2';
-import FoodAboutUsSection from '../../../lib/containers/Food/AboutUsSection';
+import FoodAboutUsSection from '../../../lib/organisms/components/featuresLists/featureList6';
 import SaaSClassicPartnerSection from "../../../lib/containers/SaasClassic/Partner";
 import CryptoControlSections from "../../../lib/containers/Crypto/ControlSection";
 import CryptoScalableSections from "../../../lib/containers/Crypto/ScalableSection";
