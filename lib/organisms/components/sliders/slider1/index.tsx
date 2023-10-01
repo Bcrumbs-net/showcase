@@ -84,7 +84,7 @@ const BlogSliderSection = ({
               <Fragment>
                 {model.children &&
                   model.children.map((blogSection, index) => {
-                    let blogSectionMap = blogSection.data.reduce(function (
+                    const blogSectionMap: Record<string, string> = blogSection.data.reduce(function (
                       map,
                       obj
                     ) {
@@ -127,7 +127,7 @@ const BlogSliderSection = ({
                               title={blogSectionMap.btnText}
                               {...btnStyle}
                               onClick={() => {
-                                window.location = blogSectionMap.postLink;
+                                window.location.replace(blogSectionMap.postLink);
                               }}
                             />
                           ) : null}

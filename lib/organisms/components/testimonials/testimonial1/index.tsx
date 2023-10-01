@@ -75,7 +75,7 @@ const TestimonialSection = ({
           <Fragment>
             {model.children &&
               model.children.map((testimonial, index) => {
-                let testimonialMap = testimonial.data.reduce(function (
+                const testimonialMap: Record<string, string> = testimonial.data.reduce(function (
                   map,
                   obj
                 ) {
@@ -83,7 +83,9 @@ const TestimonialSection = ({
                   return map;
                 },
                 {});
+
                 return (
+                  //@ts-ignore
                   <GlideSlide key={index}>
                     <Fragment>
                       <TextWrapper>

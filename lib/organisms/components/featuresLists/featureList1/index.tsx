@@ -38,12 +38,8 @@ const QualitySection = ({
   featureDescription,
   iconStyle,
   model,
+  data
 }: QualitySectionProps) => {
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
-
   return (
     <QualitySectionWrapper id={model.name}>
       <Container>
@@ -57,7 +53,7 @@ const QualitySection = ({
         </Box>
         <Box className="row" {...row} {...textArea}>
           {model.children.map((qualitySection, index) => {
-            let qualitySectionMap = qualitySection.data.reduce(function (
+            const qualitySectionMap: Record<string, string> = qualitySection.data.reduce(function (
               map,
               obj
             ) {

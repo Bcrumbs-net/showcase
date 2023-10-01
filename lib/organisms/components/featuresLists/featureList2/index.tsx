@@ -28,11 +28,8 @@ const AboutUsSection = ({
   btnStyle,
   model,
   isAR,
+  data,
 }: IAboutUsSectionProps) => {
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <AboutUsSectionWrapper id={model.name}>
       <Box className="row" {...row}>
@@ -78,7 +75,7 @@ const AboutUsSection = ({
           >
             {model.children &&
               model.children.map((feature, index) => {
-                let featureMap = feature.data.reduce(function (map, obj) {
+                const featureMap: Record<string, string> = feature.data.reduce(function (map, obj) {
                   map[obj.Key] = obj.Value;
                   return map;
                 }, {});
@@ -106,7 +103,7 @@ const AboutUsSection = ({
                 title={data.btnText}
                 {...btnStyle}
                 onClick={() => {
-                  window.location = data.btnUrl;
+                  window.location.replace(data.btnUrl);
                 }}
               />
             ) : null}

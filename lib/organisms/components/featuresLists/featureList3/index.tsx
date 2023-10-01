@@ -34,11 +34,8 @@ const FeatureSection = ({
   blockWrapperStyle,
   model,
   isAR,
+  data,
 }: FeatureSectionProps) => {
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <FeatureSectionWrapper id={model.name}>
       <Container>
@@ -49,7 +46,7 @@ const FeatureSection = ({
         <Box className="row" {...row}>
           {model.children &&
             model.children.map((feature, index) => {
-              let subData = feature.data.reduce(function (map, obj) {
+              const subData: Record<string, string> = feature.data.reduce(function (map, obj) {
                 map[obj.Key] = obj.Value;
                 return map;
               }, {});

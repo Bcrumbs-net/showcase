@@ -46,7 +46,7 @@ const TeamSection = ({
         </Box>
         <Box className="row" {...row}>
           {model.children.map((team, index) => {
-            let teamMap = team.data.reduce(function (map, obj) {
+            const teamMap: Record<string, string> = team.data.reduce(function (map, obj) {
               map[obj.Key] = obj.Value;
               return map;
             }, {});
@@ -107,7 +107,7 @@ const TeamSection = ({
                           team.children
                             .filter((m) => m.online)
                             .map((social, subIndex) => {
-                              let socialMap = social.data.reduce(function (
+                              const socialMap: Record<string, string> = social.data.reduce(function (
                                 map,
                                 obj
                               ) {

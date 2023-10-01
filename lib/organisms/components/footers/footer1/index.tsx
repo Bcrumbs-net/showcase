@@ -57,7 +57,7 @@ const Footer = ({
               model.children
                 .filter((m) => m.online)
                 .map((footer, index) => {
-                  const footerItemMap = footer.data.reduce(function (map, obj) {
+                  const footerItemMap: Record<string, string> = footer.data.reduce(function (map, obj) {
                     map[obj.Key] = obj.Value;
                     return map;
                   }, {});
@@ -72,7 +72,7 @@ const Footer = ({
                       <List>
                         {footer.children &&
                           footer.children.map((menuItems, subIndex) => {
-                            let menuItemMap = menuItems.data.reduce(function (
+                            const menuItemMap: Record<string, string> = menuItems.data.reduce(function (
                               map,
                               obj
                             ) {
