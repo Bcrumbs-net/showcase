@@ -1,4 +1,4 @@
-import PortfolioSkillSection from '../../../lib/organisms/components/skills';
+import PortfolioSkillSection from '../../../lib/organisms/components/skills/skill1';
 
 const resolveComponents = () => {
   return {
