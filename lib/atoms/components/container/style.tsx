@@ -4,7 +4,7 @@ const ContainerWrapper = styled.div<{
   fullWidth?: boolean;
   noGutter?: boolean;
   mobileGutter?: boolean;
-  width?: number;
+  width?: string;
 }>`
   margin-left: auto;
   margin-right: auto;

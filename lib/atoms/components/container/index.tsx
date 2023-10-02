@@ -6,7 +6,7 @@ export interface ContainerProps {
   mobileGutter?: boolean;
   noGutter?: boolean;
   fullWidth?: boolean;
-  width?: number;
+  width?: string;
   id?: string;
 }
 
