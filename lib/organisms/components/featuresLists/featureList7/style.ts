@@ -8,7 +8,7 @@ const SectionWrapper = styled.div`
   margin: 81px 0;
   background-color: ${themeGet('colors.heading', '#333333')};
   background-image: url(${props =>
-    props.background ? props.background : mapImage});
+    props.background ? props.background : mapImage.src});
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
