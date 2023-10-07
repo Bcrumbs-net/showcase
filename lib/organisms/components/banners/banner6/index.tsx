@@ -1,15 +1,29 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Container, Text, Heading, Button, Image } from '../../../atoms';
-import { FeatureBlock } from '../../../molecules';
-
+import { Box, Container, Text, Heading, Button, Image } from '../../../../atoms';
+import { FeatureBlock } from '../../../../molecules';
 import Particles from 'react-particles-js';
 import { Icon } from 'react-icons-kit';
 import { socialTwitter } from 'react-icons-kit/ionicons/socialTwitter';
 import { facebook2 } from 'react-icons-kit/icomoon/facebook2';
 import BannerBG from '../../../assets/image/crypto/white_bg1.svg';
-import BannerWrapper, { BgImageWrapper } from './bannerSection.style';
+import BannerWrapper, { BgImageWrapper } from './style';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface BannerSectionProps{
+  row:object;
+  col:object;
+  title:object;
+  btnStyle:object;
+  description:object;
+  discountText:object;
+  discountAmount:object;
+  outlineBtnStyle:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const BannerSection = ({
   row,
   col,
@@ -20,11 +34,9 @@ const BannerSection = ({
   discountAmount,
   outlineBtnStyle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data
+}:BannerSectionProps) => {
   const ButtonGroup = () => (
     <Fragment>
       <Button title={data.image_button_label} {...btnStyle} />
@@ -134,4 +146,4 @@ BannerSection.defaultProps = {
   },
 };
 
-export default BannerSection;
+export default withModelToDataObjProp(BannerSection) ;

@@ -1,16 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Heading, Text, Box, Container } from '../../../atoms';
-import { GlideCarousel, GlideSlide } from '../../../molecules';
+import { Image, Heading, Text, Box, Container } from '../../../../../atoms';
+import { GlideCarousel, GlideSlide } from '../../../../../molecules';
 import TestimonialSecWrapper, {
   ImageWrapper,
   TestimonialItem,
-  BgImageWrapper,
-} from './bannerSlider.style';
+} from './style';
+import { TESTIMONIALS } from '../../../../../data/Crypto';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
-import { TESTIMONIALS } from '../../../data/Crypto';
-
-const TestimonialSection = ({
+interface BannerSliderSectionProps{
+  secTitleWrapper:object;
+  secText:object;
+  secHeading:object;
+  reviewStyle:object;
+  TestimonialMeta:object;
+  nameStyle:object;
+  designationStyle:object;
+  arrowStyle:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const BannerSliderSection = ({
   secTitleWrapper,
   secText,
   secHeading,
@@ -20,12 +33,9 @@ const TestimonialSection = ({
   designationStyle,
   arrowStyle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
-
+  isAR,
+  data
+}:BannerSliderSectionProps) => {
   //Carousel Options
   const carouselOptions = {
     type: 'carousel',
@@ -87,7 +97,7 @@ const TestimonialSection = ({
   );
 };
 
-TestimonialSection.propTypes = {
+BannerSliderSection.propTypes = {
   secTitleWrapper: PropTypes.object,
   secHeading: PropTypes.object,
   secText: PropTypes.object,
@@ -98,7 +108,7 @@ TestimonialSection.propTypes = {
   arrowStyle: PropTypes.object,
 };
 
-TestimonialSection.defaultProps = {
+BannerSliderSection.defaultProps = {
   secTitleWrapper: {
     mb: ['40px', '40px', '50px', '75px'],
   },
@@ -148,4 +158,4 @@ TestimonialSection.defaultProps = {
   },
 };
 
-export default TestimonialSection;
+export default withModelToDataObjProp(BannerSliderSection);
