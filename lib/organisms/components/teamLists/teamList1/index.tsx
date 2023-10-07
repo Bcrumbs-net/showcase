@@ -46,10 +46,11 @@ const TeamSection = ({
         </Box>
         <Box className="row" {...row}>
           {model.children.map((team, index) => {
-            const teamMap: Record<string, string> = team.data.reduce(function (map, obj) {
-              map[obj.Key] = obj.Value;
-              return map;
-            }, {});
+              const teamMap: Record<string,string> =
+              team.data.reduce(function (map, obj) 
+              { map[obj.Key] =  obj.Value;
+              return map; 
+              }, {});
             return (
               <Box
                 className="col"

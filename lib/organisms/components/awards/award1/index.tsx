@@ -87,9 +87,10 @@ const AwardsSection = ({
           <>
             {model.children &&
               model.children.map((awardObj, index) => {
-                let award = awardObj.data.reduce(function(map, obj) {
-                  map[obj.Key] = obj.Value;
-                  return map;
+                const award: Record<string,string> =
+                awardObj.data.reduce(function (map, obj) 
+                { map[obj.Key] =  obj.Value;
+                return map; 
                 }, {});
                 return (
                   <GlideSlide key={`${awardObj.name}-award-item-${index}`}>

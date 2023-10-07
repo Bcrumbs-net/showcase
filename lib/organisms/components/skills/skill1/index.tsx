@@ -59,9 +59,10 @@ const SkillSection = ({
         <Box {...row}>
           {model.children &&
             model.children.map((itemObj, index) => {
-              let item = itemObj.data.reduce(function(map, obj) {
-                map[obj.Key] = obj.Value;
-                return map;
+              const item: Record<string,string> =
+              itemObj.data.reduce(function (map, obj) 
+              { map[obj.Key] =  obj.Value;
+              return map; 
               }, {});
               return (
                 <Box {...col} key={`skill-item-${index}`}>

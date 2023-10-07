@@ -8,7 +8,7 @@ import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/w
 
 interface SocialProfileProps{
   items:object; 
-  className:object; 
+  className:string; 
   iconSize:object; 
   model: GraphContent;
   isAR: boolean;
@@ -25,16 +25,16 @@ const SocialProfile = ({
   const addAllClasses = ['social_profiles'];
 
   if (className) {
-    addAllClasses.push(className+"");
+    addAllClasses.push(className);
   }
 
   return (
     <SocialProfileWrapper className={addAllClasses.join(' ')}>
       {model.children &&
         model.children.map((item, index) => {
-          let socialLink = item.data.reduce(function (map, obj) {
-            map[obj.Key] = obj.Value;
-            return map;
+          const socialLink: Record<string,string> =
+           item.data.reduce(function (map, obj) { map[obj.Key] =  obj.Value;
+           return map; 
           }, {});
           return (
             <SocialProfileItem
