@@ -84,9 +84,10 @@ const TestimonialSection = ({
             <>
               {model.children &&
                 model.children.map((itemObj, index) => {
-                  let item = itemObj.data.reduce(function(map, obj) {
-                    map[obj.Key] = obj.Value;
-                    return map;
+                  const item: Record<string,string> =
+                  itemObj.data.reduce(function (map, obj) 
+                  { map[obj.Key] =  obj.Value;
+                  return map; 
                   }, {});
                   return (
                     <GlideSlide key={`${model.name}-testimonial-item-${index}`}>

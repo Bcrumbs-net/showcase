@@ -56,7 +56,7 @@ const BlogSliderSection = ({
   };
   return (
     <SectionWrapper id={model.name}>
-      <Container width={1360}>
+      <Container width="1360">
         <Box {...sectionHeader}>
           <Heading content={data.sectionTitle} {...sectionTitle} />
         </Box>
@@ -84,14 +84,11 @@ const BlogSliderSection = ({
               <Fragment>
                 {model.children &&
                   model.children.map((blogSection, index) => {
-                    let blogSectionMap = blogSection.data.reduce(function (
-                      map,
-                      obj
-                    ) {
-                      map[obj.Key] = obj.Value;
-                      return map;
-                    },
-                    {});
+                    const blogSectionMap: Record<string,string> =
+                    blogSection.data.reduce(function (map, obj) 
+                    { map[obj.Key] =  obj.Value;
+                    return map; 
+                    }, {});
                     return (
                        // @ts-ignore TypeScript is complaining
                       <GlideSlide key={`project_key${blogSectionMap.id}`}>

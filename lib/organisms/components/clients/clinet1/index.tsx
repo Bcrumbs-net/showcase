@@ -36,9 +36,10 @@ const ClientsSection = ({
         <Box {...row}>
           {model.children &&
             model.children.map((clientModel, index) => {
-              let client = clientModel.data.reduce(function(map, obj) {
-                map[obj.Key] = obj.Value;
-                return map;
+              const client: Record<string,string> =
+              clientModel.data.reduce(function (map, obj) 
+              { map[obj.Key] =  obj.Value;
+              return map; 
               }, {});
               return (
                 <ClientsImage key={`${model.name}-client-${index}`}>

@@ -49,9 +49,10 @@ const FeatureSection = ({
         <Box className="row" {...row}>
           {model.children &&
             model.children.map((feature, index) => {
-              let subData = feature.data.reduce(function (map, obj) {
-                map[obj.Key] = obj.Value;
-                return map;
+              const subData: Record<string,string> =
+              feature.data.reduce(function (map, obj) 
+              { map[obj.Key] =  obj.Value;
+              return map; 
               }, {});
               return (
                 <Box className="col" {...col} key={`feature-${index}`}>

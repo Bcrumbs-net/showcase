@@ -101,13 +101,11 @@ const PortfolioShowcase = ({
                       <>
                         {tabItem.children &&
                           tabItem.children.map((portfolioItemObj, index) => {
-                            let portfolioItem = portfolioItemObj.data.reduce(
-                              function(map, obj) {
-                                map[obj.Key] = obj.Value;
-                                return map;
-                              },
-                              {}
-                            );
+                          const portfolioItem: Record<string,string> =
+                          portfolioItemObj.data.reduce(function (map, obj) 
+                          { map[obj.Key] =  obj.Value;
+                          return map; 
+                          }, {});
                             const imageBoxContent = (
                               <Image
                                 src={portfolioItem.image}
