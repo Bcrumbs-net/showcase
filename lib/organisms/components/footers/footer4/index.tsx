@@ -108,9 +108,10 @@ const Footer = ({
                 model.children
                   .filter(m => m.online)
                   .map((itemObj, index) => {
-                    let item = itemObj.data.reduce(function(map, obj) {
-                      map[obj.Key] = obj.Value;
-                      return map;
+                    const item: Record<string,string> =
+                    itemObj.data.reduce(function (map, obj) 
+                    { map[obj.Key] =  obj.Value;
+                    return map; 
                     }, {});
                     return (
                       <FooterNavItem key={`footer-nav-item-${index}`}>
