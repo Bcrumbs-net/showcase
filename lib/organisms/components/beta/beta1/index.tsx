@@ -43,7 +43,7 @@ const BetaSection = ({
             {BETA_FEATURE.map((item, index) => (
               <Fade up key={`feature-${index}`}>
                 <div className="featureWrapper">
-                  <Image src={item.image} alt={item.title} />
+                  <Image src={item.image.src} alt={item.title} />
                   <Box className="contextPortion">
                     <Heading
                       as="h3"

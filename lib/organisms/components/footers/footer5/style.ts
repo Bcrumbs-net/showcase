@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import FooterIamge from '../../../assets/image/crypto/footer.png';
+import FooterIamge from '../../../../assets/image/crypto/footer.png';
 
 const FooterWrapper = styled.section`
   padding: 140px 0;
-  background-image: url(${FooterIamge});
+  background-image: url(${FooterIamge.src});
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;

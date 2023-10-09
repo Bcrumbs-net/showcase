@@ -9,11 +9,10 @@ import {
   Image,
 } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";
-import Particles from "react-particles-js";
 import { Icon } from "react-icons-kit";
 import { socialTwitter } from "react-icons-kit/ionicons/socialTwitter";
 import { facebook2 } from "react-icons-kit/icomoon/facebook2";
-import BannerBG from "../../../assets/image/crypto/white_bg1.svg";
+import BannerBG from "../../../../assets/image/crypto/white_bg1.svg";
 import BannerWrapper, { BgImageWrapper } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
@@ -80,9 +79,8 @@ const BannerSection = ({
       id="banner_section"
       style={{ backgroundImage: `url(${data.image})` }}
     >
-      <Particles />
       <BgImageWrapper>
-        <Image src={BannerBG} alt="banner background" />
+        <Image src={BannerBG.src} alt="banner background" />
       </BgImageWrapper>
       <Container>
         <Box className="row" {...row}>
