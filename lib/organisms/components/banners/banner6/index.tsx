@@ -1,25 +1,32 @@
-import { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { Box, Container, Text, Heading, Button, Image } from '../../../../atoms';
-import { FeatureBlock } from '../../../../molecules';
-import Particles from 'react-particles-js';
-import { Icon } from 'react-icons-kit';
-import { socialTwitter } from 'react-icons-kit/ionicons/socialTwitter';
-import { facebook2 } from 'react-icons-kit/icomoon/facebook2';
-import BannerBG from '../../../assets/image/crypto/white_bg1.svg';
-import BannerWrapper, { BgImageWrapper } from './style';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { Fragment } from "react";
+import PropTypes from "prop-types";
+import {
+  Box,
+  Container,
+  Text,
+  Heading,
+  Button,
+  Image,
+} from "../../../../atoms";
+import { FeatureBlock } from "../../../../molecules";
+import Particles from "react-particles-js";
+import { Icon } from "react-icons-kit";
+import { socialTwitter } from "react-icons-kit/ionicons/socialTwitter";
+import { facebook2 } from "react-icons-kit/icomoon/facebook2";
+import BannerBG from "../../../assets/image/crypto/white_bg1.svg";
+import BannerWrapper, { BgImageWrapper } from "./style";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-interface BannerSectionProps{
-  row:object;
-  col:object;
-  title:object;
-  btnStyle:object;
-  description:object;
-  discountText:object;
-  discountAmount:object;
-  outlineBtnStyle:object;
+interface BannerSectionProps {
+  row: object;
+  col: object;
+  title: object;
+  btnStyle: object;
+  description: object;
+  discountText: object;
+  discountAmount: object;
+  outlineBtnStyle: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
@@ -35,8 +42,8 @@ const BannerSection = ({
   outlineBtnStyle,
   model,
   isAR,
-  data
-}:BannerSectionProps) => {
+  data,
+}: BannerSectionProps) => {
   const ButtonGroup = () => (
     <Fragment>
       <Button title={data.image_button_label} {...btnStyle} />
@@ -106,44 +113,44 @@ BannerSection.propTypes = {
 BannerSection.defaultProps = {
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: '-15px',
-    mr: '-15px',
-    alignItems: 'center',
+    flexWrap: "wrap",
+    ml: "-15px",
+    mr: "-15px",
+    alignItems: "center",
   },
   col: {
-    pr: '15px',
-    pl: '15px',
-    width: ['100%', '100%', '100%', '60%', '65%'],
+    pr: "15px",
+    pl: "15px",
+    width: ["100%", "100%", "100%", "60%", "65%"],
   },
   title: {
-    fontSize: ['26px', '34px', '42px', '42px', '47px'],
-    fontWeight: '700',
-    color: '#fff',
-    letterSpacing: '-0.025em',
-    mb: ['20px', '25px'],
-    lineHeight: '1.31',
+    fontSize: ["26px", "34px", "42px", "42px", "47px"],
+    fontWeight: "700",
+    color: "#fff",
+    letterSpacing: "-0.025em",
+    mb: ["20px", "25px"],
+    lineHeight: "1.31",
   },
   description: {
-    fontSize: ['14px', '16px', '18px', '18px', '20px'],
-    color: '#fff',
-    lineHeight: '30px',
-    mb: '0',
-    maxWidth: '550px',
+    fontSize: ["14px", "16px", "18px", "18px", "20px"],
+    color: "#fff",
+    lineHeight: "30px",
+    mb: "0",
+    maxWidth: "550px",
   },
   btnStyle: {
-    minWidth: ['120px', '156px'],
-    fontSize: '15px',
-    fontWeight: '700',
-    borderRadius: '6px',
+    minWidth: ["120px", "156px"],
+    fontSize: "15px",
+    fontWeight: "700",
+    borderRadius: "6px",
   },
   outlineBtnStyle: {
-    minWidth: ['130px', '156px'],
-    fontSize: '16px',
-    fontWeight: '700',
-    color: '#fff',
-    p: '5px 10px',
+    minWidth: ["130px", "156px"],
+    fontSize: "16px",
+    fontWeight: "700",
+    color: "#fff",
+    p: "5px 10px",
   },
 };
 
-export default withModelToDataObjProp(BannerSection) ;
+export default withModelToDataObjProp(BannerSection);
