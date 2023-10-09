@@ -4,7 +4,7 @@ import RideTestimonialSecion from '../../../lib/containers/Ride/TestimonialSecti
 import AgencyTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial1';
 import AppTestimonialSection from '../../../lib/containers/App/Testimonial';
 import SaaSClassicTestimonialSection from "../../../lib/containers/SaasClassic/Testimonial";
-import CryptoTestimonialSecion from "../../../lib/containers/Crypto/BannerSlider";
+import CryptoTestimonialSecion from "../../../lib/organisms/components/banners/banner6/bannerSlider";
 
 const resolveComponents = () => {
   return {
