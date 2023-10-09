@@ -120,14 +120,11 @@ const BlogSliderSection = ({
                 <Fragment>
                   {model.children &&
                     model.children.filter(m => m.online).map((blogSection, index) => {
-                      let blogSectionMap = blogSection.data.reduce(function (
-                        map,
-                        obj
-                      ) {
-                        map[obj.Key] = obj.Value;
-                        return map;
-                      },
-                      {});
+                      const blogSectionMap: Record<string,string> =
+                      blogSection.data.reduce(function (map, obj) {
+                          map[obj.Key] = obj.Value; 
+                          return map; 
+                      }, {});
                       return (
                         //@ts-ignore
                         <GlideSlide key={`project_key${blogSectionMap.id}`}>

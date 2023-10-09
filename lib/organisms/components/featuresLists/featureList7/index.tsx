@@ -43,10 +43,10 @@ const ContactSection = ({
   let branchItems = [];
   if (model.children && model.children.length > 0) {
     branchItems = model.children.map((branchData, index) => {
-      let branchMap = branchData.data.reduce(function (map, obj) {
-        map[obj.Key] = obj.Value;
-        return map;
-      }, {});
+      const branchMap: Record<string,string> =
+      branchData.data.reduce(function (map, obj) {
+          map[obj.Key] = obj.Value; return map; 
+        }, {});
       return branchMap;
     });
   }
