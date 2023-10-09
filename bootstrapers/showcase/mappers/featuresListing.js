@@ -7,12 +7,12 @@ import CharityFeatureSection from '../../../lib/containers/Charity/FeatureSectio
 import AppFeature from '../../../lib/containers/App/FeatureSection';
 import AppFeatureSlider from '../../../lib/containers/App/FeatureSlider';
 import AppFeatureSliderTwo from '../../../lib/containers/App/FeatureSliderTwo';
-import CryptoTransactionFeatures from '../../../lib/containers/Crypto/Transaction';
-import CryptoBetaFeatures from '../../../lib/containers/Crypto/BetaSection';
+import CryptoTransactionFeatures from '../../../lib/organisms/components/transactions/transaction1';
+import CryptoBetaFeatures from '../../../lib/organisms/components/beta/beta1';
 import SaaSClassicServiceSection from "../../../lib/containers/SaasClassic/Service";
 import SaasClassicFeatureSection from "../../../lib/containers/SaasClassic/Feature";
 //import FeatureSection from '../../../lib/containers/Saas/FeatureSection';
-import CryptoTransactions from "../../../lib/containers/Crypto/Transaction";
+import CryptoTransactions from "../../../lib/organisms/components/transactions/transaction1";
 
 const resolveComponents = () => {
   return {
