@@ -49,10 +49,10 @@ const FullScreenBannerSection = ({
           <Fragment>
             {model.children &&
               model.children.filter(m => m.online).map((testimonial, index) => {
-                let sliderMap = testimonial.data.reduce(function(map, obj) {
-                  map[obj.Key] = obj.Value;
-                  return map;
-                }, {});
+                const sliderMap: Record<string,string> =
+                testimonial.data.reduce(function (map, obj) {
+                   map[obj.Key] = obj.Value; return map; 
+                  }, {});
                 return (
                   //@ts-ignore
                   <GlideSlide key={index}>

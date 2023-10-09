@@ -75,9 +75,9 @@ const NewsSection = ({
           <Fragment>
             {model.children &&
               model.children.filter(m => m.online).map((testimonial, index) => {
-                let newsMap = testimonial.data.reduce(function(map, obj) {
-                  map[obj.Key] = obj.Value;
-                  return map;
+                const newsMap: Record<string,string> =
+                testimonial.data.reduce(function (map, obj) {
+                    map[obj.Key] = obj.Value; return map; 
                 }, {});
                 return (
                   //@ts-ignore
