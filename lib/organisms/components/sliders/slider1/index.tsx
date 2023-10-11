@@ -1,18 +1,18 @@
-import { Fragment } from 'react';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import PropTypes from 'prop-types';
+import { Fragment } from "react";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import PropTypes from "prop-types";
 
-import Fade from 'react-reveal/Fade';
+import Fade from "react-reveal/Fade";
 import SectionWrapper, {
   TeamCard,
   ImageWrapper,
   ImageLink,
   TextWrapper,
   CarouselWrapper,
-} from './style';
-import { Container, Box, Heading, Button , Image} from '../../../../atoms';
-import { GlideCarousel, GlideSlide } from '../../../../molecules';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+} from "./style";
+import { Container, Box, Heading, Button, Image } from "../../../../atoms";
+import { GlideCarousel, GlideSlide } from "../../../../molecules";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 interface BlogSliderSectionProps {
   sectionHeader: object;
   sectionTitle: object;
@@ -33,10 +33,10 @@ const BlogSliderSection = ({
   btnStyle,
   model,
   isAR,
-  data
+  data,
 }: BlogSliderSectionProps) => {
   const glideOptions = {
-    type: 'carousel',
+    type: "carousel",
     perView: 3,
     gap: 50,
     autoplay: 3000,
@@ -84,19 +84,19 @@ const BlogSliderSection = ({
               <Fragment>
                 {model.children &&
                   model.children.map((blogSection, index) => {
-                    const blogSectionMap: Record<string,string> =
-                    blogSection.data.reduce(function (map, obj) 
-                    { map[obj.Key] =  obj.Value;
-                    return map; 
-                    }, {});
+                    const blogSectionMap: Record<string, string> =
+                      blogSection.data.reduce(function (map, obj) {
+                        map[obj.Key] = obj.Value;
+                        return map;
+                      }, {});
                     return (
-                       // @ts-ignore TypeScript is complaining
+                      // @ts-ignore TypeScript is complaining
                       <GlideSlide key={`project_key${blogSectionMap.id}`}>
                         <TeamCard
                           className="team_card"
                           style={{
-                            direction: isAR ? 'rtl' : 'ltr',
-                            textAlign: 'center',
+                            direction: isAR ? "rtl" : "ltr",
+                            textAlign: "center",
                           }}
                         >
                           <ImageWrapper className="image_wrapper">
@@ -124,7 +124,9 @@ const BlogSliderSection = ({
                               title={blogSectionMap.btnText}
                               {...btnStyle}
                               onClick={() => {
-                                window.location.replace(blogSectionMap.postLink);
+                                window.location.replace(
+                                  blogSectionMap.postLink
+                                );
                               }}
                             />
                           ) : null}
@@ -147,39 +149,39 @@ const BlogSliderSection = ({
 BlogSliderSection.defaultProps = {
   // section header default style
   sectionHeader: {
-    mb: ['40px', '56px'],
+    mb: ["40px", "56px"],
   },
   // section title default style
   sectionTitle: {
-    textAlign: 'center',
-    fontSize: ['20px', '24px'],
-    fontWeight: '400',
+    textAlign: "center",
+    fontSize: ["20px", "24px"],
+    fontWeight: "400",
     //color: '#0f2137',
-    letterSpacing: '-0.025em',
-    mb: '0',
+    letterSpacing: "-0.025em",
+    mb: "0",
   },
   // Blog post title default style
   blogTitle: {
-    fontSize: ['20px', '24px'],
-    fontWeight: '400',
-    color: '#ffffff',
-    lineHeight: '1.5',
-    mb: '10px',
-    letterSpacing: '-0.020em',
+    fontSize: ["20px", "24px"],
+    fontWeight: "400",
+    color: "#ffffff",
+    lineHeight: "1.5",
+    mb: "10px",
+    letterSpacing: "-0.020em",
   },
   // Blog post description default style
   blogMeta: {
-    fontSize: '16px',
-    lineHeight: '1',
-    color: 'rgba(255, 255, 255, 0.5)',
+    fontSize: "16px",
+    lineHeight: "1",
+    color: "rgba(255, 255, 255, 0.5)",
     mb: 0,
   },
   // Button default style
   btnStyle: {
-    minWidth: '156px',
-    fontSize: '14px',
-    fontWeight: '500',
-    mt: '20px',
+    minWidth: "156px",
+    fontSize: "14px",
+    fontWeight: "500",
+    mt: "20px",
   },
 };
 

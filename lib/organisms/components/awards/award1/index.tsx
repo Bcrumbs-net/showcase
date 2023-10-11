@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { AWARDS } from '../../../../data/Portfolio/data';
+import React from "react";
+import PropTypes from "prop-types";
+import { AWARDS } from "../../../../data/Portfolio/data";
 import {
   AwardSectionWrapper,
   AwardItem,
@@ -8,23 +8,33 @@ import {
   AwardeeLogo,
   AwardeeDetails,
   AwardImageWrapper,
-} from './style';
-import { PrevButton, NextButton } from '../../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
-import { Image,Container,Text, Box, Heading ,Button} from '../../../../atoms';
-import { GlideCarousel, GlideSlide } from '../../../../molecules';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+} from "./style";
+import {
+  PrevButton,
+  NextButton,
+} from "../../../../../bootstrapers/showcase/templates/portfolio/globalStyle";
+import {
+  Image,
+  Container,
+  Text,
+  Box,
+  Heading,
+  Button,
+} from "../../../../atoms";
+import { GlideCarousel, GlideSlide } from "../../../../molecules";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-interface AwardsSectionProps{
-  secTitleWrapper:object;
-  secTitle:object;
-  secDescription:object;
-  awardLogoStyle:object;
-  awardNameStyle:object;
-  awardDetailsStyle:object;
-  awardeeLogoStyle:object;
-  awardeeNameStyle:object;
-  awardDateStyle:object;
+interface AwardsSectionProps {
+  secTitleWrapper: object;
+  secTitle: object;
+  secDescription: object;
+  awardLogoStyle: object;
+  awardNameStyle: object;
+  awardDetailsStyle: object;
+  awardeeLogoStyle: object;
+  awardeeNameStyle: object;
+  awardDateStyle: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
@@ -41,11 +51,11 @@ const AwardsSection = ({
   awardDateStyle,
   model,
   isAR,
-  data
-}:AwardsSectionProps) => {
+  data,
+}: AwardsSectionProps) => {
   //Carousel Options
   const carouselOptions = {
-    type: data.children && data.children.length > 5 ? 'carousel' : 'slider',
+    type: data.children && data.children.length > 5 ? "carousel" : "slider",
     autoplay: data.children && data.children.length > 5 ? 4000 : false,
     perView: 4,
     gap: 30,
@@ -71,7 +81,7 @@ const AwardsSection = ({
         </Box>
 
         <GlideCarousel
-          carouselSelector={model.name + '-carousel'}
+          carouselSelector={model.name + "-carousel"}
           options={carouselOptions}
           prevButton={
             <PrevButton>
@@ -87,11 +97,13 @@ const AwardsSection = ({
           <>
             {model.children &&
               model.children.map((awardObj, index) => {
-                const award: Record<string,string> =
-                awardObj.data.reduce(function (map, obj) 
-                { map[obj.Key] =  obj.Value;
-                return map; 
-                }, {});
+                const award: Record<string, string> = awardObj.data.reduce(
+                  function (map, obj) {
+                    map[obj.Key] = obj.Value;
+                    return map;
+                  },
+                  {}
+                );
                 return (
                   <GlideSlide key={`${awardObj.name}-award-item-${index}`}>
                     <AwardItem>
@@ -152,55 +164,55 @@ AwardsSection.propTypes = {
 
 AwardsSection.defaultProps = {
   secTitleWrapper: {
-    width: ['100%', '100%', '60%', '50%', '50%'],
-    mb: '90px',
+    width: ["100%", "100%", "60%", "50%", "50%"],
+    mb: "90px",
   },
   secTitle: {
-    fontSize: ['22px', '26px', '26px', '30px', '30px'],
-    fontWeight: '600',
-    color: '#302b4e',
-    lineHeight: '1.34',
-    mb: ['15px', '18px', '18px', '20px', '20px'],
+    fontSize: ["22px", "26px", "26px", "30px", "30px"],
+    fontWeight: "600",
+    color: "#302b4e",
+    lineHeight: "1.34",
+    mb: ["15px", "18px", "18px", "20px", "20px"],
   },
   secDescription: {
-    fontSize: ['15px', '16px'],
-    fontWeight: '400',
-    color: '#43414e',
-    lineHeight: '1.5',
-    mb: '0',
+    fontSize: ["15px", "16px"],
+    fontWeight: "400",
+    color: "#43414e",
+    lineHeight: "1.5",
+    mb: "0",
   },
   awardLogoStyle: {
-    ml: 'auto',
-    mr: 'auto',
-    mb: '25px',
+    ml: "auto",
+    mr: "auto",
+    mb: "25px",
   },
   awardNameStyle: {
-    fontSize: ['16px', '16px', '18px', '20px'],
-    fontWeight: '600',
-    color: '#302b4e',
-    lineHeight: '1.35',
-    textAlign: 'center',
-    mb: '17px',
+    fontSize: ["16px", "16px", "18px", "20px"],
+    fontWeight: "600",
+    color: "#302b4e",
+    lineHeight: "1.35",
+    textAlign: "center",
+    mb: "17px",
   },
   awardDetailsStyle: {
-    fontSize: ['15px', '15px', '15px', '16px'],
-    color: '#43414e',
-    lineHeight: '1.5',
-    textAlign: 'center',
-    mb: '0',
+    fontSize: ["15px", "15px", "15px", "16px"],
+    color: "#43414e",
+    lineHeight: "1.5",
+    textAlign: "center",
+    mb: "0",
   },
   awardeeNameStyle: {
-    fontSize: '16px',
-    color: '#9391a5',
-    lineHeight: '1.35',
-    fontWeight: '600',
-    mb: '4px',
+    fontSize: "16px",
+    color: "#9391a5",
+    lineHeight: "1.35",
+    fontWeight: "600",
+    mb: "4px",
   },
   awardDateStyle: {
-    fontSize: '12px',
-    color: '#9391a5',
-    lineHeight: '1.35',
-    mb: '0',
+    fontSize: "12px",
+    color: "#9391a5",
+    lineHeight: "1.35",
+    mb: "0",
   },
 };
 
