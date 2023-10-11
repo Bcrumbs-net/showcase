@@ -1,8 +1,7 @@
 import { Fragment } from 'react';
-import PropTypes, { object } from 'prop-types';
 import { Text, Container } from '../../../../atoms';
 import { Heading } from '../../../../atoms';
-import { Button } from "../../../../atoms";
+import { Button } from '../../../../atoms';
 import { Image } from '../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../molecules';
 import TestimonialSectionWrapper, {
@@ -15,20 +14,21 @@ import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/w
 import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface TestimonialSectionProps {
-  sectionHeader:object;
-  sectionTitle:object;
-  sectionSubTitle:object;
-  row:object;
-  col:object;
-  btnWrapperStyle:object;
-  commentStyle:object;
-  nameStyle:object;
-  btnStyle:object;
-  designationStyle:object;
+  sectionHeader: object;
+  sectionTitle: object;
+  sectionSubTitle: object;
+  row: object;
+  col: object;
+  btnWrapperStyle: object;
+  commentStyle: object;
+  nameStyle: object;
+  btnStyle: object;
+  designationStyle: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
 }
+
 const TestimonialSection = ({
   sectionSubTitle,
   btnWrapperStyle,
@@ -39,7 +39,7 @@ const TestimonialSection = ({
   model,
   isAR,
   data,
-}:TestimonialSectionProps) => {
+}: TestimonialSectionProps) => {
   // Glide js options
   const glideOptions = {
     type: 'carousel',
@@ -74,10 +74,14 @@ const TestimonialSection = ({
           <Fragment>
             {model.children &&
               model.children.map((item, index) => {
-                let testimonialMap = item.data.reduce(function(map, obj) {
-                  map[obj.Key] = obj.Value;
-                  return map;
-                }, {});
+                const testimonialMap: Record<string, string> = item.data.reduce(
+                  function (map, obj) {
+                    map[obj.Key] = obj.Value;
+                    return map;
+                  },
+                  {}
+                );
+
                 return (
                   //@ts-ignore
                   <GlideSlide key={index}>
@@ -121,20 +125,6 @@ const TestimonialSection = ({
       </Container>
     </TestimonialSectionWrapper>
   );
-};
-
-// TestimonialSection style props
-TestimonialSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  btnStyle: PropTypes.object,
-  btnWrapperStyle: PropTypes.object,
-  nameStyle: PropTypes.object,
-  commentStyle: PropTypes.object,
-  designationStyle: PropTypes.object,
 };
 
 // TestimonialSection default style

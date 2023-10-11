@@ -1,32 +1,35 @@
 import { useContext } from 'react';
-import PropTypes from 'prop-types';
 import {
-  Box, Drawer, NavbarWrapper, DrawerContext, HamburgMenu, Container
+  Box,
+  Drawer,
+  NavbarWrapper,
+  DrawerContext,
+  HamburgMenu,
+  Container,
 } from '../../../../atoms';
-import { MENU_ITEMS } from '../../../../data/Saas';
 import { ScrollSpyMenu, Logo } from '../../../../molecules';
-import LogoImage from '../../../assets/image/saas/logo.png';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
-interface NavbarProps{
-  navbarStyle:object;
-  logoStyle:object;
-  row:object;
-  menuWrapper:object;
+interface NavbarProps {
+  navbarStyle: object;
+  logoStyle: object;
+  row: object;
+  menuWrapper: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
 }
-const Navbar = ({ 
+
+const Navbar = ({
   navbarStyle,
-   logoStyle, 
-   row, 
-   menuWrapper, 
-   model, 
-   isAR,
-   data
-   }:NavbarProps) => {
+  logoStyle,
+  row,
+  menuWrapper,
+  model,
+  isAR,
+  data,
+}: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
   // Toggle drawer
   const toggleHandler = () => {
@@ -34,6 +37,7 @@ const Navbar = ({
       type: 'TOGGLE',
     });
   };
+
   return (
     <NavbarWrapper {...navbarStyle}>
       <Container>
@@ -49,7 +53,8 @@ const Navbar = ({
               className="main_menu"
               model={model}
               isAR={isAR}
-              offset={-70} drawerClose={undefined}            
+              offset={-70}
+              drawerClose={undefined}
             />
             <Drawer
               width="420px"
@@ -71,14 +76,6 @@ const Navbar = ({
       </Container>
     </NavbarWrapper>
   );
-};
-
-Navbar.propTypes = {
-  navbarStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
-  button: PropTypes.object,
-  row: PropTypes.object,
-  menuWrapper: PropTypes.object,
 };
 
 Navbar.defaultProps = {

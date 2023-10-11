@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import BannerWrapper, {
-  DiscountLabel,
-  BannerObject,
-} from './style';
-import BannerObject1 from '../../../assets/image/saas/banner/bannerObject1.png';
-import BannerObject2 from '../../../assets/image/saas/banner/bannerObject2.png';
-import { Button, Container, Box, Heading,Text,Image } from '../../../../atoms';
+import BannerWrapper, { DiscountLabel, BannerObject } from './style';
+import {
+  Button,
+  Container,
+  Box,
+  Heading,
+  Text,
+  Image,
+} from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
 import ParticlesComponent from './particles';
 import { GraphContent } from '@bcrumbs.net/bc-api';
@@ -26,6 +27,7 @@ interface BannerSectionProps {
   isAR: boolean;
   data: Record<string, string>;
 }
+
 const BannerSection = ({
   row,
   col,
@@ -38,7 +40,7 @@ const BannerSection = ({
   model,
   isAR,
   data,
-}:BannerSectionProps) => {
+}: BannerSectionProps) => {
   const ButtonGroup = () => (
     <Fragment>
       {data.pri_button_label && data.pri_button_url ? (
@@ -63,6 +65,7 @@ const BannerSection = ({
       ) : null}
     </Fragment>
   );
+
   let CustomBannerWrapper;
   if (data.backgroundColor) {
     CustomBannerWrapper = styled(BannerWrapper)`
@@ -71,10 +74,11 @@ const BannerSection = ({
   } else {
     CustomBannerWrapper = BannerWrapper;
   }
+
   return (
     <CustomBannerWrapper id={model.name}>
-    <ParticlesComponent/>
-      <Container >
+      <ParticlesComponent />
+      <Container>
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <DiscountLabel>
@@ -99,16 +103,6 @@ const BannerSection = ({
       </BannerObject>
     </CustomBannerWrapper>
   );
-};
-
-BannerSection.propTypes = {
-  title: PropTypes.object,
-  btnStyle: PropTypes.object,
-  description: PropTypes.object,
-  contentStyle: PropTypes.object,
-  discountText: PropTypes.object,
-  discountAmount: PropTypes.object,
-  outlineBtnStyle: PropTypes.object,
 };
 
 BannerSection.defaultProps = {

@@ -1,10 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Link from 'next/link';
 import FooterWrapper, { List, ListItem } from './style';
-import LogoImage from '../../../assets/image/saas/logo.png';
-import { Footer_Data } from '../../../../data/Saas';
-import { Container,Text, Box, Heading } from '../../../../atoms';
+import { Container, Text, Box, Heading } from '../../../../atoms';
 import { Logo } from '../../../../molecules';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';
@@ -32,14 +28,18 @@ const Footer = ({
   model,
   isAR,
   data,
-}:FooterProps) => {
+}: FooterProps) => {
   return (
     <FooterWrapper id={model.name}>
       <Container className="footer_container">
         <Box className="row" {...row}>
           <Box {...colOne}>
-            <Logo href="/" logoSrc={data.logo} logoStyle={logoStyle} title={''} />
-            <Logo href="/" logoSrc={data.logo} logoStyle={logoStyle} title={''} />
+            <Logo
+              href="/"
+              logoSrc={data.logo}
+              logoStyle={logoStyle}
+              title={''}
+            />
             <Text content={data.email} {...textStyle} />
             <Text content={data.phone} {...textStyle} />
           </Box>
@@ -47,12 +47,16 @@ const Footer = ({
           <Box {...colTwo}>
             {model.children &&
               model.children
-                .filter(m => m.online)
+                .filter((m) => m.online)
                 .map((widget, index) => {
-                  let widgetMap = widget.data.reduce(function(map, obj) {
-                    map[obj.Key] = obj.Value;
-                    return map;
-                  }, {});
+                  const widgetMap: Record<string, string> = widget.data.reduce(
+                    function (map, obj) {
+                      map[obj.Key] = obj.Value;
+                      return map;
+                    },
+                    {}
+                  );
+
                   return (
                     <Box
                       className="col"
@@ -63,16 +67,14 @@ const Footer = ({
                       <List>
                         {widget.children &&
                           widget.children
-                            .filter(m => m.online)
+                            .filter((m) => m.online)
                             .map((item, subIndex) => {
-                              let itemMap = item.data.reduce(function(
-                                map,
-                                obj
-                              ) {
-                                map[obj.Key] = obj.Value;
-                                return map;
-                              },
-                              {});
+                              const itemMap: Record<string, string> =
+                                item.data.reduce(function (map, obj) {
+                                  map[obj.Key] = obj.Value;
+                                  return map;
+                                }, {});
+
                               return (
                                 <ListItem key={`footer-list-item-${subIndex}`}>
                                   <a className="ListItem" href={itemMap.url}>
@@ -91,17 +93,6 @@ const Footer = ({
       </Container>
     </FooterWrapper>
   );
-};
-
-// Footer style props
-Footer.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  colOne: PropTypes.object,
-  colTwo: PropTypes.object,
-  titleStyle: PropTypes.object,
-  textStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
 };
 
 // Footer default style
