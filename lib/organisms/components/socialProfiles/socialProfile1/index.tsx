@@ -1,47 +1,51 @@
-import React from 'react';
-import Link from 'next/link';
-import Icon from 'react-icons-kit';
-import { socialDribbbleOutline } from 'react-icons-kit/ionicons/socialDribbbleOutline';
-import { SocialProfileWrapper, SocialProfileItem } from './style';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import React from "react";
+import Link from "next/link";
+import Icon from "react-icons-kit";
+import { socialDribbbleOutline } from "react-icons-kit/ionicons/socialDribbbleOutline";
+import { SocialProfileWrapper, SocialProfileItem } from "./style";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-interface SocialProfileProps{
-  items:object; 
-  className:string; 
-  iconSize:object; 
+interface SocialProfileProps {
+  items: object;
+  className: string;
+  iconSize: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
 }
-const SocialProfile = ({ 
-  items, 
-  className, 
-  iconSize, 
-  model ,
+const SocialProfile = ({
+  items,
+  className,
+  iconSize,
+  model,
   data,
-  isAR
-}:SocialProfileProps) => {
-  const addAllClasses = ['social_profiles'];
+  isAR,
+}: SocialProfileProps) => {
+  const addAllClasses = ["social_profiles"];
 
   if (className) {
     addAllClasses.push(className);
   }
 
   return (
-    <SocialProfileWrapper className={addAllClasses.join(' ')}>
+    <SocialProfileWrapper className={addAllClasses.join(" ")}>
       {model.children &&
         model.children.map((item, index) => {
-          const socialLink: Record<string,string> =
-           item.data.reduce(function (map, obj) { map[obj.Key] =  obj.Value;
-           return map; 
-          }, {});
+          const socialLink: Record<string, string> = item.data.reduce(function (
+            map,
+            obj
+          ) {
+            map[obj.Key] = obj.Value;
+            return map;
+          },
+          {});
           return (
             <SocialProfileItem
               key={`social-item-${index}`}
               className="social_profile_item"
             >
-              <Link href={socialLink.url || '#'}>
+              <Link href={socialLink.url || "#"}>
                 <a aria-label="social icon">
                   {/*<Icon
                     icon={socialLink.icon || socialDribbbleOutline}
@@ -56,4 +60,4 @@ const SocialProfile = ({
   );
 };
 
-export default withModelToDataObjProp(SocialProfile) ;
+export default withModelToDataObjProp(SocialProfile);
