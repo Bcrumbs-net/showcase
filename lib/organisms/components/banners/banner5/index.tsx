@@ -1,23 +1,23 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { Heading,Button,Image, Container, Box } from '../../../../atoms';
-import BannerSectionWrapper, { ImageWrapper } from './style';
-import { GlideCarousel, GlideSlide} from '../../../../molecules';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import { Heading, Button, Image, Container, Box } from "../../../../atoms";
+import BannerSectionWrapper, { ImageWrapper } from "./style";
+import { GlideCarousel, GlideSlide } from "../../../../molecules";
 
-interface FullScreenBannerSectionProps{
-  btnWrapperStyle:object; 
-  btnStyle:object; 
+interface FullScreenBannerSectionProps {
+  btnWrapperStyle: object;
+  btnStyle: object;
   model: any;
   isAR: boolean;
 }
-const FullScreenBannerSection = ({ 
-  btnWrapperStyle, 
-  btnStyle, 
+const FullScreenBannerSection = ({
+  btnWrapperStyle,
+  btnStyle,
   model,
-}:FullScreenBannerSectionProps) => {
+}: FullScreenBannerSectionProps) => {
   // Glide js options
   const glideOptions = {
-    type: 'slider',
+    type: "slider",
     autoplay: 5000,
     perView: 1,
     animationDuration: 700,
@@ -48,22 +48,25 @@ const FullScreenBannerSection = ({
         >
           <Fragment>
             {model.children &&
-              model.children.filter(m => m.online).map((testimonial, index) => {
-                const sliderMap: Record<string,string> =
-                testimonial.data.reduce(function (map, obj) {
-                   map[obj.Key] = obj.Value; return map; 
-                  }, {});
-                return (
-                  //@ts-ignore
-                  <GlideSlide key={index}>
-                    <ImageWrapper>
-                      <a href={sliderMap.url}>
-                        <Image src={sliderMap.image} alt="Slide Image" />
-                      </a>
-                    </ImageWrapper>
-                  </GlideSlide>
-                );
-              })}
+              model.children
+                .filter((m) => m.online)
+                .map((testimonial, index) => {
+                  const sliderMap: Record<string, string> =
+                    testimonial.data.reduce(function (map, obj) {
+                      map[obj.Key] = obj.Value;
+                      return map;
+                    }, {});
+                  return (
+                    //@ts-ignore
+                    <GlideSlide key={index}>
+                      <ImageWrapper>
+                        <a href={sliderMap.url}>
+                          <Image src={sliderMap.image} alt="Slide Image" />
+                        </a>
+                      </ImageWrapper>
+                    </GlideSlide>
+                  );
+                })}
           </Fragment>
         </GlideCarousel>
       </Container>
@@ -81,16 +84,16 @@ FullScreenBannerSection.propTypes = {
 FullScreenBannerSection.defaultProps = {
   // glide slider nav controls style
   btnWrapperStyle: {
-    position: 'absolute',
-    bottom: '-40px',
+    position: "absolute",
+    bottom: "-40px",
   },
   // next / prev btn style
   btnStyle: {
-    minWidth: 'auto',
-    minHeight: 'auto',
-    mr: '40px',
-    fontSize: '36px',
-    color: '#343d484d',
+    minWidth: "auto",
+    minHeight: "auto",
+    mr: "40px",
+    fontSize: "36px",
+    color: "#343d484d",
   },
 };
 
