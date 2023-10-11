@@ -1,52 +1,50 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Box, Textarea, Text, Input, Container } from '../../../../atoms';
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { Box, Textarea, Text, Input, Container } from "../../../../atoms";
 import SectionWrapper, {
   ContentArea,
   Heading,
   ButtonGroup,
   ContactForm,
   SubmitButton,
-} from './style';
-import { paymentPolicy, currencyOptions } from '../../../../data/Charity';
-import heartImage from '../../../assets/image/charity/heart-alt.svg';
-import { Icon } from 'react-icons-kit';
-import { mapMarker } from 'react-icons-kit/fa/mapMarker';
-import { phone } from 'react-icons-kit/fa/phone';
-import { facebook } from 'react-icons-kit/fa/facebook';
-import { instagram } from 'react-icons-kit/fa/instagram';
-import { twitter } from 'react-icons-kit/fa/twitter';
-import { youtube } from 'react-icons-kit/fa/youtube';
-import { envelope } from 'react-icons-kit/fa/envelope';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
-import { GraphContent } from '@bcrumbs.net/bc-api';
+} from "./style";
+import { paymentPolicy, currencyOptions } from "../../../../data/Charity";
+import heartImage from "../../../assets/image/charity/heart-alt.svg";
+import { Icon } from "react-icons-kit";
+import { mapMarker } from "react-icons-kit/fa/mapMarker";
+import { phone } from "react-icons-kit/fa/phone";
+import { facebook } from "react-icons-kit/fa/facebook";
+import { instagram } from "react-icons-kit/fa/instagram";
+import { twitter } from "react-icons-kit/fa/twitter";
+import { youtube } from "react-icons-kit/fa/youtube";
+import { envelope } from "react-icons-kit/fa/envelope";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { GraphContent } from "@bcrumbs.net/bc-api";
 
-interface ContactSectionProps{
-  row:object; 
-  col:object; 
+interface ContactSectionProps {
+  row: object;
+  col: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
 }
-const ContactSection = ({
-   row, 
-   col, 
-   model,
-   data 
-  }:ContactSectionProps) => {
+const ContactSection = ({ row, col, model, data }: ContactSectionProps) => {
   const initialValues = {
-    Contact_us_Name: '',
-    Contact_us_Email: '',
-    Contact_us_Phone: '',
-    Contact_us_Message: '',
+    Contact_us_Name: "",
+    Contact_us_Email: "",
+    Contact_us_Phone: "",
+    Contact_us_Message: "",
   };
   let branchItems = [];
   if (model.children && model.children.length > 0) {
     branchItems = model.children.map((branchData, index) => {
-      const branchMap: Record<string,string> =
-      branchData.data.reduce(function (map, obj) {
-          map[obj.Key] = obj.Value; return map; 
-        }, {});
+      const branchMap: Record<string, string> = branchData.data.reduce(
+        function (map, obj) {
+          map[obj.Key] = obj.Value;
+          return map;
+        },
+        {}
+      );
       return branchMap;
     });
   }
@@ -70,14 +68,14 @@ const ContactSection = ({
       payload.append(key, state[key]);
     });
     fetch(data.formActionUrl, {
-      method: 'post',
+      method: "post",
       headers: {
-        Accept: 'application/json, text/plain, */*',
+        Accept: "application/json, text/plain, */*",
       },
       body: payload,
     }).then((res) => {
       if (res.ok) return setState({ ...initialValues, submitted: true });
-      else return '';
+      else return "";
     });
   };
   return (
@@ -92,7 +90,7 @@ const ContactSection = ({
                 placeholder="NAME *"
                 value={state.Contact_us_Name}
                 onChange={(e) =>
-                  handleFormData(e.target.value, 'Contact_us_Name')
+                  handleFormData(e.target.value, "Contact_us_Name")
                 }
               />
               <Input
@@ -100,7 +98,7 @@ const ContactSection = ({
                 placeholder="EMAIL *"
                 value={state.Contact_us_Email}
                 onChange={(e) =>
-                  handleFormData(e.target.value, 'Contact_us_Email')
+                  handleFormData(e.target.value, "Contact_us_Email")
                 }
               />
               <Input
@@ -108,14 +106,14 @@ const ContactSection = ({
                 placeholder="PHONE"
                 value={state.Contact_us_Phone}
                 onChange={(e) =>
-                  handleFormData(e.target.value, 'Contact_us_Phone')
+                  handleFormData(e.target.value, "Contact_us_Phone")
                 }
               />
               <Textarea
                 placeholder="MESSAGE ..."
                 value={state.Contact_us_Message}
                 onChange={(e) =>
-                  handleFormData(e.target.value, 'Contact_us_Message')
+                  handleFormData(e.target.value, "Contact_us_Message")
                 }
               />
               <SubmitButton type="submit">{data.submitButton} </SubmitButton>
@@ -242,18 +240,18 @@ ContactSection.defaultProps = {
   // ContactSection row default style
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: '-15px',
-    mr: '-15px',
+    flexWrap: "wrap",
+    ml: "-15px",
+    mr: "-15px",
   },
   // ContactSection col default style
   col: {
-    width: ['100%', '50%', '50%', '33%'],
-    pl: '15px',
-    pr: '15px',
-    mb: '30px',
-    height: ['558px', '558px', '558px'],
+    width: ["100%", "50%", "50%", "33%"],
+    pl: "15px",
+    pr: "15px",
+    mb: "30px",
+    height: ["558px", "558px", "558px"],
   },
 };
 
-export default withModelToDataObjProp(ContactSection) ;
+export default withModelToDataObjProp(ContactSection);

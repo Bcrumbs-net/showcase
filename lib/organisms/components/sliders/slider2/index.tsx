@@ -1,54 +1,54 @@
-import React, { Fragment, useState } from 'react';
-import PropTypes from 'prop-types';
-import Fade from 'react-reveal/Fade';
-import { Box, Heading, Image, Container, Button } from '../../../../atoms';
-import { GlideCarousel, GlideSlide} from '../../../../molecules';
-import ProductModal from '../../products/product1';
+import React, { Fragment, useState } from "react";
+import PropTypes from "prop-types";
+import Fade from "react-reveal/Fade";
+import { Box, Heading, Image, Container, Button } from "../../../../atoms";
+import { GlideCarousel, GlideSlide } from "../../../../molecules";
+import ProductModal from "../../products/product1";
 import SectionWrapper, {
   TeamCard,
   ImageWrapper,
   CarouselWrapper,
-} from './style';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
-// import { openModal, closeModal } from '@redq/reuse-modal';
+} from "./style";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { openModal, closeModal } from '@redq/reuse-modal';
 
 // Default close button for modal
-const CloseModalButton = () => (null
-  // <Button
-  //   className="foodModalCloseBtn"
-  //   variant="fab"
-  //   onClick={() => closeModal()}
-  //   icon={<i className="flaticon-plus-symbol" />}
-  // />
-);
+const CloseModalButton = () =>
+  null;
+  <Button
+    className="foodModalCloseBtn"
+    variant="fab"
+    onClick={() => closeModal()}
+    icon={<i className="flaticon-plus-symbol" />}
+  />
 
 const handleProductModal = (imagePath) => {
-  // openModal({
-  //   config: {
-  //     className: 'product-modal',
-  //     disableDragging: true,
-  //     width: '50%',
-  //     height: '100%',
-  //     animationFrom: { transform: 'translateY(100px)' }, // react-spring <Spring from={}> props value
-  //     animationTo: { transform: 'translateY(0)' }, //  react-spring <Spring to={}> props value
-  //     transition: {
-  //       mass: 1,
-  //       tension: 180,
-  //       friction: 26,
-  //     },
-  //   },
-  //   component: ProductModal,
-  //   componentProps: {
-  //     imagePath,
-  //   },
-  //   closeComponent: CloseModalButton,
-  //   closeOnClickOutside: true,
-  // });
+  openModal({
+    config: {
+      className: 'product-modal',
+      disableDragging: true,
+      width: '50%',
+      height: '100%',
+      animationFrom: { transform: 'translateY(100px)' }, // react-spring <Spring from={}> props value
+      animationTo: { transform: 'translateY(0)' }, //  react-spring <Spring to={}> props value
+      transition: {
+        mass: 1,
+        tension: 180,
+        friction: 26,
+      },
+    },
+    component: ProductModal,
+    componentProps: {
+      imagePath,
+    },
+    closeComponent: CloseModalButton,
+    closeOnClickOutside: true,
+  });
 };
 
 const glideOptions = {
-  type: 'slider',
+  type: "slider",
   startAt: 0,
   bound: true,
   perView: 3,
@@ -69,12 +69,12 @@ const glideOptions = {
   },
 };
 
-interface BlogSliderSectionProps{
-  sectionHeader:object;
-  sectionTitle:object;
-  button:object;
-  blogTitle:object;
-  blogMeta:object;
+interface BlogSliderSectionProps {
+  sectionHeader: object;
+  sectionTitle: object;
+  button: object;
+  blogTitle: object;
+  blogMeta: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
@@ -87,8 +87,8 @@ const BlogSliderSection = ({
   blogMeta,
   model,
   isAR,
-  data
-}:BlogSliderSectionProps) => {
+  data,
+}: BlogSliderSectionProps) => {
   return (
     <SectionWrapper id={model.name}>
       <Container>
@@ -119,33 +119,35 @@ const BlogSliderSection = ({
               >
                 <Fragment>
                   {model.children &&
-                    model.children.filter(m => m.online).map((blogSection, index) => {
-                      const blogSectionMap: Record<string,string> =
-                      blogSection.data.reduce(function (map, obj) {
-                          map[obj.Key] = obj.Value; 
-                          return map; 
-                      }, {});
-                      return (
-                        //@ts-ignore
-                        <GlideSlide key={`project_key${blogSectionMap.id}`}>
-                          <TeamCard className="team_card">
-                            <ImageWrapper
-                              className="image_wrapper"
-                              onClick={() => {
-                                handleProductModal(
-                                  blogSectionMap.thumbnail_url
-                                );
-                              }}
-                            >
-                              <Image
-                                src={blogSectionMap.thumbnail_url}
-                                alt={blogSectionMap.title}
-                              />
-                            </ImageWrapper>
-                          </TeamCard>
-                        </GlideSlide>
-                      );
-                    })}
+                    model.children
+                      .filter((m) => m.online)
+                      .map((blogSection, index) => {
+                        const blogSectionMap: Record<string, string> =
+                          blogSection.data.reduce(function (map, obj) {
+                            map[obj.Key] = obj.Value;
+                            return map;
+                          }, {});
+                        return (
+                          //@ts-ignore
+                          <GlideSlide key={`project_key${blogSectionMap.id}`}>
+                            <TeamCard className="team_card">
+                              <ImageWrapper
+                                className="image_wrapper"
+                                onClick={() => {
+                                  handleProductModal(
+                                    blogSectionMap.thumbnail_url
+                                  );
+                                }}
+                              >
+                                <Image
+                                  src={blogSectionMap.thumbnail_url}
+                                  alt={blogSectionMap.title}
+                                />
+                              </ImageWrapper>
+                            </TeamCard>
+                          </GlideSlide>
+                        );
+                      })}
                 </Fragment>
               </GlideCarousel>
             )}
@@ -169,31 +171,31 @@ BlogSliderSection.propTypes = {
 BlogSliderSection.defaultProps = {
   // section header default style
   sectionHeader: {
-    mb: ['40px', '56px'],
+    mb: ["40px", "56px"],
   },
   // section title default style
   sectionTitle: {
-    textAlign: 'center',
-    fontSize: ['35px', '45px', '55px', '65px'],
-    fontWeight: '400',
+    textAlign: "center",
+    fontSize: ["35px", "45px", "55px", "65px"],
+    fontWeight: "400",
     //color: '#0f2137',
-    letterSpacing: '-0.025em',
-    mb: '0',
+    letterSpacing: "-0.025em",
+    mb: "0",
   },
   // Blog post title default style
   blogTitle: {
-    fontSize: ['20px', '24px'],
-    fontWeight: '400',
-    color: '#ffffff',
-    lineHeight: '1.5',
-    mb: '10px',
-    letterSpacing: '-0.020em',
+    fontSize: ["20px", "24px"],
+    fontWeight: "400",
+    color: "#ffffff",
+    lineHeight: "1.5",
+    mb: "10px",
+    letterSpacing: "-0.020em",
   },
   // Blog post description default style
   blogMeta: {
-    fontSize: '16px',
-    lineHeight: '1',
-    color: 'rgba(255, 255, 255, 0.5)',
+    fontSize: "16px",
+    lineHeight: "1",
+    color: "rgba(255, 255, 255, 0.5)",
     mb: 0,
   },
 };

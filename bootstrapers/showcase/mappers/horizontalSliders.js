@@ -1,5 +1,5 @@
 import AwardsSection from '../../../lib/containers/Portfolio/Awards';
-import NewsSection from '../../../lib/organisms/components/news/new1';
+import NewsSection from '../../../lib/organisms/components/news/news1';
 import AgencyBlogSliderSection from '../../../lib/organisms/components/sliders/slider1';
 import FoodSliderSection from '../../../lib/organisms/components/sliders/slider2';
 import CryptoSlideSections from "../../../lib/containers/Crypto/CryptoSlides";

@@ -1,24 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Box, Heading,Container} from '../../../../atoms';
-import VideoSectionWrapper from './style';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import React from "react";
+import PropTypes from "prop-types";
+import { Box, Heading, Container } from "../../../../atoms";
+import VideoSectionWrapper from "./style";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-interface FullScreenVideoSectionProps{
-  sectionHeader:object; 
-  sectionTitle:object; 
+interface FullScreenVideoSectionProps {
+  sectionHeader: object;
+  sectionTitle: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
-
 }
-const FullScreenVideoSection = ({ 
-  sectionHeader, 
-  sectionTitle, 
+const FullScreenVideoSection = ({
+  sectionHeader,
+  sectionTitle,
   model,
-  data
-}:FullScreenVideoSectionProps) => {
+  data,
+}: FullScreenVideoSectionProps) => {
   return (
     <VideoSectionWrapper id={model.name}>
       <Container>
@@ -57,16 +56,16 @@ FullScreenVideoSection.propTypes = {
 FullScreenVideoSection.defaultProps = {
   // section header default style
   sectionHeader: {
-    mb: ['20px', '36px'],
+    mb: ["20px", "36px"],
   },
   // section title default style
-  sectionTitle:{
-    Align: 'center',
-    fontSize: ['35px', '45px', '55px', '65px'],
-    fontWeight: '400',
+  sectionTitle: {
+    textAlign: "center",
+    fontSize: ["35px", "45px", "55px", "65px"],
+    fontWeight: "400",
     //color: '#0f2137',
-    letterSpacing: '-0.025em',
-    mb: '0',
+    letterSpacing: "-0.025em",
+    mb: "0",
   },
 };
 
