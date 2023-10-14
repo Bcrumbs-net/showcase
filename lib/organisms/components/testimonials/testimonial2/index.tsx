@@ -1,16 +1,16 @@
-import PropTypes from 'prop-types';
-import { Box, Container } from '../../../../atoms';
-import ImageGallery from 'react-image-gallery';
-import 'react-image-gallery/styles/css/image-gallery.css';
-import SliderDes from './description';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
-import { GraphContent } from '@bcrumbs.net/bc-api';
+import PropTypes from "prop-types";
+import { Box, Container } from "../../../../atoms";
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
+import SliderDes from "./description";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { GraphContent } from "@bcrumbs.net/bc-api";
 
 interface TestimonialSectionProps {
-  sectionWrapper:object;
-  title:object;
-  row:object;
-  sectionSubTitle:object;
+  sectionWrapper: object;
+  title: object;
+  row: object;
+  sectionSubTitle: object;
   model: GraphContent;
   data: Record<string, string>;
 }
@@ -20,14 +20,15 @@ const TestimonialSection = ({
   sectionSubTitle,
   model,
   data,
-}:TestimonialSectionProps) => {
+}: TestimonialSectionProps) => {
   let testimonialLst = [];
   if (model.children && model.children.length > 0) {
     testimonialLst = model.children.map((testimonialData, index) => {
-      let testimonialMap = testimonialData.data.reduce(function(map, obj) {
-        map[obj.Key] = obj.Value;
-        return map;
-      }, {});
+      const testimonialMap: Record<string, string> =
+        testimonialData.data.reduce(function (map, obj) {
+          map[obj.Key] = obj.Value;
+          return map;
+        }, {});
 
       return {
         thumbnail: `${testimonialMap.thumbnail}`,
@@ -53,43 +54,37 @@ const TestimonialSection = ({
     >
       <Container>
         <Box className="testimonialDesWrapper">
-            <ImageGallery
-              items={testimonialLst}
-              originalClass="Testimonial-img"
-              showPlayButton={false}
-              showFullscreenButton={false}
-            />
+          <ImageGallery
+            items={testimonialLst}
+            originalClass="Testimonial-img"
+            showPlayButton={false}
+            showFullscreenButton={false}
+          />
         </Box>
       </Container>
     </Box>
   );
 };
 
-TestimonialSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  title: PropTypes.object,
-};
-
 TestimonialSection.defaultProps = {
   sectionWrapper: {
-    as: 'section',
-    pt: '0px',
-    pb: ['20px', '80px', '0px', '80px', '80px'],
+    as: "section",
+    pt: "0px",
+    pb: ["20px", "80px", "0px", "80px", "80px"],
   },
 
   sectionSubTitle: {
-    content: 'CLIENT TESTIMONIAL',
-    as: 'span',
-    display: 'block',
-    textAlign: ['center' ,'left'],
-    fontSize: '14px',
-    letterSpacing: '0.11em',
-    fontWeight: '700',
-    color: '#1a73e8',
-    textTransform: 'uppercase',
-    mb: '10px',
+    content: "CLIENT TESTIMONIAL",
+    as: "span",
+    display: "block",
+    textAlign: ["center", "left"],
+    fontSize: "14px",
+    letterSpacing: "0.11em",
+    fontWeight: "700",
+    color: "#1a73e8",
+    textTransform: "uppercase",
+    mb: "10px",
   },
-  
 };
 
 export default withModelToDataObjProp(TestimonialSection);

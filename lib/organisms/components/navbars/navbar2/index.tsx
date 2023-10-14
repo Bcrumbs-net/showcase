@@ -132,13 +132,6 @@ const Navbar = ({ navbarStyle, logoStyle, buttonStyle, model,data }:NavbarProps)
   );
 };
 
-// Navbar style props
-Navbar.propTypes = {
-  navbarStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
-  buttonStyle: PropTypes.object,
-  wrapperStyle2: PropTypes.object,
-};
 
 Navbar.defaultProps = {
   navbarStyle: {

@@ -132,16 +132,6 @@ const PaymentSection = ({
   );
 };
 
-PaymentSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
-  button: PropTypes.object,
-  btnStyle: PropTypes.object,
-};
-
 PaymentSection.defaultProps = {
   sectionWrapper: {
     as: 'section',

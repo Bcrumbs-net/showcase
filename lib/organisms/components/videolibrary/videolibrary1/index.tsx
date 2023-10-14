@@ -115,19 +115,6 @@ const VideoLibrary = ({
   );
 };
 
-// VideoSection style props
-VideoLibrary.propTypes = {
-  sectionHeader: PropTypes.object,
-  row: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  memberName: PropTypes.object,
-  designation: PropTypes.object,
-  col1: PropTypes.object,
-  col2: PropTypes.object,
-  videoTitle: PropTypes.object,
-};
-
 // VideoSection default style
 VideoLibrary.defaultProps = {
   row: {
