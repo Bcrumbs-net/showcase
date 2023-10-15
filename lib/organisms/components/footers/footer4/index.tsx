@@ -1,19 +1,7 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
-import PropTypes from "prop-types";
-import {
-  Box,
-  Text,
-  Heading,
-  Image,
-  Container,
-  Button,
-} from "../../../../atoms";
-import SocialProfile from "../../socialProfiles/socialProfile1";
+import { Box, Text, Container } from "../../../../atoms";
 import { FooterWrapper, Newsletter, FooterNav, FooterNavItem } from "./style";
-import { FOOTER_MENU } from "../../../../data/Portfolio/data";
-import { SOCIAL_PROFILES } from "../../../../data/Portfolio/data";
-import { heart } from "react-icons-kit/fa/heart";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
@@ -154,21 +142,6 @@ const Footer = ({
       </Container>
     </FooterWrapper>
   );
-};
-
-Footer.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  titleStyle: PropTypes.object,
-  linkStyle: PropTypes.object,
-  newsletterButton: PropTypes.object,
-  copyrightStyle: PropTypes.object,
-  contactItem: PropTypes.object,
-  flexBox: PropTypes.object,
-  contactTitle: PropTypes.object,
-  contactInfo: PropTypes.object,
-  noMargin: PropTypes.object,
-  autoMargin: PropTypes.object,
 };
 
 Footer.defaultProps = {

@@ -1,5 +1,5 @@
 import PortfolioBannerSection from '../../../lib/organisms/components/banners/banner4';
-import SaaSBannerSection from '../../../lib/organisms/components/banners/banner3';
+import SaaS2BannerSection from '../../../lib/organisms/components/banners/banner3';
 import RideBannerSecion from '../../../lib/containers/Ride/Banner';
 import CharityBannerSection from '../../../lib/containers/Charity/BannerSection';
 import AgencyBannerSection from '../../../lib/organisms/components/banners/banner1';
@@ -16,7 +16,7 @@ const resolveComponents = () => {
       category: 'Banner',
     },
     403429: {
-      render: (props) => <SaaSBannerSection {...props} />,
+      render: (props) => <SaaS2BannerSection {...props} />,
       name: 'SaaS Banner',
       category: 'Banner',
     },

@@ -1,30 +1,29 @@
-import { Fragment } from 'react';
-import PropTypes, { object } from 'prop-types';
-import { Text, Container } from '../../../../atoms';
-import { Heading } from '../../../../atoms';
+import { Fragment } from "react";
+import { Text, Container } from "../../../../atoms";
+import { Heading } from "../../../../atoms";
 import { Button } from "../../../../atoms";
-import { Image } from '../../../../atoms';
-import { GlideCarousel, GlideSlide } from '../../../../molecules';
+import { Image } from "../../../../atoms";
+import { GlideCarousel, GlideSlide } from "../../../../molecules";
 import TestimonialSectionWrapper, {
   TextWrapper,
   ImageWrapper,
   RoundWrapper,
   ClientName,
-} from './style';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
-import { GraphContent } from '@bcrumbs.net/bc-api';
+} from "./style";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { GraphContent } from "@bcrumbs.net/bc-api";
 
 interface TestimonialSectionProps {
-  sectionHeader:object;
-  sectionTitle:object;
-  sectionSubTitle:object;
-  row:object;
-  col:object;
-  btnWrapperStyle:object;
-  commentStyle:object;
-  nameStyle:object;
-  btnStyle:object;
-  designationStyle:object;
+  sectionHeader: object;
+  sectionTitle: object;
+  sectionSubTitle: object;
+  row: object;
+  col: object;
+  btnWrapperStyle: object;
+  commentStyle: object;
+  nameStyle: object;
+  btnStyle: object;
+  designationStyle: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
@@ -39,10 +38,10 @@ const TestimonialSection = ({
   model,
   isAR,
   data,
-}:TestimonialSectionProps) => {
+}: TestimonialSectionProps) => {
   // Glide js options
   const glideOptions = {
-    type: 'carousel',
+    type: "carousel",
     autoplay: 4000,
     perView: 1,
   };
@@ -74,7 +73,7 @@ const TestimonialSection = ({
           <Fragment>
             {model.children &&
               model.children.map((item, index) => {
-                let testimonialMap = item.data.reduce(function(map, obj) {
+                let testimonialMap = item.data.reduce(function (map, obj) {
                   map[obj.Key] = obj.Value;
                   return map;
                 }, {});
@@ -123,76 +122,62 @@ const TestimonialSection = ({
   );
 };
 
-// TestimonialSection style props
-TestimonialSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  btnStyle: PropTypes.object,
-  btnWrapperStyle: PropTypes.object,
-  nameStyle: PropTypes.object,
-  commentStyle: PropTypes.object,
-  designationStyle: PropTypes.object,
-};
-
 // TestimonialSection default style
 TestimonialSection.defaultProps = {
   // sub section default style
   sectionSubTitle: {
-    as: 'span',
-    display: 'block',
-    fontSize: '14px',
-    letterSpacing: '0.15em',
-    fontWeight: '700',
-    color: '#5268db',
-    mb: '20px',
-    ml: 'auto',
-    mr: 'auto',
-    pl: '12px',
-    maxWidth: '954px',
+    as: "span",
+    display: "block",
+    fontSize: "14px",
+    letterSpacing: "0.15em",
+    fontWeight: "700",
+    color: "#5268db",
+    mb: "20px",
+    ml: "auto",
+    mr: "auto",
+    pl: "12px",
+    maxWidth: "954px",
   },
   // client comment style
   commentStyle: {
-    color: '#0f2137',
-    fontWeight: '400',
-    fontSize: ['22px', '22px', '22px', '30px'],
-    lineHeight: '1.72',
-    mb: '47px',
+    color: "#0f2137",
+    fontWeight: "400",
+    fontSize: ["22px", "22px", "22px", "30px"],
+    lineHeight: "1.72",
+    mb: "47px",
   },
   // client name style
   nameStyle: {
-    as: 'h3',
-    color: '#343d48',
-    fontWeight: '500',
-    fontSize: '16px',
-    lineHeight: '30px',
+    as: "h3",
+    color: "#343d48",
+    fontWeight: "500",
+    fontSize: "16px",
+    lineHeight: "30px",
     mb: 0,
   },
   // client designation style
   designationStyle: {
-    as: 'h5',
-    color: 'rgba(52, 61, 72, 0.8)',
-    fontWeight: '400',
-    fontSize: '16px',
-    lineHeight: '30px',
+    as: "h5",
+    color: "rgba(52, 61, 72, 0.8)",
+    fontWeight: "400",
+    fontSize: "16px",
+    lineHeight: "30px",
     mb: 0,
-    ml: ['0', '10px'],
+    ml: ["0", "10px"],
   },
   // glide slider nav controls style
   btnWrapperStyle: {
-    position: 'absolute',
-    bottom: '62px',
-    left: '12px',
+    position: "absolute",
+    bottom: "62px",
+    left: "12px",
   },
   // next / prev btn style
   btnStyle: {
-    minWidth: 'auto',
-    minHeight: 'auto',
-    mr: '13px',
-    fontSize: '16px',
-    color: '#343d484d',
+    minWidth: "auto",
+    minHeight: "auto",
+    mr: "13px",
+    fontSize: "16px",
+    color: "#343d484d",
   },
 };
 

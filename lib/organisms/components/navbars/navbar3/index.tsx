@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import PropTypes from "prop-types";
 import {
   Box,
   Drawer,
@@ -8,9 +7,7 @@ import {
   HamburgMenu,
   Container,
 } from "../../../../atoms";
-import { MENU_ITEMS } from "../../../../data/Saas";
 import { ScrollSpyMenu, Logo } from "../../../../molecules";
-import LogoImage from "../../../assets/image/saas/logo.png";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
@@ -77,14 +74,6 @@ const Navbar = ({
       </Container>
     </NavbarWrapper>
   );
-};
-
-Navbar.propTypes = {
-  navbarStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
-  button: PropTypes.object,
-  row: PropTypes.object,
-  menuWrapper: PropTypes.object,
 };
 
 Navbar.defaultProps = {

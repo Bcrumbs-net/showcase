@@ -1,22 +1,24 @@
-import { useContext } from 'react';
-import Link from 'next/link';
-import PropTypes from 'prop-types';
+import { useContext } from "react";
+import Link from "next/link";
 import {
-  Button, Drawer, NavbarWrapper, DrawerContext, Box, HamburgMenu, Container
-} from '../../../../atoms';
-import { MENU_ITEMS } from '../../../../data/Portfolio/data';
-import { ScrollSpyMenu, Logo } from '../../../../molecules';
-import LogoImage from '../../../assets/image/portfolio/logo.png';
-import LogoImageAlt from '../../../assets/image/portfolio/logo-alt.png';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+  Button,
+  Drawer,
+  NavbarWrapper,
+  DrawerContext,
+  Box,
+  HamburgMenu,
+  Container,
+} from "../../../../atoms";
+import { ScrollSpyMenu, Logo } from "../../../../molecules";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-interface NavbarProps{
-  navbarStyle:object;
-  logoStyle:object;
-  button:object;
-  row:object;
-  menuWrapper:object;
+interface NavbarProps {
+  navbarStyle: object;
+  logoStyle: object;
+  button: object;
+  row: object;
+  menuWrapper: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
@@ -29,14 +31,14 @@ const Navbar = ({
   menuWrapper,
   model,
   isAR,
-  data
-}:NavbarProps) => {
+  data,
+}: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
 
   // Toggle drawer
   const toggleHandler = () => {
     dispatch({
-      type: 'TOGGLE',
+      type: "TOGGLE",
     });
   };
   return (
@@ -104,40 +106,32 @@ const Navbar = ({
   );
 };
 
-Navbar.propTypes = {
-  navbarStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
-  button: PropTypes.object,
-  row: PropTypes.object,
-  menuWrapper: PropTypes.object,
-};
-
 Navbar.defaultProps = {
   navbarStyle: {
-    minHeight: '70px',
-    display: 'block',
+    minHeight: "70px",
+    display: "block",
   },
   row: {
     flexBox: true,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
   },
   logoStyle: {
-    maxWidth: ['120px', '130px'],
+    maxWidth: ["120px", "130px"],
   },
   button: {
-    type: 'button',
-    fontSize: '16px',
-    pl: '0',
-    pr: '0',
-    colors: 'primary',
-    minHeight: 'auto',
+    type: "button",
+    fontSize: "16px",
+    pl: "0",
+    pr: "0",
+    colors: "primary",
+    minHeight: "auto",
   },
   menuWrapper: {
     flexBox: true,
-    alignItems: 'center',
+    alignItems: "center",
   },
 };
 
-export default withModelToDataObjProp(Navbar) ;
+export default withModelToDataObjProp(Navbar);

@@ -1,6 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { CLIENTS } from "../../../../data/Portfolio/data";
 import { ClientsImage } from "./style";
 import {
   Box,
@@ -64,14 +62,6 @@ const ClientsSection = ({
       </Container>
     </Box>
   );
-};
-
-ClientsSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secTitle: PropTypes.object,
-  secDescription: PropTypes.object,
-  row: PropTypes.object,
 };
 
 ClientsSection.defaultProps = {

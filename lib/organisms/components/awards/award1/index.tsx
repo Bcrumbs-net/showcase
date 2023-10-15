@@ -1,6 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { AWARDS } from "../../../../data/Portfolio/data";
 import {
   AwardSectionWrapper,
   AwardItem,
@@ -19,7 +17,6 @@ import {
   Text,
   Box,
   Heading,
-  Button,
 } from "../../../../atoms";
 import { GlideCarousel, GlideSlide } from "../../../../molecules";
 import { GraphContent } from "@bcrumbs.net/bc-api";
@@ -150,17 +147,6 @@ const AwardsSection = ({
   );
 };
 
-AwardsSection.propTypes = {
-  secTitleWrapper: PropTypes.object,
-  secTitle: PropTypes.object,
-  secDescription: PropTypes.object,
-  awardLogoStyle: PropTypes.object,
-  awardNameStyle: PropTypes.object,
-  awardDetailsStyle: PropTypes.object,
-  awardeeLogoStyle: PropTypes.object,
-  awardeeNameStyle: PropTypes.object,
-  awardDateStyle: PropTypes.object,
-};
 
 AwardsSection.defaultProps = {
   secTitleWrapper: {

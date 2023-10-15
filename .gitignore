@@ -3,3 +3,4 @@ node_modules
 .prettierrc
 azure-pipelines.yml
 .env.local
+.vscode/settings.json
