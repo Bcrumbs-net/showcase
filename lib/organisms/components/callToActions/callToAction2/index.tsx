@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ButtonWrapper } from '../../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
 import { CallToActionWrapper } from './style';
-import { Text, Image,Box, Container, Heading, Button } from '../../../../atoms';
+import { Text, Box, Container, Heading, Button } from '../../../../atoms';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 
@@ -49,15 +48,6 @@ const CallToAction = ({
       </Container>
     </Box>
   );
-};
-
-CallToAction.propTypes = {
-  sectionWrapper: PropTypes.object,
-  textArea: PropTypes.object,
-  buttonArea: PropTypes.object,
-  buttonStyle: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
 };
 
 CallToAction.defaultProps = {
