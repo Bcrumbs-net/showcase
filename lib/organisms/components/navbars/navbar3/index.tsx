@@ -1,37 +1,42 @@
-import { useContext } from 'react';
-import PropTypes from 'prop-types';
+import { useContext } from "react";
+import PropTypes from "prop-types";
 import {
-  Box, Drawer, NavbarWrapper, DrawerContext, HamburgMenu, Container
-} from '../../../../atoms';
-import { MENU_ITEMS } from '../../../../data/Saas';
-import { ScrollSpyMenu, Logo } from '../../../../molecules';
-import LogoImage from '../../../assets/image/saas/logo.png';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+  Box,
+  Drawer,
+  NavbarWrapper,
+  DrawerContext,
+  HamburgMenu,
+  Container,
+} from "../../../../atoms";
+import { MENU_ITEMS } from "../../../../data/Saas";
+import { ScrollSpyMenu, Logo } from "../../../../molecules";
+import LogoImage from "../../../assets/image/saas/logo.png";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-interface NavbarProps{
-  navbarStyle:object;
-  logoStyle:object;
-  row:object;
-  menuWrapper:object;
+interface NavbarProps {
+  navbarStyle: object;
+  logoStyle: object;
+  row: object;
+  menuWrapper: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
 }
-const Navbar = ({ 
+const Navbar = ({
   navbarStyle,
-   logoStyle, 
-   row, 
-   menuWrapper, 
-   model, 
-   isAR,
-   data
-   }:NavbarProps) => {
+  logoStyle,
+  row,
+  menuWrapper,
+  model,
+  isAR,
+  data,
+}: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
   // Toggle drawer
   const toggleHandler = () => {
     dispatch({
-      type: 'TOGGLE',
+      type: "TOGGLE",
     });
   };
   return (
@@ -49,7 +54,8 @@ const Navbar = ({
               className="main_menu"
               model={model}
               isAR={isAR}
-              offset={-70} drawerClose={undefined}            
+              offset={-70}
+              drawerClose={undefined}
             />
             <Drawer
               width="420px"
@@ -83,40 +89,40 @@ Navbar.propTypes = {
 
 Navbar.defaultProps = {
   navbarStyle: {
-    className: 'hosting_navbar',
-    minHeight: '70px',
-    display: 'block',
+    className: "hosting_navbar",
+    minHeight: "70px",
+    display: "block",
   },
   row: {
     flexBox: true,
-    alignItems: 'center',
+    alignItems: "center",
     justifyContent: [
-      'space-between',
-      'space-between',
-      'space-between',
-      'flex-start',
+      "space-between",
+      "space-between",
+      "space-between",
+      "flex-start",
     ],
-    width: '100%',
+    width: "100%",
   },
   logoStyle: {
-    maxWidth: '130px',
-    mr: [0, 0, 0, '166px'],
+    maxWidth: "130px",
+    mr: [0, 0, 0, "166px"],
   },
   button: {
-    type: 'button',
-    fontSize: '13px',
-    fontWeight: '600',
-    color: 'white',
-    borderRadius: '4px',
-    pl: '15px',
-    pr: '15px',
-    colors: 'primaryWithBg',
-    minHeight: 'auto',
+    type: "button",
+    fontSize: "13px",
+    fontWeight: "600",
+    color: "white",
+    borderRadius: "4px",
+    pl: "15px",
+    pr: "15px",
+    colors: "primaryWithBg",
+    minHeight: "auto",
     height: `${1}`,
   },
   menuWrapper: {
     flexBox: true,
-    alignItems: 'center',
+    alignItems: "center",
   },
 };
 
