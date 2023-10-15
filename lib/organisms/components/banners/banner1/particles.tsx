@@ -9,6 +9,7 @@ import Particle7 from '../../../../assets/image/agency/particles/particle-4.png'
 
 const ParticlesComponent = () => {
   return (
+    //@ts-ignore
     <Particles
       className="particle"
       params={{
@@ -22,37 +23,37 @@ const ParticlesComponent = () => {
             type: ['images'],
             images: [
               {
-                src: `${Particle1}`,
+                src: `${Particle1.src}`,
                 width: 25,
                 height: 25,
               },
               {
-                src: `${Particle2}`,
+                src: `${Particle2.src}`,
                 width: 18,
                 height: 18,
               },
               {
-                src: `${Particle3}`,
+                src: `${Particle3.src}`,
                 width: 32,
                 height: 32,
               },
               {
-                src: `${Particle4}`,
+                src: `${Particle4.src}`,
                 width: 41,
                 height: 41,
               },
               {
-                src: `${Particle5}`,
+                src: `${Particle5.src}`,
                 width: 22,
                 height: 22,
               },
               {
-                src: `${Particle6}`,
+                src: `${Particle6.src}`,
                 width: 22,
                 height: 22,
               },
               {
-                src: `${Particle7}`,
+                src: `${Particle7.src}`,
                 width: 22,
                 height: 22,
               },
