@@ -1,5 +1,5 @@
-import SaaSFeatureSection from '../../../lib/organisms/components/featuresLists/featureList5';
-import SaaSServiceSection from '../../../lib/organisms/components/services/service1';
+import SaaS2FeatureSection from '../../../lib/organisms/components/featuresLists/featureList5';
+import SaaS2ServiceSection from '../../../lib/organisms/components/services/service1';
 import AgencyFeatureSection from '../../../lib/organisms/components/featuresLists/featureList3';
 import RideFeatureSection from '../../../lib/containers/Ride/Feature';
 import FeatureSlider from '../../../lib/containers/Ride/FeatureSlider';
@@ -17,12 +17,12 @@ import CryptoTransactions from "../../../lib/containers/Crypto/Transaction";
 const resolveComponents = () => {
   return {
     403431: {
-      render: props => <SaaSFeatureSection {...props} />,
+      render: props => <SaaS2FeatureSection {...props} />,
       name: 'SaaS Features listing',
       category: 'Features listing',
     },
     403427: {
-      render: props => <SaaSServiceSection {...props} />,
+      render: props => <SaaS2ServiceSection {...props} />,
       name: 'SaaS Features listing 2',
       category: 'Features listing',
     },

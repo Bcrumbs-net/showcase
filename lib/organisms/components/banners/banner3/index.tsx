@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
-import styled from 'styled-components';
-import BannerWrapper, { DiscountLabel, BannerObject } from './style';
+import React, { Fragment } from "react";
+import styled from "styled-components";
+import BannerWrapper, { DiscountLabel, BannerObject } from "./style";
 import {
   Button,
   Container,
@@ -8,11 +8,11 @@ import {
   Heading,
   Text,
   Image,
-} from '../../../../atoms';
-import { FeatureBlock } from '../../../../molecules';
-import ParticlesComponent from './particles';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+} from "../../../../atoms";
+import { FeatureBlock } from "../../../../molecules";
+import ParticlesComponent from "./particles";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface BannerSectionProps {
   row: object;
@@ -108,56 +108,56 @@ const BannerSection = ({
 BannerSection.defaultProps = {
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: '-15px',
-    mr: '-15px',
-    alignItems: 'center',
+    flexWrap: "wrap",
+    ml: "-15px",
+    mr: "-15px",
+    alignItems: "center",
   },
   col: {
-    pr: '15px',
-    pl: '15px',
-    width: [1, '70%', '50%', '45%'],
+    pr: "15px",
+    pl: "15px",
+    width: [1, "70%", "50%", "45%"],
   },
   title: {
-    fontSize: ['22px', '34px', '30px', '55px'],
-    fontWeight: '700',
-    color: '#0f2137',
-    letterSpacing: '-0.025em',
-    mb: ['20px', '25px'],
-    lineHeight: '1.5',
+    fontSize: ["22px", "34px", "30px", "55px"],
+    fontWeight: "700",
+    color: "#0f2137",
+    letterSpacing: "-0.025em",
+    mb: ["20px", "25px"],
+    lineHeight: "1.5",
   },
   description: {
-    fontSize: '16px',
-    color: '#343d48cc',
-    lineHeight: '1.75',
-    mb: '0',
+    fontSize: "16px",
+    color: "#343d48cc",
+    lineHeight: "1.75",
+    mb: "0",
   },
   btnStyle: {
-    minWidth: ['120px', '120px', '120px', '156px'],
-    fontSize: ['13px', '14px'],
-    fontWeight: '500',
-    colors: 'primaryWithBg',
+    minWidth: ["120px", "120px", "120px", "156px"],
+    fontSize: ["13px", "14px"],
+    fontWeight: "500",
+    colors: "primaryWithBg",
   },
   outlineBtnStyle: {
-    minWidth: '156px',
-    fontSize: '14px',
-    fontWeight: '500',
-    color: '#5167db',
-    ml: '18px',
+    minWidth: "156px",
+    fontSize: "14px",
+    fontWeight: "500",
+    color: "#5167db",
+    ml: "18px",
   },
   discountAmount: {
-    fontSize: '14px',
-    color: '#eb4d4b',
+    fontSize: "14px",
+    color: "#eb4d4b",
     mb: 0,
-    as: 'span',
-    mr: '0.4em',
+    as: "span",
+    mr: "0.4em",
     fontWeight: 700,
   },
   discountText: {
-    fontSize: ['13px', '14px'],
-    color: '#0f2137',
+    fontSize: ["13px", "14px"],
+    color: "#0f2137",
     mb: 0,
-    as: 'span',
+    as: "span",
     fontWeight: 500,
   },
 };

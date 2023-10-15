@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 import {
   Box,
   Drawer,
@@ -6,10 +6,10 @@ import {
   DrawerContext,
   HamburgMenu,
   Container,
-} from '../../../../atoms';
-import { ScrollSpyMenu, Logo } from '../../../../molecules';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+} from "../../../../atoms";
+import { ScrollSpyMenu, Logo } from "../../../../molecules";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface NavbarProps {
   navbarStyle: object;

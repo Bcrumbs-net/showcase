@@ -1,8 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
-import VendorLogos from '../../../assets/image/saas/vendor-logos.png';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
@@ -96,16 +94,6 @@ const TrialSection = ({
       </Container>
     </CustomBoxWrapper>
   );
-};
-
-TrialSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  row: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
-  button: PropTypes.object,
-  imageArea: PropTypes.object,
-  ImageOne: PropTypes.object,
 };
 
 TrialSection.defaultProps = {

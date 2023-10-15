@@ -1,9 +1,9 @@
-import React from 'react';
-import FooterWrapper, { List, ListItem } from './style';
-import { Container, Text, Box, Heading } from '../../../../atoms';
-import { Logo } from '../../../../molecules';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
-import { GraphContent } from '@bcrumbs.net/bc-api';
+import React from "react";
+import FooterWrapper, { List, ListItem } from "./style";
+import { Container, Text, Box, Heading } from "../../../../atoms";
+import { Logo } from "../../../../molecules";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { GraphContent } from "@bcrumbs.net/bc-api";
 
 interface FooterProps {
   row?: object;
@@ -100,48 +100,48 @@ Footer.defaultProps = {
   // Footer row default style
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: '-15px',
-    mr: '-15px',
+    flexWrap: "wrap",
+    ml: "-15px",
+    mr: "-15px",
   },
   // Footer col one style
   colOne: {
-    width: [1, '35%', '35%', '23%'],
-    mt: [0, '13px'],
-    mb: ['30px', 0],
-    pl: ['15px', 0],
-    pr: ['15px', '15px', 0],
+    width: [1, "35%", "35%", "23%"],
+    mt: [0, "13px"],
+    mb: ["30px", 0],
+    pl: ["15px", 0],
+    pr: ["15px", "15px", 0],
   },
   // Footer col two style
   colTwo: {
-    width: ['100%', '65%', '65%', '77%'],
+    width: ["100%", "65%", "65%", "77%"],
     flexBox: true,
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
   },
   // Footer col default style
   col: {
-    width: ['100%', '50%', '50%', '25%'],
-    pl: '15px',
-    pr: '15px',
-    mb: '30px',
+    width: ["100%", "50%", "50%", "25%"],
+    pl: "15px",
+    pr: "15px",
+    mb: "30px",
   },
   // widget title default style
   titleStyle: {
-    color: '#343d48',
-    fontSize: '16px',
-    fontWeight: '700',
-    mb: '30px',
+    color: "#343d48",
+    fontSize: "16px",
+    fontWeight: "700",
+    mb: "30px",
   },
   // Default logo size
   logoStyle: {
-    width: '100px',
-    mb: '15px',
+    width: "100px",
+    mb: "15px",
   },
   // widget text default style
   textStyle: {
-    color: '#0f2137',
-    fontSize: '16px',
-    mb: '10px',
+    color: "#0f2137",
+    fontSize: "16px",
+    mb: "10px",
   },
 };
 

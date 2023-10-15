@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import PropTypes from "prop-types";
 import { Icon } from "react-icons-kit";
 import { Box, Text, Heading, Image, Container } from "../../../../atoms";
 import { GlideCarousel, GlideSlide } from "../../../../molecules";
@@ -14,7 +13,6 @@ import {
   TestimonialHead,
   TestimonialThumb,
 } from "./style";
-import { TESTIMONIAL } from "../../../../data/Portfolio/data";
 import { twitter } from "react-icons-kit/icomoon/twitter";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
@@ -136,16 +134,6 @@ const TestimonialSection = ({
       </Container>
     </Box>
   );
-};
-
-TestimonialSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secTitle: PropTypes.object,
-  secDescription: PropTypes.object,
-  reviewStyle: PropTypes.object,
-  nameStyle: PropTypes.object,
-  designationStyle: PropTypes.object,
 };
 
 TestimonialSection.defaultProps = {
