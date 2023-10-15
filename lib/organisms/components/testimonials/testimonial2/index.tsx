@@ -1,10 +1,8 @@
-import PropTypes from "prop-types";
 import { Box, Container } from "../../../../atoms";
 import ImageGallery from "react-image-gallery";
-import "react-image-gallery/styles/css/image-gallery.css";
-import SliderDes from "./description";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
+import SliderDes from "./description";
 
 interface TestimonialSectionProps {
   sectionWrapper: object;
@@ -14,6 +12,7 @@ interface TestimonialSectionProps {
   model: GraphContent;
   data: Record<string, string>;
 }
+
 const TestimonialSection = ({
   sectionWrapper,
   row,
