@@ -34,7 +34,7 @@ const Navbar = ({
   // Toggle drawer
   const toggleHandler = () => {
     dispatch({
-      type: 'TOGGLE',
+      type: "TOGGLE",
     });
   };
 
@@ -80,40 +80,40 @@ const Navbar = ({
 
 Navbar.defaultProps = {
   navbarStyle: {
-    className: 'hosting_navbar',
-    minHeight: '70px',
-    display: 'block',
+    className: "hosting_navbar",
+    minHeight: "70px",
+    display: "block",
   },
   row: {
     flexBox: true,
-    alignItems: 'center',
+    alignItems: "center",
     justifyContent: [
-      'space-between',
-      'space-between',
-      'space-between',
-      'flex-start',
+      "space-between",
+      "space-between",
+      "space-between",
+      "flex-start",
     ],
-    width: '100%',
+    width: "100%",
   },
   logoStyle: {
-    maxWidth: '130px',
-    mr: [0, 0, 0, '166px'],
+    maxWidth: "130px",
+    mr: [0, 0, 0, "166px"],
   },
   button: {
-    type: 'button',
-    fontSize: '13px',
-    fontWeight: '600',
-    color: 'white',
-    borderRadius: '4px',
-    pl: '15px',
-    pr: '15px',
-    colors: 'primaryWithBg',
-    minHeight: 'auto',
+    type: "button",
+    fontSize: "13px",
+    fontWeight: "600",
+    color: "white",
+    borderRadius: "4px",
+    pl: "15px",
+    pr: "15px",
+    colors: "primaryWithBg",
+    minHeight: "auto",
     height: `${1}`,
   },
   menuWrapper: {
     flexBox: true,
-    alignItems: 'center',
+    alignItems: "center",
   },
 };
 
