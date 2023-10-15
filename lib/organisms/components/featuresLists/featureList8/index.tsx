@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import Link from "next/link";
 import {
   Text,
@@ -74,20 +73,6 @@ const ContactSection = ({
       </Box>
     </SectionMainWrapper>
   );
-};
-
-ContactSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  row: PropTypes.object,
-  contactForm: PropTypes.object,
-  secHeading: PropTypes.object,
-  secText: PropTypes.object,
-  button: PropTypes.object,
-  note: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
-  colornote: PropTypes.object,
 };
 
 ContactSection.defaultProps = {

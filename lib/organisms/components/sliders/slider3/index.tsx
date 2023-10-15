@@ -1,20 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import {
-  Box,
-  Text,
-  Heading,
-  Image,
-  Container,
-  Button,
-} from "../../../../atoms";
+import { Box, Text, Heading, Container } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";
 import { FeatureSliderWrapper } from "./style";
-import Image1 from "../../../assets/image/crypto/slider-1.png";
-import Image2 from "../../../assets/image/crypto/slider-2.png";
-import Image3 from "../../../assets/image/crypto/slider-3.png";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 /*const images = [
@@ -61,7 +50,7 @@ const FeatureSlider = ({
   isAR,
   data,
 }: FeatureSliderProps) => {
-  let images = model.children.map((item, index) => {
+  const images = model.children.map((item, index) => {
     const imageMap: Record<string, string> = item.data.reduce(function (
       map,
       obj
@@ -75,7 +64,7 @@ const FeatureSlider = ({
     };
   });
   return (
-    <FeatureSliderWrapper id="featureslider">
+    <FeatureSliderWrapper id={model.name}>
       <Container noGutter mobileGutter>
         <Box className="row" {...row}>
           <Text {...sectionSubTitle} content={data.title} />
@@ -98,14 +87,6 @@ const FeatureSlider = ({
       </Container>
     </FeatureSliderWrapper>
   );
-};
-
-// Transactions style props
-FeatureSlider.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  row: PropTypes.object,
 };
 
 // Trusted default style

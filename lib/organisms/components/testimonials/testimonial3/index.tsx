@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import PropTypes, { object } from 'prop-types';
 import { Text, Container } from '../../../../atoms';
 import { Heading } from '../../../../atoms';
 import { Button } from "../../../../atoms";
@@ -122,21 +121,6 @@ const TestimonialSection = ({
     </TestimonialSectionWrapper>
   );
 };
-
-// TestimonialSection style props
-TestimonialSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  btnStyle: PropTypes.object,
-  btnWrapperStyle: PropTypes.object,
-  nameStyle: PropTypes.object,
-  commentStyle: PropTypes.object,
-  designationStyle: PropTypes.object,
-};
-
 // TestimonialSection default style
 TestimonialSection.defaultProps = {
   // sub section default style

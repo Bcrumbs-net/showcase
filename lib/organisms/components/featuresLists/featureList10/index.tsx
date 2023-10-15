@@ -1,14 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Fade from "react-reveal/Fade";
-import {
-  Box,
-  Text,
-  Heading,
-  Image,
-  Container,
-  Button,
-} from "../../../../atoms";
+import { Box, Text, Heading, Image, Container } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";
 import { BETA_FEATURE } from "../../../../data/Crypto";
 import { BetaSectionWrapper, FeatureSection } from "./style";
@@ -20,6 +12,7 @@ interface BetaSectionProps {
   sectionSubTitle: object;
   featureTitleStyle: object;
   featureDescriptionStyle: object;
+  model: any;
 }
 const BetaSection = ({
   row,
@@ -28,9 +21,10 @@ const BetaSection = ({
   sectionSubTitle,
   featureTitleStyle,
   featureDescriptionStyle,
+  model,
 }: BetaSectionProps) => {
   return (
-    <BetaSectionWrapper id="betasection">
+    <BetaSectionWrapper id={model.name}>
       <Container noGutter mobileGutter>
         <Box className="row" {...row}>
           <FeatureBlock
@@ -60,15 +54,6 @@ const BetaSection = ({
       </Container>
     </BetaSectionWrapper>
   );
-};
-
-// Transactions style props
-BetaSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  row: PropTypes.object,
-  featureTitleStyle: PropTypes.object,
-  featureDescriptionStyle: PropTypes.object,
 };
 
 // Trusted default style

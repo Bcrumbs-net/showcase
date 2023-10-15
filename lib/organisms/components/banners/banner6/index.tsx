@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import PropTypes from "prop-types";
 import {
   Box,
   Container,
@@ -76,7 +75,7 @@ const BannerSection = ({
   );
   return (
     <BannerWrapper
-      id="banner_section"
+      id={model.name}
       style={{ backgroundImage: `url(${data.image})` }}
     >
       <BgImageWrapper>
@@ -96,16 +95,6 @@ const BannerSection = ({
       </Container>
     </BannerWrapper>
   );
-};
-
-BannerSection.propTypes = {
-  title: PropTypes.object,
-  btnStyle: PropTypes.object,
-  description: PropTypes.object,
-  contentStyle: PropTypes.object,
-  discountText: PropTypes.object,
-  discountAmount: PropTypes.object,
-  outlineBtnStyle: PropTypes.object,
 };
 
 BannerSection.defaultProps = {

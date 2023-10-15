@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {
   Box,
   Container,
@@ -10,7 +9,6 @@ import {
 } from "../../../../atoms";
 import Fade from "react-reveal/Fade";
 import { FeatureBlock } from "../../../../molecules";
-import { TRANSACTIONS_FEATURE } from "../../../../data/Crypto";
 import { TransactionsWrapper, FeatureSection } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
@@ -44,7 +42,7 @@ const TransactionsHistory = ({
   data,
 }: TransactionsHistoryProps) => {
   return (
-    <TransactionsWrapper id="transactions">
+    <TransactionsWrapper id={model.name}>
       <Container>
         <Box className="row" {...row}>
           <Box className="colleft" {...col} style={{ flexDirection: "column" }}>
@@ -88,17 +86,6 @@ const TransactionsHistory = ({
       </Container>
     </TransactionsWrapper>
   );
-};
-
-// Transactions style props
-TransactionsHistory.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  featureTitleStyle: PropTypes.object,
-  featureDescriptionStyle: PropTypes.object,
 };
 
 // Transactions default style

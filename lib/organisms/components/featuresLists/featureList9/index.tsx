@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Fade from "react-reveal/Fade";
 import {
   Box,
@@ -7,12 +6,9 @@ import {
   Heading,
   Image,
   Container,
-  Button,
 } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";
-import { SCALABLE_FEATURE } from "../../../../data/Crypto";
 import { ScalableWrapper, FeatureSection } from "./style";
-import ScalableImage from "../../../assets/image/crypto/scalable.jpg";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
@@ -45,11 +41,11 @@ const ScalableHistory = ({
   data,
 }: ScalableHistoryProps) => {
   return (
-    <ScalableWrapper id="scalable" >
+    <ScalableWrapper id={model.name}>
       <Container noGutter mobileGutter>
         <Box className="row" {...row}>
           <Box className="colleft" {...col} style={{ flexDirection: "column" }}>
-            <Text  content={data.title}  {...sectionSubTitle}/>
+            <Text content={data.title} {...sectionSubTitle} />
             <FeatureBlock
               title={<Heading {...title} content={data.header} />}
               description={<Text {...description} content={data.desc} />}
@@ -95,17 +91,6 @@ const ScalableHistory = ({
       </Container>
     </ScalableWrapper>
   );
-};
-
-// Transactions style props
-ScalableHistory.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  featureTitleStyle: PropTypes.object,
-  featureDescriptionStyle: PropTypes.object,
 };
 
 // Scalable default style
