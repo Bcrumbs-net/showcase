@@ -1,7 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Icon from "react-icons-kit";
-import { socialDribbbleOutline } from "react-icons-kit/ionicons/socialDribbbleOutline";
 import { SocialProfileWrapper, SocialProfileItem } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";

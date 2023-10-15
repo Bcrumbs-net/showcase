@@ -1,19 +1,26 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import React from "react";
+import styled from "styled-components";
+import {
+  Box,
+  Text,
+  Heading,
+  Image,
+  Container,
+  Button,
+} from "../../../../atoms";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface TrialSectionProps {
-  sectionWrapper:object;
-  row:object;
-  title:object;
-  description:object;
-  textArea:object;
-  imageArea:object;
-  ImageOne:object;
-  btnStyle:object;
-  outlineBtnStyle:object;
+  sectionWrapper: object;
+  row: object;
+  title: object;
+  description: object;
+  textArea: object;
+  imageArea: object;
+  ImageOne: object;
+  btnStyle: object;
+  outlineBtnStyle: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
@@ -31,8 +38,7 @@ const TrialSection = ({
   model,
   isAR,
   data,
-}:TrialSectionProps) => {
-
+}: TrialSectionProps) => {
   let CustomBoxWrapper;
   if (data.backgroundColor) {
     CustomBoxWrapper = styled(Box)`
@@ -57,7 +63,7 @@ const TrialSection = ({
   } else {
     CustomText = Text;
   }
-  
+
   return (
     <CustomBoxWrapper {...sectionWrapper} id={model.name}>
       <Container>
@@ -98,56 +104,56 @@ const TrialSection = ({
 
 TrialSection.defaultProps = {
   sectionWrapper: {
-    as: 'section',
-    className: 'trial-section',
-    pt: ['20px', '40px', '60px', '80px'],
-    pb: ['20px', '20px', '20px', '80px'],
+    as: "section",
+    className: "trial-section",
+    pt: ["20px", "40px", "60px", "80px"],
+    pb: ["20px", "20px", "20px", "80px"],
   },
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    alignItems: 'center',
+    flexWrap: "wrap",
+    flexDirection: "column",
+    alignItems: "center",
   },
   textArea: {
-    width: ['100%', '100%', '80%', '43%'],
+    width: ["100%", "100%", "80%", "43%"],
   },
   imageArea: {
-    width: ['100%', '100%', '43%'],
-    mb: ['35px', '35px', '40px', '40px'],
+    width: ["100%", "100%", "43%"],
+    mb: ["35px", "35px", "40px", "40px"],
   },
   title: {
-    fontSize: ['32px', '32px', '36px', '42px', '48px'],
-    fontWeight: '400',
-    color: 'headingColor',
-    letterSpacing: '-0.025em',
-    mb: '28px',
-    textAlign: 'center',
-    lineHeight: '1.25',
+    fontSize: ["32px", "32px", "36px", "42px", "48px"],
+    fontWeight: "400",
+    color: "headingColor",
+    letterSpacing: "-0.025em",
+    mb: "28px",
+    textAlign: "center",
+    lineHeight: "1.25",
   },
   description: {
-    fontSize: ['15px', '15px', '16px', '16px', '16px'],
-    color: 'textColor',
-    lineHeight: '2.1',
-    textAlign: 'center',
-    mb: ['35px', '35px', '40px', '60px'],
+    fontSize: ["15px", "15px", "16px", "16px", "16px"],
+    color: "textColor",
+    lineHeight: "2.1",
+    textAlign: "center",
+    mb: ["35px", "35px", "40px", "60px"],
   },
   ImageOne: {
-    ml: 'auto',
-    mr: 'auto',
+    ml: "auto",
+    mr: "auto",
   },
   btnStyle: {
-    minWidth: '156px',
-    fontSize: '14px',
-    fontWeight: '500',
-    colors: 'primaryWithBg',
+    minWidth: "156px",
+    fontSize: "14px",
+    fontWeight: "500",
+    colors: "primaryWithBg",
   },
   outlineBtnStyle: {
-    minWidth: '156px',
-    fontSize: '14px',
-    fontWeight: '500',
-    color: '#0f2137',
+    minWidth: "156px",
+    fontSize: "14px",
+    fontWeight: "500",
+    color: "#0f2137",
   },
 };
 
-export default withModelToDataObjProp(TrialSection) ;
+export default withModelToDataObjProp(TrialSection);
