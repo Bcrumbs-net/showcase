@@ -1,9 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Image, Heading, Text, Box, Container } from "../../../../../atoms";
 import { GlideCarousel, GlideSlide } from "../../../../../molecules";
 import TestimonialSecWrapper, { ImageWrapper, TestimonialItem } from "./style";
-import { TESTIMONIALS } from "../../../../../data/Crypto";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
@@ -41,7 +39,7 @@ const BannerSliderSection = ({
     animationDuration: 600,
   };
   return (
-    <TestimonialSecWrapper id="testimonial_section">
+    <TestimonialSecWrapper id={model.name}>
       <Container>
         <div style={{ width: "440px" }}>
           <GlideCarousel
@@ -90,17 +88,6 @@ const BannerSliderSection = ({
       </Container>
     </TestimonialSecWrapper>
   );
-};
-
-BannerSliderSection.propTypes = {
-  secTitleWrapper: PropTypes.object,
-  secHeading: PropTypes.object,
-  secText: PropTypes.object,
-  reviewStyle: PropTypes.object,
-  TestimonialMeta: PropTypes.object,
-  nameStyle: PropTypes.object,
-  designationStyle: PropTypes.object,
-  arrowStyle: PropTypes.object,
 };
 
 BannerSliderSection.defaultProps = {

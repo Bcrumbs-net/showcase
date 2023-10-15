@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import Link from "next/link";
-import PropTypes from "prop-types";
 import {
   Button,
   Drawer,
@@ -12,7 +11,6 @@ import {
 } from "../../../../atoms";
 import { MENU_ITEMS } from "../../../../data/Crypto";
 import { ScrollSpyMenu, Logo } from "../../../../molecules";
-import LogoImage from "../../../assets/image/saasModern/logo-white.png";
 import LogoImageAlt from "../../../../assets/image/saasModern/logo.png";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
@@ -48,7 +46,7 @@ const Navbar = ({
     <NavbarWrapper {...navbarStyle} className="saas_navbar">
       <Container>
         <Box {...row}>
-          <Logo 
+          <Logo
             href="/"
             logoSrc={data.logo}
             title="Portfolio"
@@ -98,14 +96,6 @@ const Navbar = ({
       </Container>
     </NavbarWrapper>
   );
-};
-
-Navbar.propTypes = {
-  navbarStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
-  button: PropTypes.object,
-  row: PropTypes.object,
-  menuWrapper: PropTypes.object,
 };
 
 Navbar.defaultProps = {

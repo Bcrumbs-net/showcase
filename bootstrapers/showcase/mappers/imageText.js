@@ -3,7 +3,7 @@ import AgencyAboutUsSection from '../../../lib/organisms/components/featuresList
 import FoodAboutUsSection from '../../../lib/containers/Food/AboutUsSection';
 import SaaSClassicPartnerSection from "../../../lib/containers/SaasClassic/Partner";
 import CryptoControlSections from "../../../lib/organisms/components/controls/control1";
-import CryptoScalableSections from "../../../lib/organisms/components/scalables/scalable1";
+import CryptoScalableSections from "../../../lib/organisms/components/featuresLists/featureList9";
 import CryptoTrustedProofSections from "../../../lib/organisms/components/trustedProofs/trustedProof1";
 
 const resolveComponents = () => {

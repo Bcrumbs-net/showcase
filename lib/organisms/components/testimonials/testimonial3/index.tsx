@@ -126,7 +126,6 @@ const TestimonialSection = ({
     </TestimonialSectionWrapper>
   );
 };
-
 // TestimonialSection default style
 TestimonialSection.defaultProps = {
   // sub section default style

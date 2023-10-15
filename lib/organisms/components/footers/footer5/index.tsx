@@ -1,10 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Link from "next/link";
 import { Box, Text, Heading, Image, Container } from "../../../../atoms";
-import ContactSection from "../../featuresLists/featurelist8";
 import FooterWrapper, { List, ListItem, BgImageWrapper } from "./style";
-import { menuWidget, Language_NAMES } from "../../../../data/Crypto";
 import AppImage from "../../../../assets/image/ride/footerapp.svg";
 import PlaystoreImage from "../../../../assets/image/ride/footerplay.svg";
 import FooterBG from "../../../../assets/image/crypto/footer-bg.svg";
@@ -32,12 +29,11 @@ const Footer = ({
   data,
 }: FooterProps) => {
   return (
-    <FooterWrapper id="footerSection">
+    <FooterWrapper id={model.name}>
       <BgImageWrapper>
         <Image src={FooterBG.src} alt="Footer background" />
       </BgImageWrapper>
       <Container noGutter mobileGutter width="1200px">
-        
         <Box className="row mainRow" {...row}>
           <Box {...colOne}>
             {/*<Heading content="Language" {...titleStyle} />
@@ -109,16 +105,6 @@ const Footer = ({
       </Container>
     </FooterWrapper>
   );
-};
-
-// Footer style props
-Footer.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  colOne: PropTypes.object,
-  colTwo: PropTypes.object,
-  titleStyle: PropTypes.object,
-  textStyle: PropTypes.object,
 };
 
 // Footer default style
