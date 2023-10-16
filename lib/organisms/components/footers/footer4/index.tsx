@@ -97,6 +97,7 @@ const Footer = ({
               {model.children &&
                 model.children
                   .filter((m) => m.online)
+                  .filter((m) => m.online)
                   .map((itemObj, index) => {
                     const item: Record<string, string> = itemObj.data.reduce(
                       function (map, obj) {

@@ -38,7 +38,13 @@ const Footer = ({
               href="/"
               logoSrc={data.logo}
               logoStyle={logoStyle}
-              title={''}
+              title={""}
+            />
+            <Logo
+              href="/"
+              logoSrc={data.logo}
+              logoStyle={logoStyle}
+              title={""}
             />
             <Text content={data.email} {...textStyle} />
             <Text content={data.phone} {...textStyle} />
