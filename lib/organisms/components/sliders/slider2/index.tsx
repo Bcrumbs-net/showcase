@@ -11,40 +11,40 @@ import SectionWrapper, {
 } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
-// import { openModal, closeModal } from '@redq/reuse-modal';
+import { openModal, closeModal } from '@redq/reuse-modal';
 
 // Default close button for modal
 const CloseModalButton = () =>
   null;
-  // <Button
-  //   className="foodModalCloseBtn"
-  //   variant="fab"
-  //   onClick={() => closeModal()}
-  //   icon={<i className="flaticon-plus-symbol" />}
-  // />
+  <Button
+    className="foodModalCloseBtn"
+    variant="fab"
+    onClick={() => closeModal()}
+    icon={<i className="flaticon-plus-symbol" />}
+  />
 
 const handleProductModal = (imagePath) => {
-  // openModal({
-  //   config: {
-  //     className: 'product-modal',
-  //     disableDragging: true,
-  //     width: '50%',
-  //     height: '100%',
-  //     animationFrom: { transform: 'translateY(100px)' }, // react-spring <Spring from={}> props value
-  //     animationTo: { transform: 'translateY(0)' }, //  react-spring <Spring to={}> props value
-  //     transition: {
-  //       mass: 1,
-  //       tension: 180,
-  //       friction: 26,
-  //     },
-  //   },
-  //   component: ProductModal,
-  //   componentProps: {
-  //     imagePath,
-  //   },
-  //   closeComponent: CloseModalButton,
-  //   closeOnClickOutside: true,
-  // });
+  openModal({
+    config: {
+      className: 'product-modal',
+      disableDragging: true,
+      width: '50%',
+      height: '100%',
+      animationFrom: { transform: 'translateY(100px)' }, // react-spring <Spring from={}> props value
+      animationTo: { transform: 'translateY(0)' }, //  react-spring <Spring to={}> props value
+      transition: {
+        mass: 1,
+        tension: 180,
+        friction: 26,
+      },
+    },
+    component: ProductModal,
+    componentProps: {
+      imagePath,
+    },
+    closeComponent: CloseModalButton,
+    closeOnClickOutside: true,
+  });
 };
 
 const glideOptions = {
