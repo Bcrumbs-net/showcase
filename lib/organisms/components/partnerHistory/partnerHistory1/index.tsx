@@ -1,4 +1,3 @@
-import PropTypes, { object } from "prop-types";
 import {
   Box,
   Text,
@@ -10,10 +9,6 @@ import {
 } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";
 import PartnerHistoryWrapper, { CounterUpArea } from "./style";
-// import GoogleImg from '../../assets/image/app/google.svg';
-// import AppleImg from '../../assets/image/app/apple.svg';
-// import DribbleImg from '../../assets/image/app/dribbble.svg';
-// import MailchimpImg from '../../assets/image/app/mailchimp.svg';
 import BackgroundImg from "../../../../assets/image/app/partner-bg.png";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";

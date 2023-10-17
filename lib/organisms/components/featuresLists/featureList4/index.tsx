@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import FeatureSectionWrapper from "./style";
 import { Container, Box, Heading, Text } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";

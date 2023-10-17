@@ -1,13 +1,10 @@
 import { useContext } from 'react';
-import PropTypes from 'prop-types';
 import {
   Button, Drawer, NavbarWrapper, DrawerContext, HamburgMenu
 } from '../../../../atoms';
 import { ScrollSpyMenu, Logo } from '../../../../molecules';
 import { Container } from './style';
 // import { openModal, closeModal } from '@redq/reuse-modal';
-import SearchPanel from '../../../../molecules/components/search-panel';
-import LoginModal from '../../../../molecules/components/login-modal';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 

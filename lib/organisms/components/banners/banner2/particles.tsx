@@ -21,32 +21,32 @@ const ParticlesComponent = () => {
             type: ['images'],
             images: [
               {
-                src: `${Img1}`,
+                src: `${Img1.src}`,
                 width: 50,
                 height: 53,
               },
               {
-                src: `${Img2}`,
+                src: `${Img2.src}`,
                 width: 50,
                 height: 53,
               },
               {
-                src: `${Img3}`,
+                src: `${Img3.src}`,
                 width: 20,
                 height: 23,
               },
               {
-                src: `${Img4}`,
+                src: `${Img4.src}`,
                 width: 20,
                 height: 23,
               },
               {
-                src: `${Img5}`,
+                src: `${Img5.src}`,
                 width: 50,
                 height: 53,
               },
               {
-                src: `${Img6}`,
+                src: `${Img6.src}`,
                 width: 50,
                 height: 53,
               },

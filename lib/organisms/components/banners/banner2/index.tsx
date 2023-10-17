@@ -136,7 +136,7 @@ const DomainSection = ({
 DomainSection.defaultProps = {
   SectionWrapper: {
     as: "section",
-    pt: "80px",
+    pt: "120px",
     pb: "80px",
     overflow: "hidden",
   },
@@ -162,7 +162,7 @@ DomainSection.defaultProps = {
   },
   title: {
     content: "Essential Mobile  App Landing for  Workspaces",
-    fontSize: ["26px", "30px", "30px", "48px", "60px"],
+    fontSize: ["60px"],
     fontWeight: "300",
     color: "#0f2137",
     letterSpacing: "-0.01px",

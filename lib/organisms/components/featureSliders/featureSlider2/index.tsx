@@ -1,8 +1,5 @@
-import PropTypes from "prop-types";
-import Fade from "react-reveal/Fade";
 import FeatureSectionTwoWrapper from "./style";
 import { Container, Box, Heading, Image, Text } from "../../../../atoms";
-import { FeatureBlock } from "../../../../molecules";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
