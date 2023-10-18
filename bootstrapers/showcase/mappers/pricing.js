@@ -1,5 +1,5 @@
 import SaaSPricingSection from '../../../lib/containers/Saas/PricingSection';
-import PaymentSection from '../../../lib/organisms/components/payments/payment1';
+import PaymentSection from '../../../lib/organisms/components/callToActions/callToAction3';
 import SaaSClasicPricingSection from "../../../lib/containers/SaasClassic/Pricing";
 
 const resolveComponents = () => {

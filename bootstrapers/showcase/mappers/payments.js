@@ -1,4 +1,4 @@
-import AppPaymentSection from '../../../lib/organisms/components/payments/payment1';
+import AppPaymentSection from '../../../lib/organisms/components/callToActions/callToAction3';
 
 const resolveComponents = () => {
     return {
