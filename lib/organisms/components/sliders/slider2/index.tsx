@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from "react";
-import PropTypes from "prop-types";
 import Fade from "react-reveal/Fade";
 import { Box, Heading, Image, Container, Button } from "../../../../atoms";
 import { GlideCarousel, GlideSlide } from "../../../../molecules";
@@ -11,27 +10,25 @@ import SectionWrapper, {
 } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
-import { openModal, closeModal } from '@redq/reuse-modal';
+import { Modal, openModal, closeModal } from "@redq/reuse-modal";
 
 // Default close button for modal
-const CloseModalButton = () =>
-  null;
-  <Button
-    className="foodModalCloseBtn"
-    variant="fab"
-    onClick={() => closeModal()}
-    icon={<i className="flaticon-plus-symbol" />}
-  />
-
+const CloseModalButton = () => null;
+<Button
+  className="foodModalCloseBtn"
+  variant="fab"
+  onClick={() => closeModal()}
+  icon={<i className="flaticon-plus-symbol" />}
+/>;
 const handleProductModal = (imagePath) => {
   openModal({
     config: {
-      className: 'product-modal',
+      className: "product-modal",
       disableDragging: true,
-      width: '50%',
-      height: '100%',
-      animationFrom: { transform: 'translateY(100px)' }, // react-spring <Spring from={}> props value
-      animationTo: { transform: 'translateY(0)' }, //  react-spring <Spring to={}> props value
+      width: "50%",
+      height: "100%",
+      animationFrom: { transform: "translateY(100px)" }, // react-spring <Spring from={}> props value
+      animationTo: { transform: "translateY(0)" }, //  react-spring <Spring to={}> props value
       transition: {
         mass: 1,
         tension: 180,
@@ -158,14 +155,6 @@ const BlogSliderSection = ({
   );
 };
 
-// BlogSection style props
-BlogSliderSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  blogTitle: PropTypes.object,
-  blogMeta: PropTypes.object,
-  button: PropTypes.object,
-};
 
 // BlogSection default style
 BlogSliderSection.defaultProps = {
