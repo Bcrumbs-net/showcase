@@ -3,13 +3,13 @@ import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/TabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
 import 'rc-tabs/assets/index.css';
-import { Box,Heading,Image, Container } from '../../../../../../atoms';
+import { Box,Heading,Image, Container } from '../../../../../atoms';
 import SectionWrapper from './style';
-import { FeatureBlock } from '../../../../../../molecules';
+import { FeatureBlock } from '../../../../../molecules';
 // import { openModal, closeModal } from '@redq/reuse-modal';
-import ProductModal from '../..';
+import ProductModal from '..';
 import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import withModelToDataObjProp from '../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 // Default close button for modal
 const CloseModalButton = () => (null

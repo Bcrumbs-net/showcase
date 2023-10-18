@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import Fade from "react-reveal/Fade";
 import { Box, Heading, Image, Container, Button } from "../../../../atoms";
 import { GlideCarousel, GlideSlide } from "../../../../molecules";
-import ProductModal from "../../products/product1";
+import ProductModal from "../../productsLists/productsList1";
 import SectionWrapper, {
   TeamCard,
   ImageWrapper,
