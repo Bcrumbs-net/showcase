@@ -2,9 +2,9 @@ import SaaSVisitorSection from '../../../lib/organisms/components/visitors/visit
 import AgencyAboutUsSection from '../../../lib/organisms/components/featuresLists/featureList2';
 import FoodAboutUsSection from '../../../lib/containers/Food/AboutUsSection';
 import SaaSClassicPartnerSection from "../../../lib/containers/SaasClassic/Partner";
-import CryptoControlSections from "../../../lib/containers/Crypto/ControlSection";
-import CryptoScalableSections from "../../../lib/containers/Crypto/ScalableSection";
-import CryptoTrustedProofSections from "../../../lib/containers/Crypto/TrustedProof";
+import CryptoControlSections from "../../../lib/organisms/components/controls/control1";
+import CryptoScalableSections from "../../../lib/organisms/components/featuresLists/featureList9";
+import CryptoTrustedProofSections from "../../../lib/organisms/components/trustedProofs/trustedProof1";
 
 const resolveComponents = () => {
   return {

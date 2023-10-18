@@ -5,8 +5,8 @@ import CharityBannerSection from '../../../lib/containers/Charity/BannerSection'
 import AgencyBannerSection from '../../../lib/organisms/components/banners/banner1';
 import AppBannerSection from '../../../lib/containers/App/Banner';
 import FoodFullScreenBanner from '../../../lib/containers/Food/FullScreenBanner';
-import CryptoBannerSection from '../../../lib/containers/Crypto/BannerSection';
-import SaaSBannerSection from "../../../lib/containers/SaasClassic/Banner";
+import CryptoBannerSection from '../../../lib/organisms/components/banners/banner6';
+import SaaSClassicBannerSection from "../../../lib/containers/SaasClassic/Banner";
 
 const resolveComponents = () => {
   return {

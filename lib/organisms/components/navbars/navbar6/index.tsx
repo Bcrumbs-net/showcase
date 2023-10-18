@@ -1,28 +1,47 @@
-import { useContext } from 'react';
-import Link from 'next/link';
-import PropTypes from 'prop-types';
+import { useContext } from "react";
+import Link from "next/link";
 import {
-  Button, Drawer, NavbarWrapper, DrawerContext, Box, Container, HamburgMenu
-} from '../../../atoms';
-import { MENU_ITEMS } from '../../../data/Crypto';
-import { ScrollSpyMenu, Logo } from '../../../molecules';
-import LogoImage from '../../../assets/image/saasModern/logo-white.png';
-import LogoImageAlt from '../../../assets/image/saasModern/logo.png';
+  Button,
+  Drawer,
+  NavbarWrapper,
+  DrawerContext,
+  Box,
+  Container,
+  HamburgMenu,
+} from "../../../../atoms";
+import { MENU_ITEMS } from "../../../../data/Crypto";
+import { ScrollSpyMenu, Logo } from "../../../../molecules";
+import LogoImageAlt from "../../../../assets/image/saasModern/logo.png";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper, model }) => {
+interface NavbarProps {
+  navbarStyle: object;
+  logoStyle: object;
+  button: object;
+  row: object;
+  menuWrapper: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const Navbar = ({
+  navbarStyle,
+  logoStyle,
+  button,
+  row,
+  menuWrapper,
+  model,
+  isAR,
+  data,
+}: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
-
   // Toggle drawer
   const toggleHandler = () => {
     dispatch({
-      type: 'TOGGLE',
+      type: "TOGGLE",
     });
   };
-
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <NavbarWrapper {...navbarStyle} className="saas_navbar">
       <Container>
@@ -36,7 +55,7 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper, model }) => 
           />
           <Logo
             href="#"
-            logoSrc={LogoImageAlt}
+            logoSrc={LogoImageAlt.src}
             title="Portfolio"
             logoStyle={logoStyle}
             className="logo-alt"
@@ -79,43 +98,35 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper, model }) => 
   );
 };
 
-Navbar.propTypes = {
-  navbarStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
-  button: PropTypes.object,
-  row: PropTypes.object,
-  menuWrapper: PropTypes.object,
-};
-
 Navbar.defaultProps = {
   navbarStyle: {
-    minHeight: '70px',
-    display: 'block',
+    minHeight: "70px",
+    display: "block",
   },
   row: {
     flexBox: true,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
   },
   logoStyle: {
-    maxWidth: ['120px', '130px'],
+    maxWidth: ["120px", "130px"],
   },
   button: {
-    type: 'button',
-    fontSize: '13px',
-    fontWeight: '700',
-    borderRadius: '4px',
-    pl: '15px',
-    pr: '15px',
-    colors: 'secondaryWithBg',
-    minHeight: 'auto',
-    height: '40px',
+    type: "button",
+    fontSize: "13px",
+    fontWeight: "700",
+    borderRadius: "4px",
+    pl: "15px",
+    pr: "15px",
+    colors: "secondaryWithBg",
+    minHeight: "auto",
+    height: "40px",
   },
   menuWrapper: {
     flexBox: true,
-    alignItems: 'center',
+    alignItems: "center",
   },
 };
 
-export default Navbar;
+export default withModelToDataObjProp(Navbar);

@@ -23,7 +23,7 @@ export function checkIfKnownDomain(targetDomain: string) {
     targetDomain.indexOf('test.bcrumbs.net') >= 0 ||
     targetDomain.indexOf('test-showcase.bcrumbs.net') >= 0
   ) {
-    return 'showcase-saas2.bcrumbs.net';
+    return 'showcase-crypto.bcrumbs.net';
   }
 
   return targetDomain;

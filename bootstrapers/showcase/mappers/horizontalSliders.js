@@ -2,7 +2,7 @@ import AwardsSection from '../../../lib/containers/Portfolio/Awards';
 import NewsSection from '../../../lib/containers/Food/NewsSection';
 import AgencyBlogSliderSection from '../../../lib/organisms/components/sliders/slider1';
 import FoodSliderSection from '../../../lib/containers/Food/BlogSliderSection';
-import CryptoSlideSections from "../../../lib/containers/Crypto/CryptoSlides";
+import CryptoSlideSections from "../../../lib/organisms/components/sliders/slider3";
 
 const resolveComponents = () => {
   return {
