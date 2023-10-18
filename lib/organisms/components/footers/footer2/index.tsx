@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import FooterWrapper, { List, ListItem } from './style';
 import { Container, Box, Heading ,Text} from '../../../../atoms';
 import { Logo } from '../../../../molecules';
@@ -101,16 +100,6 @@ const Footer = ({
   );
 };
 
-// Footer style props
-Footer.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  colOne: PropTypes.object,
-  colTwo: PropTypes.object,
-  titleStyle: PropTypes.object,
-  textStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
-};
 
 // Footer default style
 Footer.defaultProps = {

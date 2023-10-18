@@ -1,31 +1,34 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 import {
-  Button, Drawer, NavbarWrapper, DrawerContext, HamburgMenu
-} from '../../../../atoms';
-import { ScrollSpyMenu, Logo } from '../../../../molecules';
-import { Container } from './style';
+  Button,
+  Drawer,
+  NavbarWrapper,
+  DrawerContext,
+  HamburgMenu,
+} from "../../../../atoms";
+import { ScrollSpyMenu, Logo } from "../../../../molecules";
+import { Container } from "./style";
 // import { openModal, closeModal } from '@redq/reuse-modal';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 // Default close button for modal
-const CloseModalButton = () => (null
+const CloseModalButton = () =>
+  null;
   // <Button
   //   className="modalCloseBtn"
   //   variant="fab"
   //   onClick={() => closeModal()}
   //   icon={<i className="flaticon-plus-symbol" />}
   // />
-);
-const CloseModalButtonAlt = () => (
-  null
+const CloseModalButtonAlt = () =>
+  null;
   // <Button
   //   className="modalCloseBtn alt"
   //   variant="fab"
   //   onClick={() => closeModal()}
   //   icon={<i className="flaticon-plus-symbol" />}
   // />
-);
 interface NavbarProps {
   wrapperStyle2?: object;
   navbarStyle?: object;
@@ -34,7 +37,13 @@ interface NavbarProps {
   model: GraphContent;
   data: Record<string, string>;
 }
-const Navbar = ({ navbarStyle, logoStyle, buttonStyle, model,data }:NavbarProps) => {
+const Navbar = ({
+  navbarStyle,
+  logoStyle,
+  buttonStyle,
+  model,
+  data,
+}: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
   // Search modal handler
   const handleSearchModal = () => {
@@ -83,7 +92,7 @@ const Navbar = ({ navbarStyle, logoStyle, buttonStyle, model,data }:NavbarProps)
   // Toggle drawer
   const toggleHandler = () => {
     dispatch({
-      type: 'TOGGLE',
+      type: "TOGGLE",
     });
   };
 
@@ -96,7 +105,7 @@ const Navbar = ({ navbarStyle, logoStyle, buttonStyle, model,data }:NavbarProps)
           title={data.title}
           logoStyle={logoStyle}
         />
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <Button
             variant="textButton"
             onClick={handleSearchModal}
@@ -129,17 +138,16 @@ const Navbar = ({ navbarStyle, logoStyle, buttonStyle, model,data }:NavbarProps)
   );
 };
 
-
 Navbar.defaultProps = {
   navbarStyle: {
-    minHeight: '70px',
+    minHeight: "70px",
   },
   logoStyle: {
-    width: ['100px', '140px'],
+    width: ["100px", "140px"],
   },
   buttonStyle: {
-    minHeight: '70px',
-    color: '#fff',
+    minHeight: "70px",
+    color: "#fff",
   },
 };
 

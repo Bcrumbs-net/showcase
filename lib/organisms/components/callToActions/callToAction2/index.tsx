@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Fade from 'react-reveal/Fade';
 import {
@@ -93,15 +92,6 @@ const ControllSection = ({
   );
 };
 
-ControllSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
-  button: PropTypes.object,
-  btnStyle: PropTypes.object,
-};
 
 ControllSection.defaultProps = {
   sectionWrapper: {

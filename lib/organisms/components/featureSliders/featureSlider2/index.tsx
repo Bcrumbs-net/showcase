@@ -4,29 +4,17 @@ import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface FeatureSectionProps {
-  row?: object;
-  col?: object;
   sectionHeader?: object;
-  featureTitle?: object;
-  iconStyle?: object;
   sectionTitle?: object;
-  contentStyle?: object;
-  blockWrapperStyle?: object;
   sectionSubTitle?: object;
   model: GraphContent;
   data: Record<string, string>;
 }
 
 const FeatureSection = ({
-  row,
-  col,
   sectionHeader,
   sectionTitle,
   sectionSubTitle,
-  featureTitle,
-  iconStyle,
-  contentStyle,
-  blockWrapperStyle,
   model,
   data,
 }: FeatureSectionProps) => {
