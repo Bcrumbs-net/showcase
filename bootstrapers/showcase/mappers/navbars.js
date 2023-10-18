@@ -9,7 +9,7 @@ import DrawerSection from "../../../lib/containers/Charity/DrawerSection";
 import AgencyNavbar from "../../../lib/organisms/components/navbars/navbar1";
 import AppNavbar from "../../../lib/containers/App/Navbar";
 import FoodNavbar from "../../../lib/containers/Food/Navbar";
-import SaaSClassicNavbar from "../../../lib/containers/SaasClassic/Navbar";
+import SaaSClassicNavbar from "../../../lib/organisms/components/navbars/navbar7";
 import CryptoNavbar from "../../../lib/organisms/components/navbars/navbar6";
 import CryptoModern from "../../../lib/containers/CryptoModern/Navbar";
 
