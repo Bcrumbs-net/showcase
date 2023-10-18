@@ -87,74 +87,77 @@ const BlogSliderSection = ({
   data,
 }: BlogSliderSectionProps) => {
   return (
-    <SectionWrapper id={model.name}>
-      <Container>
-        <Box {...sectionHeader}>
-          <Heading content={data.sectionTitle} {...sectionTitle} />
-        </Box>
-        <Fade bottom delay={30}>
-          <CarouselWrapper>
-            {model.children && (
-              <GlideCarousel
-                carouselSelector={`${model.name}-carousel`}
-                className="blog_carousel"
-                options={glideOptions}
-                nextButton={
-                  <Button
-                    icon={<i className="flaticon-next" />}
-                    aria-label="Next"
-                    variant="fab"
-                  />
-                }
-                prevButton={
-                  <Button
-                    icon={<i className="flaticon-left-arrow" />}
-                    aria-label="Prev"
-                    variant="fab"
-                  />
-                }
-              >
-                <Fragment>
-                  {model.children &&
-                    model.children
-                      .filter((m) => m.online)
-                      .map((blogSection, index) => {
-                        const blogSectionMap: Record<string, string> =
-                          blogSection.data.reduce(function (map, obj) {
-                            map[obj.Key] = obj.Value;
-                            return map;
-                          }, {});
-                        return (
-                          //@ts-ignore
-                          <GlideSlide key={`project_key${blogSectionMap.id}`}>
-                            <TeamCard className="team_card">
-                              <ImageWrapper
-                                className="image_wrapper"
-                                onClick={() => {
-                                  handleProductModal(
-                                    blogSectionMap.thumbnail_url
-                                  );
-                                }}
-                              >
-                                <Image
-                                  src={blogSectionMap.thumbnail_url}
-                                  alt={blogSectionMap.title}
-                                />
-                              </ImageWrapper>
-                            </TeamCard>
-                          </GlideSlide>
-                        );
-                      })}
-                </Fragment>
-              </GlideCarousel>
-            )}
-          </CarouselWrapper>
-        </Fade>
-      </Container>
-    </SectionWrapper>
+    <>
+      <SectionWrapper id={model.name}>
+        <Container>
+      <Modal className="product-modal" style="center"/>
+
+          <Box {...sectionHeader}>
+            <Heading content={data.sectionTitle} {...sectionTitle} />
+          </Box>
+          <Fade bottom delay={30}>
+            <CarouselWrapper>
+              {model.children && (
+                <GlideCarousel
+                  carouselSelector={`${model.name}-carousel`}
+                  className="blog_carousel"
+                  options={glideOptions}
+                  nextButton={
+                    <Button
+                      icon={<i className="flaticon-next" />}
+                      aria-label="Next"
+                      variant="fab"
+                    />
+                  }
+                  prevButton={
+                    <Button
+                      icon={<i className="flaticon-left-arrow" />}
+                      aria-label="Prev"
+                      variant="fab"
+                    />
+                  }
+                >
+                  <Fragment>
+                    {model.children &&
+                      model.children
+                        .filter((m) => m.online)
+                        .map((blogSection, index) => {
+                          const blogSectionMap: Record<string, string> =
+                            blogSection.data.reduce(function (map, obj) {
+                              map[obj.Key] = obj.Value;
+                              return map;
+                            }, {});
+                          return (
+                            //@ts-ignore
+                            <GlideSlide key={`project_key${blogSectionMap.id}`}>
+                              <TeamCard className="team_card">
+                                <ImageWrapper
+                                  className="image_wrapper"
+                                  onClick={() => {
+                                    handleProductModal(
+                                      blogSectionMap.thumbnail_url
+                                    );
+                                  }}
+                                >
+                                  <Image
+                                    src={blogSectionMap.thumbnail_url}
+                                    alt={blogSectionMap.title}
+                                  />
+                                </ImageWrapper>
+                              </TeamCard>
+                            </GlideSlide>
+                          );
+                        })}
+                  </Fragment>
+                </GlideCarousel>
+              )}
+            </CarouselWrapper>
+          </Fade>
+        </Container>
+      </SectionWrapper>
+    </>
   );
 };
-
 
 // BlogSection default style
 BlogSliderSection.defaultProps = {

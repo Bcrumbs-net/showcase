@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Fade from 'react-reveal/Fade';
 import AboutUsSectionWrapper from './style';
 import { Container, Box, Heading, Card, Button ,Image,Text} from '../../../../atoms';
@@ -92,17 +91,6 @@ const AboutUsSection = ({
   );
 };
 
-AboutUsSection.propTypes = {
-  row: PropTypes.object,
-  col65: PropTypes.object,
-  col35: PropTypes.object,
-  textArea: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  btnStyle: PropTypes.object,
-};
 
 AboutUsSection.defaultProps = {
   // section header default style

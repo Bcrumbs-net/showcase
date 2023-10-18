@@ -1,20 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Image } from '../../../../atoms';
-import ProductModalWrapper from './style';
-import 'rc-tabs/assets/index.css';
+import React from "react";
+import { Image } from "../../../../atoms";
+import ProductModalWrapper from "./style";
+import "rc-tabs/assets/index.css";
+import { Modal } from "@redq/reuse-modal";
 
 const ProductModal = ({ imagePath }) => {
   return (
-    <ProductModalWrapper>
-      <Image className="productImage" src={imagePath} alt="Product Banner" />
-    </ProductModalWrapper>
+    <>
+      <ProductModalWrapper>
+        <Image className="productImage" src={imagePath} alt="Product Banner" />
+      </ProductModalWrapper>
+      <Modal />
+    </>
   );
-};
-
-// LoginModal style props
-ProductModal.propTypes = {
-  imagePath: PropTypes.string,
 };
 
 // ProductModal default style

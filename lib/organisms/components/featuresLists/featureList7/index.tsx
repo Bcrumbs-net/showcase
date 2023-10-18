@@ -1,5 +1,4 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 import { Box, Textarea, Text, Input, Container } from "../../../../atoms";
 import SectionWrapper, {
   ContentArea,
@@ -226,13 +225,6 @@ const ContactSection = ({ row, col, model, data }: ContactSectionProps) => {
       </Container>
     </SectionWrapper>
   );
-};
-
-// ContactSection style props
-ContactSection.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  textStyle: PropTypes.object,
 };
 
 // ContactSection default style
