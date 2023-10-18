@@ -46,7 +46,7 @@ const resolveComponents = () => {
       category: 'Banner',
     },
     403536: {
-      render: (props) => <SaaSBannerSection {...props} />,
+      render: (props) => <SaaSClassicBannerSection {...props} />,
       name: 'SaaS Banner',
       category: 'Banner',
     },
