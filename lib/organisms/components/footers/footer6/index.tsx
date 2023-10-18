@@ -1,12 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Link from 'next/link';
-import { Box, Text, Heading, Container } from '../../../atoms';
-import { Logo } from '../../../molecules';
-import FooterWrapper, { List, ListItem } from './footer.style';
-import LogoImage from '../../../assets/image/saasModern/logo.png';
-import { FOOTER_WIDGET } from '../../../data/SaasModern';
+import React from "react";
+import Link from "next/link";
+import { Box, Text, Heading, Container } from "../../../../atoms";
+import { Logo } from "../../../../molecules";
+import FooterWrapper, { List, ListItem } from "./style";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
+interface FooterProps {
+  row: object;
+  col: object;
+  colOne: object;
+  colTwo: object;
+  titleStyle: object;
+  logoStyle: object;
+  textStyle: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const Footer = ({
   row,
   col,
@@ -16,12 +27,9 @@ const Footer = ({
   logoStyle,
   textStyle,
   model,
-  baseModel,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data,
+}: FooterProps) => {
   return (
     <FooterWrapper>
       <Container className="footer_container">
@@ -40,12 +48,15 @@ const Footer = ({
           <Box {...colTwo}>
             {model.children &&
               model.children
-                .filter(m => m.online)
+                .filter((m) => m.online)
                 .map((widget, index) => {
-                  let widgetMap = widget.data.reduce(function(map, obj) {
-                    map[obj.Key] = obj.Value;
-                    return map;
-                  }, {});
+                  const widgetMap: Record<string, string> = widget.data.reduce(
+                    function (map, obj) {
+                      map[obj.Key] = obj.Value;
+                      return map;
+                    },
+                    {}
+                  );
                   return (
                     <Box
                       className="col"
@@ -56,13 +67,14 @@ const Footer = ({
                       <List>
                         {widget.children &&
                           widget.children.map((item, subIndex) => {
-                            let itemMap = item.data.reduce(function(map, obj) {
-                              map[obj.Key] = obj.Value;
-                              return map;
-                            }, {});
+                            const itemMap: Record<string, string> =
+                              item.data.reduce(function (map, obj) {
+                                map[obj.Key] = obj.Value;
+                                return map;
+                              }, {});
                             return (
                               <ListItem key={`footer-list-item-${subIndex}`}>
-                                <Link href={itemMap.url || '#'}>
+                                <Link href={itemMap.url || "#"}>
                                   <a className="ListItem">{itemMap.text}</a>
                                 </Link>
                               </ListItem>
@@ -80,65 +92,54 @@ const Footer = ({
   );
 };
 
-// Footer style props
-Footer.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  colOne: PropTypes.object,
-  colTwo: PropTypes.object,
-  titleStyle: PropTypes.object,
-  textStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
-};
-
 // Footer default style
 Footer.defaultProps = {
   // Footer row default style
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: '-15px',
-    mr: '-15px',
+    flexWrap: "wrap",
+    ml: "-15px",
+    mr: "-15px",
   },
   // Footer col one style
   colOne: {
-    width: [1, '35%', '35%', '23%'],
-    mt: [0, '13px'],
-    mb: ['30px', 0],
-    pl: ['15px', 0],
-    pr: ['15px', '15px', 0],
+    width: [1, "35%", "35%", "23%"],
+    mt: [0, "13px"],
+    mb: ["30px", 0],
+    pl: ["15px", 0],
+    pr: ["15px", "15px", 0],
   },
   // Footer col two style
   colTwo: {
-    width: ['100%', '65%', '65%', '77%'],
+    width: ["100%", "65%", "65%", "77%"],
     flexBox: true,
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
   },
   // Footer col default style
   col: {
-    width: ['100%', '50%', '50%', '25%'],
-    pl: '15px',
-    pr: '15px',
-    mb: '30px',
+    width: ["100%", "50%", "50%", "25%"],
+    pl: "15px",
+    pr: "15px",
+    mb: "30px",
   },
   // widget title default style
   titleStyle: {
-    color: '#343d48',
-    fontSize: '16px',
-    fontWeight: '700',
-    mb: '30px',
+    color: "#343d48",
+    fontSize: "16px",
+    fontWeight: "700",
+    mb: "30px",
   },
   // Default logo size
   logoStyle: {
-    width: '130px',
-    mb: '15px',
+    width: "130px",
+    mb: "15px",
   },
   // widget text default style
   textStyle: {
-    color: '#0f2137',
-    fontSize: '16px',
-    mb: '10px',
+    color: "#0f2137",
+    fontSize: "16px",
+    mb: "10px",
   },
 };
 
-export default Footer;
+export default withModelToDataObjProp(Footer);

@@ -18,6 +18,6 @@
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    "next-env.d.ts", ],
+    "next-env.d.ts", "lib/organisms/components/footers/footer6/style.فس", ],
   "exclude": ["node_modules"]
 }
