@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Box, Heading, Container } from "../../../../atoms";
 import VideoSectionWrapper from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
@@ -46,11 +45,6 @@ const FullScreenVideoSection = ({
   );
 };
 
-// VideoSection style props
-FullScreenVideoSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-};
 
 // VideoSection default style
 FullScreenVideoSection.defaultProps = {

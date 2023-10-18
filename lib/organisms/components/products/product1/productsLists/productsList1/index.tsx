@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/TabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
@@ -149,15 +148,6 @@ const TabbedProductSection = ({
   );
 };
 
-TabbedProductSection.propTypes = {
-  secTitleWrapper: PropTypes.object,
-  secHeading: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  blogTitle: PropTypes.object,
-  blogMeta: PropTypes.object,
-  contentStyle: PropTypes.object,
-};
 
 TabbedProductSection.defaultProps = {
   secTitleWrapper: {
