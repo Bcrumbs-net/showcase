@@ -90,8 +90,6 @@ const BlogSliderSection = ({
     <>
       <SectionWrapper id={model.name}>
         <Container>
-      <Modal className="product-modal" style="center"/>
-
           <Box {...sectionHeader}>
             <Heading content={data.sectionTitle} {...sectionTitle} />
           </Box>
