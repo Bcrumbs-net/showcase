@@ -9,8 +9,8 @@ import AppFeatureSlider from '../../../lib/containers/App/FeatureSlider';
 import AppFeatureSliderTwo from '../../../lib/containers/App/FeatureSliderTwo';
 import CryptoTransactionFeatures from '../../../lib/organisms/components/featuresLists/featureList11';
 import CryptoBetaFeatures from '../../../lib/organisms/components/featuresLists/featureList10';
-import SaaSClassicServiceSection from "../../../lib/containers/SaasClassic/Service";
-import SaasClassicFeatureSection from "../../../lib/containers/SaasClassic/Feature";
+import SaaSClassicServiceSection from "../../../lib/organisms/components/services/service2";
+import SaasClassicFeatureSection from "../../../lib/organisms/components/featuresLists/featureList12";
 //import FeatureSection from '../../../lib/containers/Saas/FeatureSection';
 
 const resolveComponents = () => {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import FooterImage from '../../../assets/image/hosting/footer-bg.png';
+import FooterImage from '../../../../assets/image/hosting/footer-bg.png';
 
 const FooterWrapper = styled.footer`
   position: relative;

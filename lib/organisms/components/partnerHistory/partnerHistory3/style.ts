@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import BgImage from '../../../assets/image/saasClassic/map.png';
+import BgImage from '../../../../assets/image/saasClassic/map.png';
 
 const PartnerSectionWrapper = styled.section`
   padding: 120px 0;
   background-color: #f6fbf9;
-  background-image: url(${BgImage}),
+  background-image: url(${BgImage.src}),
     linear-gradient(-139deg, rgb(255, 75, 43) 0%, rgb(255, 65, 108) 100%);
   background-repeat: no-repeat;
   background-position: 25% center;

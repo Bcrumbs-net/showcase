@@ -11,16 +11,16 @@ import NewsletterWrapper, { ContactFormWrapper } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-interface NewsletterProps{
-  sectionWrapper:object;
-  textArea:object;
-  buttonArea:object;
-  buttonStyle:object;
-  title:object;
-  description:object;
-  model:GraphContent;
-  isAR:boolean;
-  data:Record<string,string>;
+interface NewsletterProps {
+  sectionWrapper: object;
+  textArea: object;
+  buttonArea: object;
+  buttonStyle: object;
+  title: object;
+  description: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 const Newsletter = ({
   sectionWrapper,
@@ -31,8 +31,8 @@ const Newsletter = ({
   description,
   model,
   isAR,
-  data
-}:NewsletterProps) => {
+  data,
+}: NewsletterProps) => {
   return (
     <Box {...sectionWrapper} as="section">
       <Container>

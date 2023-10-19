@@ -11,7 +11,7 @@ import {
   Container,
   Button,
 } from "../../../../atoms";
-import TiltShape from "../TiltShape";
+import TiltShape from "./tiltShape";
 import {
   BannerWrapper,
   DiscountWrapper,
@@ -105,7 +105,7 @@ const BannerSection = ({
                 <Text {...discountText} content="" />
               </DiscountLabel>
             </DiscountWrapper>
-            <Heading {...title} content={data["banner title"]} />
+            <Heading {...title} content={data.banner_title} />
             <Text {...description} content={data.banner_description} />
             <Box {...buttonWrapper}>
               <Link href="#">
@@ -161,7 +161,7 @@ BannerSection.defaultProps = {
     mb: "40px",
   },
   title: {
-    fontSize: ["24px", "32px", "40px", "42px", "46px"],
+    fontSize: ["24px", "32px", "40px", "42px", "50px"],
     fontWeight: "700",
     color: "#fff",
     letterSpacing: "-0.025em",

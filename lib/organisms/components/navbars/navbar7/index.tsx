@@ -12,15 +12,15 @@ import { ScrollSpyMenu, Logo } from "../../../../molecules";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-interface NavbarProps{
-  navbarStyle:object;
-  logoStyle:object;
-  button:object;
-  row:object;
-  menuWrapper:object;
-  model:GraphContent;
-  isAR:boolean;
-  data:Record<string,string>;
+interface NavbarProps {
+  navbarStyle: object;
+  logoStyle: object;
+  button: object;
+  row: object;
+  menuWrapper: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
 }
 const Navbar = ({
   navbarStyle,
@@ -30,8 +30,8 @@ const Navbar = ({
   menuWrapper,
   model,
   isAR,
-  data
-}:NavbarProps) => {
+  data,
+}: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
   // Toggle drawer
   const toggleHandler = () => {
@@ -40,9 +40,8 @@ const Navbar = ({
     });
   };
 
-
   return (
-    <NavbarWrapper {...navbarStyle} className="saas_navbar" >
+    <NavbarWrapper {...navbarStyle} className="saas_navbar">
       <Container>
         <Box {...row}>
           {data.logo ? (
