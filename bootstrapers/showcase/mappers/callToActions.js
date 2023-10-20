@@ -1,4 +1,4 @@
-import CallToAction from '../../../lib/organisms/components/callToActions/callToAction2';
+import CallToAction from '../../../lib/organisms/components/callToActions/callToAction4';
 
 const resolveComponents = () => {
   return {
