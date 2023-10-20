@@ -1,5 +1,5 @@
 import SaaSFeatureSection from '../../../lib/organisms/components/featuresLists/featureList5';
-import SaaSServiceSection from '../../../lib/organisms/components/services/service1';
+import SaaSServiceSection from '../../../lib/organisms/components/featuresLists/featureList14';
 import AgencyFeatureSection from '../../../lib/organisms/components/featuresLists/featureList3';
 import RideFeatureSection from '../../../lib/containers/Ride/Feature';
 import FeatureSlider from '../../../lib/containers/Ride/FeatureSlider';
@@ -9,7 +9,7 @@ import AppFeatureSlider from '../../../lib/containers/App/FeatureSlider';
 import AppFeatureSliderTwo from '../../../lib/containers/App/FeatureSliderTwo';
 import CryptoTransactionFeatures from '../../../lib/organisms/components/featuresLists/featureList11';
 import CryptoBetaFeatures from '../../../lib/organisms/components/featuresLists/featureList10';
-import SaaSClassicServiceSection from "../../../lib/organisms/components/services/service2";
+import SaaSClassicServiceSection from "../../../lib/organisms/components/featuresLists/featureList13";
 import SaasClassicFeatureSection from "../../../lib/organisms/components/featuresLists/featureList12";
 //import FeatureSection from '../../../lib/containers/Saas/FeatureSection';
 

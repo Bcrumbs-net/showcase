@@ -1,5 +1,5 @@
 import TabbedProductsSection from '../../../lib/containers/Food/TabbedProductsSection';
-import SaasClassicUpdateScreen from "../../../lib/organisms/components/updateScreens/updateScreen1";
+import SaasClassicUpdateScreen from "../../../lib/organisms/components/tabsGallerys/tabsGallery1";
 
 const resolveComponents = () => {
   return {

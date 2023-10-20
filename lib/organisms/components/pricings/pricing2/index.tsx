@@ -54,7 +54,7 @@ const PricingSection = ({
     }, 500);
   });*/
 
-  const data1 = state.data;
+  const stateData = state.data;
 
   const pricingCarouselOptions = {
     type: "slider",
@@ -106,15 +106,18 @@ const PricingSection = ({
           <Heading {...secHeading} content={data.subtitle} />
           <PricingButtonWrapper>
             {model.children.map((item, index) => {
-              let pricingTable = item.data.reduce(function (map, obj) {
-                map[obj.Key] = obj.Value;
-                return map;
-              }, {});
+              const pricingTable: Record<string, string> = item.data.reduce(
+                function (map, obj) {
+                  map[obj.Key] = obj.Value;
+                  return map;
+                },
+                {}
+              );
               return (
                 <Button
                   key={`PricingTabBtn${index}`}
                   title={pricingTable.name}
-                  className={data1 === item.name ? "active-item" : ""}
+                  className={stateData === item.name ? "active-item" : ""}
                   onClick={() => setState({ data: item.name })}
                 />
               );
@@ -128,9 +131,9 @@ const PricingSection = ({
             controls={false}
           >
             <>
-              {model.children.find((m) => m.name == data1) &&
+              {model.children.find((m) => m.name == stateData) &&
                 model.children
-                  .find((m) => m.name == data1)
+                  .find((m) => m.name == stateData)
                   .children.map((item, index) => {
                     const pricingTable: Record<string, string> =
                       item.data.reduce(function (map, obj) {
