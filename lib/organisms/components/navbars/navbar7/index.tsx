@@ -1,13 +1,27 @@
 import { useContext } from "react";
-import PropTypes from "prop-types";
 import {
-  Button, Drawer, NavbarWrapper, DrawerContext, Box, Container, HamburgMenu
-} from '../../../atoms';
-import { ScrollSpyMenu, Logo } from '../../../molecules';
-import { MENU_ITEMS } from "../../../data/SaasClassic";
-import LogoImage from "../../../assets/image/saasClassic/logo-white.png";
-import LogoImageAlt from "../../../assets/image/saasClassic/logo.png";
+  Button,
+  Drawer,
+  NavbarWrapper,
+  DrawerContext,
+  Box,
+  Container,
+  HamburgMenu,
+} from "../../../../atoms";
+import { ScrollSpyMenu, Logo } from "../../../../molecules";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
+interface NavbarProps {
+  navbarStyle: object;
+  logoStyle: object;
+  button: object;
+  row: object;
+  menuWrapper: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const Navbar = ({
   navbarStyle,
   logoStyle,
@@ -15,20 +29,16 @@ const Navbar = ({
   row,
   menuWrapper,
   model,
-}) => {
+  isAR,
+  data,
+}: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
-
   // Toggle drawer
   const toggleHandler = () => {
     dispatch({
       type: "TOGGLE",
     });
   };
-  
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
 
   return (
     <NavbarWrapper {...navbarStyle} className="saas_navbar">
@@ -89,14 +99,6 @@ const Navbar = ({
   );
 };
 
-Navbar.propTypes = {
-  navbarStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
-  button: PropTypes.object,
-  row: PropTypes.object,
-  menuWrapper: PropTypes.object,
-};
-
 Navbar.defaultProps = {
   navbarStyle: {
     minHeight: "70px",
@@ -128,4 +130,4 @@ Navbar.defaultProps = {
   },
 };
 
-export default Navbar;
+export default withModelToDataObjProp(Navbar);

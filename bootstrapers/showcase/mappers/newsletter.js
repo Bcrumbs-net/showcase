@@ -1,4 +1,4 @@
-import SaaSClaasicNewsletter from "../../../lib/containers/SaasClassic/Newsletter";
+import SaaSClaasicNewsletter from "../../../lib/organisms/components/newsletters/newsletter2";
 
 const resolveComponents = () => {
   return {

@@ -3,7 +3,7 @@ import SaaSTestimonialSection from '../../../lib/organisms/components/testimonia
 import RideTestimonialSecion from '../../../lib/containers/Ride/TestimonialSection';
 import AgencyTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial1';
 import AppTestimonialSection from '../../../lib/containers/App/Testimonial';
-import SaaSClassicTestimonialSection from "../../../lib/containers/SaasClassic/Testimonial";
+import SaaSClassicTestimonialSection from "../../../lib/organisms/components/testimonials/testimonial5";
 import CryptoTestimonialSecion from "../../../lib/organisms/components/banners/banner6/bannerSlider";
 
 const resolveComponents = () => {
