@@ -40,12 +40,6 @@ const Footer = ({
               logoStyle={logoStyle}
               title={""}
             />
-            <Logo
-              href="/"
-              logoSrc={data.logo}
-              logoStyle={logoStyle}
-              title={""}
-            />
             <Text content={data.email} {...textStyle} />
             <Text content={data.phone} {...textStyle} />
           </Box>

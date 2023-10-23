@@ -1,11 +1,10 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import Link from 'next/link';
-import Tabs, { TabPane } from 'rc-tabs';
-import TabContent from 'rc-tabs/lib/TabContent';
-import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
-import { Box, Text, Heading, Image, Container } from '../../../../atoms';
-import { GlideCarousel, GlideSlide} from '../../../../molecules';
+import React, { Fragment } from "react";
+import Link from "next/link";
+import Tabs, { TabPane } from "rc-tabs";
+import TabContent from "rc-tabs/lib/TabContent";
+import ScrollableInkTabBar from "rc-tabs/lib/ScrollableInkTabBar";
+import { Box, Text, Heading, Image, Container } from "../../../../atoms";
+import { GlideCarousel, GlideSlide } from "../../../../molecules";
 import {
   PortfolioShowcaseWrapper,
   PortfolioShowcaseItem,
@@ -72,10 +71,13 @@ const PortfolioShowcase = ({
           >
             {model.children &&
               model.children.map((tabItem, index) => {
-                let subData = tabItem.data.reduce(function (map, obj) {
-                  map[obj.Key] = obj.Value;
-                  return map;
-                }, {});
+                const subData: Record<string, string> = tabItem.data.reduce(
+                  function (map, obj) {
+                    map[obj.Key] = obj.Value;
+                    return map;
+                  },
+                  {}
+                );
                 return (
                   <TabPane
                     tab={
@@ -166,8 +168,8 @@ const PortfolioShowcase = ({
                               </Fragment>
                             );
                             return (
-                              <GlideSlide 
-                                key={`${tabItem.name}-${portfolioItemObj.name}-${index}` }
+                              <GlideSlide
+                                key={`${tabItem.name}-${portfolioItemObj.name}-${index}`}
                               >
                                 <PortfolioShowcaseItem>
                                   {portfolioItem.image ? (
@@ -243,18 +245,6 @@ const PortfolioShowcase = ({
       </Container>
     </Box>
   );
-};
-
-PortfolioShowcase.propTypes = {
-  sectionWrapper: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secTitle: PropTypes.object,
-  secDescription: PropTypes.object,
-  portfolioImage: PropTypes.object,
-  portfolioDetails: PropTypes.object,
-  portfolioDetailsFullWidth: PropTypes.object,
-  titleStyle: PropTypes.object,
-  detailsStyle: PropTypes.object,
 };
 
 PortfolioShowcase.defaultProps = {
