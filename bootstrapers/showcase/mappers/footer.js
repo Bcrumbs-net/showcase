@@ -4,8 +4,8 @@ import RideFooter from '../../../lib/containers/Ride/Footer';
 import CharityFooter from '../../../lib/containers/Charity/Footer';
 import AgencyFooter from '../../../lib/organisms/components/footers/footer1';
 import AppFooter from '../../../lib/containers/App/Footer';
-import SaaSClaasicFooter from "../../../lib/containers/SaasClassic/Footer";
-import CryptoFooter from "../../../lib/containers/Crypto/Footer";
+import SaaSClaasicFooter from "../../../lib/organisms/components/footers/footer6";
+import CryptoFooter from "../../../lib/organisms/components/footers/footer5";
 
 const resolveComponents = () => {
   return {
