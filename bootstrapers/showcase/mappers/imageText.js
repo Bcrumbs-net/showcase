@@ -1,4 +1,4 @@
-import SaaSVisitorSection from '../../../lib/organisms/components/visitors/visitor1';
+import SaaS2VisitorSection from '../../../lib/organisms/components/visitors/visitor1';
 import AgencyAboutUsSection from '../../../lib/organisms/components/featuresLists/featureList2';
 import FoodAboutUsSection from '../../../lib/containers/Food/AboutUsSection';
 import SaaSClassicPartnerSection from "../../../lib/organisms/components/partnerHistory/partnerHistory3";
@@ -9,7 +9,7 @@ import CryptoTrustedProofSections from "../../../lib/organisms/components/truste
 const resolveComponents = () => {
   return {
     403430: {
-      render: props => <SaaSVisitorSection {...props} />,
+      render: props => <SaaS2VisitorSection {...props} />,
       name: 'SaaS ImageText',
       category: 'ImageText',
     },

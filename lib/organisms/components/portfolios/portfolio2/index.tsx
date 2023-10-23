@@ -1,11 +1,10 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import Link from 'next/link';
-import Tabs, { TabPane } from 'rc-tabs';
-import TabContent from 'rc-tabs/lib/TabContent';
-import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
-import { Box, Text, Heading, Image, Container } from '../../../atoms';
-import { GlideCarousel, GlideSlide} from '../../../molecules';
+import React, { Fragment } from "react";
+import Link from "next/link";
+import Tabs, { TabPane } from "rc-tabs";
+import TabContent from "rc-tabs/lib/TabContent";
+import ScrollableInkTabBar from "rc-tabs/lib/ScrollableInkTabBar";
+import { Box, Text, Heading, Image, Container } from "../../../../atoms";
+import { GlideCarousel, GlideSlide } from "../../../../molecules";
 import {
   PortfolioShowcaseWrapper,
   PortfolioShowcaseItem,
@@ -13,10 +12,29 @@ import {
   BuiltWith,
   PortfolioMeta,
   MetaItem,
-} from './portfolioShowcase.style';
-import { PrevButton, NextButton } from '../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
-import { PORTFOLIO_SHOWCASE } from '../../../data/Portfolio/data';
+} from "./style";
+import {
+  PrevButton,
+  NextButton,
+} from "../../../../../bootstrapers/showcase/templates/portfolio/globalStyle";
+import { PORTFOLIO_SHOWCASE } from "../../../../data/Portfolio/data";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
+interface PortfolioShowcaseProps {
+  sectionWrapper: object;
+  secTitleWrapper: object;
+  secTitle: object;
+  secDescription: object;
+  portfolioImage: object;
+  portfolioDetails: object;
+  portfolioDetailsFullWidth: object;
+  titleStyle: object;
+  detailsStyle: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const PortfolioShowcase = ({
   sectionWrapper,
   secTitleWrapper,
@@ -28,14 +46,12 @@ const PortfolioShowcase = ({
   titleStyle,
   detailsStyle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  data,
+  isAR,
+}: PortfolioShowcaseProps) => {
   //Carousel Options
   const carouselOptions = {
-    type: data.children && data.children.length > 1 ? 'carousel' : 'slider',
+    type: data.children && data.children.length > 1 ? "carousel" : "slider",
     autoplay: data.children && data.children.length > 1 ? 6000 : false,
     perView: 1,
     gap: 28,
@@ -55,10 +71,13 @@ const PortfolioShowcase = ({
           >
             {model.children &&
               model.children.map((tabItem, index) => {
-                let subData = tabItem.data.reduce(function(map, obj) {
-                  map[obj.Key] = obj.Value;
-                  return map;
-                }, {});
+                const subData: Record<string, string> = tabItem.data.reduce(
+                  function (map, obj) {
+                    map[obj.Key] = obj.Value;
+                    return map;
+                  },
+                  {}
+                );
                 return (
                   <TabPane
                     tab={
@@ -87,13 +106,11 @@ const PortfolioShowcase = ({
                       <>
                         {tabItem.children &&
                           tabItem.children.map((portfolioItemObj, index) => {
-                            let portfolioItem = portfolioItemObj.data.reduce(
-                              function(map, obj) {
+                            const portfolioItem: Record<string, string> =
+                              portfolioItemObj.data.reduce(function (map, obj) {
                                 map[obj.Key] = obj.Value;
                                 return map;
-                              },
-                              {}
-                            );
+                              }, {});
                             const imageBoxContent = (
                               <Image
                                 src={portfolioItem.image}
@@ -114,7 +131,7 @@ const PortfolioShowcase = ({
                                   <PortfolioLink>
                                     <a
                                       target="_blank"
-                                      href={portfolioItem.link || '#'}
+                                      href={portfolioItem.link || "#"}
                                       rel="noreferrer"
                                     >
                                       VISIT LINK
@@ -126,13 +143,15 @@ const PortfolioShowcase = ({
                                     {portfolioItemObj.children &&
                                       portfolioItemObj.children.map(
                                         (itemObj, index) => {
-                                          let item = itemObj.data.reduce(
-                                            function(map, obj) {
+                                          const item: Record<string, string> =
+                                            itemObj.data.reduce(function (
+                                              map,
+                                              obj
+                                            ) {
                                               map[obj.Key] = obj.Value;
                                               return map;
                                             },
-                                            {}
-                                          );
+                                            {});
                                           return (
                                             <span
                                               key={`buildWith-item-${index}`}
@@ -144,7 +163,7 @@ const PortfolioShowcase = ({
                                       )}
                                   </BuiltWith>
                                 ) : (
-                                  ''
+                                  ""
                                 )}
                               </Fragment>
                             );
@@ -177,40 +196,40 @@ const PortfolioShowcase = ({
                                           FEATURED IN
                                           <Link
                                             href={
-                                              portfolioItem.featuredLink || '#'
+                                              portfolioItem.featuredLink || "#"
                                             }
                                           >
                                             <a>{portfolioItem.featuredIn}</a>
                                           </Link>
                                         </MetaItem>
                                       ) : (
-                                        ''
+                                        ""
                                       )}
                                       {portfolioItem.view ? (
                                         <MetaItem>
                                           <b>{portfolioItem.view}</b> View
                                         </MetaItem>
                                       ) : (
-                                        ''
+                                        ""
                                       )}
                                       {portfolioItem.love ? (
                                         <MetaItem>
                                           <b>{portfolioItem.love}</b> Love
                                         </MetaItem>
                                       ) : (
-                                        ''
+                                        ""
                                       )}
                                       {portfolioItem.feedback ? (
                                         <MetaItem>
-                                          <b>{portfolioItem.feedback}</b>{' '}
+                                          <b>{portfolioItem.feedback}</b>{" "}
                                           Feedback
                                         </MetaItem>
                                       ) : (
-                                        ''
+                                        ""
                                       )}
                                     </PortfolioMeta>
                                   ) : (
-                                    ''
+                                    ""
                                   )}
                                 </PortfolioShowcaseItem>
                               </GlideSlide>
@@ -228,65 +247,53 @@ const PortfolioShowcase = ({
   );
 };
 
-PortfolioShowcase.propTypes = {
-  sectionWrapper: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secTitle: PropTypes.object,
-  secDescription: PropTypes.object,
-  portfolioImage: PropTypes.object,
-  portfolioDetails: PropTypes.object,
-  portfolioDetailsFullWidth: PropTypes.object,
-  titleStyle: PropTypes.object,
-  detailsStyle: PropTypes.object,
-};
-
 PortfolioShowcase.defaultProps = {
   sectionWrapper: {
-    pt: ['60px', '80px', '100px', '110px', '150px'],
-    pb: ['60px', '80px', '100px', '110px', '150px'],
+    pt: ["60px", "80px", "100px", "110px", "150px"],
+    pb: ["60px", "80px", "100px", "110px", "150px"],
   },
   secTitleWrapper: {
-    width: ['100%', '100%', '60%', '50%', '50%'],
-    mb: ['50px', '65px'],
+    width: ["100%", "100%", "60%", "50%", "50%"],
+    mb: ["50px", "65px"],
   },
   secTitle: {
-    fontSize: ['22px', '26px', '26px', '30px', '30px'],
-    fontWeight: '600',
-    color: '#302b4e',
-    lineHeight: '1.34',
-    mb: ['15px', '18px', '18px', '20px', '20px'],
+    fontSize: ["22px", "26px", "26px", "30px", "30px"],
+    fontWeight: "600",
+    color: "#302b4e",
+    lineHeight: "1.34",
+    mb: ["15px", "18px", "18px", "20px", "20px"],
   },
   secDescription: {
-    fontSize: ['15px', '16px'],
-    fontWeight: '400',
-    color: '#43414e',
-    lineHeight: '1.5',
-    mb: '0',
+    fontSize: ["15px", "16px"],
+    fontWeight: "400",
+    color: "#43414e",
+    lineHeight: "1.5",
+    mb: "0",
   },
   portfolioImage: {
     width: [1, 1, 1 / 2],
   },
   portfolioDetailsFullWidth: {
     width: [1, 1, 1],
-    p: ['30px 0 0 0', '40px 0 0 0', '0 0 0 30px', '0 50px', '0 50px'],
+    p: ["30px 0 0 0", "40px 0 0 0", "0 0 0 30px", "0 50px", "0 50px"],
   },
   portfolioDetails: {
     width: [1, 1, 1 / 2],
-    p: ['30px 0 0 0', '40px 0 0 0', '0 0 0 30px', '0 50px', '0 50px'],
+    p: ["30px 0 0 0", "40px 0 0 0", "0 0 0 30px", "0 50px", "0 50px"],
   },
   titleStyle: {
-    fontSize: ['22px', '22px', '26px', '40px', '40px'],
-    fontWeight: '600',
-    color: '#302b4e',
-    mb: '17px',
+    fontSize: ["22px", "22px", "26px", "40px", "40px"],
+    fontWeight: "600",
+    color: "#302b4e",
+    mb: "17px",
   },
   detailsStyle: {
-    fontSize: ['15px', '15px', '15px', '16px', '16px'],
-    color: '#43414e',
-    lineHeight: '1.5',
-    mb: '0',
-    textAlign: 'justify',
+    fontSize: ["15px", "15px", "15px", "16px", "16px"],
+    color: "#43414e",
+    lineHeight: "1.5",
+    mb: "0",
+    textAlign: "justify",
   },
 };
 
-export default PortfolioShowcase;
+export default withModelToDataObjProp(PortfolioShowcase);
