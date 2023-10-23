@@ -1,5 +1,5 @@
 import SaaS2TrialSection from '../../../lib/organisms/components/trials/trial1';
-import SaaSClassicTrialSection from "../../../lib/containers/SaasClassic/Trial";
+import SaaSClassicTrialSection from "../../../lib/containers/SaasModern/Trial";
 
 const resolveComponents = () => {
   return {

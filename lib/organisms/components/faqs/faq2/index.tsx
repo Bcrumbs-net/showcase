@@ -52,14 +52,11 @@ const FaqSection = ({
             <Fragment>
               {model.children &&
                 model.children.map((faqSection, index) => {
-                  let faqSectionMap = faqSection.data.reduce(function (
-                    map,
-                    obj
-                  ) {
-                    map[obj.Key] = obj.Value;
-                    return map;
-                  },
-                  {});
+                  const faqSectionMap: Record<string, string> =
+                    faqSection.data.reduce(function (map, obj) {
+                      map[obj.Key] = obj.Value;
+                      return map;
+                    }, {});
                   return (
                     <AccordionItem
                       key={index}

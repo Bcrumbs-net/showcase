@@ -1,42 +1,48 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Icon } from 'react-icons-kit';
-import { Box, Text, Heading, Image, Button, Container } from '../../../../atoms';
-import { plus } from 'react-icons-kit/feather/plus';
-import { ButtonWrapper } from '../../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
-import ProcessItem from './style';
-import { PROCESS_STEPS, SERVICE_LIST } from '../../../../data/Portfolio/data';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import React from "react";
+import { Icon } from "react-icons-kit";
+import {
+  Box,
+  Text,
+  Heading,
+  Image,
+  Button,
+  Container,
+} from "../../../../atoms";
+import { plus } from "react-icons-kit/feather/plus";
+import { ButtonWrapper } from "../../../../../bootstrapers/showcase/templates/portfolio/globalStyle";
+import ProcessItem from "./style";
+import { PROCESS_STEPS, SERVICE_LIST } from "../../../../data/Portfolio/data";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-interface ProcessSectionProps{
-  sectionWrapper:object;
-  secTitleWrapper:object;
-  secTitle:object;
-  secDescription:object;
-  processRow:object;
-  processCol:object;
-  processImageStyle:object;
-  processTitleStyle:object;
-  processDescriptionStyle:object;
-  learningRow:object;
-  learningContentArea:object;
-  learningListArea:object;
-  learningTitle:object;
-  learningSubTitle:object;
-  learningDescription:object;
-  buttonWrapper:object;
-  buttonLabelStyle:object;
-  buttonStyle:object;
-  learningList:object;
-  listItem:object;
-  listText:object;
-  listTitle:object;
+interface ProcessSectionProps {
+  sectionWrapper: object;
+  secTitleWrapper: object;
+  secTitle: object;
+  secDescription: object;
+  processRow: object;
+  processCol: object;
+  processImageStyle: object;
+  processTitleStyle: object;
+  processDescriptionStyle: object;
+  learningRow: object;
+  learningContentArea: object;
+  learningListArea: object;
+  learningTitle: object;
+  learningSubTitle: object;
+  learningDescription: object;
+  buttonWrapper: object;
+  buttonLabelStyle: object;
+  buttonStyle: object;
+  learningList: object;
+  listItem: object;
+  listText: object;
+  listTitle: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
   data2: Record<string, string>;
-  model2:GraphContent;
+  model2: GraphContent;
 }
 const ProcessSection = ({
   sectionWrapper,
@@ -66,7 +72,7 @@ const ProcessSection = ({
   isAR,
   data,
   data2,
-}:ProcessSectionProps) => {
+}: ProcessSectionProps) => {
   return (
     <Box {...sectionWrapper} as="section" id={model.name}>
       <Container noGutter mobileGutter width="1200px">
@@ -77,11 +83,13 @@ const ProcessSection = ({
         <Box {...processRow}>
           {model.children &&
             model.children.map((itemObj, index) => {
-              const item: Record<string,string> =
-              itemObj.data.reduce(function (map, obj) 
-              { map[obj.Key] =  obj.Value;
-              return map; 
-              }, {});
+              const item: Record<string, string> = itemObj.data.reduce(
+                function (map, obj) {
+                  map[obj.Key] = obj.Value;
+                  return map;
+                },
+                {}
+              );
               return (
                 <Box
                   {...processCol}
@@ -129,23 +137,21 @@ const ProcessSection = ({
           <Box {...learningListArea}>
             {model2.children &&
               model2.children.map((serviceListObj, index) => {
-                let serviceList = serviceListObj.data.reduce(function(
-                  map,
-                  obj
-                ) {
-                  map[obj.Key] = obj.Value;
-                  return map;
-                },
-                {});
+                const serviceList: Record<string, string> =
+                  serviceListObj.data.reduce(function (map, obj) {
+                    map[obj.Key] = obj.Value;
+                    return map;
+                  }, {});
                 return (
                   <Box {...learningList} key={`serviceList-${index}`}>
                     <Heading content={serviceList.title} {...listTitle} />
                     {serviceListObj.children &&
                       serviceListObj.children.map((itemObj, index) => {
-                        let item = itemObj.data.reduce(function(map, obj) {
-                          map[obj.Key] = obj.Value;
-                          return map;
-                        }, {});
+                        const item: Record<string, string> =
+                          itemObj.data.reduce(function (map, obj) {
+                            map[obj.Key] = obj.Value;
+                            return map;
+                          }, {});
                         return (
                           <Box {...listItem} key={`list-item-${index}`}>
                             <Icon
@@ -170,169 +176,144 @@ const ProcessSection = ({
   );
 };
 
-ProcessSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secTitle: PropTypes.object,
-  secDescription: PropTypes.object,
-  processRow: PropTypes.object,
-  processCol: PropTypes.object,
-  processImageStyle: PropTypes.object,
-  processTitleStyle: PropTypes.object,
-  processDescriptionStyle: PropTypes.object,
-  learningRow: PropTypes.object,
-  learningContentArea: PropTypes.object,
-  learningListArea: PropTypes.object,
-  learningTitle: PropTypes.object,
-  learningSubTitle: PropTypes.object,
-  learningDescription: PropTypes.object,
-  buttonWrapper: PropTypes.object,
-  buttonLabelStyle: PropTypes.object,
-  buttonStyle: PropTypes.object,
-  learningList: PropTypes.object,
-  listItem: PropTypes.object,
-  listText: PropTypes.object,
-  listTitle: PropTypes.object,
-};
-
 ProcessSection.defaultProps = {
   sectionWrapper: {
-    pt: ['60px', '80px', '90px', '100px', '140px'],
-    pb: ['10px', '40px', '30px', '50px', '50px'],
+    pt: ["60px", "80px", "90px", "100px", "140px"],
+    pb: ["10px", "40px", "30px", "50px", "50px"],
   },
   secTitleWrapper: {
-    mb: ['60px', '105px'],
+    mb: ["60px", "105px"],
   },
   secTitle: {
-    fontSize: ['22px', '26px', '26px', '30px', '30px'],
-    fontWeight: '700',
-    color: '#302b4e',
-    lineHeight: '1.34',
-    mb: ['15px', '18px', '18px', '20px', '20px'],
-    textAlign: 'center',
+    fontSize: ["22px", "26px", "26px", "30px", "30px"],
+    fontWeight: "700",
+    color: "#302b4e",
+    lineHeight: "1.34",
+    mb: ["15px", "18px", "18px", "20px", "20px"],
+    textAlign: "center",
   },
   secDescription: {
-    fontSize: ['15px', '16px'],
-    fontWeight: '400',
-    color: '#43414e',
-    lineHeight: '1.5',
-    mb: '0',
-    textAlign: 'center',
+    fontSize: ["15px", "16px"],
+    fontWeight: "400",
+    color: "#43414e",
+    lineHeight: "1.5",
+    mb: "0",
+    textAlign: "center",
   },
   processRow: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: ['0', '-15px', '-30px', '-70px', '-70px'],
-    mr: ['0', '-15px', '-30px', '-70px', '-70px'],
+    flexWrap: "wrap",
+    ml: ["0", "-15px", "-30px", "-70px", "-70px"],
+    mr: ["0", "-15px", "-30px", "-70px", "-70px"],
   },
   processCol: {
     width: [1, 1 / 3],
-    pl: ['0', '15px', '30px', '70px', '70px'],
-    pr: ['0', '15px', '30px', '70px', '70px'],
-    mb: '40px',
+    pl: ["0", "15px", "30px", "70px", "70px"],
+    pr: ["0", "15px", "30px", "70px", "70px"],
+    mb: "40px",
   },
   processImageStyle: {
-    ml: 'auto',
-    mr: 'auto',
-    mb: '35px',
+    ml: "auto",
+    mr: "auto",
+    mb: "35px",
   },
   processTitleStyle: {
-    fontSize: ['20px', '18px', '20px', '20px', '20px'],
-    fontWeight: '600',
-    color: '#302b4e',
-    textAlign: 'center',
-    mb: ['20px', '20px', '27px', '27px', '27px'],
+    fontSize: ["20px", "18px", "20px", "20px", "20px"],
+    fontWeight: "600",
+    color: "#302b4e",
+    textAlign: "center",
+    mb: ["20px", "20px", "27px", "27px", "27px"],
   },
   processDescriptionStyle: {
-    fontSize: ['15px', '15px', '16px', '16px'],
-    fontWeight: '400',
-    color: '#43414e',
-    textAlign: 'center',
-    lineHeight: '1.5',
+    fontSize: ["15px", "15px", "16px", "16px"],
+    fontWeight: "400",
+    color: "#43414e",
+    textAlign: "center",
+    lineHeight: "1.5",
   },
   learningRow: {
     flexBox: true,
-    flexWrap: 'wrap',
-    mt: ['20px', '30px', '70px', '80px', '110px'],
+    flexWrap: "wrap",
+    mt: ["20px", "30px", "70px", "80px", "110px"],
   },
   learningContentArea: {
-    width: ['100%', '100%', '50%', '50%', '50%'],
-    pr: ['0px', '0px', '60px', '80px', '160px'],
-    mb: ['70px', '70px', '0', '0', '0'],
+    width: ["100%", "100%", "50%", "50%", "50%"],
+    pr: ["0px", "0px", "60px", "80px", "160px"],
+    mb: ["70px", "70px", "0", "0", "0"],
   },
   learningTitle: {
-    fontSize: ['22px', '22px', '24px', '30px', '30px'],
-    fontWeight: '700',
-    color: '#302b4e',
-    lineHeight: '1.34',
-    mb: ['20px', '20px', '15px', '20px', '20px'],
-    pr: ['0', '0', '0', '65px', '65px'],
+    fontSize: ["22px", "22px", "24px", "30px", "30px"],
+    fontWeight: "700",
+    color: "#302b4e",
+    lineHeight: "1.34",
+    mb: ["20px", "20px", "15px", "20px", "20px"],
+    pr: ["0", "0", "0", "65px", "65px"],
   },
   learningSubTitle: {
-    fontSize: ['16px', '16px', '18px', '20px', '20px'],
-    fontWeight: '400',
-    color: '#43414e',
-    lineHeight: '1.5',
-    mb: '20px',
-    pr: ['0', '0', '0', '65px', '65px'],
+    fontSize: ["16px", "16px", "18px", "20px", "20px"],
+    fontWeight: "400",
+    color: "#43414e",
+    lineHeight: "1.5",
+    mb: "20px",
+    pr: ["0", "0", "0", "65px", "65px"],
   },
   learningDescription: {
-    fontSize: '16px',
-    color: '#43414e',
-    lineHeight: '1.5',
-    mb: '25px',
+    fontSize: "16px",
+    color: "#43414e",
+    lineHeight: "1.5",
+    mb: "25px",
   },
   buttonWrapper: {
     flexBox: true,
-    alignItems: 'center',
-    mt: ['30px', '40px', '40px', '80px', '80px'],
-    flexWrap: ['wrap'],
+    alignItems: "center",
+    mt: ["30px", "40px", "40px", "80px", "80px"],
+    flexWrap: ["wrap"],
   },
   buttonLabelStyle: {
-    fontSize: '16px',
-    fontWeight: '500',
-    color: '#3444f1',
-    mb: ['20px', '20px', '20px', '0', '0'],
-    mr: '30px',
-    width: ['100%', '100%', '100%', 'auto', 'auto'],
+    fontSize: "16px",
+    fontWeight: "500",
+    color: "#3444f1",
+    mb: ["20px", "20px", "20px", "0", "0"],
+    mr: "30px",
+    width: ["100%", "100%", "100%", "auto", "auto"],
   },
   buttonStyle: {
-    type: 'button',
-    fontSize: '16px',
-    fontWeight: '500',
-    color: '#fff',
-    pl: '23px',
-    pr: '23px',
+    type: "button",
+    fontSize: "16px",
+    fontWeight: "500",
+    color: "#fff",
+    pl: "23px",
+    pr: "23px",
   },
   learningListArea: {
-    width: ['100%', '100%', '50%', '50%', '50%'],
+    width: ["100%", "100%", "50%", "50%", "50%"],
     flexBox: true,
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
   },
   learningList: {
-    width: ['100%', '33.3333333%', '50%', '50%', '50%'],
-    pl: ['0', '0', '35px', '35px', '35x'],
-    pr: ['0', '30px', '0', '0', '0'],
-    mb: ['40px', '40px', '60px', '80px', '90px'],
+    width: ["100%", "33.3333333%", "50%", "50%", "50%"],
+    pl: ["0", "0", "35px", "35px", "35x"],
+    pr: ["0", "30px", "0", "0", "0"],
+    mb: ["40px", "40px", "60px", "80px", "90px"],
   },
   listTitle: {
-    fontSize: '20px',
-    fontWeight: '600',
-    color: '#302b4e',
-    mb: '25px',
+    fontSize: "20px",
+    fontWeight: "600",
+    color: "#302b4e",
+    mb: "25px",
   },
   listItem: {
     flexBox: true,
-    alignItems: 'center',
-    color: '#43414e',
-    mb: '16px',
+    alignItems: "center",
+    color: "#43414e",
+    mb: "16px",
   },
   listText: {
-    fontSize: '16px',
-    fontWeight: '400',
-    color: '#43414e',
-    mb: '0',
-    ml: '5px',
+    fontSize: "16px",
+    fontWeight: "400",
+    color: "#43414e",
+    mb: "0",
+    ml: "5px",
   },
 };
 
