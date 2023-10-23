@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Link from "next/link";
 import Countdown from "react-countdown-now";
 import Fade from "react-reveal/Fade";
@@ -121,16 +120,6 @@ const ControlSection = ({
   );
 };
 
-// Transactions style props
-ControlSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  readMoreTitle: PropTypes.object,
-  btnStyle: PropTypes.object,
-};
 
 // Transactions default style
 ControlSection.defaultProps = {
