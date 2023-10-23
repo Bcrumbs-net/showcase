@@ -1,12 +1,12 @@
 import PortfolioBannerSection from '../../../lib/containers/Portfolio/Banner';
-import SaaSBannerSection from '../../../lib/containers/Saas/BannerSection';
+import SaaS2BannerSection from '../../../lib/organisms/components/banners/banner3';
 import RideBannerSecion from '../../../lib/containers/Ride/Banner';
 import CharityBannerSection from '../../../lib/containers/Charity/BannerSection';
 import AgencyBannerSection from '../../../lib/organisms/components/banners/banner1';
 import AppBannerSection from '../../../lib/organisms/components/banners/banner2';
 import FoodFullScreenBanner from '../../../lib/containers/Food/FullScreenBanner';
-import CryptoBannerSection from '../../../lib/containers/Crypto/BannerSection';
-import SaaSClassicBannerSection from "../../../lib/containers/SaasClassic/Banner";
+import CryptoBannerSection from '../../../lib/organisms/components/banners/banner6';
+import SaaSClassicBannerSection from "../../../lib/organisms/components/banners/banner7";
 
 const resolveComponents = () => {
   return {
@@ -16,8 +16,8 @@ const resolveComponents = () => {
       category: 'Banner',
     },
     403429: {
-      render: (props) => <SaaSBannerSection {...props} />,
-      name: 'SaaS Banner',
+      render: (props) => <SaaS2BannerSection {...props} />,
+      name: 'SaaS2 Banner',
       category: 'Banner',
     },
     403269: {
@@ -47,7 +47,7 @@ const resolveComponents = () => {
     },
     403536: {
       render: (props) => <SaaSClassicBannerSection {...props} />,
-      name: 'SaaS Classic Banner',
+      name: 'SaaS Banner',
       category: 'Banner',
     },
     403488: {

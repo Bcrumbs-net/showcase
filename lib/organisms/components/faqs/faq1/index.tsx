@@ -30,6 +30,7 @@ interface IFaqSectionProps {
   data: Record<string, string>;
 }
 const FaqSection = ({
+  row,
   sectionHeader,
   sectionTitle,
   sectionSubTitle,
@@ -46,8 +47,8 @@ const FaqSection = ({
           <Text content={data.sectionSubTitle} {...sectionSubTitle} />
           <Heading content={data.sectionTitle} {...sectionTitle} />
         </Box>
-        <Box className="row">
-          <Accordion>
+        <Box className="row" {...row}>
+          <Accordion className='reusecore__accordion'>
             <Fragment>
               {model.children &&
                 model.children.map((faqSection, index) => {
@@ -75,6 +76,7 @@ const FaqSection = ({
                               </IconWrapperAR>
                               <Heading
                                 content={faqSectionMap.title}
+                                className="titleStyle"
                                 {...titleStyle}
                                 style={{
                                   textAlign: isAR ? 'right' : 'left',
@@ -144,7 +146,7 @@ FaqSection.defaultProps = {
     fontSize: '14px',
     letterSpacing: '0.15em',
     fontWeight: '700',
-    //color: '#10ac84',
+    color: '#10ac84',
     mb: '10px',
   },
   // section title default style
@@ -152,7 +154,7 @@ FaqSection.defaultProps = {
     textAlign: 'center',
     fontSize: ['20px', '24px'],
     fontWeight: '400',
-    //color: '#0f2137',
+    // color: '#0f2137',
     letterSpacing: '-0.025em',
     mb: '0',
   },

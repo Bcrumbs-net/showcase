@@ -2,15 +2,15 @@ import { Fragment } from "react";
 import Sticky from "react-stickynode";
 import { DrawerProvider } from "../../../lib/atoms";
 import PortfolioNavbar from "../../../lib/containers/Portfolio/Navbar";
-import SaaSNavbar from "../../../lib/containers/Saas/Navbar";
+import SaaSNavbar from "../../../lib/organisms/components/navbars/navbar3";
 import RideNavbar from "../../../lib/containers/Ride/Navbar";
 import CharityNavbar from "../../../lib/containers/Charity/Navbar";
 import DrawerSection from "../../../lib/containers/Charity/DrawerSection";
 import AgencyNavbar from "../../../lib/organisms/components/navbars/navbar1";
 import AppNavbar from "../../../lib/organisms/components/navbars/navbar2";
 import FoodNavbar from "../../../lib/containers/Food/Navbar";
-import SaaSClassicNavbar from "../../../lib/containers/SaasClassic/Navbar";
-import CryptoNavbar from "../../../lib/containers/Crypto/Navbar";
+import SaaSClassicNavbar from "../../../lib/organisms/components/navbars/navbar7";
+import CryptoNavbar from "../../../lib/organisms/components/navbars/navbar6";
 import CryptoModern from "../../../lib/containers/CryptoModern/Navbar";
 
 const resolveComponents = () => {

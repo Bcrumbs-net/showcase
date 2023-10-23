@@ -1,4 +1,4 @@
-import SaaSPartnerSection from '../../../lib/containers/Saas/PartnerSection';
+import SaaSPartnerSection from '../../../lib/organisms/components/partnerHistory/partnerHistory2';
 import PartnerHistory from '../../../lib/organisms/components/partnerHistory/partnerHistory1';
 
 const resolveComponents = () => {

@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import PropTypes from 'prop-types';
+import ParticlesComponent from './particles';
 import BannerWrapper, { DiscountLabel, BannerMask, Hspace } from './style';
 import { FeatureBlock } from '../../../../molecules';
 import { Button, Box, Text, Heading, Container } from '../../../../atoms';

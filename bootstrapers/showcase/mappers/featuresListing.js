@@ -1,5 +1,5 @@
-import SaaSFeatureSection from '../../../lib/containers/Saas/FeatureSection';
-import SaaSServiceSection from '../../../lib/containers/Saas/ServiceSection';
+import SaaSFeatureSection from '../../../lib/organisms/components/featuresLists/featureList5';
+import SaaSServiceSection from '../../../lib/organisms/components/featuresLists/featureList14';
 import AgencyFeatureSection from '../../../lib/organisms/components/featuresLists/featureList3';
 import RideFeatureSection from '../../../lib/containers/Ride/Feature';
 import FeatureSlider from '../../../lib/containers/Ride/FeatureSlider';
@@ -7,12 +7,11 @@ import CharityFeatureSection from '../../../lib/containers/Charity/FeatureSectio
 import AppFeature from '../../../lib/organisms/components/featuresLists/featureList4';
 import AppFeatureSlider from '../../../lib/organisms/components/featureSliders/featureSlider1';
 import AppFeatureSliderTwo from '../../../lib/organisms/components/featureSliders/featureSlider2';
-import CryptoTransactionFeatures from '../../../lib/containers/Crypto/Transaction';
-import CryptoBetaFeatures from '../../../lib/containers/Crypto/BetaSection';
-import SaaSClassicServiceSection from "../../../lib/containers/SaasClassic/Service";
-import SaasClassicFeatureSection from "../../../lib/containers/SaasClassic/Feature";
+import CryptoTransactionFeatures from '../../../lib/organisms/components/featuresLists/featureList11';
+import CryptoBetaFeatures from '../../../lib/organisms/components/featuresLists/featureList10';
+import SaaSClassicServiceSection from "../../../lib/organisms/components/featuresLists/featureList13";
+import SaasClassicFeatureSection from "../../../lib/organisms/components/featuresLists/featureList12";
 //import FeatureSection from '../../../lib/containers/Saas/FeatureSection';
-import CryptoTransactions from "../../../lib/containers/Crypto/Transaction";
 
 const resolveComponents = () => {
   return {

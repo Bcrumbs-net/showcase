@@ -1,7 +1,5 @@
 import { Fragment } from 'react';
 import { GraphContent } from '@bcrumbs.net/bc-api';
-import PropTypes from 'prop-types';
-
 import Fade from 'react-reveal/Fade';
 import SectionWrapper, {
   TeamCard,
@@ -24,6 +22,27 @@ interface BlogSliderSectionProps {
   isAR: boolean;
   data: Record<string, string>;
 }
+
+const glideOptions = {
+  type: 'carousel',
+  perView: 3,
+  gap: 50,
+  autoplay: 3000,
+  breakpoints: {
+    1200: {
+      perView: 3,
+      gap: 30,
+    },
+    767: {
+      perView: 2,
+      gap: 30,
+    },
+    480: {
+      perView: 1,
+    },
+  },
+};
+
 const BlogSliderSection = ({
   sectionHeader,
   sectionTitle,
@@ -35,25 +54,6 @@ const BlogSliderSection = ({
   isAR,
   data
 }: BlogSliderSectionProps) => {
-  const glideOptions = {
-    type: 'carousel',
-    perView: 3,
-    gap: 50,
-    autoplay: 3000,
-    breakpoints: {
-      1200: {
-        perView: 3,
-        gap: 30,
-      },
-      767: {
-        perView: 2,
-        gap: 30,
-      },
-      480: {
-        perView: 1,
-      },
-    },
-  };
   return (
     <SectionWrapper id={model.name}>
       <Container width={1360}>
@@ -84,7 +84,7 @@ const BlogSliderSection = ({
               <Fragment>
                 {model.children &&
                   model.children.map((blogSection, index) => {
-                    let blogSectionMap = blogSection.data.reduce(function (
+                    const blogSectionMap: Record<string, string> = blogSection.data.reduce(function (
                       map,
                       obj
                     ) {
@@ -127,7 +127,7 @@ const BlogSliderSection = ({
                               title={blogSectionMap.btnText}
                               {...btnStyle}
                               onClick={() => {
-                                window.location = blogSectionMap.postLink;
+                                window.location.replace(blogSectionMap.postLink);
                               }}
                             />
                           ) : null}
@@ -143,8 +143,6 @@ const BlogSliderSection = ({
     </SectionWrapper>
   );
 };
-
-// BlogSection style props
 
 // BlogSection default style
 BlogSliderSection.defaultProps = {

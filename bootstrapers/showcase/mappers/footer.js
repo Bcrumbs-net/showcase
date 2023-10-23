@@ -1,11 +1,11 @@
 import PortfolioFooter from '../../../lib/containers/Portfolio/Footer';
-import SaaSFooter from '../../../lib/containers/Saas/Footer';
+import SaaS2Footer from '../../../lib/organisms/components/footers/footer3';
 import RideFooter from '../../../lib/containers/Ride/Footer';
 import CharityFooter from '../../../lib/containers/Charity/Footer';
 import AgencyFooter from '../../../lib/organisms/components/footers/footer1';
 import AppFooter from '../../../lib/organisms/components//footers/footer2';
-import SaaSClaasicFooter from "../../../lib/containers/SaasClassic/Footer";
-import CryptoFooter from "../../../lib/containers/Crypto/Footer";
+import SaaSClaasicFooter from "../../../lib/organisms/components/footers/footer6";
+import CryptoFooter from "../../../lib/organisms/components/footers/footer5";
 
 const resolveComponents = () => {
   return {
@@ -15,8 +15,8 @@ const resolveComponents = () => {
       category: 'Footers',
     },
     403443: {
-      render: props => <SaaSFooter {...props} />,
-      name: 'SaaS Footer',
+      render: props => <SaaS2Footer {...props} />,
+      name: 'SaaS2 Footer',
       category: 'Footers',
     },
     403274: {

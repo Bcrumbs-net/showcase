@@ -1,4 +1,4 @@
-import SaaSTimelineSection from '../../../lib/containers/Saas/TimelineSection';
+import SaaSTimelineSection from '../../../lib/organisms/components/timelines/timeline1';
 
 const resolveComponents = () => {
   return {

@@ -16,6 +16,8 @@ import { base, themed } from '../base';
 /* eslint-disable-next-line */
 export interface CardProps {
   boxShadow?: string;
+  children: React.ReactNode;
+  className?: string;
 }
 
 const CardWrapper = styled('div')(
@@ -35,11 +37,11 @@ const CardWrapper = styled('div')(
 
 export const Card = ({
   children,
+  className,
   ...props
-}: {
-  children: React.ReactNode;
-  props: React.HTMLProps<CardProps>;
-}) => <CardWrapper {...props}>{children}</CardWrapper>;
+}: React.PropsWithChildren<CardProps>) => (
+  <CardWrapper className={className} {...props}>{children}</CardWrapper>
+);
 
 Card.defaultProps = {
   boxShadow: '0px 20px 35px rgba(0, 0, 0, 0.05)',

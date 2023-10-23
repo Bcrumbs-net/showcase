@@ -1,9 +1,10 @@
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import Link from 'next/link';
-import FooterWrapper, { List, ListItem } from './style';
 import { Container, Box, Heading ,Image,Text} from '../../../../atoms';
 import { Logo } from '../../../../molecules';
 import CopyrightSection from '../../navbars/navbar1/copyrights';
+import FooterWrapper from './style';
+import { List, ListItem } from './style';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 interface FooterProps {
   row?: object;
@@ -57,7 +58,7 @@ const Footer = ({
               model.children
                 .filter((m) => m.online)
                 .map((footer, index) => {
-                  const footerItemMap = footer.data.reduce(function (map, obj) {
+                  const footerItemMap: Record<string, string> = footer.data.reduce(function (map, obj) {
                     map[obj.Key] = obj.Value;
                     return map;
                   }, {});
@@ -72,7 +73,7 @@ const Footer = ({
                       <List>
                         {footer.children &&
                           footer.children.map((menuItems, subIndex) => {
-                            let menuItemMap = menuItems.data.reduce(function (
+                            const menuItemMap: Record<string, string> = menuItems.data.reduce(function (
                               map,
                               obj
                             ) {

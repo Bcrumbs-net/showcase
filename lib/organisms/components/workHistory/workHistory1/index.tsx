@@ -72,7 +72,7 @@ const WorkHistory = ({
 
                 return (
                   <Card
-                  props={{ className: 'card' }}
+                    className='card'
                     key={`workHistoryMap-${index}`}
                     {...cardStyle}
                   >
@@ -88,7 +88,7 @@ const WorkHistory = ({
                 );
               })}
               <Card 
-               props={{ className: 'card' }}
+               className='card'
                {...cardStyle}
                >
                 <Text content="& Much More" />

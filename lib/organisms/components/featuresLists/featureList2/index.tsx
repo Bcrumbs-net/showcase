@@ -106,7 +106,7 @@ const AboutUsSection = ({
                 title={data.btnText}
                 {...btnStyle}
                 onClick={() => {
-                  window.location = data.btnUrl;
+                  window.location.replace(data.btnUrl);
                 }}
               />
             ) : null}
