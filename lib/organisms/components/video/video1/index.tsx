@@ -98,17 +98,6 @@ const VideoSection = ({
   );
 };
 
-// VideoSection style props
-VideoSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  memberName: PropTypes.object,
-  designation: PropTypes.object,
-};
-
 // VideoSection default style
 VideoSection.defaultProps = {
   // section header default style

@@ -1,5 +1,4 @@
 import SaaS2PricingSection from '../../../lib/organisms/components/pricings/pricing1';
-import PaymentSection from '../../../lib/containers/App/PaymentSection';
 import SaaSClasicPricingSection from "../../../lib/organisms/components/pricings/pricing2";
 
 const resolveComponents = () => {
@@ -8,11 +7,6 @@ const resolveComponents = () => {
       render: props => <SaaS2PricingSection {...props} />,
       name: 'SaaS Pricing',
       category: 'Pricing',
-    },
-    403416: {
-      render: props => <PaymentSection {...props} />,
-      name: 'Payment Section',
-      category: 'Payment',
     },
     403378: {
       render: props => <SaaSClasicPricingSection {...props} />,

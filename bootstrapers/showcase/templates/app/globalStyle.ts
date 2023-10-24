@@ -146,6 +146,8 @@ const GlobalStyle = createGlobalStyle`
         }
       }
 
+
+
       &.demo_switcher_modal {
         border: 0 !important;
         background-color: rgba(16, 30, 77, 0.8) !important;
@@ -403,6 +405,7 @@ const AppWrapper = styled.div`
                 margin-top: -10px;
                 max-width: 550px;
                 font-size: 36px;
+                text-align:left;
                 line-height: 50px;
                 color: #0f2137;
                 font-weight: 300;
@@ -443,8 +446,8 @@ const AppWrapper = styled.div`
                 }
               }
               .testimonialDetails {
+                text-align: left;
                 @media (max-width: 480px) {
-                  text-align: center;
                 }
                 .testimonialName {
                   font-size: 18px;
@@ -452,6 +455,7 @@ const AppWrapper = styled.div`
                   color: #343d48;
                   font-weight: 700;
                   margin-bottom: -3px;
+
                 }
                 .testimonialDesignation {
                   font-size: 16px;
@@ -459,6 +463,7 @@ const AppWrapper = styled.div`
                   color: #343d48;
                   font-weight: 400;
                   opacity: 0.8;
+
                 }
               }
             }
@@ -472,8 +477,7 @@ const AppWrapper = styled.div`
           height: 2px;
           transition: width 0.25s ease-in-out;
           background-image: url(${
-            // @ts-ignore
-            Substract
+            Substract.src
           });
           width: 20px;
           height: 30px;
@@ -482,7 +486,7 @@ const AppWrapper = styled.div`
           background-size: contain;
           &:hover {
             width: 35px;
-            background-image: url(${SubstractHover});
+            background-image: url(${SubstractHover.src});
             &::before {
               background-color: #1a73e8;
             }
@@ -523,7 +527,7 @@ const AppWrapper = styled.div`
           width: 15px;
           height: 2px;
           transition: all 0.25s ease-in-out;
-          background-image: url(${SubstractHover});
+          background-image: url(${SubstractHover.src});
           width: 30px;
           height: 30px;
           background-repeat-x: repeat;

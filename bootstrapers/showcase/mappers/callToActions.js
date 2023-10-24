@@ -1,3 +1,5 @@
+
+import AppPaymentSection from '../../../lib/organisms/components/callToActions/callToAction3';
 import PortfolioCallToAction from '../../../lib/organisms/components/callToActions/callToAction4';
 
 const resolveComponents = () => {
@@ -7,6 +9,11 @@ const resolveComponents = () => {
       name: 'Portfolio Call to Action',
       category: 'Call to action',
     },
+    403416: {
+      render: props => <AppPaymentSection {...props} />,
+      name: 'App Payments',
+      category: 'Payments',
+  },
   };
 };
 export default resolveComponents;
