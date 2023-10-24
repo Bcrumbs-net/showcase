@@ -18,7 +18,7 @@ import SectionWrapper, {
   ShareList,
   Item,
 } from "./style";
-import heartImage from "../../../assets/image/charity/heart.svg";
+import heartImage from "../../../../assets/image/charity/heart.svg";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 

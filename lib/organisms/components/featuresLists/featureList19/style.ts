@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { themeGet } from 'styled-system';
-import pattern1 from '../../../assets/image/charity/pattern1.svg';
-import pattern2 from '../../../assets/image/charity/pattern2.svg';
+import pattern1 from '../../../../assets/image/charity/pattern1.svg';
+import pattern2 from '../../../../assets/image/charity/pattern2.svg';
 
 const SectionWrapper = styled.section`
   width: 100%;

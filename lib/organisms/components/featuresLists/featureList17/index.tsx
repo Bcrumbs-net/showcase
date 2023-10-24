@@ -31,7 +31,6 @@ const HumanityBlock = ({ row, col, model, isAR, data }: HumanityBlockProps) => {
       return humanityMap;
     });
   }
-  //const { slogan, title, text, lists, image } = humanityData;
   return (
     <BlockWrapper id={model.name}>
       <Container width="1260px">

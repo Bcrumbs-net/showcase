@@ -16,7 +16,7 @@ import SectionWrapper, {
   DonateButton,
 } from "./style";
 import { paymentPolicy, currencyOptions } from "../../../../data/Charity";
-import heartImage from "../../../assets/image/charity/heart-alt.svg";
+import heartImage from "../../../../assets/image/charity/heart-alt.svg";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 
