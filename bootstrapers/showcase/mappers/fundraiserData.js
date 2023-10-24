@@ -1,4 +1,4 @@
-import FundraiserSection from '../../../lib/containers/Charity/FundraiserSection';
+import FundraiserSection from '../../../lib/organisms/components/callToActions/callToAction7';
 
 const resolveComponents = () => {
   return {

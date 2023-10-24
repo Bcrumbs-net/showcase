@@ -1,4 +1,4 @@
-import WorkSection from '../../../lib/containers/Charity/WorkSection';
+import WorkSection from '../../../lib/organisms/components/featuresLists/featureList19';
 
 const resolveComponents = () => {
   return {

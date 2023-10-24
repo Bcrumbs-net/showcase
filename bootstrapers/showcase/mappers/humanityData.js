@@ -1,4 +1,4 @@
-import HumanityBlock from '../../../lib/containers/Charity/HumanityBlock';
+import HumanityBlock from '../../../lib/organisms/components/featuresLists/featureList17';
 
 const resolveComponents = () => {
   return {

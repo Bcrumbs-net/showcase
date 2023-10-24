@@ -1,4 +1,4 @@
-import PromotionBlock from '../../../lib/containers/Charity/PromotionBlock';
+import PromotionBlock from '../../../lib/organisms/components/featuresLists/featureList18';
 
 const resolveComponents = () => {
   return {

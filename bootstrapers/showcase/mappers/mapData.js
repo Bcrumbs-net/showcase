@@ -1,4 +1,4 @@
-import MapSection from '../../../lib/containers/Charity/MapSection';
+import MapSection from '../../../lib/organisms/components/portfolios/portfolio6';
 
 const resolveComponents = () => {
   return {

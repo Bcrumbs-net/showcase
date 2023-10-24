@@ -1,4 +1,4 @@
-import MilestoneBlock from '../../../lib/containers/Charity/MilestoneBlock';
+import MilestoneBlock from '../../../lib/organisms/components/portfolios/portfolio7';
 
 const resolveComponents = () => {
   return {

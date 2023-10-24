@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { themeGet } from 'styled-system';
-import { Button } from '../../../../../containers/Charity/Navbar/navbar.style';
+import { Button } from '../../../navbars/navbar8/style';
 
 const InnerWrapper = styled.div`
   min-height: 100vh;

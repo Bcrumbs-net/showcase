@@ -1,9 +1,9 @@
-import React from 'react';
-import Link from 'next/link';
-import { Image, Text, Heading, Container } from '../../../atoms';
-import { Icon } from 'react-icons-kit';
-import { twitter } from 'react-icons-kit/fa/twitter';
-import { facebookSquare } from 'react-icons-kit/fa/facebookSquare';
+import React from "react";
+import Link from "next/link";
+import { Image, Text, Heading, Container } from "../../../../atoms";
+import { Icon } from "react-icons-kit";
+import { twitter } from "react-icons-kit/fa/twitter";
+import { facebookSquare } from "react-icons-kit/fa/facebookSquare";
 import SectionWrapper, {
   SectionHeader,
   ContentArea,
@@ -17,23 +17,27 @@ import SectionWrapper, {
   DonateButton,
   ShareList,
   Item,
-} from './fundraiserSection.style';
+} from "./style";
+import heartImage from "../../../assets/image/charity/heart.svg";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-import fundraisersImage from '../../../assets/image/charity/fundraisers.png';
-import heartImage from '../../../assets/image/charity/heart.svg';
-
-const FundraiserSection = ({ model }) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+interface FundraiserSectionProps {
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const FundraiserSection = ({ model, isAR, data }: FundraiserSectionProps) => {
   let fundraiserItems = [];
   if (model.children && model.children.length > 0) {
-    fundraiserItems = model.children.map(fundraiserData => {
-      let fundraiserMap = fundraiserData.data.reduce(function(map, obj) {
-        map[obj.Key] = obj.Value;
-        return map;
-      }, {});
+    fundraiserItems = model.children.map((fundraiserData) => {
+      const fundraiserMap: Record<string, string> = fundraiserData.data.reduce(
+        function (map, obj) {
+          map[obj.Key] = obj.Value;
+          return map;
+        },
+        {}
+      );
       return fundraiserMap;
     });
   }
@@ -45,7 +49,7 @@ const FundraiserSection = ({ model }) => {
           <Text content={data.subtitle} />
         </SectionHeader>
         {fundraiserItems.map((item, index) => (
-          <ContentArea key={'FundraiserSection' + index}>
+          <ContentArea key={"FundraiserSection" + index}>
             <ImageWrapper>
               <Image src={item.image} alt="Charity" />
             </ImageWrapper>
@@ -63,7 +67,7 @@ const FundraiserSection = ({ model }) => {
               <DonationProgressbar>
                 <BarArea>
                   <CurrentStatus>
-                    <strong>{item.fundraiserAchieved}</strong> of{' '}
+                    <strong>{item.fundraiserAchieved}</strong> of{" "}
                     {item.fundraiserGoal}
                   </CurrentStatus>
                   <Text content={item.LastDonationLabel} />
@@ -108,4 +112,4 @@ const FundraiserSection = ({ model }) => {
   );
 };
 
-export default FundraiserSection;
+export default withModelToDataObjProp(FundraiserSection);

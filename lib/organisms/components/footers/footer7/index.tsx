@@ -1,29 +1,44 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Link from 'next/link';
-import { Box, Text, Heading, Container } from '../../../atoms';
-import { Logo } from '../../../molecules';
+import React from "react";
+import Link from "next/link";
+import { Box, Text, Heading, Container } from "../../../../atoms";
+import { Logo } from "../../../../molecules";
 import FooterWrapper, {
   CopyrightText,
   SocialList,
   SelectWrapper,
-} from './footer.style';
+} from "./style";
+import { menuWidgets, socialLinks } from "../../../../data/Charity";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-import LogoImage from '../../../assets/image/charity/logo.svg';
-import { menuWidgets, socialLinks } from '../../../data/Charity';
-
-const Footer = ({ row, col, colOne, colTwo, model }) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+interface FooterProps {
+  row: object;
+  col: object;
+  colOne: object;
+  colTwo: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const Footer = ({
+  row,
+  col,
+  colOne,
+  colTwo,
+  model,
+  isAR,
+  data,
+}: FooterProps) => {
   let footerItems = [];
   if (model.children && model.children.length > 0) {
-    footerItems = model.children.map(footerData => {
-      let footerMap = footerData.data.reduce(function(map, obj) {
-        map[obj.Key] = obj.Value;
-        return map;
-      }, {});
+    footerItems = model.children.map((footerData) => {
+      const footerMap: Record<string, string> = footerData.data.reduce(
+        function (map, obj) {
+          map[obj.Key] = obj.Value;
+          return map;
+        },
+        {}
+      );
       return footerMap;
     });
   }
@@ -64,7 +79,7 @@ const Footer = ({ row, col, colOne, colTwo, model }) => {
           </Box>
           {/* End of logo column */}
           <Box className="col-two" {...colTwo}>
-            {footerItems.map(menuItem => (
+            {footerItems.map((menuItem) => (
               <Box
                 className="col"
                 {...col}
@@ -98,7 +113,7 @@ const Footer = ({ row, col, colOne, colTwo, model }) => {
             />
           </CopyrightText>
           <SocialList>
-            {socialLinks.map(item => (
+            {socialLinks.map((item) => (
               <li className={item.name} key={`social__link-key${item.id}`}>
                 <Link href={item.link}>
                   <a aria-label="social share link">{item.icon}</a>
@@ -113,44 +128,36 @@ const Footer = ({ row, col, colOne, colTwo, model }) => {
   );
 };
 
-// Footer style props
-Footer.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  colOne: PropTypes.object,
-  colTwo: PropTypes.object,
-};
-
 // Footer default style
 Footer.defaultProps = {
   // Footer row default style
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: '-15px',
-    mr: '-15px',
+    flexWrap: "wrap",
+    ml: "-15px",
+    mr: "-15px",
   },
   // Footer col one style
   colOne: {
-    width: ['100%', '30%', '35%', '30%'],
-    mt: [0, '13px', '0'],
-    mb: ['30px', 0],
-    pl: ['15px', 0],
-    pr: ['15px', '15px', 0],
+    width: ["100%", "30%", "35%", "30%"],
+    mt: [0, "13px", "0"],
+    mb: ["30px", 0],
+    pl: ["15px", 0],
+    pr: ["15px", "15px", 0],
   },
   // Footer col two style
   colTwo: {
-    width: ['100%', '70%', '65%', '70%'],
+    width: ["100%", "70%", "65%", "70%"],
     flexBox: true,
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
   },
   // Footer col default style
   col: {
-    width: ['100%', '50%', '50%', '33.33%'],
-    pl: '15px',
-    pr: '15px',
-    mb: '30px',
+    width: ["100%", "50%", "50%", "33.33%"],
+    pl: "15px",
+    pr: "15px",
+    mb: "30px",
   },
 };
 
-export default Footer;
+export default withModelToDataObjProp(Footer);

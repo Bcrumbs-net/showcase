@@ -1,33 +1,36 @@
-import React from 'react';
-import Link from 'next/link';
-import PropTypes from 'prop-types';
-import { Heading, Text, Image, Box, Container } from '../../../atoms';
-
+import React from "react";
+import Link from "next/link";
+import { Heading, Text, Image, Box, Container } from "../../../../atoms";
 import BlockWrapper, {
   ContentWrapper,
   List,
   Item,
   ImageWrapper,
-} from './humanityBlock.style';
+} from "./style";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { GraphContent } from "@bcrumbs.net/bc-api";
 
-import { humanityData } from '../../../data/Charity';
-
-const HumanityBlock = ({ row, col, model }) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+interface HumanityBlockProps {
+  row: object;
+  col: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const HumanityBlock = ({ row, col, model, isAR, data }: HumanityBlockProps) => {
   let humanityItems = [];
   if (model.children && model.children.length > 0) {
-    humanityItems = model.children.map(humanityData => {
-      let humanityMap = humanityData.data.reduce(function(map, obj) {
-        map[obj.Key] = obj.Value;
-        return map;
-      }, {});
+    humanityItems = model.children.map((humanityData) => {
+      const humanityMap: Record<string, string> = humanityData.data.reduce(
+        function (map, obj) {
+          map[obj.Key] = obj.Value;
+          return map;
+        },
+        {}
+      );
       return humanityMap;
     });
   }
-
   //const { slogan, title, text, lists, image } = humanityData;
   return (
     <BlockWrapper id={model.name}>
@@ -44,7 +47,7 @@ const HumanityBlock = ({ row, col, model }) => {
               <Heading content={data.title} />
               <Text content={data.text} />
               <List>
-                {humanityItems.map(item => (
+                {humanityItems.map((item) => (
                   <Item key={`list_key${item.id}`}>{item.text}</Item>
                 ))}
               </List>
@@ -62,28 +65,22 @@ const HumanityBlock = ({ row, col, model }) => {
   );
 };
 
-// HumanityBlock style props
-HumanityBlock.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-};
-
 // HumanityBlock default style
 HumanityBlock.defaultProps = {
   // HumanityBlock row default style
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: '-15px',
-    mr: '-15px',
+    flexWrap: "wrap",
+    ml: "-15px",
+    mr: "-15px",
   },
   // HumanityBlock col default style
   col: {
-    width: ['100%', '50%', '50%'],
-    pl: '15px',
-    pr: '15px',
-    mb: '30px',
+    width: ["100%", "50%", "50%"],
+    pl: "15px",
+    pr: "15px",
+    mb: "30px",
   },
 };
 
-export default HumanityBlock;
+export default withModelToDataObjProp(HumanityBlock);

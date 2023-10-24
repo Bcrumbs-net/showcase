@@ -4,7 +4,7 @@ import { DrawerProvider } from "../../../lib/atoms";
 import PortfolioNavbar from "../../../lib/organisms/components/navbars/navbar4";
 import SaaS2Navbar from "../../../lib/organisms/components/navbars/navbar3";
 import RideNavbar from "../../../lib/containers/Ride/Navbar";
-import CharityNavbar from "../../../lib/containers/Charity/Navbar";
+import CharityNavbar from "../../../lib/organisms/components/navbars/navbar8";
 import DrawerSection from "../../../lib/organisms/components/banners/banner8/drawer";
 import AgencyNavbar from "../../../lib/organisms/components/navbars/navbar1";
 import AppNavbar from "../../../lib/containers/App/Navbar";

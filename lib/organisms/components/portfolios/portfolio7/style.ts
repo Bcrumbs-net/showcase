@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { themeGet } from 'styled-system';
-import bgImage from '../../../assets/image/charity/milestone-bg.png';
+import bgImage from '../../../../assets/image/charity/milestone-bg.png';
 
 const BlockWrapper = styled.div`
   width: 100%;
   margin: 81px 0;
   padding: 60px;
-  background-image: url(${bgImage});
+  background-image: url(${bgImage.src});
   background-repeat: no-repeat;
   background-size: 100%;
   border-radius: 10px;

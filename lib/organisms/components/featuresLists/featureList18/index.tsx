@@ -1,26 +1,39 @@
-import React from 'react';
-import Link from 'next/link';
-import PropTypes from 'prop-types';
-import { Heading, Container, Box, Image, Text } from '../../../atoms';
+import React from "react";
+import Link from "next/link";
+import { Heading, Container, Box, Image, Text } from "../../../../atoms";
 import BlockWrapper, {
   ContentWrapper,
   List,
   Item,
   ImageWrapper,
-} from './promotionBlock.style';
+} from "./style";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { GraphContent } from "@bcrumbs.net/bc-api";
 
-const PromotionBlock = ({ row, col, model }) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+interface PromotionBlockProps {
+  row: object;
+  col: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const PromotionBlock = ({
+  row,
+  col,
+  model,
+  isAR,
+  data,
+}: PromotionBlockProps) => {
   let promotionItems = [];
   if (model.children && model.children.length > 0) {
     promotionItems = model.children.map((promotionData, index) => {
-      let promotionMap = promotionData.data.reduce(function(map, obj) {
-        map[obj.Key] = obj.Value;
-        return map;
-      }, {});
+      const promotionMap: Record<string, string> = promotionData.data.reduce(
+        function (map, obj) {
+          map[obj.Key] = obj.Value;
+          return map;
+        },
+        {}
+      );
       return promotionMap;
     });
   }
@@ -36,7 +49,7 @@ const PromotionBlock = ({ row, col, model }) => {
               <Text content={data.text1} />
               <Text content={data.text2} />
               <List>
-                {promotionItems.map(item => (
+                {promotionItems.map((item) => (
                   <Item key={`list_key${item.id}`}>{item.title}</Item>
                 ))}
               </List>
@@ -59,28 +72,22 @@ const PromotionBlock = ({ row, col, model }) => {
   );
 };
 
-// PromotionBlock style props
-PromotionBlock.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-};
-
 // PromotionBlock default style
 PromotionBlock.defaultProps = {
   // PromotionBlock row default style
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: '-15px',
-    mr: '-15px',
+    flexWrap: "wrap",
+    ml: "-15px",
+    mr: "-15px",
   },
   // PromotionBlock col default style
   col: {
-    width: ['100%', '50%', '50%'],
-    pl: '15px',
-    pr: '15px',
-    mb: '30px',
+    width: ["100%", "50%", "50%"],
+    pl: "15px",
+    pr: "15px",
+    mb: "30px",
   },
 };
 
-export default PromotionBlock;
+export default withModelToDataObjProp(PromotionBlock);

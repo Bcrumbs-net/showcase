@@ -1,16 +1,19 @@
-import { useContext } from 'react';
-import { Image, DrawerContext, Container } from '../../../atoms';
-import { Logo } from '../../../molecules';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
-import NavbarWrapper, { MenuWrapper, Button } from './navbar.style';
+import { useContext } from "react";
+import { Image, DrawerContext, Container } from "../../../../atoms";
+import { Logo } from "../../../../molecules";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import NavbarWrapper, { MenuWrapper, Button } from "./style";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { GraphContent } from "@bcrumbs.net/bc-api";
 
-const Navbar = ({ model }) => {
+interface NavbarProps {
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const Navbar = ({ model, isAR, data }: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
   // Toggle drawer
-  const data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <NavbarWrapper className="navbar">
       <Container fullWidth={true}>
@@ -34,4 +37,4 @@ const Navbar = ({ model }) => {
   );
 };
 
-export default Navbar;
+export default withModelToDataObjProp(Navbar);
