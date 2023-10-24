@@ -1,4 +1,4 @@
-import BranchSection from '../../../lib/containers/Charity/BranchSection';
+import BranchSection from '../../../lib/organisms/components/portfolios/portfolio5';
 
 const resolveComponents = () => {
   return {

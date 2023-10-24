@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { themeGet } from 'styled-system';
-import mapImage from '../../../assets/image/charity/map-alt.png';
+import mapImage from '../../../../assets/image/charity/map-alt.png';
 
 const SectionWrapper = styled.div`
   width: 100%;
   padding: 130px 0 100px;
   margin: 81px 0;
   background-color: ${themeGet('colors.heading', '#060F1E')};
-  background-image: url(${mapImage});
+  background-image: url(${mapImage.src});
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

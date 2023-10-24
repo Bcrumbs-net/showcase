@@ -1,37 +1,50 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import Link from 'next/link';
-import { Box, RadioGroup, InputGroup, Text, Image, Container } from '../../../atoms';
+import { useState } from "react";
+import Link from "next/link";
+import {
+  Box,
+  RadioGroup,
+  InputGroup,
+  Text,
+  Image,
+  Container,
+} from "../../../../atoms";
 import SectionWrapper, {
   ContentArea,
   Heading,
   ButtonGroup,
   DonationForm,
   DonateButton,
-} from './donateSection.style';
+} from "./style";
+import { paymentPolicy, currencyOptions } from "../../../../data/Charity";
+import heartImage from "../../../assets/image/charity/heart-alt.svg";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { GraphContent } from "@bcrumbs.net/bc-api";
 
-import { paymentPolicy, currencyOptions } from '../../../data/Charity';
-import heartImage from '../../../assets/image/charity/heart-alt.svg';
-
-const DonateSection = ({ row, col, model }) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+interface DonateSectionProps {
+  row: object;
+  col: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
   let branchItems = [];
   if (model.children && model.children.length > 0) {
     branchItems = model.children.map((branchData, index) => {
-      let branchMap = branchData.data.reduce(function(map, obj) {
-        map[obj.Key] = obj.Value;
-        return map;
-      }, {});
+      const branchMap: Record<string, string> = branchData.data.reduce(
+        function (map, obj) {
+          map[obj.Key] = obj.Value;
+          return map;
+        },
+        {}
+      );
       return branchMap;
     });
   }
   const [state, setState] = useState({
-    price: '',
-    currency: 'usd',
-    policy: 'oneTime',
+    price: "",
+    currency: "usd",
+    policy: "oneTime",
   });
 
   const handleFormData = (value, name) => {
@@ -41,11 +54,11 @@ const DonateSection = ({ row, col, model }) => {
     });
   };
 
-  const handleDonation = e => {
+  const handleDonation = (e) => {
     e.preventDefault();
     setState({
       ...state,
-      price: '',
+      price: "",
     });
   };
 
@@ -77,25 +90,25 @@ const DonateSection = ({ row, col, model }) => {
             </ContentArea>
           </Box>
           <Box className="col" {...col}>
-            <DonationForm onSubmit={e => handleDonation(e)}>
+            <DonationForm onSubmit={(e) => handleDonation(e)}>
               <InputGroup
                 inputType="number"
                 placeholder="100.00"
                 inputValue={state.price}
-                inputOnChange={e => handleFormData(e.target.value, 'price')}
+                inputOnChange={(e) => handleFormData(e.target.value, "price")}
                 currency="$ USD"
                 selectedValue={state.currency}
                 selectOptions={currencyOptions}
-                selectOnUpdate={value => handleFormData(value, 'currency')}
+                selectOnUpdate={(value) => handleFormData(value, "currency")}
               />
               <RadioGroup
                 name="radioGroup"
                 value={state.policy}
                 items={paymentPolicy}
-                onUpdate={value => handleFormData(value, 'policy')}
+                onUpdate={(value) => handleFormData(value, "policy")}
               />
               <DonateButton type="submit">
-                {data.Donate_Button_Label}{' '}
+                {data.Donate_Button_Label}{" "}
                 <Image src={heartImage} alt="Charity Landing" />
               </DonateButton>
             </DonationForm>
@@ -106,29 +119,22 @@ const DonateSection = ({ row, col, model }) => {
   );
 };
 
-// DonateSection style props
-DonateSection.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  textStyle: PropTypes.object,
-};
-
 // DonateSection default style
 DonateSection.defaultProps = {
   // DonateSection row default style
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: '-15px',
-    mr: '-15px',
+    flexWrap: "wrap",
+    ml: "-15px",
+    mr: "-15px",
   },
   // DonateSection col default style
   col: {
-    width: ['100%', '50%', '50%'],
-    pl: '15px',
-    pr: '15px',
-    mb: '30px',
+    width: ["100%", "50%", "50%"],
+    pl: "15px",
+    pr: "15px",
+    mb: "30px",
   },
 };
 
-export default DonateSection;
+export default withModelToDataObjProp(DonateSection);

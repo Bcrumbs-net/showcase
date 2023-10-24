@@ -3,7 +3,7 @@ import SaaS2ServiceSection from '../../../lib/organisms/components/featuresLists
 import AgencyFeatureSection from '../../../lib/organisms/components/featuresLists/featureList3';
 import RideFeatureSection from '../../../lib/containers/Ride/Feature';
 import FeatureSlider from '../../../lib/containers/Ride/FeatureSlider';
-import CharityFeatureSection from '../../../lib/containers/Charity/FeatureSection';
+import CharityFeatureSection from '../../../lib/organisms/components/featuresLists/featureList16';
 import AppFeature from '../../../lib/containers/App/FeatureSection';
 import AppFeatureSlider from '../../../lib/containers/App/FeatureSlider';
 import AppFeatureSliderTwo from '../../../lib/containers/App/FeatureSliderTwo';

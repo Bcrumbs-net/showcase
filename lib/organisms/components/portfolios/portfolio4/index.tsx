@@ -1,27 +1,33 @@
-
-import Link from 'next/link';
-import { Heading, Container } from '../../../atoms';
-import { BlogPost } from '../../../molecules';
+import Link from "next/link";
+import { Heading, Container } from "../../../../atoms";
+import { BlogPost } from "../../../../molecules";
 import SectionWrapper, {
   SectionHeader,
   TitleArea,
   LinkArea,
   Text,
   PostArea,
-} from './blogSection.style';
+} from "./style";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-const BlogSection = ({ model }) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+interface BlogSectionProps {
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const BlogSection = ({ model, isAR, data }: BlogSectionProps) => {
   let blogsItems = [];
   if (model.children && model.children.length > 0) {
-    blogsItems = model.children.map(blogData => {
-      let blogMap = blogData.data.reduce(function(map, obj) {
+    blogsItems = model.children.map((blogData) => {
+      const blogMap: Record<string, string> = blogData.data.reduce(function (
+        map,
+        obj
+      ) {
         map[obj.Key] = obj.Value;
         return map;
-      }, {});
+      },
+      {});
       return blogMap;
     });
   }
@@ -48,7 +54,7 @@ const BlogSection = ({ model }) => {
           </LinkArea>
         </SectionHeader>
         <PostArea>
-          {blogsItems.map(item => (
+          {blogsItems.map((item) => (
             <BlogPost
               key={`blog__post-key${item.id}`}
               thumbUrl={item.image}
@@ -68,4 +74,4 @@ const BlogSection = ({ model }) => {
   );
 };
 
-export default BlogSection;
+export default withModelToDataObjProp(BlogSection);

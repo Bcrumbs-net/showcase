@@ -1,4 +1,4 @@
-import DonateSection from '../../../lib/containers/Charity/DonateSection';
+import DonateSection from '../../../lib/organisms/components/callToActions/callToAction6';
 
 const resolveComponents = () => {
   return {

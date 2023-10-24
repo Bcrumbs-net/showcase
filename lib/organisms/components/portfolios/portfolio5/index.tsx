@@ -1,30 +1,36 @@
-import Link from 'next/link';
-import Fade from 'react-reveal/Fade';
-import { Text, Tab, Panel, Heading, Image } from '../../../atoms';
-import SectionWrapper, { ContentWrapper } from './branchSection.style';
+import Link from "next/link";
+import Fade from "react-reveal/Fade";
+import { Text, Tab, Panel, Heading, Image } from "../../../../atoms";
+import SectionWrapper, { ContentWrapper } from "./style";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-const BranchSection = ({ model }) => {
-  const title = text => {
+interface BranchSectionProps {
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const BranchSection = ({ model, isAR, data }: BranchSectionProps) => {
+  const title = (text) => {
     return { __html: text };
   };
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   let branchItems = [];
   if (model.children && model.children.length > 0) {
     branchItems = model.children.map((branchData, index) => {
-      let branchMap = branchData.data.reduce(function(map, obj) {
-        map[obj.Key] = obj.Value;
-        return map;
-      }, {});
+      const branchMap: Record<string, string> = branchData.data.reduce(
+        function (map, obj) {
+          map[obj.Key] = obj.Value;
+          return map;
+        },
+        {}
+      );
       return branchMap;
     });
   }
   return (
     <SectionWrapper id={model.name}>
       <Tab active={2}>
-        {branchItems.map(item => (
+        {branchItems.map((item) => (
           <Panel
             title={<Text content={item.menuItem} />}
             key={`tab_key${item.id}`}
@@ -53,4 +59,4 @@ const BranchSection = ({ model }) => {
     </SectionWrapper>
   );
 };
-export default BranchSection;
+export default withModelToDataObjProp(BranchSection);

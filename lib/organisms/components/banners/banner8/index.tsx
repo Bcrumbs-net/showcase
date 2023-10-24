@@ -1,34 +1,40 @@
-import React, { Fragment } from 'react';
-import Link from 'next/link';
-import { Icon } from 'react-icons-kit';
-import { chevronRight } from 'react-icons-kit/feather/chevronRight';
-import { Text, Heading, Image } from '../../../atoms';
-import { GlideCarousel, GlideSlide } from '../../../molecules';
-import LeftBar from './leftBar';
+import React, { Fragment } from "react";
+import Link from "next/link";
+import { Icon } from "react-icons-kit";
+import { chevronRight } from "react-icons-kit/feather/chevronRight";
+import { Text, Heading, Image } from "../../../../atoms";
+import { GlideCarousel, GlideSlide } from "../../../../molecules";
+import LeftBar from "./leftBar";
 import BannerWrapper, {
   ContentWrapper,
   TextArea,
   ImageArea,
   HighlightedText,
-} from './bannerSection.style';
+} from "./style";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-const BannerSection = ({ model }) => {
+interface BannerSectionProps {
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
   const glideOptions = {
-    type: 'carousel',
+    type: "carousel",
     perView: 1,
     gap: 0,
   };
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   let slides = [];
   if (model.children && model.children.length > 0) {
     slides = model.children.map((bannerSlides, index) => {
-      let sliderMap = bannerSlides.data.reduce(function(map, obj) {
-        map[obj.Key] = obj.Value;
-        return map;
-      }, {});
+      const sliderMap: Record<string, string> = bannerSlides.data.reduce(
+        function (map, obj) {
+          map[obj.Key] = obj.Value;
+          return map;
+        },
+        {}
+      );
       return sliderMap;
     });
   }
@@ -60,7 +66,7 @@ const BannerSection = ({ model }) => {
             prevButton={<span className="prev_arrow" />}
           >
             <Fragment>
-              {slides.map(slide => (
+              {slides.map((slide) => (
                 <GlideSlide key={slide.id}>
                   <Image src={slide.thumb_url} alt="Charity Landing" />
                 </GlideSlide>
@@ -73,4 +79,4 @@ const BannerSection = ({ model }) => {
   );
 };
 
-export default BannerSection;
+export default withModelToDataObjProp(BannerSection);

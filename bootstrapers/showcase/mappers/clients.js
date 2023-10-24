@@ -1,5 +1,5 @@
-import ClientsSection from '../../../lib/organisms/components/clients/clinet1';
-import ClientBlock from '../../../lib/containers/Charity/ClientBlock';
+import ClientsSection from '../../../lib/organisms/components/clients/client1';
+import ClientBlock from '../../../lib/organisms/components/sliders/slider5';
 
 const resolveComponents = () => {
   return {

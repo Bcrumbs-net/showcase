@@ -1,20 +1,21 @@
 import React, { useState, useContext } from "react";
 import Scrollspy from "react-scrollspy";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import { Drawer, Image, DrawerContext  } from "../../../atoms";
-import InnerWrapper, { SpreadButton } from "./drawerSection.style";
-
+import { Drawer, Image, DrawerContext } from "../../../../../atoms";
+import InnerWrapper, { SpreadButton } from "./style";
+import withModelToDataObjProp from "../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { GraphContent } from "@bcrumbs.net/bc-api";
 // import { menuItems } from "../../../data/Charity";
 // import heartImage from "../../../assets/image/charity/heart-red.png";
 
-const DrawerSection = ({ model }) => {
+interface DrawerSectionProps {
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+const DrawerSection = ({ model, isAR, data }: DrawerSectionProps) => {
   const [toggleState, setToggleState] = useState(false);
   const { state, dispatch } = useContext(DrawerContext);
-
-  const data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
 
   const handleActiveClass = () => {
     setToggleState(!toggleState);
@@ -30,11 +31,14 @@ const DrawerSection = ({ model }) => {
   const scrollItems = [];
 
   model.children?.forEach((menuItem) => {
-    const menu = menuItem.data.reduce(function (map, obj) {
+    const menu: Record<string, string> = menuItem.data.reduce(function (
+      map,
+      obj
+    ) {
       map[obj.Key] = obj.Value;
       return map;
-    }, {});
-
+    },
+    {});
     scrollItems.push(menu.path.slice(1));
   });
 
@@ -76,11 +80,13 @@ const DrawerSection = ({ model }) => {
             model.children
               .filter((m) => m.online)
               .map((menuItem, index) => {
-                const menu = menuItem.data.reduce(function (map, obj) {
-                  map[obj.Key] = obj.Value;
-                  return map;
-                }, {});
-                
+                const menu: Record<string, string> = menuItem.data.reduce(
+                  function (map, obj) {
+                    map[obj.Key] = obj.Value;
+                    return map;
+                  },
+                  {}
+                );
                 return (
                   <li key={`menu_key${index}`}>
                     <AnchorLink
@@ -103,4 +109,4 @@ const DrawerSection = ({ model }) => {
   );
 };
 
-export default DrawerSection;
+export default withModelToDataObjProp(DrawerSection);

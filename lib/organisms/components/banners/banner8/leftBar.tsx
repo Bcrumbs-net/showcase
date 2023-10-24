@@ -1,7 +1,13 @@
-import React from 'react';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
+import React from "react";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
-const LeftBar = ({ sectionId, offset, onClick, text }) => {
+interface LeftBarProps {
+  sectionId: object;
+  offset: object;
+  onClick: object;
+  text: object;
+}
+const LeftBar = ({ sectionId, offset, onClick, text }: LeftBarProps) => {
   return (
     <div className="leftbar">
       <AnchorLink
