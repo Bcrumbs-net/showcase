@@ -1,4 +1,4 @@
-import ClientsSection from '../../../lib/containers/Portfolio/Clients';
+import ClientsSection from '../../../lib/organisms/components/clients/clinet1';
 import ClientBlock from '../../../lib/containers/Charity/ClientBlock';
 
 const resolveComponents = () => {

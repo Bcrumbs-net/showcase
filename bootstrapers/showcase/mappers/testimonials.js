@@ -1,5 +1,5 @@
-import PortfolioTestimonialSection from '../../../lib/containers/Portfolio/Testimonial';
-import SaaSTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial3';
+import PortfolioTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial4';
+import SaaS2TestimonialSection from '../../../lib/organisms/components/testimonials/testimonial3';
 import RideTestimonialSecion from '../../../lib/containers/Ride/TestimonialSection';
 import AgencyTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial1';
 import AppTestimonialSection from '../../../lib/organisms/components/testimonials/testimonial2';
@@ -14,7 +14,7 @@ const resolveComponents = () => {
       category: 'Testimonial',
     },
     403437: {
-      render: props => <SaaSTestimonialSection {...props} />,
+      render: props => <SaaS2TestimonialSection {...props} />,
       name: 'SaaS Testimonial',
       category: 'Testimonial',
     },

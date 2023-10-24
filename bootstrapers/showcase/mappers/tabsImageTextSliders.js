@@ -1,4 +1,4 @@
-import PortfolioShowcase from '../../../lib/containers/Portfolio/PortfolioShowcase';
+import PortfolioShowcase from '../../../lib/organisms/components/portfolios/portfolio2';
 
 const resolveComponents = () => {
   return {

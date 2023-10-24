@@ -1,18 +1,27 @@
-import React, { Fragment } from 'react';
-import Link from 'next/link';
-import PropTypes from 'prop-types';
-import { Box, Text, Heading, Image, Container, Button } from '../../../atoms';
-import SocialProfile from '../SocialProfile';
-import {
-  FooterWrapper,
-  Newsletter,
-  FooterNav,
-  FooterNavItem,
-} from './footer.style';
-import { FOOTER_MENU } from '../../../data/Portfolio/data';
-import { SOCIAL_PROFILES } from '../../../data/Portfolio/data';
-import { heart } from 'react-icons-kit/fa/heart';
+import React, { Fragment } from "react";
+import Link from "next/link";
+import { Box, Text, Container } from "../../../../atoms";
+import { FooterWrapper, Newsletter, FooterNav, FooterNavItem } from "./style";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
+interface FooterProps {
+  row: object;
+  col: object;
+  titleStyle: object;
+  linkStyle: object;
+  newsletterButton: object;
+  copyrightStyle: object;
+  contactItem: object;
+  flexBox: object;
+  contactTitle: object;
+  contactInfo: object;
+  noMargin: object;
+  autoMargin: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const Footer = ({
   row,
   col,
@@ -27,11 +36,9 @@ const Footer = ({
   noMargin,
   autoMargin,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data
+}:FooterProps) => {
   return (
     <FooterWrapper id={model.name}>
       <Container noGutter mobileGutter width="1200px">
@@ -89,15 +96,19 @@ const Footer = ({
             <FooterNav>
               {model.children &&
                 model.children
-                  .filter(m => m.online)
+                  .filter((m) => m.online)
+                  .filter((m) => m.online)
                   .map((itemObj, index) => {
-                    let item = itemObj.data.reduce(function(map, obj) {
-                      map[obj.Key] = obj.Value;
-                      return map;
-                    }, {});
+                    const item: Record<string, string> = itemObj.data.reduce(
+                      function (map, obj) {
+                        map[obj.Key] = obj.Value;
+                        return map;
+                      },
+                      {}
+                    );
                     return (
                       <FooterNavItem key={`footer-nav-item-${index}`}>
-                        <Link href={item.path || '#'}>
+                        <Link href={item.path || "#"}>
                           <a>{item.label}</a>
                         </Link>
                       </FooterNavItem>
@@ -134,81 +145,66 @@ const Footer = ({
   );
 };
 
-Footer.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  titleStyle: PropTypes.object,
-  linkStyle: PropTypes.object,
-  newsletterButton: PropTypes.object,
-  copyrightStyle: PropTypes.object,
-  contactItem: PropTypes.object,
-  flexBox: PropTypes.object,
-  contactTitle: PropTypes.object,
-  contactInfo: PropTypes.object,
-  noMargin: PropTypes.object,
-  autoMargin: PropTypes.object,
-};
-
 Footer.defaultProps = {
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    ml: '-15px',
-    mr: '-15px',
-    mb: ['0', '70px', '80px', '100px', '100px'],
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    ml: "-15px",
+    mr: "-15px",
+    mb: ["0", "70px", "80px", "100px", "100px"],
   },
   col: {
     width: [1, 1 / 2, 1 / 2, 1 / 3, 1 / 3],
-    pl: '15px',
-    pr: '15px',
-    mb: ['40px', '0', '0', '0', '0', '0'],
+    pl: "15px",
+    pr: "15px",
+    mb: ["40px", "0", "0", "0", "0", "0"],
   },
   titleStyle: {
-    fontSize: ['16px', '18px'],
-    fontWeight: '600',
-    mb: ['20px', '25px'],
+    fontSize: ["16px", "18px"],
+    fontWeight: "600",
+    mb: ["20px", "25px"],
   },
   linkStyle: {
-    fontSize: ['22px', '26px', '26px', '30px'],
-    color: '#3444f1',
+    fontSize: ["22px", "26px", "26px", "30px"],
+    color: "#3444f1",
     mb: 0,
   },
   newsletterButton: {
-    type: 'button',
-    fontSize: '16px',
-    pl: '20px',
-    pr: '20px',
-    colors: 'primary',
-    minHeight: 'auto',
+    type: "button",
+    fontSize: "16px",
+    pl: "20px",
+    pr: "20px",
+    colors: "primary",
+    minHeight: "auto",
   },
   copyrightStyle: {
-    fontSize: '14px',
-    color: '#fff',
+    fontSize: "14px",
+    color: "#fff",
   },
   flexBox: {
     flexBox: true,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     // flexWrap: 'wrap'
   },
   contactItem: {
     // width: 1 / 2
   },
   contactTitle: {
-    fontSize: ['15x', '15px', '16px', '16px', '16px'],
-    mb: '10px',
+    fontSize: ["15x", "15px", "16px", "16px", "16px"],
+    mb: "10px",
   },
   contactInfo: {
-    fontSize: ['16x', '16px', '18px', '18px', '20px'],
-    fontWeight: '500',
+    fontSize: ["16x", "16px", "18px", "18px", "20px"],
+    fontWeight: "500",
     mb: 0,
   },
   noMargin: {
-    mb: '0',
+    mb: "0",
   },
   autoMargin: {
-    m: '0 auto',
+    m: "0 auto",
   },
 };
 
-export default Footer;
+export default withModelToDataObjProp(Footer);

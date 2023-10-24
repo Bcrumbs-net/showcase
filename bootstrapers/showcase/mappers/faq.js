@@ -1,10 +1,10 @@
-import SaaSFaqSection from '../../../lib/organisms/components/faqs/faq2';
+import SaaS2FaqSection from '../../../lib/organisms/components/faqs/faq2';
 import AgencyFaqSection from '../../../lib/organisms/components/faqs/faq1';
 
 const resolveComponents = () => {
   return {
     403425: {
-      render: props => <SaaSFaqSection {...props} />,
+      render: props => <SaaS2FaqSection {...props} />,
       name: 'SaaS FAQs',
       category: 'FAQs',
     },

@@ -1,10 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text, Heading, Image, Container, Button } from '../../../atoms';
-import { ButtonWrapper } from '../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
-import { ActiveStatus } from './contact.style';
+import { ButtonWrapper } from '../../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
+import { ActiveStatus } from './style';
 import Author from '../../../assets/image/portfolio/avatar.png';
+import { Box, Container, Heading, Button,Text,Image } from '../../../../atoms';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface ContactSectionProps{
+  sectionWrapper:object;
+  secTitleWrapper:object;
+  secTitle:object;
+  secDescription:object;
+  replyWrapper:object;
+  replyTime:object;
+  buttonStyle:object;
+  buttonWrapper:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+
+}
 const ContactSection = ({
   sectionWrapper,
   secTitleWrapper,
@@ -15,11 +31,9 @@ const ContactSection = ({
   buttonStyle,
   buttonWrapper,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data
+}:ContactSectionProps) => {
   return (
     <Box {...sectionWrapper} as="section" id={model.name}>
       <Container noGutter mobileGutter width="1200px">
@@ -113,4 +127,4 @@ ContactSection.defaultProps = {
   },
 };
 
-export default ContactSection;
+export default withModelToDataObjProp(ContactSection) ;

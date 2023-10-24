@@ -1,19 +1,34 @@
-import React from 'react';
-import Link from 'next/link';
-import PropTypes from 'prop-types';
-import { Icon } from 'react-icons-kit';
-import { Box, Text, Heading, Image, Container } from '../../../atoms';
-import { GlideCarousel, GlideSlide} from '../../../molecules';
-import { PrevButton, NextButton } from '../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
+import React from "react";
+import Link from "next/link";
+import { Icon } from "react-icons-kit";
+import { Box, Text, Heading, Image, Container } from "../../../../atoms";
+import { GlideCarousel, GlideSlide } from "../../../../molecules";
+import {
+  PrevButton,
+  NextButton,
+} from "../../../../../bootstrapers/showcase/templates/portfolio/globalStyle";
 import {
   TestimonialWrapper,
   TestimonialItem,
   TestimonialHead,
   TestimonialThumb,
-} from './testimonial.style';
-import { TESTIMONIAL } from '../../../data/Portfolio/data';
-import { twitter } from 'react-icons-kit/icomoon/twitter';
+} from "./style";
+import { twitter } from "react-icons-kit/icomoon/twitter";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
+interface TestimonialSectionProps {
+  sectionWrapper: object;
+  secTitleWrapper: object;
+  secTitle: object;
+  secDescription: object;
+  reviewStyle: object;
+  nameStyle: object;
+  designationStyle: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const TestimonialSection = ({
   sectionWrapper,
   secTitleWrapper,
@@ -23,14 +38,12 @@ const TestimonialSection = ({
   nameStyle,
   designationStyle,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data,
+}: TestimonialSectionProps) => {
   //Carousel Options
   const carouselOptions = {
-    type: data.children && data.children.length > 5 ? 'carousel' : 'slider',
+    type: data.children && data.children.length > 5 ? "carousel" : "slider",
     autoplay: data.children && data.children.length > 5 ? 6000 : false,
     perView: 3,
     gap: 28,
@@ -72,15 +85,18 @@ const TestimonialSection = ({
             <>
               {model.children &&
                 model.children.map((itemObj, index) => {
-                  let item = itemObj.data.reduce(function(map, obj) {
-                    map[obj.Key] = obj.Value;
-                    return map;
-                  }, {});
+                  const item: Record<string, string> = itemObj.data.reduce(
+                    function (map, obj) {
+                      map[obj.Key] = obj.Value;
+                      return map;
+                    },
+                    {}
+                  );
                   return (
                     <GlideSlide key={`${model.name}-testimonial-item-${index}`}>
                       <TestimonialItem>
                         <TestimonialHead>
-                          <Link href={item.twitterProfile || '#'}>
+                          <Link href={item.twitterProfile || "#"}>
                             <a aria-label="twitter">
                               {item.tweetImage ? (
                                 <img src={item.tweetImage} alt="Icon" />
@@ -105,7 +121,7 @@ const TestimonialSection = ({
                           content={item.designation}
                           {...designationStyle}
                         />
-                        <Link href={item.organizationURL || '#'}>
+                        <Link href={item.organizationURL || "#"}>
                           <a className="reviewer_org">{item.organization}</a>
                         </Link>
                       </TestimonialItem>
@@ -120,57 +136,47 @@ const TestimonialSection = ({
   );
 };
 
-TestimonialSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secTitle: PropTypes.object,
-  secDescription: PropTypes.object,
-  reviewStyle: PropTypes.object,
-  nameStyle: PropTypes.object,
-  designationStyle: PropTypes.object,
-};
-
 TestimonialSection.defaultProps = {
   sectionWrapper: {
-    pt: '50px',
-    pb: '70px',
+    pt: "50px",
+    pb: "70px",
   },
   secTitleWrapper: {
-    mb: ['90px', '90px', '50px', '50px', '50px'],
+    mb: ["90px", "90px", "50px", "50px", "50px"],
   },
   secTitle: {
-    fontSize: ['22px', '26px', '26px', '30px', '30px'],
-    fontWeight: '700',
-    color: '#302b4e',
-    lineHeight: '1.34',
-    mb: ['15px', '18px', '18px', '20px', '20px'],
+    fontSize: ["22px", "26px", "26px", "30px", "30px"],
+    fontWeight: "700",
+    color: "#302b4e",
+    lineHeight: "1.34",
+    mb: ["15px", "18px", "18px", "20px", "20px"],
   },
   secDescription: {
-    fontSize: ['15px', '16px'],
-    fontWeight: '400',
-    color: '#43414e',
-    lineHeight: '1.5',
-    width: '530px',
-    maxWidth: '100%',
-    mb: '0',
+    fontSize: ["15px", "16px"],
+    fontWeight: "400",
+    color: "#43414e",
+    lineHeight: "1.5",
+    width: "530px",
+    maxWidth: "100%",
+    mb: "0",
   },
   reviewStyle: {
-    fontSize: '16px',
-    color: '#43414e',
-    lineHeight: '1.5',
-    mb: '30px',
+    fontSize: "16px",
+    color: "#43414e",
+    lineHeight: "1.5",
+    mb: "30px",
   },
   nameStyle: {
-    fontSize: '16px',
-    color: '#302b4e',
-    fontWeight: '600',
-    mb: '7px',
+    fontSize: "16px",
+    color: "#302b4e",
+    fontWeight: "600",
+    mb: "7px",
   },
   designationStyle: {
-    fontSize: '14px',
-    color: '#43414e',
-    mb: '0',
+    fontSize: "14px",
+    color: "#43414e",
+    mb: "0",
   },
 };
 
-export default TestimonialSection;
+export default withModelToDataObjProp(TestimonialSection);

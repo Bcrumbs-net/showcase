@@ -1,10 +1,10 @@
-import { Fragment } from 'react';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import { FaLinkedinIn } from 'react-icons/fa';
-import TeamSectionWrapper, { SocialLinks } from './style';
-import { Container, Box, Heading,Image,Text } from '../../../../atoms';
-import { FeatureBlock } from '../../../../molecules';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { Fragment } from "react";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import { FaLinkedinIn } from "react-icons/fa";
+import TeamSectionWrapper, { SocialLinks } from "./style";
+import { Container, Box, Heading, Image, Text } from "../../../../atoms";
+import { FeatureBlock } from "../../../../molecules";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface TeamSectionProps {
   sectionHeader?: object;
@@ -35,7 +35,7 @@ const TeamSection = ({
   profileUrl,
   model,
   isAR,
-  data
+  data,
 }: TeamSectionProps) => {
   return (
     <TeamSectionWrapper id={model.name}>
@@ -46,16 +46,20 @@ const TeamSection = ({
         </Box>
         <Box className="row" {...row}>
           {model.children.map((team, index) => {
-            const teamMap: Record<string, string> = team.data.reduce(function (map, obj) {
+            const teamMap: Record<string, string> = team.data.reduce(function (
+              map,
+              obj
+            ) {
               map[obj.Key] = obj.Value;
               return map;
-            }, {});
+            },
+            {});
             return (
               <Box
                 className="col"
                 {...col}
                 key={`team_key-${index}`}
-                style={{ direction: isAR ? 'rtl' : 'ltr' }}
+                style={{ direction: isAR ? "rtl" : "ltr" }}
               >
                 <FeatureBlock
                   id={`member-${index}`}
@@ -107,16 +111,13 @@ const TeamSection = ({
                           team.children
                             .filter((m) => m.online)
                             .map((social, subIndex) => {
-                              const socialMap: Record<string, string> = social.data.reduce(function (
-                                map,
-                                obj
-                              ) {
-                                map[obj.Key] = obj.Value;
-                                return map;
-                              },
-                              {});
+                              const socialMap: Record<string, string> =
+                                social.data.reduce(function (map, obj) {
+                                  map[obj.Key] = obj.Value;
+                                  return map;
+                                }, {});
                               switch (socialMap.icon) {
-                                case 'FaLinkedinIn':
+                                case "FaLinkedinIn":
                                   return (
                                     <a
                                       href={socialMap.link}
@@ -145,7 +146,7 @@ const TeamSection = ({
                                       target="_blank"
                                       rel="noreferrer"
                                     >
-                                      {' '}
+                                      {" "}
                                       <img src={socialMap.image} />
                                     </a>
                                   );
@@ -168,64 +169,64 @@ const TeamSection = ({
 TeamSection.defaultProps = {
   // section header default style
   sectionHeader: {
-    mb: ['40px', '56px'],
+    mb: ["40px", "56px"],
   },
   // sub section default style
   sectionSubTitle: {
-    as: 'span',
-    display: 'block',
-    textAlign: 'center',
-    fontSize: '14px',
-    letterSpacing: '0.15em',
-    fontWeight: '700',
+    as: "span",
+    display: "block",
+    textAlign: "center",
+    fontSize: "14px",
+    letterSpacing: "0.15em",
+    fontWeight: "700",
     //color: '#10ac84',
-    mb: '10px',
+    mb: "10px",
   },
   // section title default style
   sectionTitle: {
-    textAlign: 'center',
-    fontSize: ['20px', '24px'],
-    fontWeight: '400',
+    textAlign: "center",
+    fontSize: ["20px", "24px"],
+    fontWeight: "400",
     //color: '#0f2137',
-    letterSpacing: '-0.025em',
-    mb: '0',
+    letterSpacing: "-0.025em",
+    mb: "0",
   },
   // Team member row default style
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: '-15px',
-    mr: '-15px',
+    flexWrap: "wrap",
+    ml: "-15px",
+    mr: "-15px",
   },
   // Team member col default style
   col: {
     width: [1, 1 / 2, 1 / 3, 1 / 3],
-    pl: '15px',
-    pr: '15px',
-    mb: '30px',
+    pl: "15px",
+    pr: "15px",
+    mb: "30px",
   },
   // Team member content default style
   contentStyle: {
-    textAlign: 'center',
-    mt: '25px',
+    textAlign: "center",
+    mt: "25px",
   },
   // Team member memberName default style
   memberName: {
-    fontSize: ['18px', '18px', '16px', '20px'],
-    fontWeight: '400',
-    color: '#0f2137',
-    lineHeight: '1.5',
-    mb: '8px',
-    letterSpacing: '-0.020em',
+    fontSize: ["18px", "18px", "16px", "20px"],
+    fontWeight: "400",
+    color: "#0f2137",
+    lineHeight: "1.5",
+    mb: "8px",
+    letterSpacing: "-0.020em",
   },
   memberPhoto: {
-    width: '300px',
+    width: "300px",
   },
   // Team member description default style
   designation: {
-    fontSize: ['15px', '16px', '14px', '17px'],
-    lineHeight: '1',
-    color: 'rgba(15, 33, 55, 0.6)',
+    fontSize: ["15px", "16px", "14px", "17px"],
+    lineHeight: "1",
+    color: "rgba(15, 33, 55, 0.6)",
     mb: 0,
   },
 };

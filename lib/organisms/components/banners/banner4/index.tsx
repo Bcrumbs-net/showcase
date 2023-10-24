@@ -2,14 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from 'react-icons-kit';
-import { Box, Text, Heading, Image, Container, Button, Logo } from '../../../atoms';
-import SocialProfile from '../SocialProfile';
-import BannerWrapper from './banner.style';
-import { PortfolioLink } from './banner.style';
-import { SOCIAL_PROFILES } from '../../../data/Portfolio/data';
+import SocialProfile from '../../socialProfiles/socialProfile1';
+import BannerWrapper from './style';
+import { PortfolioLink } from './style';
+import { SOCIAL_PROFILES } from '../../../../data/Portfolio/data';
 import { cornerDownRight } from 'react-icons-kit/feather/cornerDownRight';
 import PersonImage from '../../../assets/image/portfolio/person.png';
+import { Text,Image,Container, Box, Heading,Button } from '../../../../atoms';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface BannerSectionProps{
+  row:object;
+  contentArea:object;
+  imageArea:object;
+  greetingStyle:object;
+  nameStyle:object;
+  designationStyle:object;
+  aboutStyle:object;
+  roleStyle:object;
+  roleWrapper:object;
+  textAfterLink:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const BannerSection = ({
   row,
   contentArea,
@@ -22,11 +39,9 @@ const BannerSection = ({
   roleWrapper,
   textAfterLink,
   model,
-}) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data,
+}:BannerSectionProps) => {
   let CustomBannerWrapper;
   if (data.backgroundImage) {
     CustomBannerWrapper = styled(BannerWrapper)`
@@ -172,4 +187,4 @@ BannerSection.defaultProps = {
   },
 };
 
-export default BannerSection;
+export default withModelToDataObjProp(BannerSection);

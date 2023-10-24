@@ -1,10 +1,10 @@
-import SaaSPartnerSection from '../../../lib/organisms/components/partnerHistory/partnerHistory2';
 import PartnerHistory from '../../../lib/organisms/components/partnerHistory/partnerHistory1';
+import SaaS2PartnerSection from '../../../lib/organisms/components/partnerHistory/partnerHistory2';
 
 const resolveComponents = () => {
   return {
     403439: {
-      render: props => <SaaSPartnerSection {...props} />,
+      render: props => <SaaS2PartnerSection {...props} />,
       name: 'SaaS Partners',
       category: 'Partners',
     },
