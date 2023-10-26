@@ -2,7 +2,6 @@ import React from "react";
 import { Text, Heading, Container } from "../../../../atoms";
 import { BlogPost } from "../../../../molecules";
 import SectionWrapper, { SectionHeader, FeatureWrapper } from "./style";
-import { workData } from "../../../../data/Charity";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
@@ -25,7 +24,6 @@ const WorkSection = ({ model, isAR, data }: WorkSectionProps) => {
       return featurehMap;
     });
   }
-  const { title, slogan, features } = workData;
   return (
     <SectionWrapper id={model.name}>
       <Container width="1260px">

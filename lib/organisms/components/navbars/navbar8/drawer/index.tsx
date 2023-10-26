@@ -5,8 +5,6 @@ import { Drawer, Image, DrawerContext } from "../../../../../atoms";
 import InnerWrapper, { SpreadButton } from "./style";
 import withModelToDataObjProp from "../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-// import { menuItems } from "../../../data/Charity";
-// import heartImage from "../../../assets/image/charity/heart-red.png";
 
 interface DrawerSectionProps {
   model: GraphContent;

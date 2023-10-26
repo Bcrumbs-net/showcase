@@ -15,7 +15,7 @@ import SectionWrapper, {
   DonationForm,
   DonateButton,
 } from "./style";
-import { paymentPolicy, currencyOptions } from "../../../../data/Charity";
+import {  currencyOptions } from "../../../../data/Charity";
 import heartImage from "../../../../assets/image/charity/heart-alt.svg";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
@@ -45,6 +45,7 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
     price: "",
     currency: "usd",
     policy: "oneTime",
+    
   });
 
   const handleFormData = (value, name) => {
@@ -60,6 +61,7 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
       ...state,
       price: "",
     });
+
   };
 
   return (
@@ -104,12 +106,12 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
               <RadioGroup
                 name="radioGroup"
                 value={state.policy}
-                items={paymentPolicy}
+                items={branchItems}
                 onUpdate={(value) => handleFormData(value, "policy")}
               />
               <DonateButton type="submit">
                 {data.Donate_Button_Label}{" "}
-                <Image src={heartImage} alt="Charity Landing" />
+                <Image src={heartImage.src} alt="Charity Landing" />
               </DonateButton>
             </DonationForm>
           </Box>

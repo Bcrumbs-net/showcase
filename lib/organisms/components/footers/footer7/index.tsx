@@ -6,6 +6,8 @@ import FooterWrapper, {
   CopyrightText,
   SocialList,
   SelectWrapper,
+  List,
+  ListItem,
 } from "./style";
 import { menuWidgets, socialLinks } from "../../../../data/Charity";
 import { GraphContent } from "@bcrumbs.net/bc-api";
@@ -30,6 +32,7 @@ const Footer = ({
   data,
 }: FooterProps) => {
   let footerItems = [];
+  let menuItems = [];
   if (model.children && model.children.length > 0) {
     footerItems = model.children.map((footerData) => {
       const footerMap: Record<string, string> = footerData.data.reduce(
@@ -41,6 +44,7 @@ const Footer = ({
       );
       return footerMap;
     });
+
   }
   return (
     <FooterWrapper>
@@ -79,26 +83,26 @@ const Footer = ({
           </Box>
           {/* End of logo column */}
           <Box className="col-two" {...colTwo}>
-            {footerItems.map((menuItem) => (
+            {footerItems.map((menuItems) => (
               <Box
                 className="col"
                 {...col}
-                key={`footer__widget-key${menuItem.id}`}
+                key={`footer__widget-key${menuItems.id}`}
               >
                 <Heading
                   className="widget_title"
                   as="h3"
-                  content={menuItem.text}
+                  content={menuItems.text}
                 />
-                {/* <List>
-                  {menuItem.data.map(item => (
+                <List>
+                  {/* {menuItems.data.map(item => (
                     <ListItem key={`list__item-${item.id}`}>
                       <Link href={item.link}>
                         <a>{item.text}</a>
                       </Link>
                     </ListItem>
-                  ))}
-                </List>  */}
+                  ))} */}
+                </List> 
               </Box>
             ))}
           </Box>

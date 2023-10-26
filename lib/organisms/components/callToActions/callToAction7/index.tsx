@@ -72,11 +72,11 @@ const FundraiserSection = ({ model, isAR, data }: FundraiserSectionProps) => {
                   </CurrentStatus>
                   <Text content={item.LastDonationLabel} />
                 </BarArea>
-                <Heading as="h5" content={item.RaisedByLabel} />
+                <Heading as="h5" content={item.RaisedByLabel + " " +item.RaisedByCount+" "+item.RaisedByPeriod} />
               </DonationProgressbar>
               <ShareArea>
                 <DonateButton href="#donate" offset={81}>
-                  DONATE NOW <Image src={heartImage} alt="Charity Landing" />
+                  DONATE NOW <Image src={heartImage.src} alt="Charity Landing" />
                 </DonateButton>
                 <ShareList>
                   <Item>Share on</Item>

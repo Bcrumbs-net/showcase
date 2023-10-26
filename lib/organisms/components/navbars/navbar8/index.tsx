@@ -15,7 +15,7 @@ const Navbar = ({ model, isAR, data }: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
   // Toggle drawer
   return (
-    <NavbarWrapper className="navbar">
+    <NavbarWrapper className="navbar" id={model.name}>
       <Container fullWidth={true}>
         <Logo
           href="/charity"
