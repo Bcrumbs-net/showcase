@@ -103,12 +103,12 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
                 selectOptions={currencyOptions}
                 selectOnUpdate={(value) => handleFormData(value, "currency")}
               />
-              <RadioGroup
+              {/* <RadioGroup
                 name="radioGroup"
                 value={state.policy}
                 items={branchItems}
                 onUpdate={(value) => handleFormData(value, "policy")}
-              />
+              /> */}
               <DonateButton type="submit">
                 {data.Donate_Button_Label}{" "}
                 <Image src={heartImage.src} alt="Charity Landing" />

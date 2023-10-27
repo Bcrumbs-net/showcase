@@ -9,9 +9,11 @@ import FooterWrapper, {
   List,
   ListItem,
 } from "./style";
-import { menuWidgets, socialLinks } from "../../../../data/Charity";
+import { socialLinks } from "../../../../data/Charity";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface FooterProps {
   row: object;
@@ -32,19 +34,11 @@ const Footer = ({
   data,
 }: FooterProps) => {
   let footerItems = [];
-  let menuItems = [];
   if (model.children && model.children.length > 0) {
     footerItems = model.children.map((footerData) => {
-      const footerMap: Record<string, string> = footerData.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const footerMap = convertDataModelToDataObject(footerData);
       return footerMap;
     });
-
   }
   return (
     <FooterWrapper>
@@ -83,28 +77,35 @@ const Footer = ({
           </Box>
           {/* End of logo column */}
           <Box className="col-two" {...colTwo}>
-            {footerItems.map((menuItems) => (
-              <Box
-                className="col"
-                {...col}
-                key={`footer__widget-key${menuItems.id}`}
-              >
-                <Heading
-                  className="widget_title"
-                  as="h3"
-                  content={menuItems.text}
-                />
-                <List>
-                  {/* {menuItems.data.map(item => (
-                    <ListItem key={`list__item-${item.id}`}>
-                      <Link href={item.link}>
-                        <a>{item.text}</a>
-                      </Link>
-                    </ListItem>
-                  ))} */}
-                </List> 
-              </Box>
-            ))}
+            {model.children.map((menuItem) => {
+              const itemMenuMap = convertDataModelToDataObject(menuItem);
+              return (
+                <Box
+                  className="col"
+                  {...col}
+                  key={`footer__widget-key${menuItem.id}`}
+                >
+                  <Heading
+                    className="widget_title"
+                    as="h3"
+                    content={itemMenuMap.text}
+                  />
+                  <List>
+                    {menuItem.children.map((submenuItem) => {
+                      const subItemMenuMap =
+                        convertDataModelToDataObject(submenuItem);
+                      return (
+                        <ListItem key={`list__item-${submenuItem.id}`}>
+                          <Link href={subItemMenuMap.link}>
+                            <a>{subItemMenuMap.text}</a>
+                          </Link>
+                        </ListItem>
+                      );
+                    })}
+                  </List>
+                </Box>
+              );
+            })}
           </Box>
           {/* End of List column */}
         </Box>
