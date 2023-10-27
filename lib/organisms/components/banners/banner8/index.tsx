@@ -12,7 +12,9 @@ import BannerWrapper, {
   HighlightedText,
 } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface BannerSectionProps {
   model: GraphContent;
@@ -28,20 +30,18 @@ const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
   let slides = [];
   if (model.children && model.children.length > 0) {
     slides = model.children.map((bannerSlides, index) => {
-      const sliderMap: Record<string, string> = bannerSlides.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const sliderMap = convertDataModelToDataObject(bannerSlides);
       return sliderMap;
     });
   }
 
   return (
     <BannerWrapper id={model.name}>
-      <LeftBar text="SCROLL DOWN" offset={81} sectionId="#feature" />
+      <LeftBar
+        text={data.Scrolldown_Button_Text}
+        offset={data.Scrolldown_Button_Offset}
+        sectionId={data.Scrolldown_Button_SectionId}
+      />
       <ContentWrapper>
         <TextArea>
           <HighlightedText className="highlighted_text">

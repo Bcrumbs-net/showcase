@@ -3,7 +3,9 @@ import Fade from "react-reveal/Fade";
 import { Text, Tab, Panel, Heading, Image } from "../../../../atoms";
 import SectionWrapper, { ContentWrapper } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface BranchSectionProps {
   model: GraphContent;
@@ -17,13 +19,7 @@ const BranchSection = ({ model, isAR, data }: BranchSectionProps) => {
   let branchItems = [];
   if (model.children && model.children.length > 0) {
     branchItems = model.children.map((branchData, index) => {
-      const branchMap: Record<string, string> = branchData.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const branchMap = convertDataModelToDataObject(branchData);
       return branchMap;
     });
   }

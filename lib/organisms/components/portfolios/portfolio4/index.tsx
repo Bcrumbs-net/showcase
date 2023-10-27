@@ -9,7 +9,9 @@ import SectionWrapper, {
   PostArea,
 } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface BlogSectionProps {
   model: GraphContent;
@@ -20,14 +22,7 @@ const BlogSection = ({ model, isAR, data }: BlogSectionProps) => {
   let blogsItems = [];
   if (model.children && model.children.length > 0) {
     blogsItems = model.children.map((blogData) => {
-      const blogMap: Record<string, string> = blogData.data.reduce(function (
-        map,
-        obj
-      ) {
-        map[obj.Key] = obj.Value;
-        return map;
-      },
-      {});
+      const blogMap = convertDataModelToDataObject(blogData);
       return blogMap;
     });
   }

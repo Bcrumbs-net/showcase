@@ -7,7 +7,9 @@ import BlockWrapper, {
   Item,
   ImageWrapper,
 } from "./style";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 
 interface HumanityBlockProps {
@@ -21,13 +23,7 @@ const HumanityBlock = ({ row, col, model, isAR, data }: HumanityBlockProps) => {
   let humanityItems = [];
   if (model.children && model.children.length > 0) {
     humanityItems = model.children.map((humanityData) => {
-      const humanityMap: Record<string, string> = humanityData.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const humanityMap = convertDataModelToDataObject(humanityData);
       return humanityMap;
     });
   }

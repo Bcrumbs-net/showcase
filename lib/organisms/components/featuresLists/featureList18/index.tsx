@@ -7,7 +7,9 @@ import BlockWrapper, {
   Item,
   ImageWrapper,
 } from "./style";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 
 interface PromotionBlockProps {
@@ -27,13 +29,7 @@ const PromotionBlock = ({
   let promotionItems = [];
   if (model.children && model.children.length > 0) {
     promotionItems = model.children.map((promotionData, index) => {
-      const promotionMap: Record<string, string> = promotionData.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const promotionMap = convertDataModelToDataObject(promotionData);
       return promotionMap;
     });
   }

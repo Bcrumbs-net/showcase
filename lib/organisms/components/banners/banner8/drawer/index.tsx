@@ -3,7 +3,9 @@ import Scrollspy from "react-scrollspy";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { Drawer, Image, DrawerContext } from "../../../../../atoms";
 import InnerWrapper, { SpreadButton } from "./style";
-import withModelToDataObjProp from "../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 
 interface DrawerSectionProps {
@@ -29,14 +31,7 @@ const DrawerSection = ({ model, isAR, data }: DrawerSectionProps) => {
   const scrollItems = [];
 
   model.children?.forEach((menuItem) => {
-    const menu: Record<string, string> = menuItem.data.reduce(function (
-      map,
-      obj
-    ) {
-      map[obj.Key] = obj.Value;
-      return map;
-    },
-    {});
+    const menu = convertDataModelToDataObject(menuItem);
     scrollItems.push(menu.path.slice(1));
   });
 

@@ -1,7 +1,9 @@
 import React from "react";
 import { Logo } from "../../../../molecules";
 import SectionWrapper, { ImageSlider, ImageSlide } from "./style";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 
 interface ClientBlockProps {
@@ -13,13 +15,7 @@ const ClientBlock = ({ model, isAR, data }: ClientBlockProps) => {
   let clientItems = [];
   if (model.children && model.children.length > 0) {
     clientItems = model.children.map((clientData) => {
-      const clientMap: Record<string, string> = clientData.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const clientMap = convertDataModelToDataObject(clientData);
       return clientMap;
     });
   }

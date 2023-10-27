@@ -15,11 +15,12 @@ import SectionWrapper, {
   DonationForm,
   DonateButton,
 } from "./style";
-import {  currencyOptions } from "../../../../data/Charity";
 import heartImage from "../../../../assets/image/charity/heart-alt.svg";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-
+import { currencyOptions } from "../../../../data/Charity-review";
 interface DonateSectionProps {
   row: object;
   col: object;
@@ -29,15 +30,36 @@ interface DonateSectionProps {
 }
 const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
   let branchItems = [];
+  let paymentPolicyItems = [];
+  // let currencyOptions = [];
   if (model.children && model.children.length > 0) {
     branchItems = model.children.map((branchData, index) => {
-      const branchMap: Record<string, string> = branchData.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const branchMap = convertDataModelToDataObject(branchData);
+      //paymentPolicyItems mapping data
+      paymentPolicyItems = model.children
+        .filter((paymentMap) => {
+          return paymentMap.modelId === 403127;
+        })
+        .map((subPaymentData) => {
+          const subPaymentMap = convertDataModelToDataObject(subPaymentData);
+          return subPaymentMap;
+        });
+        
+      //currencyOptions mapping data
+      // currencyOptions = model.children
+      //   .filter((currencyMap) => {
+      //     return currencyMap.modelId === 403128;
+      //   })
+      //   .map((subCurrencyData) => {
+      //     let subCurrencyMap = convertDataModelToDataObject(subCurrencyData);
+      //     return subCurrencyData.children.map((currencyOptionItem) => {
+      //       const subCurrencyOptionItem =
+      //         convertDataModelToDataObject(currencyOptionItem);
+      //       console.log("currency1", subCurrencyOptionItem);
+      //       console.log("currency55", subCurrencyMap);
+      //       return subCurrencyOptionItem;
+      //     });
+      //   });
       return branchMap;
     });
   }
@@ -45,7 +67,6 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
     price: "",
     currency: "usd",
     policy: "oneTime",
-    
   });
 
   const handleFormData = (value, name) => {
@@ -61,7 +82,6 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
       ...state,
       price: "",
     });
-
   };
 
   return (
@@ -103,12 +123,12 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
                 selectOptions={currencyOptions}
                 selectOnUpdate={(value) => handleFormData(value, "currency")}
               />
-              {/* <RadioGroup
+              <RadioGroup
                 name="radioGroup"
                 value={state.policy}
-                items={branchItems}
+                items={paymentPolicyItems}
                 onUpdate={(value) => handleFormData(value, "policy")}
-              /> */}
+              />
               <DonateButton type="submit">
                 {data.Donate_Button_Label}{" "}
                 <Image src={heartImage.src} alt="Charity Landing" />

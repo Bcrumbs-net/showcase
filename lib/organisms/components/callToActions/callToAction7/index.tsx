@@ -20,7 +20,9 @@ import SectionWrapper, {
 } from "./style";
 import heartImage from "../../../../assets/image/charity/heart.svg";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface FundraiserSectionProps {
   model: GraphContent;
@@ -31,13 +33,7 @@ const FundraiserSection = ({ model, isAR, data }: FundraiserSectionProps) => {
   let fundraiserItems = [];
   if (model.children && model.children.length > 0) {
     fundraiserItems = model.children.map((fundraiserData) => {
-      const fundraiserMap: Record<string, string> = fundraiserData.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const fundraiserMap = convertDataModelToDataObject(fundraiserData);
       return fundraiserMap;
     });
   }
@@ -72,11 +68,21 @@ const FundraiserSection = ({ model, isAR, data }: FundraiserSectionProps) => {
                   </CurrentStatus>
                   <Text content={item.LastDonationLabel} />
                 </BarArea>
-                <Heading as="h5" content={item.RaisedByLabel + " " +item.RaisedByCount+" "+item.RaisedByPeriod} />
+                <Heading
+                  as="h5"
+                  content={
+                    item.RaisedByLabel +
+                    " " +
+                    item.RaisedByCount +
+                    " " +
+                    item.RaisedByPeriod
+                  }
+                />
               </DonationProgressbar>
               <ShareArea>
                 <DonateButton href="#donate" offset={81}>
-                  DONATE NOW <Image src={heartImage.src} alt="Charity Landing" />
+                  DONATE NOW{" "}
+                  <Image src={heartImage.src} alt="Charity Landing" />
                 </DonateButton>
                 <ShareList>
                   <Item>Share on</Item>

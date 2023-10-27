@@ -3,7 +3,9 @@ import { Text, Heading, Container } from "../../../../atoms";
 import { BlogPost } from "../../../../molecules";
 import SectionWrapper, { SectionHeader, FeatureWrapper } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface FeatureSectionProps {
   model: GraphContent;
@@ -14,13 +16,7 @@ const FeatureSection = ({ model, isAR, data }: FeatureSectionProps) => {
   let featureItems = [];
   if (model.children && model.children.length > 0) {
     featureItems = model.children.map((featureData, index) => {
-      const featureMap: Record<string, string> = featureData.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const featureMap = convertDataModelToDataObject(featureData);
       return featureMap;
     });
   }

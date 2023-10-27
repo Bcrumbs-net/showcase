@@ -7,7 +7,9 @@ import BlockWrapper, {
   CounterItem,
 } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface MilestoneBlockProps {
   model: GraphContent;
@@ -18,13 +20,7 @@ const MilestoneBlock = ({ model, isAR, data }: MilestoneBlockProps) => {
   let milestoneItems = [];
   if (model.children && model.children.length > 0) {
     milestoneItems = model.children.map((milestoneData, index) => {
-      const milestoneMap: Record<string, string> = milestoneData.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const milestoneMap = convertDataModelToDataObject(milestoneData);
       return milestoneMap;
     });
   }
