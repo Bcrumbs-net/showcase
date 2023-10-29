@@ -31,7 +31,9 @@ interface DonateSectionProps {
 const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
   let branchItems = [];
   let paymentPolicyItems = [];
-  // let currencyOptions = [];
+  let currencyOptions = [];
+  let finalCurrencyOptions = [];
+  let flattenedArray = [];
   if (model.children && model.children.length > 0) {
     branchItems = model.children.map((branchData, index) => {
       const branchMap = convertDataModelToDataObject(branchData);
@@ -44,22 +46,21 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
           const subPaymentMap = convertDataModelToDataObject(subPaymentData);
           return subPaymentMap;
         });
-        
-      //currencyOptions mapping data
-      // currencyOptions = model.children
-      //   .filter((currencyMap) => {
-      //     return currencyMap.modelId === 403128;
-      //   })
-      //   .map((subCurrencyData) => {
-      //     let subCurrencyMap = convertDataModelToDataObject(subCurrencyData);
-      //     return subCurrencyData.children.map((currencyOptionItem) => {
-      //       const subCurrencyOptionItem =
-      //         convertDataModelToDataObject(currencyOptionItem);
-      //       console.log("currency1", subCurrencyOptionItem);
-      //       console.log("currency55", subCurrencyMap);
-      //       return subCurrencyOptionItem;
-      //     });
-      //   });
+
+      // currencyOptions mapping data
+      currencyOptions = model.children
+        .filter((currencyMap) => {
+          return currencyMap.modelId === 403128;
+        })
+        .map((subCurrencyData) => {
+          let subCurrencyMap = convertDataModelToDataObject(subCurrencyData);
+          return subCurrencyData.children.map((currencyOptionItem) => {
+            const subCurrencyOptionItem =
+              convertDataModelToDataObject(currencyOptionItem);
+            return subCurrencyOptionItem;
+          });
+        });
+      finalCurrencyOptions = currencyOptions.flat(Infinity);
       return branchMap;
     });
   }
@@ -120,7 +121,7 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
                 inputOnChange={(e) => handleFormData(e.target.value, "price")}
                 currency="$ USD"
                 selectedValue={state.currency}
-                selectOptions={currencyOptions}
+                selectOptions={finalCurrencyOptions}
                 selectOnUpdate={(value) => handleFormData(value, "currency")}
               />
               <RadioGroup
