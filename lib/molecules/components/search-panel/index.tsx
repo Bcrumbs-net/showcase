@@ -4,7 +4,11 @@ import { iosSearchStrong } from 'react-icons-kit/ionicons/iosSearchStrong';
 import { Heading,Text ,Input} from '../../../atoms';
 import SearchPanelWrapper from './style';
 
-const SearchPanel = ({ titleStyle, hintStyle }) => {
+interface SearchPanelProps {
+  titleStyle:object;
+  hintStyle:object;
+}
+const SearchPanel = ({ titleStyle, hintStyle }:SearchPanelProps) => {
   return (
     <SearchPanelWrapper>
       <Heading content="Search Panel" {...titleStyle} />

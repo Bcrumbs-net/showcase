@@ -2,7 +2,7 @@ import SaaS2VisitorSection from '../../../lib/organisms/components/visitors/visi
 import AgencyAboutUsSection from '../../../lib/organisms/components/featuresLists/featureList2';
 import FoodAboutUsSection from '../../../lib/containers/Food/AboutUsSection';
 import SaaSClassicPartnerSection from "../../../lib/organisms/components/partnerHistory/partnerHistory3";
-import CryptoControlSections from "../../../lib/organisms/components/controls/control1";
+import CryptoControlSections from "../../../lib/organisms/components/callToActions/callToAction5";
 import CryptoScalableSections from "../../../lib/organisms/components/featuresLists/featureList9";
 import CryptoTrustedProofSections from "../../../lib/organisms/components/trustedProofs/trustedProof1";
 

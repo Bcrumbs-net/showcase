@@ -3,7 +3,7 @@ import SaaS2Footer from '../../../lib/organisms/components/footers/footer3';
 import RideFooter from '../../../lib/containers/Ride/Footer';
 import CharityFooter from '../../../lib/organisms/components/footers/footer7/index.tsx';
 import AgencyFooter from '../../../lib/organisms/components/footers/footer1';
-import AppFooter from '../../../lib/containers/App/Footer';
+import AppFooter from '../../../lib/organisms/components//footers/footer2';
 import SaaSClaasicFooter from "../../../lib/organisms/components/footers/footer6";
 import CryptoFooter from "../../../lib/organisms/components/footers/footer5";
 

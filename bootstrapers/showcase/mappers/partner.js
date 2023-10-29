@@ -1,5 +1,5 @@
+import PartnerHistory from '../../../lib/organisms/components/partnerHistory/partnerHistory1';
 import SaaS2PartnerSection from '../../../lib/organisms/components/partnerHistory/partnerHistory2';
-import PartnerHistory from '../../../lib/containers/App/PartnerHistory';
 
 const resolveComponents = () => {
   return {

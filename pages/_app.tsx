@@ -8,6 +8,7 @@ import { withShowcaseClient } from '@bcrumbs.net/bc-api';
 import '../public/assets/css/flaticon.css';
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import 'react-accessible-accordion/dist/fancy-example.css';
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 function BCShowcase({
   Component,
@@ -20,7 +21,7 @@ function BCShowcase({
     <ApolloProvider client={apollo}>
       <Fragment>
         {/* <Modal /> */}
-        <AnyComponent {...pageProps}/>
+        <AnyComponent {...pageProps} />
       </Fragment>
     </ApolloProvider>
   );
