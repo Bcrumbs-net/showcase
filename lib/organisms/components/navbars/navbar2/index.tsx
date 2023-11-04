@@ -106,7 +106,7 @@ const Navbar = ({
           logoStyle={logoStyle}
         />
         <div style={{ display: "flex", alignItems: "center" }}>
-          <Button
+          {/* <Button
             variant="textButton"
             onClick={handleSearchModal}
             icon={<i className="flaticon-magnifying-glass" />}
@@ -117,7 +117,7 @@ const Navbar = ({
             onClick={handleLoginModal}
             icon={<i className="flaticon-user" />}
             aria-label="login"
-          />
+          /> */}
           <Drawer
             width="420px"
             placement="right"

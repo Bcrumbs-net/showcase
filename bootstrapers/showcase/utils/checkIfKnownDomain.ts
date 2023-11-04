@@ -13,6 +13,7 @@
  * - showcase-hosting.bcrumbs.net x-template
  * - showcase-ride.bcrumbs.net
  * - showcase-food.bcrumbs.net
+ * - showcase-portfolio.bcrumbs.net
  * 
  */
 export function checkIfKnownDomain(targetDomain: string) {
@@ -23,7 +24,7 @@ export function checkIfKnownDomain(targetDomain: string) {
     targetDomain.indexOf('test.bcrumbs.net') >= 0 ||
     targetDomain.indexOf('test-showcase.bcrumbs.net') >= 0
   ) {
-    return 'showcase-app.bcrumbs.net';
+    return 'showcase-portfolio.bcrumbs.net';
   }
 
   return targetDomain;
