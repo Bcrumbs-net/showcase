@@ -7,7 +7,6 @@ import AppBannerSection from '../../../lib/organisms/components/banners/banner2'
 import FoodFullScreenBanner from '../../../lib/organisms/components/banners/banner5';
 import CryptoBannerSection from '../../../lib/organisms/components/banners/banner6';
 import SaaSClassicBannerSection from "../../../lib/organisms/components/banners/banner7";
-import FoodFullScreenBanner from '../../../lib/organisms/components/banners/banner5';
 
 const resolveComponents = () => {
   return {

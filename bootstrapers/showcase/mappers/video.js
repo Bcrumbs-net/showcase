@@ -10,7 +10,7 @@ const resolveComponents = () => {
       category: 'Video',
     },
     403471: {
-      render: props => <FoodVideoSecion {...props} />,
+      render: props => <FoodFullScreenVideoSection {...props} />,
       name: 'Food Video',
     },
     403480: {

@@ -1,10 +1,10 @@
-import ClientsSection from '../../../lib/organisms/components/clients/clinet1';
+import PortfolioClientsSection from '../../../lib/organisms/components/clients/clinet1';
 import ClientBlock from '../../../lib/containers/Charity/ClientBlock';
 
 const resolveComponents = () => {
   return {
     403300: {
-      render: props => <ClientsSection {...props} />,
+      render: props => <PortfolioClientsSection {...props} />,
       name: 'Portfolio Clients',
       category: 'Clients',
     },
