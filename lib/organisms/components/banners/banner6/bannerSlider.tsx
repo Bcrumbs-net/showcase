@@ -1,9 +1,9 @@
 import React from "react";
-import { Image, Heading, Text, Box, Container } from "../../../../../atoms";
-import { GlideCarousel, GlideSlide } from "../../../../../molecules";
-import TestimonialSecWrapper, { ImageWrapper, TestimonialItem } from "./style";
+import { Image, Heading, Text, Box, Container } from "../../../../atoms";
+import { GlideCarousel, GlideSlide } from "../../../../molecules";
+import{ TestimonialSecWrapper,  ImageWrapper, TestimonialItem } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface BannerSliderSectionProps {
   secTitleWrapper: object;

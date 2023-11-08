@@ -4,14 +4,12 @@ import { Icon } from "react-icons-kit";
 import { Box, Text, Heading, Image, Container } from "../../../../atoms";
 import { GlideCarousel, GlideSlide } from "../../../../molecules";
 import {
-  PrevButton,
-  NextButton,
-} from "../../../../../bootstrapers/showcase/templates/portfolio/globalStyle";
-import {
   TestimonialWrapper,
   TestimonialItem,
   TestimonialHead,
   TestimonialThumb,
+  PrevButton,
+  NextButton,
 } from "./style";
 import { twitter } from "react-icons-kit/icomoon/twitter";
 import { GraphContent } from "@bcrumbs.net/bc-api";

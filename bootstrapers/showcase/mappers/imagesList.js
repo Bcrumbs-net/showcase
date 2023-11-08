@@ -1,5 +1,5 @@
 import AgencyBlogSection from '../../../lib/organisms/components/portfolios/portfolio1';
-import FoodPortfolioSection from '../../../lib/containers/Food/PortfolioSection';
+import FoodPortfolioSection from '../../../lib/organisms/components/portfolios/portfolio3';
 
 const resolveComponents = () => {
   return {

@@ -1,5 +1,5 @@
 import RideLocationSection from '../../../lib/containers/Ride/LocationSelection';
-import FoodLocationSection from '../../../lib/containers/Food/FullScreenLocationSection';
+import FoodLocationSection from '../../../lib/organisms/components/featuresLists/featureList7/location';
 
 const resolveComponents = () => {
   return {
