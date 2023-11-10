@@ -1,28 +1,54 @@
 import React from "react";
-import { Image, Container, Text, Heading } from "../../../../atoms";
-import SectionWrapper, { SectionHeader, ImageWrapper } from "./style";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import Link from "next/link";
+import { Heading, Text, Container } from "../../../../atoms";
+import BlockWrapper, {
+  MilestoneCard,
+  CounterWrapper,
+  CounterItem,
+} from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
-interface MapSectionProps {
+interface MilestoneBlockProps {
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
 }
-const MapSection = ({ model, isAR, data }: MapSectionProps) => {
+const MilestoneBlock = ({ model, isAR, data }: MilestoneBlockProps) => {
+  let milestoneItems = [];
+  if (model.children && model.children.length > 0) {
+    milestoneItems = model.children.map((milestoneData, index) => {
+      const milestoneMap = convertDataModelToDataObject(milestoneData);
+      return milestoneMap;
+    });
+  }
   return (
-    <SectionWrapper id={model.name}>
-      <Container width="1200px">
-        <SectionHeader>
-          <Heading content={data.title} />
-          <Text content={data.subTitle} />
-        </SectionHeader>
-        <ImageWrapper>
-          <Image src={data.image} alt="Charity Landing" />
-        </ImageWrapper>
-      </Container>
-    </SectionWrapper>
+    <Container id={model.name} width="1260px">
+      <BlockWrapper>
+        <MilestoneCard>
+          <Text content={data.title} />
+          <Heading content={data.amount} />
+          <Text content={data.text} />
+          <Link href="{data.meetOurDonateLabel}">
+            <a className="learn__more-btn">
+              <span className="hyphen" />
+              <span className="btn_text">{data.meetOurDonateLabel}</span>
+            </a>
+          </Link>
+        </MilestoneCard>
+      </BlockWrapper>
+      <CounterWrapper>
+        {milestoneItems.map((item) => (
+          <CounterItem key={`counter_key${item.id}`}>
+            <Heading as="h3" content={item.amount} />
+            <Text content={item.title} />
+          </CounterItem>
+        ))}
+      </CounterWrapper>
+    </Container>
   );
 };
 
-export default withModelToDataObjProp(MapSection);
+export default withModelToDataObjProp(MilestoneBlock);

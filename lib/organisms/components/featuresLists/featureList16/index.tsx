@@ -13,13 +13,6 @@ interface FeatureSectionProps {
   data: Record<string, string>;
 }
 const FeatureSection = ({ model, isAR, data }: FeatureSectionProps) => {
-  let featureItems = [];
-  if (model.children && model.children.length > 0) {
-    featureItems = model.children.map((featureData, index) => {
-      const featureMap = convertDataModelToDataObject(featureData);
-      return featureMap;
-    });
-  }
 
   return (
     <SectionWrapper id={model.name}>
@@ -29,14 +22,17 @@ const FeatureSection = ({ model, isAR, data }: FeatureSectionProps) => {
           <Text content={data.slogan} />
         </SectionHeader>
         <FeatureWrapper>
-          {featureItems.map((item) => (
-            <BlogPost
-              key={`option_key${item.id}`}
-              thumbUrl={item.icon}
-              title={item.title}
-              excerpt={item.description}
-            />
-          ))}
+          {model.children.map((featureData, index) => {
+            const featureMap = convertDataModelToDataObject(featureData);
+            return (
+              <BlogPost
+                key={`option_key${featureMap.id}`}
+                thumbUrl={featureMap.icon}
+                title={featureMap.title}
+                excerpt={featureMap.description}
+              />
+            );
+          })}
         </FeatureWrapper>
       </Container>
     </SectionWrapper>

@@ -1,9 +1,9 @@
-import MilestoneBlock from '../../../lib/organisms/components/portfolios/portfolio7';
+import CharityMilestoneBlock from '../../../lib/organisms/components/portfolios/portfolio6';
 
 const resolveComponents = () => {
   return {
     403121: {
-      render: props => <MilestoneBlock {...props} />,
+      render: props => <CharityMilestoneBlock {...props} />,
       name: 'Milestone Data Section',
       category: 'Section',
     },

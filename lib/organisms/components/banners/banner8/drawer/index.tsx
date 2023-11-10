@@ -31,8 +31,8 @@ const DrawerSection = ({ model, isAR, data }: DrawerSectionProps) => {
   const scrollItems = [];
 
   model.children?.forEach((menuItem) => {
-    const menu = convertDataModelToDataObject(menuItem);
-    scrollItems.push(menu.path.slice(1));
+    const menuItemData = convertDataModelToDataObject(menuItem);
+    scrollItems.push(menuItemData.path.slice(1));
   });
 
   return (
@@ -73,13 +73,7 @@ const DrawerSection = ({ model, isAR, data }: DrawerSectionProps) => {
             model.children
               .filter((m) => m.online)
               .map((menuItem, index) => {
-                const menu: Record<string, string> = menuItem.data.reduce(
-                  function (map, obj) {
-                    map[obj.Key] = obj.Value;
-                    return map;
-                  },
-                  {}
-                );
+                const menu = convertDataModelToDataObject(menuItem);
                 return (
                   <li key={`menu_key${index}`}>
                     <AnchorLink

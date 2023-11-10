@@ -1,9 +1,9 @@
-import PromotionBlock from '../../../lib/organisms/components/featuresLists/featureList18';
+import CharityPromotionBlock from '../../../lib/organisms/components/featuresLists/featureList18';
 
 const resolveComponents = () => {
   return {
     403125: {
-      render: props => <PromotionBlock {...props} />,
+      render: props => <CharityPromotionBlock {...props} />,
       name: 'Promotion Data Section',
       category: 'Section',
     },

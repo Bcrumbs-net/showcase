@@ -27,19 +27,14 @@ const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
     perView: 1,
     gap: 0,
   };
-  let slides = [];
-  if (model.children && model.children.length > 0) {
-    slides = model.children.map((bannerSlides, index) => {
-      const sliderMap = convertDataModelToDataObject(bannerSlides);
-      return sliderMap;
-    });
-  }
-
   return (
     <BannerWrapper id={model.name}>
       <LeftBar
+        // @ts-ignore
         text={data.Scrolldown_Button_Text}
+        // @ts-ignore
         offset={data.Scrolldown_Button_Offset}
+        // @ts-ignore
         sectionId={data.Scrolldown_Button_SectionId}
       />
       <ContentWrapper>
@@ -66,11 +61,14 @@ const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
             prevButton={<span className="prev_arrow" />}
           >
             <Fragment>
-              {slides.map((slide) => (
-                <GlideSlide key={slide.id}>
-                  <Image src={slide.thumb_url} alt="Charity Landing" />
+              {model.children.map((bannerSlides,index) => {
+               const slideData = convertDataModelToDataObject(bannerSlides);
+                return(
+                  // @ts-ignore
+                <GlideSlide key={slideData.id}>
+                  <Image src={slideData.thumb_url} alt="Charity Landing" />
                 </GlideSlide>
-              ))}
+              );})}
             </Fragment>
           </GlideCarousel>
         </ImageArea>
