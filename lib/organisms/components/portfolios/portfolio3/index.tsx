@@ -1,14 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Container } from '../../../atoms';
-import { Text } from '../../../atoms';
-import { Heading } from '../../../atoms';
-import { Link } from '../../../atoms';
-import { Image } from '../../../atoms';
-import { FeatureBlock } from '../../../molecules';
+import { Image,Heading,Box, Container } from '../../../../atoms';
+import { FeatureBlock } from '../../../../molecules';
+import PortfolioSectionWrapper from './style';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
-import PortfolioSectionWrapper from './portfolioSection.style';
-
+interface PortfolioSectionProps{
+  row:object;
+  sectionHeader:object;
+  sectionTitle:object;
+  sectionSubTitle:object;
+  blogTitle:object;
+  blogMeta:object;
+  contentStyle:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const PortfolioSection = ({
   row,
   sectionHeader,
@@ -18,11 +27,9 @@ const PortfolioSection = ({
   blogMeta,
   contentStyle,
   model,
-}) => {
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  isAR,
+  data
+}:PortfolioSectionProps) => {
   return (
     <PortfolioSectionWrapper
       id={model.name}
@@ -135,4 +142,4 @@ PortfolioSection.defaultProps = {
   },
 };
 
-export default PortfolioSection;
+export default withModelToDataObjProp(PortfolioSection) ;

@@ -13,6 +13,7 @@
  * - showcase-hosting.bcrumbs.net x-template
  * - showcase-ride.bcrumbs.net
  * - showcase-food.bcrumbs.net
+ * - showcase-portfolio.bcrumbs.net
  * 
  */
 export function checkIfKnownDomain(targetDomain: string) {

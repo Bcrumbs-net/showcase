@@ -283,9 +283,9 @@ export const ContentWrapper = styled.div`
         &:before {
           content: '';
           background-image: url(${
-            // @ts-ignore
-            Line
-          });
+  // @ts-ignore
+  Line
+  });
           width: 165px;
           height: 35px;
           display: block;
@@ -320,7 +320,7 @@ export const PrevButton = styled.div`
   cursor: pointer;
   &:hover {
     span {
-      background: #3444f1;
+      background: #023e03;
       @media (min-width: 991px) {
         width: 100px;
       }
@@ -329,7 +329,7 @@ export const PrevButton = styled.div`
   span {
     width: 18px;
     height: 2px;
-    background: #3444f1;
+    background: #023e03;
     display: block;
     position: relative;
     transition: 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
@@ -363,7 +363,7 @@ export const NextButton = styled.div`
   cursor: pointer;
   &:hover {
     span {
-      background: #3444f1;
+      background: #023e03;
       @media (min-width: 991px) {
         width: 100px;
       }
@@ -372,7 +372,7 @@ export const NextButton = styled.div`
   span {
     width: 18px;
     height: 2px;
-    background: #3444f1;
+    background: #023e03;
     display: block;
     position: relative;
     transition: 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
@@ -399,6 +399,7 @@ export const NextButton = styled.div`
     }
   }
 `;
+
 
 export const ButtonWrapper = styled.div`
   position: relative;

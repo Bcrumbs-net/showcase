@@ -2,9 +2,21 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import {
   Box, Drawer, NavbarWrapper, DrawerContext, Container, HamburgMenu
-} from '../../../atoms';
-import { ScrollSpyMenu, Logo } from '../../../molecules';
+} from '../../../../atoms';
+import { ScrollSpyMenu, Logo } from '../../../../molecules';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface NavbarProps{
+  navbarStyle:object;
+  logoStyle:object;
+  button:object;
+  row:object;
+  menuWrapper:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const Navbar = ({
   navbarStyle,
   logoStyle,
@@ -12,19 +24,15 @@ const Navbar = ({
   row,
   menuWrapper,
   model,
-}) => {
+  data
+}:NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
-
   // Toggle drawer
   const toggleHandler = () => {
     dispatch({
       type: 'TOGGLE',
     });
   };
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <NavbarWrapper
       {...navbarStyle}
@@ -117,4 +125,4 @@ Navbar.defaultProps = {
   },
 };
 
-export default Navbar;
+export default withModelToDataObjProp(Navbar) ;

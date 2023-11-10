@@ -1,10 +1,10 @@
-import TabbedProductsSection from '../../../lib/containers/Food/TabbedProductsSection';
+import FoodTabbedProductsSection from '../../../lib/organisms/components/productsLists/productsList1/tabbedproducts';
 import SaasClassicUpdateScreen from "../../../lib/organisms/components/tabsGallerys/tabsGallery1";
 
 const resolveComponents = () => {
   return {
     403487: {
-      render: props => <TabbedProductsSection {...props} />,
+      render: props => <FoodTabbedProductsSection {...props} />,
       name: 'Food Tabbed Images List',
       category: 'Tabbed Images List',
     },

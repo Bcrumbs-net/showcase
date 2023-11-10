@@ -1,4 +1,4 @@
-import PartnerHistory from '../../../lib/organisms/components/partnerHistory/partnerHistory1';
+import AppPartnerHistory from '../../../lib/organisms/components/partnerHistory/partnerHistory1';
 import SaaS2PartnerSection from '../../../lib/organisms/components/partnerHistory/partnerHistory2';
 
 const resolveComponents = () => {
@@ -9,7 +9,7 @@ const resolveComponents = () => {
       category: 'Partners',
     },
     403414: {
-      render: props => <PartnerHistory {...props} />,
+      render: props => <AppPartnerHistory {...props} />,
       name: 'Partner History',
       category: 'Partners',
     },

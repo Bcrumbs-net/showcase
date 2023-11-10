@@ -1,7 +1,7 @@
 import AwardsSection from '../../../lib/organisms/components/awards/award1';
-import NewsSection from '../../../lib/containers/Food/NewsSection';
+import NewsSection from '../../../lib/organisms/components/news/news1';
 import AgencyBlogSliderSection from '../../../lib/organisms/components/sliders/slider1';
-import FoodSliderSection from '../../../lib/containers/Food/BlogSliderSection';
+import FoodSliderSection from '../../../lib/organisms/components/sliders/slider2';
 import CryptoSlideSections from "../../../lib/organisms/components/sliders/slider4";
 
 const resolveComponents = () => {

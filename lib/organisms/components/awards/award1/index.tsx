@@ -6,11 +6,9 @@ import {
   AwardeeLogo,
   AwardeeDetails,
   AwardImageWrapper,
-} from "./style";
-import {
   PrevButton,
-  NextButton,
-} from "../../../../../bootstrapers/showcase/templates/portfolio/globalStyle";
+  NextButton
+} from "./style";
 import {
   Image,
   Container,

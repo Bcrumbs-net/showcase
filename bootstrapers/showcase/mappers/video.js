@@ -1,5 +1,5 @@
-import AgencyVideoSection from '../../../lib/organisms/components/video/video1';
-import FoodVideoSecion from '../../../lib/containers/Food/FullScreenVideoSection';
+import AgencyVideoSection from '../../../lib/organisms/components/videos/video1';
+import FoodFullScreenVideoSection from '../../../lib/organisms/components/videos/video2';
 import VideoLibrary from '../../../lib/organisms/components/videolibrary/videolibrary1';
 
 const resolveComponents = () => {
@@ -10,7 +10,7 @@ const resolveComponents = () => {
       category: 'Video',
     },
     403471: {
-      render: props => <FoodVideoSecion {...props} />,
+      render: props => <FoodFullScreenVideoSection {...props} />,
       name: 'Food Video',
     },
     403480: {

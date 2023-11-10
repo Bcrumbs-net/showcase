@@ -1,19 +1,15 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/TabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
 import 'rc-tabs/assets/index.css';
-import { Box, Container } from '../../../atoms';
-import { Text } from '../../../atoms';
-import { Heading } from '../../../atoms';
-import { Image } from '../../../atoms';
-
-import SectionWrapper from './tabbedProductsSection';
-import { FeatureBlock } from '../../../molecules';
+import { Box,Heading,Image, Container } from '../../../../../atoms';
+import SectionWrapper from './style';
+import { FeatureBlock } from '../../../../../molecules';
 // import { openModal, closeModal } from '@redq/reuse-modal';
-import ProductModal from '../ProductModal';
-import { Button } from "../../../atoms";
+import ProductModal from '..';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 // Default close button for modal
 const CloseModalButton = () => (null
@@ -24,7 +20,17 @@ const CloseModalButton = () => (null
   //   icon={<i className="flaticon-plus-symbol" />}
   // />
 );
-
+interface TabbedProductSectionProps{
+  secTitleWrapper:object;
+  secHeading:object;
+  row:object;
+  blogTitle:object;
+  blogMeta:object;
+  contentStyle:object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const TabbedProductSection = ({
   secTitleWrapper,
   secHeading,
@@ -34,7 +40,8 @@ const TabbedProductSection = ({
   contentStyle,
   model,
   isAR,
-}) => {
+  data
+}:TabbedProductSectionProps) => {
   const handleProductModal = (imagePath) => {
     // openModal({
     //   config: {
@@ -58,10 +65,6 @@ const TabbedProductSection = ({
     //   closeOnClickOutside: true,
     // });
   };
-  let data = model.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   return (
     <SectionWrapper
       id={model.name}
@@ -145,15 +148,6 @@ const TabbedProductSection = ({
   );
 };
 
-TabbedProductSection.propTypes = {
-  secTitleWrapper: PropTypes.object,
-  secHeading: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  blogTitle: PropTypes.object,
-  blogMeta: PropTypes.object,
-  contentStyle: PropTypes.object,
-};
 
 TabbedProductSection.defaultProps = {
   secTitleWrapper: {
@@ -200,4 +194,4 @@ TabbedProductSection.defaultProps = {
   },
 };
 
-export default TabbedProductSection;
+export default withModelToDataObjProp(TabbedProductSection) ;
