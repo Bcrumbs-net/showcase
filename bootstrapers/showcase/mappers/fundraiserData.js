@@ -1,9 +1,9 @@
-import FundraiserSection from '../../../lib/containers/Charity/FundraiserSection';
+import CharityFundraiserSection from '../../../lib/organisms/components/callToActions/callToAction7';
 
 const resolveComponents = () => {
   return {
     403387: {
-      render: props => <FundraiserSection {...props} />,
+      render: props => <CharityFundraiserSection {...props} />,
       name: 'Fundraiser Section Data Section',
       category: 'Section',
     },

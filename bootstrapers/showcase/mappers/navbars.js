@@ -4,8 +4,8 @@ import { DrawerProvider } from "../../../lib/atoms";
 import PortfolioNavbar from "../../../lib/organisms/components/navbars/navbar4";
 import SaaS2Navbar from "../../../lib/organisms/components/navbars/navbar3";
 import RideNavbar from "../../../lib/containers/Ride/Navbar";
-import CharityNavbar from "../../../lib/containers/Charity/Navbar";
-import DrawerSection from "../../../lib/containers/Charity/DrawerSection";
+import CharityNavbar from "../../../lib/organisms/components/navbars/navbar8";
+import CharityDrawerSection from "../../../lib/organisms/components/banners/banner8/drawer";
 import AgencyNavbar from "../../../lib/organisms/components/navbars/navbar1";
 import AppNavbar from "../../../lib/organisms/components/navbars/navbar2";
 import FoodNavbar from "../../../lib/organisms/components/navbars/navbar5";
@@ -77,7 +77,7 @@ const resolveComponents = () => {
             <CharityNavbar {...props} />
           </Sticky>
           <DrawerProvider>
-            <DrawerSection {...props} />
+            <CharityDrawerSection {...props} />
           </DrawerProvider>
         </Fragment>
       ),

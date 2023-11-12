@@ -1,5 +1,6 @@
+
+import CharityClientBlock from '../../../lib/organisms/components/sliders/slider5';
 import PortfolioClientsSection from '../../../lib/organisms/components/clients/clinet1';
-import ClientBlock from '../../../lib/containers/Charity/ClientBlock';
 
 const resolveComponents = () => {
   return {
@@ -9,7 +10,7 @@ const resolveComponents = () => {
       category: 'Clients',
     },
     403134: {
-      render: props => <ClientBlock {...props} />,
+      render: props => <CharityClientBlock {...props} />,
       name: 'Portfolio Clients',
       category: 'Clients',
     },

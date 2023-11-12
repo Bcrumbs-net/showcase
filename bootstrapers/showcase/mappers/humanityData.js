@@ -1,9 +1,9 @@
-import HumanityBlock from '../../../lib/containers/Charity/HumanityBlock';
+import CharityHumanityBlock from '../../../lib/organisms/components/featuresLists/featureList17';
 
 const resolveComponents = () => {
   return {
     403123: {
-      render: props => <HumanityBlock {...props} />,
+      render: props => <CharityHumanityBlock {...props} />,
       name: 'Humanity Block Data Section',
       category: 'Section',
     },
