@@ -1,6 +1,6 @@
 
 import CharityClientBlock from '../../../lib/organisms/components/sliders/slider5';
-import PortfolioClientsSection from '../../../lib/organisms/components/clients/clinet1';
+import PortfolioClientsSection from '../../../lib/organisms/components/clients/client1';
 
 const resolveComponents = () => {
   return {
