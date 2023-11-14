@@ -11,7 +11,6 @@ import {
 } from "../../../../atoms";
 import { MENU_ITEMS } from "../../../../data/Crypto";
 import { ScrollSpyMenu, Logo } from "../../../../molecules";
-import LogoImageAlt from "../../../../assets/image/crypto/logo.png";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
@@ -48,7 +47,7 @@ const Navbar = ({
         <Box {...row}>
           <Logo
             href="/"
-            logoSrc={LogoImageAlt.src}
+            logoSrc={data.white_logo}
             title="Portfolio"
             logoStyle={logoStyle}
             className="main-logo"
