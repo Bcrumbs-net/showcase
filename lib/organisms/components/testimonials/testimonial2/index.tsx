@@ -49,7 +49,7 @@ const TestimonialSection = ({
     <Box
       {...sectionWrapper}
       className="testimonialSlider"
-      id="testimonialSection"
+      id={model.name}
     >
       <Container>
         <Box className="testimonialDesWrapper">

@@ -41,7 +41,7 @@ const PartnerHistory = ({
   data,
 }: PartnerHistoryProps) => {
   return (
-    <PartnerHistoryWrapper id="partners">
+    <PartnerHistoryWrapper id={model.name}>
       <Image
         // @ts-ignore
         src={BackgroundImg}

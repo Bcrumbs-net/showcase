@@ -53,7 +53,7 @@ const ControllSection = ({
   data,
 }:ControllSectionProps) => {
   return (
-    <Box {...sectionWrapper} id="control">
+    <Box {...sectionWrapper} id={model.name}>
       <Container fullWidth noGutter className="control-sec-container">
         <Box {...row} {...imageAreaRow}>
           <Box {...col} {...imageArea}>
