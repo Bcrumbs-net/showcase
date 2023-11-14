@@ -6,12 +6,12 @@ export const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: 'Citrus Gothic';
-    src: url('https://dconfig.azureedge.net/GlobalResources/29/Resources/fonts/CitrusGothic-Regular.eot'); /* IE9 Compat Modes */
-    src: url('https://dconfig.azureedge.net/GlobalResources/29/Resources/fonts/flexslider-icon.eot') format('embedded-opentype'), /* IE6-IE8 */
-        url('https://dconfig.azureedge.net/GlobalResources/29/Resources/fonts/CitrusGothic-Regular.woff2') format('woff2'), /* Super Modern Browsers */
-        url('https://dconfig.azureedge.net/GlobalResources/29/Resources/fonts/CitrusGothic-Regular.woff') format('woff'), /* Pretty Modern Browsers */
-        url('https://dconfig.azureedge.net/GlobalResources/29/Resources/fonts/flexslider-icon.ttf')  format('truetype'), /* Safari, Android, iOS */
-        url('https://dconfig.azureedge.net/GlobalResources/29/Resources/fonts/CitrusGothic-Regular.svg') format('svg'); /* Legacy iOS */
+    src: url('https://cdn.dconfig.com/globalresources/29/Resources/fonts/CitrusGothic-Regular.eot'); /* IE9 Compat Modes */
+    src: url('https://cdn.dconfig.com/globalresources/29/Resources/fonts/flexslider-icon.eot') format('embedded-opentype'), /* IE6-IE8 */
+        url('https://cdn.dconfig.com/globalresources/29/Resources/fonts/CitrusGothic-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+        url('https://cdn.dconfig.com/globalresources/29/Resources/fonts/CitrusGothic-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+        url('https://cdn.dconfig.com/globalresources/29/Resources/fonts/flexslider-icon.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('https://cdn.dconfig.com/globalresources/29/Resources/fonts/CitrusGothic-Regular.svg') format('svg'); /* Legacy iOS */
   }
 
   body{
@@ -197,7 +197,7 @@ export const GlobalStyle = createGlobalStyle`
 export const ContentWrapper = styled.div`
   background: url(${themeGet(
     'backgrounds.pageBackground',
-    'https://dconfig.azureedge.net/GlobalResources/29/Resources/background1943-8952.jpg'
+    'https://cdn.dconfig.com/globalresources/29/Resources/background1943-8952.jpg'
   )}) !important;
   overflow: hidden;
   .sticky-inner-wrapper {

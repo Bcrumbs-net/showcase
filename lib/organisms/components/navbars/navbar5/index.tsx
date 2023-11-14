@@ -75,7 +75,7 @@ const Navbar = ({
             >
               <ScrollSpyMenu
                 className="mobile_menu"
-                //menuItems={MENU_ITEMS}
+                // menuItems={MENU_ITEMS}
                 drawerClose={true}
                 offset={-100}
                 model={model}
