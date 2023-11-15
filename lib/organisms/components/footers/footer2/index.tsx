@@ -1,8 +1,8 @@
-import FooterWrapper, { List, ListItem } from './style';
-import { Container, Box, Heading ,Text} from '../../../../atoms';
-import { Logo } from '../../../../molecules';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
-import { GraphContent } from '@bcrumbs.net/bc-api';
+import FooterWrapper, { List, ListItem } from "./style";
+import { Container, Box, Heading, Text } from "../../../../atoms";
+import { Logo } from "../../../../molecules";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { GraphContent } from "@bcrumbs.net/bc-api";
 
 interface FooterProps {
   row: object;
@@ -13,8 +13,8 @@ interface FooterProps {
   textStyle?: object;
   logoStyle?: object;
   contentStyle?: object;
-  copyrightMenu?:object;
-  copyright?:object;
+  copyrightMenu?: object;
+  copyright?: object;
   model: GraphContent;
   data: Record<string, string>;
 }
@@ -30,7 +30,7 @@ const Footer = ({
   copyright,
   model,
   data,
-}:FooterProps) => {
+}: FooterProps) => {
   let footerItems = [];
   if (model.children && model.children.length > 0) {
     footerItems = model.children.map((footerData) => {
@@ -80,10 +80,10 @@ const Footer = ({
             />
             <Box {...copyrightMenu} className="copyrightMenu">
               <a href={data.helpUrl}>
-                <Text content="Help" {...textStyle} />{' '}
+                <Text content="Help" {...textStyle} />{" "}
               </a>
               <a href={data.PrivacyUrl}>
-                <Text content="Privacy" {...textStyle} />{' '}
+                <Text content="Privacy" {...textStyle} />{" "}
               </a>
               <a href={data.TermsUrl}>
                 <Text content="Terms" {...textStyle} />
@@ -100,79 +100,78 @@ const Footer = ({
   );
 };
 
-
 // Footer default style
 Footer.defaultProps = {
   // Footer row default style
   row: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: '-15px',
-    mr: '-15px',
+    flexWrap: "wrap",
+    ml: "-15px",
+    mr: "-15px",
   },
   // Footer col one style
   colTwo: {
-    mt: [0, '13px'],
-    mb: ['0px', 0],
-    pl: ['15px', 0],
-    pt: ['35px', '55px'],
-    pr: ['15px', '15px', 0],
-    borderTop: '1px solid',
-    borderColor: 'rgba(0,0,0,0.102)',
+    mt: [0, "13px"],
+    mb: ["0px", 0],
+    pl: ["15px", 0],
+    pt: ["35px", "55px"],
+    pr: ["15px", "15px", 0],
+    borderTop: "1px solid",
+    borderColor: "rgba(0,0,0,0.102)",
     flexBox: true,
-    flexWrap: 'wrap',
-    width: ['100%'],
+    flexWrap: "wrap",
+    width: ["100%"],
   },
   // Footer col two style
   colOne: {
-    width: ['100%'],
+    width: ["100%"],
     flexBox: true,
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
   },
   // Footer col default style
   col: {
-    width: ['100%', '50%', '50%', '25%', '25%'],
-    pl: ['15px', '0px'],
-    pr: ['15px', '0px'],
-    mb: '30px',
+    width: ["100%", "50%", "50%", "25%", "25%"],
+    pl: ["15px", "0px"],
+    pr: ["15px", "0px"],
+    mb: "30px",
   },
   // widget title default style
   titleStyle: {
-    color: '#343d48',
-    fontSize: '16px',
-    fontWeight: '700',
+    color: "#343d48",
+    fontSize: "16px",
+    fontWeight: "700",
   },
   // Default logo size
   logoStyle: {
-    width: 'auto',
-    mb: ['15px', 0],
+    width: "auto",
+    mb: ["15px", 0],
   },
   // widget text default style
   textStyle: {
-    color: '#20201d',
-    fontSize: '14px',
-    mb: '10px',
-    mr: '30px',
+    color: "#20201d",
+    fontSize: "14px",
+    mb: "10px",
+    mr: "30px",
   },
   copyrightMenu: {
     flexBox: true,
-    flexWrap: 'wrap',
-    ml: [0, '40px'],
-    mt: '3px',
-    fontWeight: '500',
-    justifyContent: 'center',
-    alignItems: 'center',
-    mb: ['15px', 0],
+    flexWrap: "wrap",
+    ml: [0, "40px"],
+    mt: "3px",
+    fontWeight: "500",
+    justifyContent: "center",
+    alignItems: "center",
+    mb: ["15px", 0],
   },
   copyright: {
-    ml: [0, 0, 0, 'auto', 'auto'],
-    color: '#20201d',
-    fontSize: '14px',
-    mb: '10px',
-    mt: '3px',
-    fontWeight: '500',
-    justifyContent: 'center',
-    alignItems: 'center',
+    ml: [0, 0, 0, "auto", "auto"],
+    color: "#20201d",
+    fontSize: "14px",
+    mb: "10px",
+    mt: "3px",
+    fontWeight: "500",
+    justifyContent: "center",
+    alignItems: "center",
   },
 };
 

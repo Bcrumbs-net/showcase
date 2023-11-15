@@ -33,7 +33,7 @@ const FeatureSlider = ({
     });
   }
   return (
-    <FeatureSliderWrapper>
+    <FeatureSliderWrapper id={model.name}>
       <div className="FeatureSliderInner">
         <span> </span>
         <span> </span>

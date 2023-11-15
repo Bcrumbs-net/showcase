@@ -81,7 +81,7 @@ const PaymentSection = ({
   data,
 }:PaymentSectionProps) => {
   return (
-    <Box {...sectionWrapper} id="payments">
+    <Box {...sectionWrapper} id={model.name}>
       <PaymentCircleShape />
 
       <Container fullWidth noGutter className="control-sec-container payment">
