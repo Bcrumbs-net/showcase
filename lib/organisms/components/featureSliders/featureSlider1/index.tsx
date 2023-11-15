@@ -33,30 +33,30 @@ const FeatureSlider = ({
     });
   }
   return (
-    <FeatureSliderWrapper>
-      <div className="FeatureSliderInner">
-        <span> </span>
-        <span> </span>
-        <span> </span>
-      </div>
-      <Container>
-        <Box {...sectionHeader}>
-          <Text {...sectionSubTitle} content={data.sectionHeader} />
-          <Heading {...sectionTitle} content={data.sectionTitle} />
-        </Box>
-        <Box className="FeatureSlider">
-          <ImageGallery
-            items={images}
-            className="Slider-img"
-            showPlayButton={false}
-            showFullscreenButton={false}
-            showNav={false}
-            showBullets={true}
-            autoPlay={true}
-          />
-        </Box>
-      </Container>
-    </FeatureSliderWrapper>
+      <FeatureSliderWrapper id={model.name}>
+        <div className="FeatureSliderInner">
+          <span> </span>
+          <span> </span>
+          <span> </span>
+        </div>
+        <Container>
+          <Box {...sectionHeader}>
+            <Text {...sectionSubTitle} content={data.sectionHeader} />
+            <Heading {...sectionTitle} content={data.sectionTitle} />
+          </Box>
+          <Box className="FeatureSlider">
+            <ImageGallery
+              items={images}
+              className="Slider-img"
+              showPlayButton={false}
+              showFullscreenButton={false}
+              showNav={false}
+              showBullets={true}
+              autoPlay={true}
+            />
+          </Box>
+        </Container>
+      </FeatureSliderWrapper>
   );
 };
 
