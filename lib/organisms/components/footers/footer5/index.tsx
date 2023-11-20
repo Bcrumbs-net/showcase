@@ -120,12 +120,14 @@ Footer.defaultProps = {
   colOne: {
     width: ["100%", "30%", "33%", "33%"],
     mb: ["30px", 0],
+    mt: [0, "10px"],
     pl: ["0px", 0],
     pr: ["0px", "0px", 0],
   },
   // Footer col two style
   colTwo: {
     width: ["100%", "70%", "67%", "67%"],
+    mt: [0, "10px"],
     flexBox: true,
     flexWrap: "wrap",
   },
@@ -135,6 +137,7 @@ Footer.defaultProps = {
     pl: [0, "15px"],
     pr: [0, "15px"],
     mb: ["30px", "30px"],
+    mt: [0, "10px"],
   },
   // widget title default style
   titleStyle: {
