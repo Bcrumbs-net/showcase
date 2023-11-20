@@ -39,7 +39,7 @@ export const EmailInputWrapper = styled.div`
   }
 
   &::before {
-    content: url(${Mail});
+    content: url(${Mail.src});
     display: block;
     position: relative;
     width: 22px;
@@ -128,7 +128,7 @@ export const BannerSquareShape = styled.div`
   top: -28%;
   z-index: -1;
   pointer-events: none;
-  background-image: url(${BannerPattern});
+  background-image: url(${BannerPattern.src});
   @media (max-width: 1300px) {
     width: 870px;
     height: 1000px;
