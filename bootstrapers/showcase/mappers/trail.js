@@ -1,5 +1,5 @@
 import SaaS2TrialSection from '../../../lib/organisms/components/trials/trial1';
-import SaaSClassicTrialSection from "../../../lib/containers/SaasModern/Trial";
+import SaaSClassicTrialSection from  '../../../lib/organisms/components/trials/trial2';
 
 const resolveComponents = () => {
   return {
@@ -10,7 +10,7 @@ const resolveComponents = () => {
     },
     403380: {
       render: props => <SaaSClassicTrialSection {...props} />,
-      name: 'SaaS ClassicT Trail',
+      name: 'SaaS Classic Trail',
       category: 'Trail',
     }
   };
