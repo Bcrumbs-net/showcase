@@ -1,5 +1,5 @@
 import NewsSection from '../../../lib/containers/Ride/LatestNews';
-import CryptoContactSection from '../../../lib/organisms/components/featuresLists/featurelist8';
+import CryptoContactSection from '../../lib/organisms/components/featuresLists/featurelist8';
 
 const resolveComponents = () => {
   return {

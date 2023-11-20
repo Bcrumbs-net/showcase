@@ -53,7 +53,7 @@ const TakeActionSection = ({
   );
   return (
     <Box {...sectionWrapper} as="section" id={model.name}>
-      <Container noGutter mobileGutter width={1200}>
+      <Container noGutter mobileGutter width="1200px">
         <Box
           {...secTitleWrapper}
           style={{
