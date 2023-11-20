@@ -13,17 +13,6 @@ interface NavbarProps {
 }
 const Navbar = ({ model, isAR, data }: NavbarProps) => {
 
-  let navbarItems = [];
-  if (model.children && model.children.length > 0) {
-    navbarItems = model.children.map((navbarData, index) => {
-      const navbarMap = convertDataModelToDataObject(navbarData);
-      return navbarMap;
-    });
-  }
- const navbarItem= navbarItems.find(function (element) {
-    return element.path = "#DonateSection";
-  });
-
   const { state, dispatch } = useContext(DrawerContext);
   // Toggle drawer
   return (
@@ -38,7 +27,7 @@ const Navbar = ({ model, isAR, data }: NavbarProps) => {
         <MenuWrapper>
           <AnchorLink
             className="smooth_scroll"
-            href={navbarItem.path}
+            href="#DonateSection"
             offset={81}
           >
             {data.anchorLinkLabel}
