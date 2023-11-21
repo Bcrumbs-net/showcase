@@ -10,7 +10,9 @@ import {
 import { FeatureBlock } from "../../../../molecules";
 import PartnerHistoryWrapper, { CounterUpArea } from "./style";
 import BackgroundImg from "../../../../assets/image/app/partner-bg.png";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 
 interface PartnerHistoryProps {
@@ -43,8 +45,7 @@ const PartnerHistory = ({
   return (
     <PartnerHistoryWrapper id={model.name}>
       <Image
-        // @ts-ignore
-        src={BackgroundImg}
+        src={BackgroundImg.src}
         alt="backgroungImg"
         className="backgroungImg"
       />
@@ -69,13 +70,7 @@ const PartnerHistory = ({
           <Box className="col" {...col} {...cardArea}>
             <CounterUpArea>
               {model.children.map((client, index) => {
-                const clientMap: Record<string, string> = client.data.reduce(
-                  function (map, obj) {
-                    map[obj.Key] = obj.Value;
-                    return map;
-                  },
-                  {}
-                );
+                const clientMap = convertDataModelToDataObject(client);
                 return (
                   <Card
                     //@ts-ignore
@@ -95,7 +90,6 @@ const PartnerHistory = ({
     </PartnerHistoryWrapper>
   );
 };
-
 
 // Partner default style
 PartnerHistory.defaultProps = {
