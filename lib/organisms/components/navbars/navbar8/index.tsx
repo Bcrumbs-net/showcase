@@ -27,7 +27,7 @@ const Navbar = ({ model, isAR, data }: NavbarProps) => {
         <MenuWrapper>
           <AnchorLink
             className="smooth_scroll"
-            href="#DonateSection"
+            href={data.anchorLink}
             offset={81}
           >
             {data.anchorLinkLabel}
