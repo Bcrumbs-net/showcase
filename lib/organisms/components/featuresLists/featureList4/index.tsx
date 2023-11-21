@@ -2,7 +2,9 @@ import FeatureSectionWrapper from "./style";
 import { Container, Box, Heading, Text } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface FeatureSectionProps {
   row: object;
@@ -36,18 +38,12 @@ const FeatureSection = ({
   let featureItems = [];
   if (model.children && model.children.length > 0) {
     featureItems = model.children.map((featureData, index) => {
-      const featureMap: Record<string, string> = featureData.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const featureMap = convertDataModelToDataObject(featureData);
       return featureMap;
     });
   }
   return (
-    <FeatureSectionWrapper id="services">
+    <FeatureSectionWrapper id={model.name}>
       <Container>
         <Box {...sectionHeader}>
           <Heading {...sectionSubTitle} content={data.sectionTitle} />
@@ -85,7 +81,6 @@ const FeatureSection = ({
     </FeatureSectionWrapper>
   );
 };
-
 
 // FeatureSection default style
 FeatureSection.defaultProps = {

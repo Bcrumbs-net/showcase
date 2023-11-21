@@ -1,7 +1,9 @@
 import FeatureSectionTwoWrapper from "./style";
 import { Container, Box, Heading, Image, Text } from "../../../../atoms";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface FeatureSectionProps {
   sectionHeader?: object;
@@ -21,13 +23,7 @@ const FeatureSection = ({
   let featureItems = [];
   if (model.children && model.children.length > 0) {
     featureItems = model.children.map((featureData, index) => {
-      const featureMap: Record<string, string> = featureData.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const featureMap = convertDataModelToDataObject(featureData);
       return featureMap;
     });
   }

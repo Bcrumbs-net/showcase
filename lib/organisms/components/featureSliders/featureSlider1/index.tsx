@@ -2,7 +2,9 @@ import ImageGallery from "react-image-gallery";
 import FeatureSliderWrapper from "./style";
 import { Container, Box, Heading, Text } from "../../../../atoms";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface FeatureSliderProps {
   sectionHeader?: object;
@@ -22,13 +24,7 @@ const FeatureSlider = ({
   let images = [];
   if (model.children && model.children.length > 0) {
     images = model.children.map((featureSlider, index) => {
-      const sliderMap: Record<string, string> = featureSlider.data.reduce(
-        function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        },
-        {}
-      );
+      const sliderMap = convertDataModelToDataObject(featureSlider);
       return sliderMap;
     });
   }
