@@ -15,7 +15,7 @@ interface InputGroupProps {
   /** placeholder text for input field type. */
   placeholder?: string;
   /** Call back function for inout onChange event. */
-  inputOnChange?(...args: unknown[]): unknown;
+  inputOnChange?(...args: any[]): any;
   /** currency prop shoude be a string with currency name and symbol. */
   currency?: string;
   /** selectedValue pron shoube be a currency string without symbol but in lowercase. */
