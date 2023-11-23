@@ -141,8 +141,10 @@ const PricingSection = ({
                         return map;
                       }, {});
                     return (
+                      // @ts-ignore
                       <GlideSlide key={`pricing-table-${index}`}>
                         <PricingTable
+                        // @ts-ignore
                           freePlan={pricingTable.freePlan}
                           className="pricing_table"
                         >

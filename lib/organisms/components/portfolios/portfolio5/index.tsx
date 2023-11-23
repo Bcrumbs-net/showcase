@@ -28,6 +28,7 @@ const BranchSection = ({ model, isAR, data }: BranchSectionProps) => {
       <Tab active={2}>
         {branchItems.map((item) => (
           <Panel
+          // @ts-ignore
             title={<Text content={item.menuItem} />}
             key={`tab_key${item.id}`}
           >

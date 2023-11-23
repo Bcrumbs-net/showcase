@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Image,Heading,Box, Container } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
 import PortfolioSectionWrapper from './style';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import withModelToDataObjProp, { convertDataModelToDataObject } from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface PortfolioSectionProps{
@@ -33,6 +33,7 @@ const PortfolioSection = ({
   return (
     <PortfolioSectionWrapper
       id={model.name}
+      // @ts-ignore
       xlRowCount={data.xlRowCount}
       lgRowCount={data.lgRowCount}
       mdRowCount={data.mdRowCount}
@@ -50,10 +51,7 @@ const PortfolioSection = ({
         </Box>
         <Box className="row" {...row}>
           {model.children.filter(m => m.online).map((blogSection, index) => {
-            let postMap = blogSection.data.reduce(function (map, obj) {
-              map[obj.Key] = obj.Value;
-              return map;
-            }, {});
+            const postMap = convertDataModelToDataObject(blogSection)
             return (
               <FeatureBlock
                 key={`post_key-${index}`}

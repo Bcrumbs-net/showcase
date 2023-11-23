@@ -168,6 +168,7 @@ const PortfolioShowcase = ({
                               </Fragment>
                             );
                             return (
+                              // @ts-ignore
                               <GlideSlide
                                 key={`${tabItem.name}-${portfolioItemObj.name}-${index}`}
                               >

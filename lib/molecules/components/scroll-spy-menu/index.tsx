@@ -9,7 +9,7 @@ interface ScrollSpyMenuProps {
   /** menuItems is an array of object prop which contain your menu
    * data.
    */
-  // menuItems: PropTypes.array.isRequired,
+  menuItems?: any,
 
   /** Class name that apply to the navigation element paired with the content element in viewport. */
   currentClassName: string;
@@ -30,11 +30,11 @@ interface ScrollSpyMenuProps {
 
   isAR?: boolean;
   model: any;
-  drawerClose: any;
+  drawerClose?: any;
 }
 export const ScrollSpyMenu = ({
   className,
-  //menuItems,
+  menuItems,
   drawerClose,
   model,
   isAR,

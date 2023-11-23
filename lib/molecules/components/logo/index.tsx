@@ -2,6 +2,7 @@ import { Text, Link, Image } from '../../../atoms';
 
 /* eslint-disable-next-line */
 interface LogoProps {
+  className?:string;
   logoSrc?: string;
   title: string;
   logoWrapperStyle?: object;
@@ -13,6 +14,7 @@ interface LogoProps {
 }
 
 export const Logo = ({
+  className,
   logoWrapperStyle,
   logoStyle,
   titleStyle,

@@ -3,13 +3,13 @@ import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/TabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
 import 'rc-tabs/assets/index.css';
-import { Box,Heading,Image, Container } from '../../../../../atoms';
+import { Box, Heading, Image, Container } from '../../../../../atoms';
 import SectionWrapper from './style';
 import { FeatureBlock } from '../../../../../molecules';
 // import { openModal, closeModal } from '@redq/reuse-modal';
 import ProductModal from '..';
 import { GraphContent } from '@bcrumbs.net/bc-api';
-import withModelToDataObjProp from '../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import withModelToDataObjProp, { convertDataModelToDataObject } from '../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 // Default close button for modal
 const CloseModalButton = () => (null
@@ -20,13 +20,13 @@ const CloseModalButton = () => (null
   //   icon={<i className="flaticon-plus-symbol" />}
   // />
 );
-interface TabbedProductSectionProps{
-  secTitleWrapper:object;
-  secHeading:object;
-  row:object;
-  blogTitle:object;
-  blogMeta:object;
-  contentStyle:object;
+interface TabbedProductSectionProps {
+  secTitleWrapper: object;
+  secHeading: object;
+  row: object;
+  blogTitle: object;
+  blogMeta: object;
+  contentStyle: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
@@ -41,7 +41,7 @@ const TabbedProductSection = ({
   model,
   isAR,
   data
-}:TabbedProductSectionProps) => {
+}: TabbedProductSectionProps) => {
   const handleProductModal = (imagePath) => {
     // openModal({
     //   config: {
@@ -68,6 +68,7 @@ const TabbedProductSection = ({
   return (
     <SectionWrapper
       id={model.name}
+      // @ts-ignore
       xlRowCount={data.xlRowCount}
       lgRowCount={data.lgRowCount}
       mdRowCount={data.mdRowCount}
@@ -93,10 +94,7 @@ const TabbedProductSection = ({
           className="update-screen-tab"
         >
           {model.children.filter(m => m.online).map((item, index) => {
-            let screenMap = item.data.reduce(function (map, obj) {
-              map[obj.Key] = obj.Value;
-              return map;
-            }, {});
+            const screenMap = convertDataModelToDataObject(item)
             return (
               <TabPane
                 tab={
@@ -110,14 +108,7 @@ const TabbedProductSection = ({
                 <Box className="row" {...row}>
                   {item.children &&
                     item.children.map((blogSection, index) => {
-                      let postMap = blogSection.data.reduce(function (
-                        map,
-                        obj
-                      ) {
-                        map[obj.Key] = obj.Value;
-                        return map;
-                      },
-                      {});
+                      const postMap = convertDataModelToDataObject(blogSection)
                       return (
                         <FeatureBlock
                           key={`post_key-${index}`}
@@ -194,4 +185,4 @@ TabbedProductSection.defaultProps = {
   },
 };
 
-export default withModelToDataObjProp(TabbedProductSection) ;
+export default withModelToDataObjProp(TabbedProductSection);

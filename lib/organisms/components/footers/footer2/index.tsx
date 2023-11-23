@@ -1,7 +1,7 @@
 import FooterWrapper, { List, ListItem } from "./style";
 import { Container, Box, Heading, Text } from "../../../../atoms";
 import { Logo } from "../../../../molecules";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, { convertDataModelToDataObject } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 
 interface FooterProps {
@@ -55,10 +55,7 @@ const Footer = ({
                     widget.children
                       .filter((m) => m.online)
                       .map((item, subIndex) => {
-                        let itemMap = item.data.reduce(function (map, obj) {
-                          map[obj.Key] = obj.Value;
-                          return map;
-                        }, {});
+                        const itemMap = convertDataModelToDataObject(item)
                         return (
                           <ListItem key={`footer-list-item-${subIndex}`}>
                             <a className="ListItem" href={itemMap.url}>

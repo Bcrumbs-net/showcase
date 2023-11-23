@@ -19,11 +19,13 @@ export interface NavbarProps {
   justifyContent?: string;
   flexDirection?: string;
   flexWrap?: string;
+  style?: any
 }
 
 export const NavbarWrapper = ({
   className,
   children,
+  style,
   ...props
 }: PropsWithChildren<NavbarProps>) => {
   // Add all classs to an array
