@@ -3,7 +3,7 @@ import ShapeWrapper from "./style";
 
 interface TiltShapeProps {
   className: string;
-  color?: object;
+  color?: string;
 }
 const TiltShape = ({ className, color }: TiltShapeProps) => {
   // Add all classs to an array

@@ -68,7 +68,6 @@ const TabbedProductSection = ({
   return (
     <SectionWrapper
       id={model.name}
-      // @ts-ignore
       xlRowCount={data.xlRowCount}
       lgRowCount={data.lgRowCount}
       mdRowCount={data.mdRowCount}

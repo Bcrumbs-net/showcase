@@ -23,7 +23,7 @@ const HeadingWrapper = styled("p")(
 export interface HeadingProps {
   className?: string;
   content?: string;
-  href?:string;
+  href?: string;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   mt?: string | number | string | number[];
   mb?: string | number | string | number[];
@@ -34,7 +34,7 @@ export interface HeadingProps {
   letterSpacing?: string | number | string | number[];
 }
 
-export const Heading = ({ className, content, href,...props }: HeadingProps) => (
+export const Heading = ({ content, ...props }: HeadingProps) => (
   <HeadingWrapper {...props}>{content}</HeadingWrapper>
 );
 

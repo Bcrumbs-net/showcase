@@ -33,7 +33,7 @@ const TextWrapper = styled("p")(
   themed("Text")
 );
 
-export const Text = ({ className, content, ...props }: TextProps) => (
+export const Text = ({  content, ...props }: TextProps) => (
   // @ts-ignore: TS is complaining about color property
   <TextWrapper {...props}>
     {content && content.indexOf("\n") >= 0

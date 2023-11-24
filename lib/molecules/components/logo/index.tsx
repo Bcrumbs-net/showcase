@@ -14,7 +14,6 @@ interface LogoProps {
 }
 
 export const Logo = ({
-  className,
   logoWrapperStyle,
   logoStyle,
   titleStyle,

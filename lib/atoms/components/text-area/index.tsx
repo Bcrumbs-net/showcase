@@ -5,7 +5,6 @@ export const Textarea = ({
   value,
   icon,
   iconPosition,
-  onChange,
   ...props
 }: {
   className?: string;

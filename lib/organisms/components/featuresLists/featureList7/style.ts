@@ -2,13 +2,12 @@ import styled from 'styled-components';
 import { themeGet } from 'styled-system';
 import mapImage from '../../../../assets/image/charity/map-alt.png';
 
-const SectionWrapper = styled.div`
+const SectionWrapper = styled.div<{ background?: string }>`
   width: 100%;
   padding: 130px 0 100px;
   margin: 81px 0;
   background-color: ${themeGet('colors.heading', '#333333')};
   background-image: url(${props =>
-    // @ts-ignore
     props.background ? props.background : mapImage.src});
   background-repeat: no-repeat;
   background-size: contain;

@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
 import NavbarStyle from './navbar.style';
+import { CSSProperties } from 'styled-components';
 
 /* eslint-disable-next-line */
 export interface NavbarProps {
@@ -19,13 +20,12 @@ export interface NavbarProps {
   justifyContent?: string;
   flexDirection?: string;
   flexWrap?: string;
-  style?: any
+  style?: CSSProperties;
 }
 
 export const NavbarWrapper = ({
   className,
   children,
-  style,
   ...props
 }: PropsWithChildren<NavbarProps>) => {
   // Add all classs to an array
