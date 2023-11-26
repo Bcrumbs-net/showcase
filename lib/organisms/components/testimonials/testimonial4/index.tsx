@@ -13,7 +13,7 @@ import {
 } from "./style";
 import { twitter } from "react-icons-kit/icomoon/twitter";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, { convertDataModelToDataObject } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface TestimonialSectionProps {
   sectionWrapper: object;
@@ -83,14 +83,9 @@ const TestimonialSection = ({
             <>
               {model.children &&
                 model.children.map((itemObj, index) => {
-                  const item: Record<string, string> = itemObj.data.reduce(
-                    function (map, obj) {
-                      map[obj.Key] = obj.Value;
-                      return map;
-                    },
-                    {}
-                  );
+                  const item = convertDataModelToDataObject(itemObj)
                   return (
+                    // @ts-ignore
                     <GlideSlide key={`${model.name}-testimonial-item-${index}`}>
                       <TestimonialItem>
                         <TestimonialHead>

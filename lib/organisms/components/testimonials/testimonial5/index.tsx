@@ -9,7 +9,7 @@ import {
   AuthorImage,
 } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, { convertDataModelToDataObject } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface TestimonialSectionProps {
   sectionWrapper: object;
@@ -67,12 +67,9 @@ const TestimonialSection = ({
             <>
               {model.children &&
                 model.children.map((item, index) => {
-                  const testimonialMap: Record<string, string> =
-                    item.data.reduce(function (map, obj) {
-                      map[obj.Key] = obj.Value;
-                      return map;
-                    }, {});
+                  const testimonialMap = convertDataModelToDataObject(item)
                   return (
+                    // @ts-ignore
                     <GlideSlide key={`testimonial-slide-${index}`}>
                       <TestimonialItem>
                         <Heading

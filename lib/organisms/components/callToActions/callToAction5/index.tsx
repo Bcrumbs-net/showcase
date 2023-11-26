@@ -19,7 +19,14 @@ import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/w
 const Completionist = () => (
   <span className="readMore">You are good to go!</span>
 );
-const renderer = ({ days, hours, minutes, seconds, completed }) => {
+interface rendererProps {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  completed: boolean;
+}
+const renderer = ({ days, hours, minutes, seconds, completed }:rendererProps) => {
   if (completed) {
     // Render a complete state
     return <Completionist />;

@@ -5,10 +5,12 @@ import InputField, { EyeButton } from './input.style';
 export interface InputProps {
   /** className of the Input component. */
   className?: string;
+  /** type of the Input component. */
+  type?:string;
   /** Set input label value. */
   label?: string;
   /** The input value, required for a controlled component. */
-  value?: 'string' | 'number';
+  value?: string | number;
   /** Make default input into material style input. */
   isMaterial?: boolean;
   /** Password show hide icon button prop [*only for password field]. */
@@ -36,12 +38,13 @@ export interface InputProps {
    * You can pull out the new value by accessing `event.target.value`.
    */
   placeholder?: string;
-  onChange?(...args: unknown[]): unknown;
+  onChange?(...args: any[]): any;
 }
 
 export const Input = ({
   label,
   value,
+  type,
   onBlur,
   onFocus,
   onChange,

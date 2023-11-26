@@ -6,10 +6,6 @@ import { DrawerContext } from '../../../atoms';
 interface ScrollSpyMenuProps {
   /** className of the ScrollSpyMenu. */
   className?: string;
-  /** menuItems is an array of object prop which contain your menu
-   * data.
-   */
-  // menuItems: PropTypes.array.isRequired,
 
   /** Class name that apply to the navigation element paired with the content element in viewport. */
   currentClassName: string;
@@ -30,11 +26,10 @@ interface ScrollSpyMenuProps {
 
   isAR?: boolean;
   model: any;
-  drawerClose: any;
+  drawerClose?: any;
 }
 export const ScrollSpyMenu = ({
   className,
-  //menuItems,
   drawerClose,
   model,
   isAR,
@@ -44,10 +39,6 @@ export const ScrollSpyMenu = ({
   // empty array for scrollspy items
   const scrollItems: any[] = [];
 
-  // convert menu path to scrollspy items
-  //menuItems.forEach(item => {
-  //  scrollItems.push(item.path.slice(1));
-  //});
 
   // Add all classs to an array
   const addAllClasses = ['scrollspy__menu'];

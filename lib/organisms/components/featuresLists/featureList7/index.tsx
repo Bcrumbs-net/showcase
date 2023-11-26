@@ -78,7 +78,9 @@ const ContactSection = ({ row, col, model, data }: ContactSectionProps) => {
     });
   };
   return (
-    <SectionWrapper id={model.name} background={data.backgroundImage}>
+    <SectionWrapper id={model.name} 
+    // @ts-ignore
+    background={data.backgroundImage}>
       <Container>
         <Box className="row" {...row}>
           <Box className="col" {...col}>
@@ -158,6 +160,7 @@ const ContactSection = ({ row, col, model, data }: ContactSectionProps) => {
                         className="social"
                         href={data.instagram}
                         target="_blank"
+                        // @ts-ignore
                         without
                         rel="noreferrer"
                       >
@@ -169,6 +172,7 @@ const ContactSection = ({ row, col, model, data }: ContactSectionProps) => {
                         className="social"
                         href={data.twitterUrl}
                         target="_blank"
+                        // @ts-ignore
                         without
                         rel="noreferrer"
                       >
@@ -180,6 +184,7 @@ const ContactSection = ({ row, col, model, data }: ContactSectionProps) => {
                         className="social"
                         href={data.youtubeURL}
                         target="_blank"
+                        // @ts-ignore
                         without
                         rel="noreferrer"
                       >
@@ -191,6 +196,7 @@ const ContactSection = ({ row, col, model, data }: ContactSectionProps) => {
                         className="social"
                         href={data.instagramURL}
                         target="_blank"
+                        // @ts-ignore
                         without
                         rel="noreferrer"
                       >

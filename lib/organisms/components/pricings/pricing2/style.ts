@@ -10,7 +10,7 @@ export const PricingTableWrapper = styled.div`
   }
 `;
 
-const PricingTable = styled.div`
+const PricingTable = styled.div<{freePlan:string}>`
   border: 1px solid #f9fafb;
   border-radius: 5px;
   padding: 45px 45px 50px 45px;

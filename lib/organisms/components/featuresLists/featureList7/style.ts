@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { themeGet } from 'styled-system';
 import mapImage from '../../../../assets/image/charity/map-alt.png';
 
-const SectionWrapper = styled.div`
+const SectionWrapper = styled.div<{ background?: string }>`
   width: 100%;
   padding: 130px 0 100px;
   margin: 81px 0;

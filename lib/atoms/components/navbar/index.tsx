@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
 import NavbarStyle from './navbar.style';
+import { CSSProperties } from 'styled-components';
 
 /* eslint-disable-next-line */
 export interface NavbarProps {
@@ -19,6 +20,7 @@ export interface NavbarProps {
   justifyContent?: string;
   flexDirection?: string;
   flexWrap?: string;
+  style?: CSSProperties;
 }
 
 export const NavbarWrapper = ({

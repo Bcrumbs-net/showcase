@@ -2,6 +2,7 @@ import { Text, Link, Image } from '../../../atoms';
 
 /* eslint-disable-next-line */
 interface LogoProps {
+  className?:string;
   logoSrc?: string;
   title: string;
   logoWrapperStyle?: object;

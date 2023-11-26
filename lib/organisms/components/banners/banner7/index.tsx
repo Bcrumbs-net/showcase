@@ -138,7 +138,9 @@ const BannerSection = ({
             <Fade bottom>
               <VideoModal>
                 <Image src={data.video_section_image} alt="banner image" />
-                <PlayButton tabIndex="1000" onClick={handleVideoModal}>
+                <PlayButton 
+                // @ts-ignore
+                tabIndex="1000" onClick={handleVideoModal}>
                   <Icon icon={play} size={40} />
                 </PlayButton>
               </VideoModal>

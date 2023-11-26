@@ -100,6 +100,7 @@ const AwardsSection = ({
                   {}
                 );
                 return (
+                  // @ts-ignore
                   <GlideSlide key={`${awardObj.name}-award-item-${index}`}>
                     <AwardItem>
                       <AwardImageWrapper>

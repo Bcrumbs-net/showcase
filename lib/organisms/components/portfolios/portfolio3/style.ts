@@ -15,46 +15,63 @@ const PortfolioSectionWrapper = styled.section`
     &.blog__post {
       border-radius: 5px;
       position: relative;
-      width: calc(100% / ${props => props.xlRowCount} - 24px);
-      height: ${props => props.xlItemHeight}px;
+      width: calc(100% / ${props => // @ts-ignore
+    props.xlRowCount} - 24px);
+      height: ${props =>
+    // @ts-ignore
+    props.xlItemHeight}px;
       margin: 0 12px 70px;
       transition: all 0.3s ease;
       @media only screen and (max-width: 1200px) {
-        width: calc(100% / ${props => props.lgRowCount} - 24px);
-        height: ${props => props.lgItemHeight}px;
+        width: calc(100% / ${props =>// @ts-ignore
+    props.lgRowCount} - 24px);
+        height: ${props =>// @ts-ignore
+    props.lgItemHeight}px;
         margin-bottom: 44px;
       }
       @media only screen and (max-width: 991px) {
-        width: calc(100% / ${props => props.mdRowCount} - 24px);
+        width: calc(100% / ${props =>// @ts-ignore
+    props.mdRowCount} - 24px);
         margin-bottom: 44px;
-        height: ${props => props.mdItemHeight}px;
+        height: ${props => // @ts-ignore
+    props.mdItemHeight}px;
         /*&:first-child {
           width: 100%;
         }*/
       }
       @media only screen and (max-width: 767px) {
-        width: calc(100% / ${props => props.smRowCount} - 24px);
-        height: ${props => props.smItemHeight}px;
+        width: calc(100% / ${props =>// @ts-ignore
+    props.smRowCount} - 24px);
+        height: ${props => // @ts-ignore
+    props.smItemHeight}px;
         margin-bottom: 64px;
       }
       @media only screen and (max-width: 619px) {
-        height: ${props => props.smItemHeight / 1.25}px;
+        height: ${props => // @ts-ignore
+    props.smItemHeight / 1.25}px;
       }
       @media only screen and (max-width: 519px) {
-        height: ${props => props.smItemHeight / 1.5}px;
+        height: ${props =>// @ts-ignore
+    props.smItemHeight / 1.5}px;
       }
       @media only screen and (max-width: 419px) {
-        width: calc(100% / ${props => props.xsRowCount} - 24px);
-        height: ${props => props.xsItemHeight}px;
+        width: calc(100% / ${props => // @ts-ignore
+    props.xsRowCount} - 24px);
+        height: ${props =>
+    // @ts-ignore
+    props.xsItemHeight}px;
         margin-bottom: 84px;
       }
       @media only screen and (max-width: 319px) {
         margin-bottom: 100px;
-        height: ${props => props.xsItemHeight / 1.5}px;
+        height: ${props =>
+    // @ts-ignore
+    props.xsItemHeight / 1.5}px;
       }
       @media only screen and (max-width: 219px) {
         margin-bottom: 100px;
-        height: ${props => props.xsItemHeight / 2}px;
+        height: ${props => // @ts-ignore
+    props.xsItemHeight / 2}px;
       }
       .icon__wrapper {
         position: absolute;
@@ -95,6 +112,7 @@ const PortfolioSectionWrapper = styled.section`
   }
 `;
 PortfolioSectionWrapper.defaultProps = {
+  // @ts-ignore
   xlRowCount: 3,
   lgRowCount: 3,
   mdRowCount: 2,

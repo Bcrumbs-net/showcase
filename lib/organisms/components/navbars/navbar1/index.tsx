@@ -5,7 +5,7 @@ import { GraphContent } from '@bcrumbs.net/bc-api';
 import CopyrightSection from './copyrights';
 import { Container } from './navbar.style';
 import { DrawerContext, NavbarWrapper, Drawer, HamburgMenu } from '../../../../atoms';
-import { Logo ,ScrollSpyMenu} from '../../../../molecules';
+import { Logo, ScrollSpyMenu } from '../../../../molecules';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 //import SearchPanel from '../SearchPanel';
 //import LoginModal from '../LoginModal';
@@ -28,7 +28,7 @@ import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/w
 //     icon={<i className="flaticon-plus-symbol" />}
 //   />
 // );
-interface NavbarProps  {
+interface NavbarProps {
   navbarStyle: object;
   logoStyle: object;
   model: GraphContent;
@@ -36,7 +36,7 @@ interface NavbarProps  {
   data: Record<string, string>;
 }
 
-const Navbar = ({ navbarStyle, logoStyle, model, isAR, data }: NavbarProps ) => {
+const Navbar = ({ navbarStyle, logoStyle, model, isAR, data }: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
 
   // Search modal handler
@@ -129,7 +129,6 @@ const Navbar = ({ navbarStyle, logoStyle, model, isAR, data }: NavbarProps ) => 
             toggleHandler={toggleHandler}
           >
             <ScrollSpyMenu
-              //menuItems={data.menuItems}
               drawerClose={true}
               offset={-100}
               model={model}

@@ -126,7 +126,6 @@ const Navbar = ({
             toggleHandler={toggleHandler}
           >
             <ScrollSpyMenu
-              //menuItems={menusLst}
               drawerClose={true}
               offset={-100}
               model={model}

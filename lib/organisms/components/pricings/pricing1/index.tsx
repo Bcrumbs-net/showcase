@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Icon from 'react-icons-kit';
 import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
-import { GlideCarousel, GlideSlide} from '../../../../molecules';
+import { GlideCarousel, GlideSlide } from '../../../../molecules';
 import {
   MONTHLY_PRICING_TABLE,
   YEARLY_PRICING_TABLE,
@@ -18,10 +18,10 @@ import PricingTable, {
   PricingButtonWrapper,
 } from './style';
 import { checkmark } from 'react-icons-kit/icomoon/checkmark';
-import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import withModelToDataObjProp, { convertDataModelToDataObject } from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 
-interface PricingSectionProps{
+interface PricingSectionProps {
   row: object;
   col: object;
   sectionWrapper: object;
@@ -57,7 +57,7 @@ const PricingSection = ({
   model,
   isAR,
   data,
-}:PricingSectionProps) => {
+}: PricingSectionProps) => {
   const [state, setState] = useState({
     data: model.children.length > 0 ? model.children[0].name : null,
   });
@@ -120,10 +120,7 @@ const PricingSection = ({
           <Heading {...secHeading} content={data.subtitle} />
           <PricingButtonWrapper>
             {model.children.map((item, index) => {
-              let pricingTable = item.data.reduce(function(map, obj) {
-                map[obj.Key] = obj.Value;
-                return map;
-              }, {});
+              const pricingTable = convertDataModelToDataObject(item)
               return (
                 <Button
                   key={`PricingTabBtn${index}`}
@@ -146,15 +143,12 @@ const PricingSection = ({
                 model.children
                   .find(m => m.name == data1)
                   .children.map((item, index) => {
-                    let pricingTable = item.data.reduce(function(map, obj) {
-                      map[obj.Key] = obj.Value;
-                      return map;
-                    }, {});
+                    const pricingTable = convertDataModelToDataObject(item)
                     return (
                       //@ts-ignore
                       <GlideSlide key={`pricing-table-${index}`}>
                         <PricingTable
-                        //@ts-ignore
+                          //@ts-ignore
                           freePlan={pricingTable.freePlan}
                           className="pricing_table"
                         >
@@ -196,14 +190,7 @@ const PricingSection = ({
                           <PricingList>
                             {item.children &&
                               item.children.map((subitem, subIndex) => {
-                                let featureMap = subitem.data.reduce(function(
-                                  map,
-                                  obj
-                                ) {
-                                  map[obj.Key] = obj.Value;
-                                  return map;
-                                },
-                                {});
+                                const featureMap = convertDataModelToDataObject(subitem)
                                 return (
                                   <ListItem
                                     key={`pricing-table-list-${subIndex}`}

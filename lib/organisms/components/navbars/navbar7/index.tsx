@@ -63,7 +63,6 @@ const Navbar = ({
           <Box {...menuWrapper}>
             <ScrollSpyMenu
               className="main_menu"
-              //menuItems={MENU_ITEMS}
               offset={-70}
               model={model}
             />
@@ -81,7 +80,6 @@ const Navbar = ({
             >
               <ScrollSpyMenu
                 className="mobile_menu"
-                //menuItems={MENU_ITEMS}
                 drawerClose={true}
                 offset={-100}
                 model={model}

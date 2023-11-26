@@ -1,15 +1,19 @@
+import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { themeGet } from 'styled-system';
 
-const SectionWrapper = styled.section`
-  padding: ${(props) => (props.marginTop ? `${props.marginTop}px` : '40px')} 0
+const SectionWrapper = styled.section<{ marginTop?: string | number, xlRowCount?: string | number, lgRowCount?: string | number, mdRowCount?: string | number, smRowCount?: string | number, xsRowCount?: string | number, xlItemHeight?: string | number, lgItemHeight?: string | number, mdItemHeight?: string | number, smItemHeight?: any, xsItemHeight?: any, showTabs?: boolean }>`
+  padding: ${(props) =>
+    (props.marginTop ? `${props.marginTop}px` : '40px')} 0
     40px 0;
   @media (max-width: 990px) {
-    padding: ${(props) => (props.marginTop ? `${props.marginTop}px` : '80px')} 0
+    padding: ${(props) =>
+    (props.marginTop ? `${props.marginTop}px` : '80px')} 0
       40px 0;
   }
   @media (max-width: 575px) {
-    ${(props) => (props.marginTop ? `${props.marginTop}px` : '60px')} 0 40px 0;
+    ${(props) =>
+    (props.marginTop ? `${props.marginTop}px` : '60px')} 0 40px 0;
   }
 
   @keyframes ScaleInUp {
@@ -149,46 +153,60 @@ const SectionWrapper = styled.section`
     &.blog__post {
       border-radius: 5px;
       position: relative;
-      width: calc(100% / ${(props) => props.xlRowCount} - 24px);
-      height: ${(props) => props.xlItemHeight}px;
+      width: calc(100% / ${(props) =>
+    props.xlRowCount} - 24px);
+      height: ${(props) =>
+    props.xlItemHeight}px;
       margin: 0 12px 70px;
       transition: all 0.3s ease;
       @media only screen and (max-width: 1200px) {
-        width: calc(100% / ${(props) => props.lgRowCount} - 24px);
-        height: ${(props) => props.lgItemHeight}px;
+        width: calc(100% / ${(props) =>
+    props.lgRowCount} - 24px);
+        height: ${(props) =>
+    props.lgItemHeight}px;
         margin-bottom: 44px;
       }
       @media only screen and (max-width: 991px) {
-        width: calc(100% / ${(props) => props.mdRowCount} - 24px);
+        width: calc(100% / ${(props) =>
+    props.mdRowCount} - 24px);
         margin-bottom: 44px;
-        height: ${(props) => props.mdItemHeight}px;
+        height: ${(props) =>
+    props.mdItemHeight}px;
         /*&:first-child {
           width: 100%;
         }*/
       }
       @media only screen and (max-width: 767px) {
-        width: calc(100% / ${(props) => props.smRowCount} - 24px);
-        height: ${(props) => props.smItemHeight}px;
+        width: calc(100% / ${(props) =>
+    props.smRowCount} - 24px);
+        height: ${(props) =>
+    props.smItemHeight}px;
         margin-bottom: 64px;
       }
       @media only screen and (max-width: 619px) {
-        height: ${(props) => props.smItemHeight / 1.25}px;
+        height: ${(props) =>
+    props.smItemHeight / 1.25}px;
       }
       @media only screen and (max-width: 519px) {
-        height: ${(props) => props.smItemHeight / 1.5}px;
+        height: ${(props) =>
+    props.smItemHeight / 1.5}px;
       }
       @media only screen and (max-width: 419px) {
-        width: calc(100% / ${(props) => props.xsRowCount} - 24px);
-        height: ${(props) => props.xsItemHeight}px;
+        width: calc(100% / ${(props) =>
+    props.xsRowCount} - 24px);
+        height: ${(props) =>
+    props.xsItemHeight}px;
         margin-bottom: 84px;
       }
       @media only screen and (max-width: 319px) {
         margin-bottom: 100px;
-        height: ${(props) => props.xsItemHeight / 1.5}px;
+        height: ${(props) =>
+    props.xsItemHeight / 1.5}px;
       }
       @media only screen and (max-width: 219px) {
         margin-bottom: 100px;
-        height: ${(props) => props.xsItemHeight / 2}px;
+        height: ${(props) =>
+    props.xsItemHeight / 2}px;
       }
       .icon__wrapper {
         position: absolute;
@@ -230,11 +248,13 @@ const SectionWrapper = styled.section`
   }
   .rc-tabs-bar,
   .rc-tabs-nav-container {
-    display: ${(props) => (props.showTabs ? 'block' : 'none')};
+    display: ${(props) =>
+    (props.showTabs ? 'block' : 'none')};
   }
 `;
 
 SectionWrapper.defaultProps = {
+
   xlRowCount: 3,
   lgRowCount: 3,
   mdRowCount: 2,

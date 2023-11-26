@@ -1,16 +1,17 @@
-import { Fragment } from 'react';
-import styled from 'styled-components';
+import { Fragment } from "react";
+import styled from "styled-components";
 import {
   fontFamily,
   fontWeight,
   textAlign,
   lineHeight,
   letterSpacing,
-} from 'styled-system';
-import { base, themed } from '../base';
+} from "styled-system";
+import { base, themed } from "../base";
 
 /* eslint-disable-next-line */
 export interface TextProps {
+  className?: string;
   content?: string;
   as?: string;
   mt?: string | number | string | number[];
@@ -22,21 +23,21 @@ export interface TextProps {
   letterSpacing?: string | number | string | number[];
 }
 
-const TextWrapper = styled('p')(
+const TextWrapper = styled("p")(
   base,
   fontFamily,
   fontWeight,
   textAlign,
   lineHeight,
   letterSpacing,
-  themed('Text')
+  themed("Text")
 );
 
-export const Text = ({ content, ...props }: TextProps) => (
+export const Text = ({  content, ...props }: TextProps) => (
   // @ts-ignore: TS is complaining about color property
   <TextWrapper {...props}>
-    {content && content.indexOf('\n') >= 0
-      ? content.split('\n').map(function(item, idx) {
+    {content && content.indexOf("\n") >= 0
+      ? content.split("\n").map(function (item, idx) {
           return (
             <Fragment key={`text-${idx}`}>
               {item}
@@ -49,7 +50,7 @@ export const Text = ({ content, ...props }: TextProps) => (
 );
 
 Text.defaultProps = {
-  as: 'p',
+  as: "p",
   mt: 0,
-  mb: '1rem',
+  mb: "1rem",
 };
