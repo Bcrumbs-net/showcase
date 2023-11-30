@@ -7,10 +7,11 @@ import { Modal } from "@redq/reuse-modal";
 const ProductModal = ({ imagePath }) => {
   return (
     <>
+    <Modal>
       <ProductModalWrapper>
         <Image className="productImage" src={imagePath} alt="Product Banner" />
       </ProductModalWrapper>
-      <Modal />
+    </Modal>
     </>
   );
 };
