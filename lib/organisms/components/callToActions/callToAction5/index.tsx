@@ -12,7 +12,6 @@ import {
 } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";
 import { ControlWrapper } from "./style";
-import ControlImage from "../../../assets/image/crypto/control.jpg";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
@@ -104,7 +103,6 @@ const ControlSection = ({
                 <Countdown
                   date={Date.now() + 909999999}
                   renderer={renderer}
-                  completed={false}
                 />
               </Box>
             </Fade>

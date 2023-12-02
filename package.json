@@ -43,7 +43,7 @@
     "rc-drawer": "^1.10.1",
     "rc-progress": "^2.3.0",
     "rc-tabs": "^9.6.4",
-    "react": "^17.0.2",
+    "react": "17.0.2",
     "react-accessible-accordion": "^3.0.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-countdown-now": "^2.1.1",
@@ -66,7 +66,8 @@
   },
   "devDependencies": {
     "@types/node": "^18.14.6",
-    "@types/react": "^17.0.2",
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2",
     "@types/styled-components": "^5.1.26",
     "babel-plugin-styled-components": "1.10.7",
     "eslint": "^8.50.0",
@@ -78,5 +79,8 @@
     "os": false,
     "net": false,
     "tls": false
+  },
+  "resolutions": {
+    "@types/react": "~17.0.2"
   }
 }

@@ -1,4 +1,3 @@
-import PropTypes, { object } from "prop-types";
 import Link from "next/link";
 import ParticlesComponent from "../banner2/particles";
 // import { email } from 'react-icons-kit/ionicons/email';
