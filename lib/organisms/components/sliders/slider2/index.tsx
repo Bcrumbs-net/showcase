@@ -152,6 +152,7 @@ const BlogSliderSection = ({
             </CarouselWrapper>
           </Fade>
         </Container>
+        <ProductModal imagePath={undefined}></ProductModal>
       </SectionWrapper>
     </>
   );
