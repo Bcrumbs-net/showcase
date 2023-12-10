@@ -5,12 +5,12 @@
  * Supported templates domains as next:
  * - showcase-app.bcrumbs.net
  * - showcase-agency.bcrumbs.net
- * - showcase-saas.bcrumbs.net x-style
+ * - showcase-saas.bcrumbs.net
  * - showcase-saas2.bcrumbs.net
  * - showcase-crypto.bcrumbs.net
- * - showcase-crypto2.bcrumbs.net x-template
+ * - showcase-crypto2.bcrumbs.net
  * - showcase-charity.bcrumbs.net
- * - showcase-hosting.bcrumbs.net x-template
+ * - showcase-hosting.bcrumbs.net
  * - showcase-ride.bcrumbs.net
  * - showcase-food.bcrumbs.net
  * - showcase-portfolio.bcrumbs.net
@@ -24,7 +24,7 @@ export function checkIfKnownDomain(targetDomain: string) {
     targetDomain.indexOf('test.bcrumbs.net') >= 0 ||
     targetDomain.indexOf('test-showcase.bcrumbs.net') >= 0
   ) {
-    return 'showcase-food.bcrumbs.net';
+    return 'showcase-app.bcrumbs.net';
   }
 
   return targetDomain;
