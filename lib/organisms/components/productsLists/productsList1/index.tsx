@@ -1,18 +1,13 @@
-import React from "react";
-import { Image } from "../../../../atoms";
-import ProductModalWrapper from "./style";
-import "rc-tabs/assets/index.css";
-import { Modal } from "@redq/reuse-modal";
+import React from 'react';
+import { Image } from '../../../../atoms';
+import ProductModalWrapper from './style';
+import 'rc-tabs/assets/index.css';
 
-const ProductModal = ({ imagePath }) => {
+const ProductModal = ({ imagePath }: { imagePath: string }) => {
   return (
-    <>
-    <Modal>
-      <ProductModalWrapper>
-        <Image className="productImage" src={imagePath} alt="Product Banner" />
-      </ProductModalWrapper>
-    </Modal>
-    </>
+    <ProductModalWrapper>
+      <Image className="productImage" src={imagePath} alt="Product Banner" />
+    </ProductModalWrapper>
   );
 };
 

@@ -2,23 +2,23 @@ import React, { Fragment } from 'react';
 import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/TabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
-import 'rc-tabs/assets/index.css';
-import { Box, Heading, Image, Container } from '../../../../../atoms';
+import { Box, Heading, Image, Container, Button } from '../../../../../atoms';
 import SectionWrapper from './style';
 import { FeatureBlock } from '../../../../../molecules';
-// import { openModal, closeModal } from '@redq/reuse-modal';
+import { openModal, closeModal } from '@redq/reuse-modal';
 import ProductModal from '..';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp, { convertDataModelToDataObject } from '../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import 'rc-tabs/assets/index.css';
 
 // Default close button for modal
-const CloseModalButton = () => (null
-  // <Button
-  //   className="foodModalCloseBtn"
-  //   variant="fab"
-  //   onClick={() => closeModal()}
-  //   icon={<i className="flaticon-plus-symbol" />}
-  // />
+const CloseModalButton = () => (
+  <Button
+    className="foodModalCloseBtn"
+    variant="fab"
+    onClick={() => closeModal()}
+    icon={<i className="flaticon-plus-symbol" />}
+  />
 );
 interface TabbedProductSectionProps {
   secTitleWrapper: object;
@@ -43,27 +43,27 @@ const TabbedProductSection = ({
   data
 }: TabbedProductSectionProps) => {
   const handleProductModal = (imagePath) => {
-    // openModal({
-    //   config: {
-    //     className: 'product-modal',
-    //     disableDragging: false,
-    //     width: '50%',
-    //     height: '100%',
-    //     animationFrom: { transform: 'translateY(100px)' }, // react-spring <Spring from={}> props value
-    //     animationTo: { transform: 'translateY(0)' }, //  react-spring <Spring to={}> props value
-    //     transition: {
-    //       mass: 1,
-    //       tension: 180,
-    //       friction: 26,
-    //     },
-    //   },
-    //   component: ProductModal,
-    //   componentProps: {
-    //     imagePath,
-    //   },
-    //   closeComponent: CloseModalButton,
-    //   closeOnClickOutside: true,
-    // });
+    openModal({
+      config: {
+        className: 'product-modal',
+        disableDragging: false,
+        width: '50%',
+        height: '100%',
+        animationFrom: { transform: 'translateY(100px)' }, // react-spring <Spring from={}> props value
+        animationTo: { transform: 'translateY(0)' }, //  react-spring <Spring to={}> props value
+        transition: {
+          mass: 1,
+          tension: 180,
+          friction: 26,
+        },
+      },
+      component: ProductModal,
+      componentProps: {
+        imagePath,
+      },
+      closeComponent: CloseModalButton,
+      closeOnClickOutside: true,
+    });
   };
   return (
     <SectionWrapper
@@ -97,10 +97,10 @@ const TabbedProductSection = ({
             return (
               <TabPane
                 tab={
-                  <Fragment>
+                  <>
                     {/*(screenMap.icon ? <Icon icon={screenMap.icon} size={24} /> : null)*/}
                     {screenMap.title}
-                  </Fragment>
+                  </>
                 }
                 key={index + 1}
               >
