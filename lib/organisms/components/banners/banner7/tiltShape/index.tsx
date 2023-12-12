@@ -8,6 +8,7 @@ interface TiltShapeProps {
 const TiltShape = ({ className, color }: TiltShapeProps) => {
   // Add all classs to an array
   const addAllClasses = ["tilt_shape"];
+  color = "#fff";
   // className prop checking
   if (className) {
     addAllClasses.push(className);
