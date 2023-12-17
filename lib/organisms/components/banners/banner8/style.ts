@@ -200,6 +200,7 @@ export const HighlightedText = styled.p`
 
 export const ImageArea = styled.div`
   width: calc(100% - 450px);
+  margin-top:-22px;
   @media only screen and (max-width: 1360px) {
     width: calc(100% - 500px);
   }
@@ -213,7 +214,7 @@ export const ImageArea = styled.div`
 
   #charitySlide {
     .glide__slides {
-      height: 100vh;
+      height: 104vh;
       @media only screen and (max-width: 991px) {
         height: 762px;
       }
