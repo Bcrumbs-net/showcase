@@ -60,7 +60,7 @@ const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
             nextButton={<span className="next_arrow" />}
             prevButton={<span className="prev_arrow" />}
           >
-            <Fragment>
+            <>
               {model.children.map((bannerSlides,index) => {
                const slideData = convertDataModelToDataObject(bannerSlides);
                 return(
@@ -69,7 +69,7 @@ const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
                   <Image src={slideData.thumb_url} alt="Charity Landing" />
                 </GlideSlide>
               );})}
-            </Fragment>
+            </>
           </GlideCarousel>
         </ImageArea>
       </ContentWrapper>
