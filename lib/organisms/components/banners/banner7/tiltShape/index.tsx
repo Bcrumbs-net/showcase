@@ -21,4 +21,8 @@ const TiltShape = ({ className, color }: TiltShapeProps) => {
   );
 };
 
+TiltShape.defaultProps = {
+  color: '#fff'
+};
+
 export default TiltShape;
