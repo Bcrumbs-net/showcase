@@ -1,8 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Box, Text, Heading } from '../../../../../../lib/atoms';
 import { FeatureBlock } from '../../../../../../lib/molecules';
 import FBPageSectionWrapper from './fbPageSection.style';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../utils/withModelToDataObjProp';
 
 const FBPageSection = ({
   row,
@@ -10,14 +11,21 @@ const FBPageSection = ({
   textArea,
   buttonStyle,
   model,
+  data,
   isAR,
   title,
   description,
+}: {
+  row:object;
+  col:object;
+  textArea:object;
+  buttonStyle:object;
+  model?:GraphContent;
+  data?: Record<string, string>;
+  isAR?:boolean;
+  title:object;
+  description:object;
 }) => {
-  let data = model.data.reduce(function(map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
   const FBPageScript = () => (
     <Box width="100%">
       <Box
@@ -60,15 +68,6 @@ const FBPageSection = ({
       </Box>
     </FBPageSectionWrapper>
   );
-};
-
-// VideoSection style props
-FBPageSection.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  textArea: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
 };
 
 // VideoSection default style
@@ -114,4 +113,4 @@ FBPageSection.defaultProps = {
   },
 };
 
-export default FBPageSection;
+export default withModelToDataObjProp(FBPageSection);
