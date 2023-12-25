@@ -74,7 +74,7 @@ export const CryptoTheme = ({
                 ))}
             <BCLink />
             {rootModelData.whatsappPhone ? (
-              <WhatsAppLink data={`https://wa.me/${rootModelData.whatsappPhone}`} />
+              <WhatsAppLink phoneNumber={`https://wa.me/${rootModelData.whatsappPhone}`} />
             ) : null}
           </ContentWrapper>
         </Fragment>

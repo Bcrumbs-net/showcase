@@ -101,7 +101,7 @@ export const FoodTheme = ({
                 ))}
             <BCLink />
             {rootModelData.whatsappPhone ? (
-              <WhatsAppLink data={`https://wa.me/${rootModelData.whatsappPhone}`} />
+              <WhatsAppLink phoneNumber={`https://wa.me/${rootModelData.whatsappPhone}`} />
             ) : null}
           </ContentWrapper>
           {/* End of agency wrapper section */}

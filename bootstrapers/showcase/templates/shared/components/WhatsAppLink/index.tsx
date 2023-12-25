@@ -1,15 +1,15 @@
 import React from 'react';
 import WhatsAppLinkWrapper from './style';
-import whatsAppLogo from '../../../../assets/image/socialMedia/WhatsAppLogo.png'
+import whatsAppLogo from '../../../../assets/image/socialMedia/WhatsAppLogo.svg'
 
 const WhatsAppLink = ({
-    data,
+    phoneNumber,
 }: {
-    data?: string;
+    phoneNumber?: string;
 }) => {
     return (
         <WhatsAppLinkWrapper>
-            <a href={data}>
+            <a href={phoneNumber}>
                 <div>
                     <img
                         src={whatsAppLogo.src}

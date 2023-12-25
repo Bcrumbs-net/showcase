@@ -4,8 +4,8 @@ const WhatsAppLinkWrapper = styled.div`
   position: fixed !important;
   z-index: 2147483647 !important;
   top: auto !important;
-  right: 45px !important;
-  bottom: 52px !important;
+  right: 50px !important;
+  bottom: 62px !important;
   left: auto !important;
   border-radius: 100% !important;
   padding: 1px !important;
@@ -15,8 +15,7 @@ const WhatsAppLinkWrapper = styled.div`
     cursor: pointer;
   }
   img {
-    width: 100px !important;
-    height: 80px !important;
+    width: 140px !important;
   }
 `;
 
