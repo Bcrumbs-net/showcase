@@ -9,6 +9,7 @@ import { GlobalStyle, AgencyWrapper } from './globalStyle';
 import ComponentResolver from '../../mappers';
 import BCLink from '../shared/components/BCLink';
 import { Config, GraphContent } from '@bcrumbs.net/bc-api';
+import WhatsAppLink from '../shared/components/WhatsAppLink';
 
 export const AgencyTheme = ({
   templateId,
@@ -29,9 +30,8 @@ export const AgencyTheme = ({
     map[obj.Key] = obj.Value;
     return map;
   },
-  {});
+    {});
   const isAR = config.lang === 'AR';
-
   return (
     <>
       {/*@ts-ignore: Unreachable code error*/}
@@ -99,6 +99,9 @@ export const AgencyTheme = ({
                   />
                 ))}
             <BCLink />
+            {rootModelData.whatsappPhone ? (
+              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
+            ) : null}
           </AgencyWrapper>
           {/* End of agency wrapper section */}
         </Fragment>

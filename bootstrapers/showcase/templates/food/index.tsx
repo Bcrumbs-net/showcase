@@ -7,6 +7,7 @@ import { GlobalStyle, ContentWrapper } from './globalStyle';
 import ComponentResolver from '../../mappers';
 import BCLink from '../shared/components/BCLink';
 import { Config, GraphContent } from '@bcrumbs.net/bc-api';
+import WhatsAppLink from '../shared/components/WhatsAppLink';
 
 export const FoodTheme = ({
   templateId,
@@ -99,6 +100,9 @@ export const FoodTheme = ({
                   />
                 ))}
             <BCLink />
+            {rootModelData.whatsappPhone ? (
+              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
+            ) : null}
           </ContentWrapper>
           {/* End of agency wrapper section */}
         </Fragment>

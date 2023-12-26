@@ -9,6 +9,7 @@ import { GlobalStyle, ContentWrapper } from './globalStyle';
 import ComponentResolver from '../../mappers';
 import BCLink from '../shared/components/BCLink';
 import { Config, GraphContent } from '@bcrumbs.net/bc-api';
+import WhatsAppLink from '../shared/components/WhatsAppLink';
 
 export const CryptoTheme = ({
   templateId,
@@ -72,6 +73,9 @@ export const CryptoTheme = ({
                   />
                 ))}
             <BCLink />
+            {rootModelData.whatsappPhone ? (
+              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone}/>
+            ) : null}
           </ContentWrapper>
         </Fragment>
       </ThemeProvider>
