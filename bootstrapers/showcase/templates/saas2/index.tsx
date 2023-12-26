@@ -85,7 +85,7 @@ export const SaaS2Theme = ({
               ))}
           <BCLink />
             {rootModelData.whatsappPhone ? (
-              <WhatsAppLink phoneNumber={`https://wa.me/${rootModelData.whatsappPhone}`} />
+              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
             ) : null}
         </ContentWrapper>
       </Fragment>

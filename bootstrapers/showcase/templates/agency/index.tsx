@@ -100,7 +100,7 @@ export const AgencyTheme = ({
                 ))}
             <BCLink />
             {rootModelData.whatsappPhone ? (
-              <WhatsAppLink phoneNumber={`https://wa.me/${rootModelData.whatsappPhone}`} />
+              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
             ) : null}
           </AgencyWrapper>
           {/* End of agency wrapper section */}

@@ -9,7 +9,7 @@ const WhatsAppLink = ({
 }) => {
     return (
         <WhatsAppLinkWrapper>
-            <a href={phoneNumber}>
+            <a href={`https://wa.me/${phoneNumber}`}>
                 <div>
                     <img
                         src={whatsAppLogo.src}

@@ -84,7 +84,7 @@ export const CharityTheme = ({
             </ContentWrapper>
             <BCLink />
             {rootModelData.whatsappPhone ? (
-              <WhatsAppLink phoneNumber={`https://wa.me/${rootModelData.whatsappPhone}`} />
+              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone}/>
             ) : null}
           </CharityWrapper>
           {/* End of charity wrapper section */}
