@@ -12,6 +12,7 @@ import {
 import { ScrollSpyMenu, Logo } from "../../../../molecules";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { NavbarDataType } from "../../../types/navbarTypes";
 
 interface NavbarProps {
   navbarStyle: object;
@@ -21,7 +22,7 @@ interface NavbarProps {
   menuWrapper: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: NavbarDataType;
 }
 const Navbar = ({
   navbarStyle,
@@ -34,7 +35,6 @@ const Navbar = ({
   data,
 }: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
-
   // Toggle drawer
   const toggleHandler = () => {
     dispatch({
@@ -45,19 +45,19 @@ const Navbar = ({
     <NavbarWrapper {...navbarStyle} className="portfolio_navbar">
       <Container noGutter mobileGutter width="1200px">
         <Box {...row}>
-          {data.logo ? (
+          {data.whiteLogoSrc ? (
             <Logo
               href="/"
-              logoSrc={data.logo}
+              logoSrc={data.whiteLogoSrc}
               title="Portfolio"
               logoStyle={logoStyle}
               className="main-logo"
             />
           ) : null}
-          {data.logo ? (
+          {data.logoSrc ? (
             <Logo
               href="/"
-              logoSrc={data.logo}
+              logoSrc={data.logoSrc}
               title="Portfolio"
               logoStyle={logoStyle}
               className="logo-alt"
@@ -69,10 +69,10 @@ const Navbar = ({
               offset={-70}
               model={model}
             />
-            {data.letsTalkLink ? (
-              <Link href={data.letsTalkLink}>
+            {data.ctaLink ? (
+              <Link href={data.ctaLink}>
                 <a className="navbar_button">
-                  <Button {...button} title="LET'S TALK" />
+                  <Button {...button} title={data.ctaLabel} />
                 </a>
               </Link>
             ) : null}
@@ -89,10 +89,10 @@ const Navbar = ({
                 offset={-100}
                 model={model}
               />
-              {data.letsTalkLink ? (
-                <Link href={data.letsTalkLink}>
+              {data.ctaLink ? (
+                <Link href={data.ctaLink}>
                   <a className="navbar_drawer_button">
-                    <Button {...button} title="LET'S TALK" />
+                    <Button {...button} title={data.ctaLabel} />
                   </a>
                 </Link>
               ) : null}
