@@ -46,7 +46,7 @@ const FullScreenBannerSection = ({
             />
           }
         >
-          <Fragment>
+          <>
             {model.children &&
               model.children
                 .filter((m) => m.online)
@@ -67,7 +67,7 @@ const FullScreenBannerSection = ({
                     </GlideSlide>
                   );
                 })}
-          </Fragment>
+          </>
         </GlideCarousel>
       </Container>
     </BannerSectionWrapper>

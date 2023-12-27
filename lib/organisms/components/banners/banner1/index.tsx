@@ -35,7 +35,7 @@ const BannerSection = ({
   data,
 }: BannerSectionProps) => {
   const ButtonGroup = () => (
-    <Fragment>
+    <>
       {data.primaryBtnText ? (
         <Button
           title={data.primaryBtnText}
@@ -62,8 +62,9 @@ const BannerSection = ({
           {...outlineBtnStyle}
         />
       ) : null}
-    </Fragment>
+    </>
   );
+  
   return (
     <BannerWrapper
       style={{ backgroundImage: `url(${data.image})` }}

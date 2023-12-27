@@ -43,7 +43,7 @@ const BannerSection = ({
   data,
 }: BannerSectionProps) => {
   const ButtonGroup = () => (
-    <Fragment>
+    <>
       <Button title={data.image_button_label} {...btnStyle} />
       <Button
         title={data.image_url_label}
@@ -51,10 +51,10 @@ const BannerSection = ({
         icon={<i className="flaticon-next" />}
         {...outlineBtnStyle}
       />
-    </Fragment>
+    </>
   );
   const ShareButtonGroup = () => (
-    <Fragment>
+    <>
       <Button
         title={data.twitter_share_label}
         variant="textButton"
@@ -71,7 +71,7 @@ const BannerSection = ({
         {...outlineBtnStyle}
         className="btnWithoutColor"
       />
-    </Fragment>
+    </>
   );
   return (
     <BannerWrapper

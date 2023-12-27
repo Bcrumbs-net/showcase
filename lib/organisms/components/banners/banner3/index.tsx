@@ -42,7 +42,7 @@ const BannerSection = ({
   data,
 }: BannerSectionProps) => {
   const ButtonGroup = () => (
-    <Fragment>
+    <>
       {data.pri_button_label && data.pri_button_url ? (
         <Button
           title={data.pri_button_label}
@@ -63,7 +63,7 @@ const BannerSection = ({
           {...outlineBtnStyle}
         />
       ) : null}
-    </Fragment>
+    </>
   );
 
   let CustomBannerWrapper;
