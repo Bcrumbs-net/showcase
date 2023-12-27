@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import { GraphContent } from '@bcrumbs.net/bc-api';
-//import PropTypes from 'prop-types';
 //import { openModal, closeModal } from '@redq/reuse-modal';
 import CopyrightSection from './copyrights';
 import { Container } from './navbar.style';
 import { DrawerContext, NavbarWrapper, Drawer, HamburgMenu } from '../../../../atoms';
 import { Logo, ScrollSpyMenu } from '../../../../molecules';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { NavbarDataType } from '../../../types/navbarTypes';
 //import SearchPanel from '../SearchPanel';
 //import LoginModal from '../LoginModal';
 // Default close button for modal
@@ -28,12 +28,13 @@ import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/w
 //     icon={<i className="flaticon-plus-symbol" />}
 //   />
 // );
+
 interface NavbarProps {
   navbarStyle: object;
   logoStyle: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: NavbarDataType;
 }
 
 const Navbar = ({ navbarStyle, logoStyle, model, isAR, data }: NavbarProps) => {
@@ -104,7 +105,7 @@ const Navbar = ({ navbarStyle, logoStyle, model, isAR, data }: NavbarProps) => {
       <Container>
         <Logo
           href="/"
-          logoSrc={data.logo}
+          logoSrc={data.logoSrc}
           title="Agency"
           logoStyle={logoStyle}
         />
@@ -142,11 +143,6 @@ const Navbar = ({ navbarStyle, logoStyle, model, isAR, data }: NavbarProps) => {
   );
 };
 
-// // Navbar style props
-// Navbar.propTypes = {
-//   navbarStyle: PropTypes.object,
-//   logoStyle: PropTypes.object,
-// };
 
 Navbar.defaultProps = {
   // Default navbar style

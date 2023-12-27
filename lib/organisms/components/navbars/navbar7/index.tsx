@@ -11,6 +11,7 @@ import {
 import { ScrollSpyMenu, Logo } from "../../../../molecules";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { NavbarDataType } from "../../../types/navbarTypes";
 
 interface NavbarProps {
   navbarStyle: object;
@@ -20,7 +21,7 @@ interface NavbarProps {
   menuWrapper: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: NavbarDataType;
 }
 const Navbar = ({
   navbarStyle,
@@ -44,10 +45,10 @@ const Navbar = ({
     <NavbarWrapper {...navbarStyle} className="saas_navbar">
       <Container>
         <Box {...row}>
-          {data.logo ? (
+          {data.logoSrc ? (
             <Logo
               href="#"
-              logoSrc={data.logo}
+              logoSrc={data.logoSrc}
               title="Portfolio"
               logoStyle={logoStyle}
               className="main-logo"
@@ -66,7 +67,7 @@ const Navbar = ({
               offset={-70}
               model={model}
             />
-            <a href={data.button_url}>
+            <a href={data.ctaLink}>
               <a className="navbar_button">
                 <Button {...button} title="GET STARTED" />
               </a>
@@ -84,7 +85,7 @@ const Navbar = ({
                 offset={-100}
                 model={model}
               />
-              <a href={data.button_url}>
+              <a href={data.ctaLink}>
                 <a className="navbar_drawer_button">
                   <Button {...button} title="GET STARTED" />
                 </a>

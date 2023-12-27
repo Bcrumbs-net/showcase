@@ -11,6 +11,7 @@ import { Container } from "./style";
 // import { openModal, closeModal } from '@redq/reuse-modal';
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { NavbarDataType } from "../../../types/navbarTypes";
 
 // Default close button for modal
 const CloseModalButton = () =>
@@ -35,7 +36,7 @@ interface NavbarProps {
   logoStyle?: object;
   buttonStyle: object;
   model: GraphContent;
-  data: Record<string, string>;
+  data: NavbarDataType;
 }
 const Navbar = ({
   navbarStyle,
@@ -101,8 +102,8 @@ const Navbar = ({
       <Container>
         <Logo
           href="/"
-          logoSrc={data.logo}
-          title={data.title}
+          logoSrc={data.logoSrc}
+          title={data.logoTitle}
           logoStyle={logoStyle}
         />
         <div style={{ display: "flex", alignItems: "center" }}>

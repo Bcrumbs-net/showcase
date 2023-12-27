@@ -5,11 +5,12 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import NavbarWrapper, { MenuWrapper, Button } from "./style";
 import withModelToDataObjProp, { convertDataModelToDataObject } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
+import { NavbarDataType } from "../../../types/navbarTypes";
 
 interface NavbarProps {
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: NavbarDataType;
 }
 const Navbar = ({ model, isAR, data }: NavbarProps) => {
 
@@ -20,21 +21,21 @@ const Navbar = ({ model, isAR, data }: NavbarProps) => {
       <Container fullWidth={true}>
         <Logo
           href="/charity"
-          logoSrc={data.logo}
+          logoSrc={data.logoSrc}
           className="logo"
-          title={data.title}
+          title={data.logoTitle}
         />
         <MenuWrapper>
           <AnchorLink
             className="smooth_scroll"
-            href={data.anchorLink}
+            href={data.jumpToSectionLink}
             offset={81}
           >
-            {data.anchorLinkLabel}
+            {data.jumpToSectionLabel}
           </AnchorLink>
           <Button>
-            <span className="text">{data.buttonLabel}</span>
-            <Image src={data.buttonImage} alt="Charity Landing" />
+            <span className="text">{data.ctaLabel}</span>
+            <Image src={data.backgroundImage} alt="Charity Landing" />
           </Button>
         </MenuWrapper>
       </Container>

@@ -13,6 +13,7 @@ import { MENU_ITEMS } from "../../../../data/Crypto";
 import { ScrollSpyMenu, Logo } from "../../../../molecules";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { NavbarDataType } from "../../../types/navbarTypes";
 
 interface NavbarProps {
   navbarStyle: object;
@@ -22,7 +23,7 @@ interface NavbarProps {
   menuWrapper: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: NavbarDataType;
 }
 const Navbar = ({
   navbarStyle,
@@ -47,14 +48,14 @@ const Navbar = ({
         <Box {...row}>
           <Logo
             href="/"
-            logoSrc={data.white_logo}
+            logoSrc={data.whiteLogoSrc}
             title="Portfolio"
             logoStyle={logoStyle}
             className="main-logo"
           />
           <Logo
             href="#"
-            logoSrc={data.logo}
+            logoSrc={data.logoSrc}
             title="Portfolio"
             logoStyle={logoStyle}
             className="logo-alt"

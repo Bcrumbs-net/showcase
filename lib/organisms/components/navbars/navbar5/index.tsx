@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import PropTypes from 'prop-types';
 import {
   Box, Drawer, NavbarWrapper, DrawerContext, Container, HamburgMenu
 } from '../../../../atoms';
 import { ScrollSpyMenu, Logo } from '../../../../molecules';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { NavbarDataType } from '../../../types/navbarTypes';
 
 interface NavbarProps{
   navbarStyle:object;
@@ -15,7 +15,7 @@ interface NavbarProps{
   menuWrapper:object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: NavbarDataType;
 }
 const Navbar = ({
   navbarStyle,
@@ -41,19 +41,19 @@ const Navbar = ({
     >
       <Container noGutter mobileGutter width="1200px">
         <Box {...row}>
-          {data.logo ? (
+          {data.logoSrc ? (
             <Logo
               href="/"
-              logoSrc={data.logo}
+              logoSrc={data.logoSrc}
               title="Food"
               logoStyle={logoStyle}
               className="main-logo logo"
             />
           ) : null}
-          {data.logo ? (
+          {data.logoSrc ? (
             <Logo
               href="/"
-              logoSrc={data.logo}
+              logoSrc={data.logoSrc}
               title="Food"
               logoStyle={logoStyle}
               className="logo-alt logo"
@@ -84,14 +84,6 @@ const Navbar = ({
       </Container>
     </NavbarWrapper>
   );
-};
-
-Navbar.propTypes = {
-  navbarStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
-  button: PropTypes.object,
-  row: PropTypes.object,
-  menuWrapper: PropTypes.object,
 };
 
 Navbar.defaultProps = {
