@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import { foodTheme } from './themeStyles';
-import { ResetCSS } from '../../assets/css/style';
+import { ResetCSS } from '../shared/styles/reset';
 import { GlobalStyle, ContentWrapper } from './globalStyle';
 import ComponentResolver from '../../mappers';
 import BCLink from '../shared/components/BCLink';

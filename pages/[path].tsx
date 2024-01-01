@@ -1,2 +1,3 @@
-import index from './index';
+import index, { getServerSideProps } from './index';
+export { getServerSideProps };
 export default index;

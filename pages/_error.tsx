@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import React from 'react';
 import Head from 'next/head';
-import ErrorSec from '../components/Error';
+import ErrorSec from '../lib/organisms/components/errors';
 import { ResetCSS } from '../public/assets/css/style';
 
 class Error extends React.Component<{ statusCode: string }> {
   static async getInitialProps({ res, err }) {
-    const statusCode = res ? res.statusCode : err ? err.statusCode : null;
+    const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
     return { statusCode };
   }
 
@@ -24,11 +24,7 @@ class Error extends React.Component<{ statusCode: string }> {
         {/*@ts-ignore: Unreachable code error */}
         <ResetCSS />
         <div>
-          {this.props.statusCode ? (
-            `An error ${this.props.statusCode} occurred on server`
-          ) : (
-            <ErrorSec></ErrorSec>
-          )}
+          <ErrorSec ></ErrorSec>
         </div>
       </>
     );

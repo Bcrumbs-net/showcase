@@ -18,17 +18,9 @@ const ShowcaseBootstraper = ({
       (m) => m.path.toLowerCase() == path.toLowerCase()
     );
 
-    if (targetPageArr && targetPageArr.length > 0) {
-      subConfig = targetPageArr[0];
-      if(subConfig){
-        templateId = subConfig.templateId;
-        config.lang = subConfig.lang;
-      } else {
-        return <div>404 Page not found...</div>;
-      }
-    } else {
-      return <div>404 Page not found...</div>;
-    }
+    subConfig = targetPageArr[0];
+    templateId = subConfig.templateId;
+    config.lang = subConfig.lang;
   }
 
   if (config?.root) {

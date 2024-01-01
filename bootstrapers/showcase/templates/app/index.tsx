@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import { appTheme } from './themeStyles';
 import { GlobalStyle, AppWrapper, ConditionWrapper } from './globalStyle';
-import { ResetCSS } from '../../assets/css/style';
+import { ResetCSS } from '../shared/styles/reset';
 import ComponentResolver from '../../mappers';
 import BCLink from '../shared/components/BCLink';
 import { Config, GraphContent } from '@bcrumbs.net/bc-api';
