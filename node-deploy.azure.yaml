@@ -6,7 +6,7 @@ metadata:
     app: showcase
 spec:
   selector:
-    app: showcase
+    app: showcase-prod
   ports:
     - name: http
       port: 80
@@ -14,22 +14,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: showcase
+  name: showcase-prod
   labels:
     version: v1
 spec:
   replicas: #{replicas}#
   selector:
     matchLabels:
-      app: showcase
+      app: showcase-prod
   template:
     metadata:
       labels:
-        app: showcase
+        app: showcase-prod
         version: v1
     spec:
       containers:
-        - name: showcase
+        - name: showcase-prod
           image: breadcrumbs.azurecr.io/showcase:#{Build.BuildId}#
           ports:
             - containerPort: 80

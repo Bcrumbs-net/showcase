@@ -4,7 +4,7 @@ import Head from 'next/head';
 import ErrorSec from '../lib/organisms/components/errors';
 import { ResetCSS } from '../public/assets/css/style';
 
-class Error extends React.Component<{ statusCode: string }> {
+class Error extends React.Component<{ statusCode?: string }> {
   static async getInitialProps({ res, err }) {
     const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
     return { statusCode };

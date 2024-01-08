@@ -12,6 +12,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/nextjs-v12-blue.svg" alt="NextJS Version" />
   <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license" />
+  <img src="https://dev.azure.com/dConfig/BC-Mono/_apis/build/status%2FShowcase%20CI?branchName=master" alt="CI">
 </p>
 
 Showcase frontend project is a NextJS project that contains a collection of components organized as sections that can be combined to create rich landing pages.
@@ -30,8 +31,8 @@ In case you want a cloud version of Showcase with headless CMS to manage your da
 - [License](#license)
 
 ## Features
-- a large collection of landing page sections for different uses
-- a large collection of basic components in case you want to implement your own sections
+- A large collection of landing page sections for different uses
+- A large collection of basic components in case you want to implement your own sections
 - Fully customizable through global styles and theme variables
 - Designed to work smoothly with any headless CMS that can provide the contents with JSON format
 
@@ -53,7 +54,7 @@ Or
 yarn run dev
 ```
 
-If you stored your data on a Showcase headless CMS account, you can tell the code to fetch the data from that account by your domain linked to that account as a query-string parameter in the URL:
+If you stored your data on a Showcase headless CMS account, you can tell the code to fetch the data from that account by adding your domain linked to that account as a query-string parameter in the URL:
 ```
 http://localhost:3000/?host=<your-domain>
 ```
@@ -82,7 +83,7 @@ docker build .
 --will be added soon--
 
 ## Contributing
-You can request contributing to add more features to this platform on the next email: contribute@bcrumbs.net
+You can request contributing to this platform on the next email: contribute@bcrumbs.net
 
 ## License
 Showcase frontend project is released under the [MIT License](LICENSE).
