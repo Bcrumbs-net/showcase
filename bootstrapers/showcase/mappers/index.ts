@@ -38,7 +38,7 @@ import imageListResolver from './imagesList';
 import controlResolver from './control';
 import tabbedImagesListResolver from './tabbedImagesList';
 import newsletterResolver from './newsletter';
-
+import forms from './forms';
 export interface ComponentsPropsType {
   model: any;
   modelId: number;
@@ -91,6 +91,7 @@ const ComponentsPool: {
   ...controlResolver(),
   ...tabbedImagesListResolver(),
   ...newsletterResolver(),
+  ...forms(),
 };
 
 const ComponentResolver = (props: ComponentsPropsType) => {

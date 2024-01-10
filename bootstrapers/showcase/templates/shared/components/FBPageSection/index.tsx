@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Text, Heading } from '../../../../../../lib/atoms';
 import { FeatureBlock } from '../../../../../../lib/molecules';
-import FBPageSectionWrapper from './fbPageSection.style';
+import FBPageSectionWrapper from './style';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp from '../../../../utils/withModelToDataObjProp';
 
