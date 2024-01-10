@@ -8,7 +8,7 @@ import {
   Button,
   Container,
 } from '../../../../atoms';
-// import { openModal, closeModal } from '@redq/reuse-modal';
+import { openModal, closeModal } from '@redq/reuse-modal';
 import VideoSectionWrapper from './style';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
@@ -48,32 +48,32 @@ const VideoSection = ({
     />
   );
 
-  const CloseModalButton = () => (null
-    // <Button
-    //   className="modalCloseBtn"
-    //   variant="fab"
-    //   onClick={() => closeModal()}
-    //   icon={<i className="flaticon-plus-symbol" />}
-    // />
+  const CloseModalButton = () => (
+    <Button
+      className="modalCloseBtn"
+      variant="fab"
+      onClick={() => closeModal()}
+      icon={<i className="flaticon-plus-symbol" />}
+    />
   );
   // Video modal handler
   const handleVideoModal = () => {
-    // openModal({
-    //   config: {
-    //     className: 'video-modal',
-    //     disableDragging: true,
-    //     default: {
-    //       width: '100%',
-    //       height: '100%',
-    //       x: 0,
-    //       y: 0,
-    //     },
-    //   },
-    //   component: IntroVideo,
-    //   componentProps: {},
-    //   closeComponent: CloseModalButton,
-    //   closeOnClickOutside: false,
-    // });
+    openModal({
+      config: {
+        className: 'video-modal',
+        disableDragging: true,
+        default: {
+          width: '100%',
+          height: '100%',
+          x: 0,
+          y: 0,
+        },
+      },
+      component: IntroVideo,
+      componentProps: {},
+      closeComponent: CloseModalButton,
+      closeOnClickOutside: false,
+    });
   };
   return (
     <VideoSectionWrapper id={model.name}>
