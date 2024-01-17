@@ -25,7 +25,7 @@ import { envelope } from 'react-icons-kit/fa/envelope';
 import withModelToDataObjProp from '../../../../utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import React from 'react';
-import fetchFormData from '../../../../utils/fetchFormData';
+import useFormQuery from '../../../../utils/fetchFormData';
 
 interface FormSectionProps {
   row: object;
@@ -41,9 +41,7 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
     submitted: false,
   });
 
-  const { loading, formData, error } = fetchFormData(data.formID);
-  useEffect(() => {
-  }, [formData]);
+  const { loading, formData, error } = useFormQuery(data.formID);
   const handleFormData = (value, name) => {
     setState({
       ...state,
@@ -74,11 +72,13 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
   }
 
   if (error) {
-    return <div>Error fetching form data</div>;
+    console.log(`Error fetching form data`, error);
+    return null;
   }
 
   if (!formData) {
-    return <div>Form data not available</div>;
+    console.log(`Form with ID {data.formID} does not exist`);
+    return null;
   }
 
   const renderField = (field) => {
@@ -204,12 +204,12 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
               {formData.formFields &&
                 Array.isArray(formData.formFields) &&
                 formData.formFields.filter((field) => !field.invisible)
-                .map((field) => (
-                  <div key={field.id}>
-                    <label>{field.title}</label>
-                    {renderField(field)}
-                  </div>
-                ))}
+                  .map((field) => (
+                    <div key={field.id}>
+                      <label>{field.title}</label>
+                      {renderField(field)}
+                    </div>
+                  ))}
               <SubmitButton type="submit">{formData.submitButtonLabel}</SubmitButton>
               {state.submitted &&
                 //@ts-ignore
