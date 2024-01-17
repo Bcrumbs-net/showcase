@@ -25,7 +25,7 @@ import { envelope } from 'react-icons-kit/fa/envelope';
 import withModelToDataObjProp from '../../../../utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import React from 'react';
-import useFormQuery from '../../../../utils/fetchFormData';
+import useFormQuery from '../../../../utils/useFormQuery';
 
 interface FormSectionProps {
   row: object;
