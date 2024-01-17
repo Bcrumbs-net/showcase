@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Box,
   Textarea,
   Text,
   Input,
   Container,
+  Select,
 } from '../../../../../../lib/atoms';
 import SectionWrapper, {
   ContentArea,
@@ -13,7 +14,6 @@ import SectionWrapper, {
   ContactForm,
   SubmitButton,
 } from './style';
-
 import { Icon } from 'react-icons-kit';
 import { mapMarker } from 'react-icons-kit/fa/mapMarker';
 import { phone } from 'react-icons-kit/fa/phone';
@@ -24,6 +24,8 @@ import { youtube } from 'react-icons-kit/fa/youtube';
 import { envelope } from 'react-icons-kit/fa/envelope';
 import withModelToDataObjProp from '../../../../utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';
+import React from 'react';
+import useFormQuery from '../../../../utils/fetchFormData';
 
 interface FormSectionProps {
   row: object;
@@ -34,12 +36,12 @@ interface FormSectionProps {
 }
 
 const FormSection = ({ row, col, model, data }: FormSectionProps) => {
-  const initialValues = {};
 
   const [state, setState] = useState({
     submitted: false,
   });
 
+  const { loading, formData, error } = useFormQuery(data.formID);
   const handleFormData = (value, name) => {
     setState({
       ...state,
@@ -61,58 +63,157 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
       },
       body: payload,
     }).then((res) => {
-      if (res.ok) return setState({ ...initialValues, submitted: true });
+      if (res.ok) return setState({ submitted: true });
       else return '';
     });
   };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    console.log(`Error fetching form data`, error);
+    return null;
+  }
+
+  if (!formData) {
+    console.log(`Form with ID {data.formID} does not exist`);
+    return null;
+  }
+
+  const renderField = (field) => {
+    switch (field.type) {
+      case 'Date':
+        return (
+          <div key={field.id}>
+            <Input
+              type="date"
+              value={state[field.name]}
+              onChange={(e) => handleFormData(e.target?.value, field.name)}
+            />
+          </div>
+        );
+      case 'Number':
+        return (
+          <div key={field.id}>
+            <Input
+              type="number"
+              value={state[field.name]}
+              onChange={(e) => handleFormData(e.target?.value, field.name)}
+            />
+          </div>
+        );
+      case 'Password':
+        return (
+          <div key={field.id}>
+            <Input
+              type="password"
+              value={state[field.name]}
+              onChange={(e) => handleFormData(e.target?.value, field.name)}
+            />
+          </div>
+        );
+      case 'String':
+        return (
+          <div key={field.id}>
+            <Input
+              type="text"
+              value={state[field.name]}
+              onChange={(e) => handleFormData(e.target?.value, field.name)}
+            />
+          </div>
+        );
+      case 'Multiple Lines':
+        return (
+          <div key={field.id}>
+            <Textarea
+              value={state[field.name]}
+              onChange={(e) => handleFormData(e.target?.value, field.name)}
+            />
+          </div>
+        );
+      case 'Predefined List':
+        return (
+          <div key={field.id}>
+            <Select
+              value={state[field.name]}
+              onChange={(e) => handleFormData(e.target?.value, field.name)}
+            >
+              <option value="" disabled>
+                Select {field.title}
+              </option>
+              {field.choices.map((choice) => (
+                <option key={choice} value={choice}>
+                  {choice}
+                </option>
+              ))}
+            </Select>
+          </div>
+        );
+      case 'Checkboxes':
+        return (
+          <div key={field.id}>
+            {field.choices.map((choice) => (
+              <label key={choice}>
+                <Input
+                  type="checkbox"
+                  value={choice}
+                  checked={state[field.name].includes(choice)}
+                  onChange={(e) =>
+                    handleFormData(
+                      e.target.checked
+                        ? [...state[field.name], choice]
+                        : state[field.name].filter((item) => item !== choice),
+                      field.name
+                    )
+                  }
+                />
+                {choice}
+              </label>
+            ))}
+          </div>
+        );
+      case 'Radio Buttons':
+        return (
+          <div key={field.id}>
+            {field.choices.map((choice) => (
+              <label key={choice}>
+                <Input
+                  type="radio"
+                  value={choice}
+                  checked={state[field.name] === choice}
+                  onChange={() => handleFormData(choice, field.name)}
+                />
+                {choice}
+              </label>
+            ))}
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
-    <SectionWrapper
-      id={model.name}
-      // @ts-ignore
-      background={data.backgroundImage}
-    >
+    <SectionWrapper id={model.name} background={data.backgroundImage}>
       <Container>
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <Heading>{data.title}</Heading>
             <ContactForm onSubmit={(e) => handleContact(e)}>
-              {/* Example of fields (Which should be rendered dynamically)
-              <Input
-                type="text"
-                placeholder="NAME *"
-                value={state.Contact_us_Name}
-                onChange={(e) =>
-                  handleFormData(e.target.value, 'Contact_us_Name')
-                }
-              />
-              <Input
-                type="text"
-                placeholder="EMAIL *"
-                value={state.Contact_us_Email}
-                onChange={(e) =>
-                  handleFormData(e.target.value, 'Contact_us_Email')
-                }
-              />
-              <Input
-                type="text"
-                placeholder="PHONE"
-                value={state.Contact_us_Phone}
-                onChange={(e) =>
-                  handleFormData(e.target.value, 'Contact_us_Phone')
-                }
-              />
-              <Textarea
-                placeholder="MESSAGE ..."
-                value={state.Contact_us_Message}
-                onChange={(e) =>
-                  handleFormData(e.target.value, 'Contact_us_Message')
-                }
-              /> */}
-              <SubmitButton type="submit">{data.submitButton}</SubmitButton>
-              {state.submitted ? (
-                <Text content={data.formSubmitMessage}></Text>
-              ) : null}
+              {formData.formFields &&
+                Array.isArray(formData.formFields) &&
+                formData.formFields.filter((field) => !field.invisible)
+                  .map((field) => (
+                    <div key={field.id}>
+                      <label>{field.title}</label>
+                      {renderField(field)}
+                    </div>
+                  ))}
+              <SubmitButton type="submit">{formData.submitButtonLabel}</SubmitButton>
+              {state.submitted &&
+                //@ts-ignore
+                <Text content={formData.submitRedirectUrl}></Text>}
             </ContactForm>
           </Box>
         </Box>
@@ -120,7 +221,6 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
     </SectionWrapper>
   );
 };
-
 // FormSection default style
 FormSection.defaultProps = {
   // FormSection row default style
