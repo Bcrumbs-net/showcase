@@ -31,6 +31,7 @@ const SelectStyle = styled.div<{ as?: string }>`
 
   /* Switch label style when labelPosition on top || bottom */
   &.label_top {
+    margin-top: ${themeGet('space.2', '8')}px;
     .reusecore__field-label {
       display: flex;
       margin-bottom: ${themeGet('space.2', '8')}px;

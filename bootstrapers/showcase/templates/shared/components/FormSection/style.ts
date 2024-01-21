@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { themeGet } from 'styled-system';
 import mapImage from '../../../../assets/image/charity/map-alt.png';
 
@@ -161,6 +161,23 @@ export const ButtonGroup = styled.div`
       padding: 0 20px;
       opacity: 1;
     }
+  }
+`;
+
+export const RequiredFields = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: 5px;
+    position: relative;
+  }
+  label::after {
+    content: ' *'; /* Add a star to the label */
+    color: red;    /* You can change the color as needed */
+    position: absolute;
+    top: 0;
+    right: -10px;
   }
 `;
 
@@ -419,6 +436,19 @@ export const SubmitButton = styled.button`
       );
     }
   }
+  ${(props) =>
+    props.disabled &&
+    css`
+      cursor: not-allowed;
+      opacity: 0.5; /* You can adjust the opacity for a disabled look */
+      &:hover {
+        &::before {
+          left: -100%; /* To prevent the gradient animation on hover when disabled */
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+    `}
 
   &:hover {
     &::before {
