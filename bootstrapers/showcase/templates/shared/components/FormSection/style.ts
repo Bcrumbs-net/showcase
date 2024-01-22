@@ -171,14 +171,15 @@ export const RequiredFields = styled.div`
   label {
     margin-bottom: 5px;
     position: relative;
-  }
-  label::after {
-    content: ' *'; /* Add a star to the label */
-    color: red;    /* You can change the color as needed */
-    position: absolute;
-    top: 0;
-    right: -10px;
-  }
+  
+    &.required-label::after {
+      content: ' *'; 
+      color: red; 
+      position: absolute;
+      top: 0;
+      right: -10px;
+    }
+}
 `;
 
 export const ContactForm = styled.form`
@@ -383,8 +384,8 @@ export const SubmitButton = styled.button`
   background-color: ${themeGet('colors.primary', '#1C7C0C')};
   position: relative;
   overflow: hidden;
-  z-index: 1;
-  margin: 25px 0;
+  z-index: 0;
+  margin: 40px 0px 20px 0px;
   text-transform: uppercase;
   @media only screen and (max-width: 1440px) {
     font-size: 18px;
@@ -440,10 +441,10 @@ export const SubmitButton = styled.button`
     props.disabled &&
     css`
       cursor: not-allowed;
-      opacity: 0.5; /* You can adjust the opacity for a disabled look */
+      opacity: 0.5; 
       &:hover {
         &::before {
-          left: -100%; /* To prevent the gradient animation on hover when disabled */
+          left: -100%;
           opacity: 0;
           visibility: hidden;
         }

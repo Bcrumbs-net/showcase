@@ -40,6 +40,7 @@ interface FormSectionProps {
 
 const FormSection = ({ row, col, model, data }: FormSectionProps) => {
   const [formFieldsState, setFormFieldsState] = useState({});
+  const [failureMessage, setFailureMessage] = useState('');
   const [state, setState] = useState({
     submitted: false,
     isFormValid: false,
@@ -53,25 +54,20 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
         return acc;
       }, {});
       setFormFieldsState(initialState);
+
     }
   }, [formData]);
-  console.log(formFieldsState);
-
-
   useEffect(() => {
-    // Validate the form when formFieldsState changes
     const isFormValid = Object.entries(formFieldsState).every(
       ([name, value]: [string, string]) => {
         const field = formData.formFields.find((f) => f.name === name);
-        return !field.required || (field.required && name.trim() !== '');
+        return !field.required || (field.required && value?.trim() !== '');
       }
     );
     setState((prevState) => ({ ...prevState, isFormValid }));
   }, [formFieldsState, formData]);
 
   const handleFormData = (value, name) => {
-    console.log(name);
-    console.log(value);
     setFormFieldsState((prevFieldsState) => ({
       ...prevFieldsState,
       [name]: value,
@@ -85,26 +81,28 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
   const handleContact = (e) => {
     e.preventDefault();
 
-    if (!state.isFormValid) {
-      console.log('Please fill in all required fields before submitting.');
-      return;
-    }
-
     const payload = new URLSearchParams();
     Object.keys(formFieldsState).forEach((key) => {
       payload.append(key, formFieldsState[key]);
     });
+
     fetch(data.formActionUrl, {
       method: 'post',
       headers: {
         Accept: 'application/json, text/plain, */*',
       },
       body: payload,
-    }).then((res) => {
-      if (res.ok) return setState({ submitted: true, isFormValid: true });
-      else return '';
-    });
+    })
+      .then((res) => {
+        if (res.ok) return setState({ submitted: true, isFormValid: true });
+        else return '';
+      })
+      .catch((error) => {
+        setFailureMessage(data.failureMessage + ': ' + error);
+        setState({ submitted: true, isFormValid: false });
+      });
   };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -187,12 +185,13 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
           <div key={field.id}>
             {field.choices.map((choice) => (
               <CheckBox
+                key={choice}
+                id={choice}
+                htmlFor={choice}
                 value={choice}
                 labelText={choice}
                 checked={formFieldsState[field.name]?.includes(choice)}
                 onChange={(checked) => {
-                  console.log('lal')
-
                   handleFormData(
                     checked
                       ? [...formFieldsState[field.name], choice]
@@ -210,6 +209,7 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
           <div key={field.id}>
             {field.choices.map((choice) => (
               <Radio
+                key={choice}
                 id={choice}
                 labelText={choice}
                 value={choice}
@@ -233,7 +233,38 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
             <Heading>{data.title}</Heading>
 
             {state.submitted ? (
-              <Text content={data.successMessage} />
+              <>
+                {failureMessage ? (
+                  <ContactForm onSubmit={(e) => handleContact(e)}>
+                    {formData.formFields &&
+                      Array.isArray(formData.formFields) &&
+                      formData.formFields.filter((field) => !field.invisible && !field.required)
+                        .map((field) => (
+                          <div key={field.id}>
+                            <label>{field.name}</label>
+                            {renderField(field, formFieldsState, handleFormData)}
+                          </div>
+                        ))}
+                    {formData.formFields &&
+                      Array.isArray(formData.formFields) &&
+                      formData.formFields.filter((field) => !field.invisible && field.required)
+                        .map((field) => (
+                          <RequiredFields key={field.id} >
+                            <div>
+                              <label className='required-label'>{field.name}</label>
+                              {renderField(field, formFieldsState, handleFormData)}
+                            </div>
+                          </RequiredFields>
+                        ))}
+                    <SubmitButton type="submit" disabled={!state.isFormValid}>
+                      {formData.submitButtonLabel}
+                    </SubmitButton>
+                    <Text content={failureMessage} />
+                  </ContactForm>
+                ) : (
+                  <Text content={data.successMessage} />
+                )}
+              </>
             ) : (
               <ContactForm onSubmit={(e) => handleContact(e)}>
                 {formData.formFields &&
@@ -249,9 +280,9 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
                   Array.isArray(formData.formFields) &&
                   formData.formFields.filter((field) => !field.invisible && field.required)
                     .map((field) => (
-                      <RequiredFields key={field.id}>
+                      <RequiredFields key={field.id} >
                         <div>
-                          <label>{field.name}</label>
+                          <label className='required-label'>{field.name}</label>
                           {renderField(field, formFieldsState, handleFormData)}
                         </div>
                       </RequiredFields>
