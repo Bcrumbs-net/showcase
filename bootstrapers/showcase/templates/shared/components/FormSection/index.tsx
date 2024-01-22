@@ -95,6 +95,7 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
     })
       .then((res) => {
         if (res.ok) return setState({ submitted: true, isFormValid: true });
+
         else return '';
       })
       .catch((error) => {
@@ -116,6 +117,7 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
     console.log(`Form with ID {data.formID} does not exist`);
     return null;
   }
+  
   const renderField = (field, formFieldsState, handleFormData) => {
     switch (field.type) {
       case 'String':
