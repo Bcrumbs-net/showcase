@@ -28,7 +28,7 @@ export const FoodTheme = ({
     map[obj.Key] = obj.Value;
     return map;
   },
-  {});
+    {});
   const isAR = config.lang === 'AR';
 
   return (
@@ -38,13 +38,11 @@ export const FoodTheme = ({
         <Fragment>
           {/* Start agency head section */}
           <Head>
-            {/*
-                <title>{data.title}</title>
-                <meta name="Description" content={data.metaDescription} />
-                <meta name="theme-color" content="#10ac84" />
-              */}
-            {/*<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />*/}
-            {/*<link
+            <title>{data.title}</title>
+            <meta name="Description" content={data.metaDescription} />
+            <meta name="theme-color" content="#10ac84" />
+            {/* <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" /> */}
+            <link
                 rel="icon"
                 type="image/png"
                 sizes="32x32"
@@ -55,7 +53,7 @@ export const FoodTheme = ({
                 type="image/png"
                 sizes="16x16"
                 href={rootModelData.favicon16}
-              />*/}
+              />
             {/*<link rel="manifest" href="/site.webmanifest"></link>*/}
             {/* Load google fonts */}
             {isAR ? (

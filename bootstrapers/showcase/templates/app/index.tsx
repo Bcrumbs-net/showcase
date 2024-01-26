@@ -66,6 +66,18 @@ export const AppTheme = ({
             <meta name="Description" content={data.metaDescription} />
             <meta name="theme-color" content={rootModelData.primary} />
             <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href={rootModelData.favicon32}
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href={rootModelData.favicon16}
+            />
+            <link
               href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
               rel="stylesheet"
             />
