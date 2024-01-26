@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import { Box, Text, Heading, Container } from '../../../../atoms';
 import { Accordion, AccordionItem } from 'react-accessible-accordion';
@@ -16,24 +15,25 @@ import { plus } from 'react-icons-kit/entypo/plus';
 import { minus } from 'react-icons-kit/entypo/minus';
 import FaqSectionWrapper from './style';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { FaqDataType } from '../../../types/faqTypes';
 
 interface IFaqSectionProps {
   sectionHeader?: object;
   row?: object;
   col?: object;
-  sectionTitle?: object;
-  sectionSubTitle?: object;
+  title?: object;
+  subTitle?: object;
   titleStyle: any;
   descriptionStyle: any;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: FaqDataType;
 }
 const FaqSection = ({
   row,
   sectionHeader,
-  sectionTitle,
-  sectionSubTitle,
+  title,
+  subTitle,
   titleStyle,
   descriptionStyle,
   model,
@@ -44,8 +44,8 @@ const FaqSection = ({
     <FaqSectionWrapper id={model.name}>
       <Container>
         <Box {...sectionHeader}>
-          <Text content={data.sectionSubTitle} {...sectionSubTitle} />
-          <Heading content={data.sectionTitle} {...sectionTitle} />
+          <Text content={data.subTitle} {...subTitle} />
+          <Heading content={data.title} {...title} />
         </Box>
         <Box className="row" {...row}>
           <Accordion className='reusecore__accordion'>
@@ -123,14 +123,6 @@ const FaqSection = ({
   );
 };
 
-// FaqSection style props
-FaqSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-};
 
 // FaqSection default style
 FaqSection.defaultProps = {
@@ -139,7 +131,7 @@ FaqSection.defaultProps = {
     mb: ['40px', '56px'],
   },
   // sub section default style
-  sectionSubTitle: {
+  subTitle: {
     as: 'span',
     display: 'block',
     textAlign: 'center',
@@ -150,7 +142,7 @@ FaqSection.defaultProps = {
     mb: '10px',
   },
   // section title default style
-  sectionTitle: {
+  title: {
     textAlign: 'center',
     fontSize: ['20px', '24px'],
     fontWeight: '400',

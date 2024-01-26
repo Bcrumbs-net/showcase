@@ -15,6 +15,7 @@ import {
 } from "../../../../molecules";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
+import { FaqDataType } from "../../../types/faqTypes";
 
 interface FaqSectionProps {
   sectionHeader?: object;
@@ -27,7 +28,7 @@ interface FaqSectionProps {
   titleStyle: any;
   descriptionStyle: any;
   model: GraphContent;
-  data: Record<string, string>;
+  data: FaqDataType;
 }
 const FaqSection = ({
   sectionHeader,
