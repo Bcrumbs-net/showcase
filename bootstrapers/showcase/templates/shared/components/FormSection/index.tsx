@@ -123,8 +123,8 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
       case 'String':
         return (
           <div key={field.id}>
-            <input
-              type='text'
+            <Input
+              inputType='text'
               value={formFieldsState[field.name]}
               onChange={(e) => handleFormData(e.target?.value, field.name)}
             />
@@ -133,8 +133,8 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
       case 'Date':
         return (
           <div key={field.id}>
-            <input
-              type="date"
+            <Input
+              inputType="date"
               value={formFieldsState[field.name]}
               onChange={(e) => handleFormData(e.target?.value, field.name)}
             />
@@ -143,8 +143,8 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
       case 'Number':
         return (
           <div key={field.id}>
-            <input
-              type="number"
+            <Input
+              inputType="number"
               value={formFieldsState[field.name]}
               onChange={(e) => handleFormData(e.target?.value, field.name)}
             />
@@ -153,17 +153,19 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
       case 'Password':
         return (
           <div key={field.id}>
-            <input
-              type="password"
+            <Input
+              inputType="password"
               value={formFieldsState[field.name]}
               onChange={(e) => handleFormData(e.target?.value, field.name)}
+              passwordShowHide={false}
             />
           </div>
         );
       case 'String - Multiple Lines':
         return (
           <div key={field.id}>
-            <Textarea
+            <Input
+              inputType="textarea"
               value={formFieldsState[field.name]}
               onChange={(e) => handleFormData(e.target?.value, field.name)}
             />
