@@ -38,6 +38,18 @@ export const SaaSTheme = ({
             <title>{data.title}</title>
             <meta name="Description" content={data.metaDescription} />
             <meta name="theme-color" content={rootModelData.primary} />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href={rootModelData.favicon32}
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href={rootModelData.favicon16}
+            />
             {/* Load google fonts */}
             <link
               href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
@@ -62,7 +74,7 @@ export const SaaSTheme = ({
                 ))}
             <BCLink />
             {rootModelData.whatsappPhone ? (
-              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone}/>
+              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
             ) : null}
           </ContentWrapper>
         </Fragment>

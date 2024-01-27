@@ -38,6 +38,18 @@ export const PortfolioTheme = ({
             <title>{data.title}</title>
             <meta name="Description" content={data.metaDescription} />
             <meta name="theme-color" content="#ec5555" />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href={rootModelData.favicon32}
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href={rootModelData.favicon16}
+            />
             {/* Load google fonts */}
             <link
               href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,600,700,800|Roboto:300,400,400i,500,700,900"
