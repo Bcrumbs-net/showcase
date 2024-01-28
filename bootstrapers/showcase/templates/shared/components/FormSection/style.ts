@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { themeGet } from 'styled-system';
 import mapImage from '../../../../assets/image/charity/map-alt.png';
 
@@ -181,17 +181,35 @@ export const RequiredFields = styled.div`
     }
 }
 `;
+export const SuccessMessage = styled.div`
+  background-color: white;
+  color: green;
+  border-radius: 0 0 10px 10px;
+  font-size: 24px; 
+  font-weight: 600;
+  padding: 20px; 
+  margin-bottom:50px;
+`;
+export const FailureMessage = styled.div`
+  background-color: white;
+  color: red;
+  border-radius: 0 0 10px 10px;
+  font-size: 24px; 
+  font-weight: 600;
+  padding: 20px; 
+  margin-bottom:50px;
+`;
 
 export const ContactForm = styled.form`
-  padding: 50px;
-  border-radius: 10px;
+  padding: 50px 0px 50px 50px;
+  border-radius: 10px 10px 0 0;
   background-color: ${themeGet('colors.white', '#ffffff')};
   height: 100%;
   @media only screen and (max-width: 1440px) {
     padding: 50px 45px;
   }
   @media only screen and (max-width: 1360px) {
-    padding: 40px 35px;
+    padding: 40px 35px 0px 35px;
   }
   @media only screen and (max-width: 991px) {
     padding: 30px 20px;
@@ -238,7 +256,6 @@ export const ContactForm = styled.form`
       margin-bottom: 10px;
     }
   }
-
   textarea {
     width: 100%;
     max-width: 100%;
@@ -385,7 +402,7 @@ export const SubmitButton = styled.button`
   position: relative;
   overflow: hidden;
   z-index: 0;
-  margin: 40px 0px 20px 0px;
+  margin: 40px 0px -50px 0px;
   text-transform: uppercase;
   @media only screen and (max-width: 1440px) {
     font-size: 18px;
@@ -459,6 +476,19 @@ export const SubmitButton = styled.button`
     }
   }
 `;
+const spinAnimation = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
 
+export const Loader = styled.div`
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  border-top: 2px solid #fff; 
+  animation: ${spinAnimation} 1s linear infinite;
+`;
 
 export default SectionWrapper;

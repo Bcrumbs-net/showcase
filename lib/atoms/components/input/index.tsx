@@ -92,11 +92,12 @@ export const Input = ({
 
   // handle input value
   const handleOnChange = (event: any) => {
+    const inputValue = event.target.value;
     setState({
       ...state,
-      value: event.target.value,
+      value: inputValue,
     });
-    onChange?.(event.target.value);
+    onChange?.(inputValue);  // Pass the input value to the parent component
   };
 
   // get input focus class

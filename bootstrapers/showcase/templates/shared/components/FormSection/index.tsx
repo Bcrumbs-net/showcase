@@ -16,6 +16,8 @@ import SectionWrapper, {
   ContactForm,
   SubmitButton,
   RequiredFields,
+  SuccessMessage,
+  FailureMessage
 } from './style';
 import { Icon } from 'react-icons-kit';
 import { mapMarker } from 'react-icons-kit/fa/mapMarker';
@@ -44,6 +46,8 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
   const [state, setState] = useState({
     submitted: false,
     isFormValid: false,
+    isSuccess: false,
+
   });
   const { loading, formData, error } = useFormQuery(data.formID);
 
@@ -72,16 +76,15 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
       ...prevFieldsState,
       [name]: value,
     }));
-
     setState({
       ...state,
       submitted: false,
     });
   };
-  const handleContact = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const payload = new URLSearchParams();
+    const payload = new FormData();
     Object.keys(formFieldsState).forEach((key) => {
       payload.append(key, formFieldsState[key]);
     });
@@ -94,13 +97,14 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
       body: payload,
     })
       .then((res) => {
-        if (res.ok) return setState({ submitted: true, isFormValid: true });
+        if (res.ok) return setState({ submitted: true, isFormValid: true, isSuccess: true });
 
         else return '';
       })
       .catch((error) => {
-        setFailureMessage(data.failureMessage + ': ' + error);
-        setState({ submitted: true, isFormValid: false });
+        console.log('Failure Submit: ', error);
+        setFailureMessage(data.failureMessage);
+        setState({ submitted: true, isFormValid: false, isSuccess: false });
       });
   };
 
@@ -117,58 +121,42 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
     console.log(`Form with ID {data.formID} does not exist`);
     return null;
   }
-  
-  const renderField = (field, formFieldsState, handleFormData) => {
+
+  const renderField = (field, formFieldsState, handleFormData, isSuccess) => {
+    const commonProps = {
+      value: formFieldsState[field.name],
+      onChange: (value) => handleFormData(value, field.name),
+      disabled: isSuccess,
+    };
     switch (field.type) {
       case 'String':
         return (
           <div key={field.id}>
-            <Input
-              inputType='text'
-              value={formFieldsState[field.name]}
-              onChange={(e) => handleFormData(e.target?.value, field.name)}
-            />
+            <Input inputType='text' {...commonProps} />
           </div>
         );
       case 'Date':
         return (
           <div key={field.id}>
-            <Input
-              inputType="date"
-              value={formFieldsState[field.name]}
-              onChange={(e) => handleFormData(e.target?.value, field.name)}
-            />
+            <Input inputType="date" {...commonProps} />
           </div>
         );
       case 'Number':
         return (
           <div key={field.id}>
-            <Input
-              inputType="number"
-              value={formFieldsState[field.name]}
-              onChange={(e) => handleFormData(e.target?.value, field.name)}
-            />
+            <Input inputType="number" {...commonProps} />
           </div>
         );
       case 'Password':
         return (
           <div key={field.id}>
-            <Input
-              inputType="password"
-              value={formFieldsState[field.name]}
-              onChange={(e) => handleFormData(e.target?.value, field.name)}
-              passwordShowHide={false}
-            />
+            <Input inputType="password" {...commonProps} passwordShowHide={false} />
           </div>
         );
       case 'String - Multiple Lines':
         return (
           <div key={field.id}>
-            <Input
-              inputType="textarea"
-              value={formFieldsState[field.name]}
-              onChange={(e) => handleFormData(e.target?.value, field.name)}
-            />
+            <Input inputType="textarea" {...commonProps} />
           </div>
         );
       case 'Predefined List':
@@ -181,6 +169,7 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
                 { label: `Select ${field.name}`, value: '', isDisabled: true },
                 ...field.choices.map((choice) => ({ label: choice, value: choice })),
               ]}
+              isDisabled={isSuccess}
             />
           </div>
         );
@@ -194,15 +183,16 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
                 htmlFor={choice}
                 value={choice}
                 labelText={choice}
-                checked={formFieldsState[field.name]?.includes(choice)}
-                onChange={(checked) => {
+                isChecked={formFieldsState[field.name]?.includes(choice)}
+                onChange={(isChecked) => {
                   handleFormData(
-                    checked
+                    isChecked
                       ? [...formFieldsState[field.name], choice]
                       : formFieldsState[field.name].filter((item) => item !== choice),
                     field.name
                   );
                 }}
+                disabled={isSuccess}
               />
             ))}
           </div>
@@ -218,8 +208,9 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
                 labelText={choice}
                 value={choice}
                 labelPosition='right'
-                checked={formFieldsState[field.name] === choice}
+                isChecked={formFieldsState[field.name] === choice}
                 onChange={() => handleFormData(choice, field.name)}
+                disabled={isSuccess}
               />
             ))}
           </div>
@@ -228,73 +219,59 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
         return null;
     }
   };
-
+  const form = (
+    <ContactForm onSubmit={(e) => handleSubmit(e)}>
+      {formData.formFields &&
+        Array.isArray(formData.formFields) &&
+        formData.formFields.filter((field) => !field.invisible && !field.required)
+          .map((field) => (
+            <div key={field.id}>
+              <label>{field.name}</label>
+              {renderField(field, formFieldsState, handleFormData, state.isSuccess)}
+            </div>
+          ))}
+      {formData.formFields &&
+        Array.isArray(formData.formFields) &&
+        formData.formFields.filter((field) => !field.invisible && field.required)
+          .map((field) => (
+            <RequiredFields key={field.id} >
+              <div>
+                <label className='required-label'>{field.name}</label>
+                {renderField(field, formFieldsState, handleFormData, state.isSuccess)}
+              </div>
+            </RequiredFields>
+          ))}
+      <SubmitButton type="submit" disabled={!state.isFormValid || state.isSuccess}>
+        {formData.submitButtonLabel}
+      </SubmitButton>
+    </ContactForm>
+  );
   return (
     <SectionWrapper id={model.name} background={data.backgroundImage}>
       <Container>
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <Heading>{data.title}</Heading>
-
             {state.submitted ? (
               <>
                 {failureMessage ? (
-                  <ContactForm onSubmit={(e) => handleContact(e)}>
-                    {formData.formFields &&
-                      Array.isArray(formData.formFields) &&
-                      formData.formFields.filter((field) => !field.invisible && !field.required)
-                        .map((field) => (
-                          <div key={field.id}>
-                            <label>{field.name}</label>
-                            {renderField(field, formFieldsState, handleFormData)}
-                          </div>
-                        ))}
-                    {formData.formFields &&
-                      Array.isArray(formData.formFields) &&
-                      formData.formFields.filter((field) => !field.invisible && field.required)
-                        .map((field) => (
-                          <RequiredFields key={field.id} >
-                            <div>
-                              <label className='required-label'>{field.name}</label>
-                              {renderField(field, formFieldsState, handleFormData)}
-                            </div>
-                          </RequiredFields>
-                        ))}
-                    <SubmitButton type="submit" disabled={!state.isFormValid}>
-                      {formData.submitButtonLabel}
-                    </SubmitButton>
-                    <Text content={failureMessage} />
-                  </ContactForm>
+                  <>
+                    {form}
+                    <FailureMessage>
+                      < Text content={failureMessage} />
+                    </FailureMessage>
+                  </>
                 ) : (
-                  <Text content={data.successMessage} />
+                  <>
+                    {form}
+                    < SuccessMessage >
+                      <Text content={data.successMessage} />
+                    </SuccessMessage>
+                  </>
                 )}
               </>
             ) : (
-              <ContactForm onSubmit={(e) => handleContact(e)}>
-                {formData.formFields &&
-                  Array.isArray(formData.formFields) &&
-                  formData.formFields.filter((field) => !field.invisible && !field.required)
-                    .map((field) => (
-                      <div key={field.id}>
-                        <label>{field.name}</label>
-                        {renderField(field, formFieldsState, handleFormData)}
-                      </div>
-                    ))}
-                {formData.formFields &&
-                  Array.isArray(formData.formFields) &&
-                  formData.formFields.filter((field) => !field.invisible && field.required)
-                    .map((field) => (
-                      <RequiredFields key={field.id} >
-                        <div>
-                          <label className='required-label'>{field.name}</label>
-                          {renderField(field, formFieldsState, handleFormData)}
-                        </div>
-                      </RequiredFields>
-                    ))}
-                <SubmitButton type="submit" disabled={!state.isFormValid}>
-                  {formData.submitButtonLabel}
-                </SubmitButton>
-              </ContactForm>
+              form
             )}
           </Box>
         </Box>
