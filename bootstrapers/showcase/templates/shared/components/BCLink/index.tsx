@@ -11,9 +11,9 @@ const BCLink = () => {
             src="https://cdn.dconfig.com/globalresources/1132/Resources/logo/BC Small icon.png"
             width="16"
             height="16"
+            alt="BC"
           />
         </div>
-        {/*<img src="https://cdn.bcrumbs.net/bc-assets/logo/logo.svg" width="10" />*/}
       </a>
     </BCLinkWrapper>
   );
