@@ -8,7 +8,9 @@ const SelectStyle = styled.div<{ as?: string }>`
     font-size: ${themeGet('fontSizes.4', '16')}px;
     font-weight: ${themeGet('fontWeights.4', '500')};
   }
-
+  border-radius: 6px;
+  box-sizing: border-box;
+  border: 1px solid ${themeGet('colors.inactiveIcon', ' #a4a4a4')};
   /* Select label style when labelPosition on left */
   &.label_left {
     display: flex;

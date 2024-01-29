@@ -7,6 +7,7 @@ export interface RadioProps {
     className?: string;
     /** labelText of the radio field */
     labelText?: string;
+    key?:string;
     /**
      * Note: id and htmlFor must be same.
      */

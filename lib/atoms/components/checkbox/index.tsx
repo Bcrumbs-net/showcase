@@ -5,6 +5,7 @@ import CheckBoxStyle from './checkbox.style';
 export interface CheckboxProps {
     /** ClassName of the Checkbox */
     className?: string;
+    key?:string;
     /** labelText of the checkbox field */
     labelText?: string;
     /**
