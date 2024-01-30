@@ -16,6 +16,8 @@ const CheckBoxStyle = styled.div`
     label {
       display: flex;
       align-items: center;
+      margin-inline: 0px 50px;
+      margin-block:7px 10px;
       .reusecore__field-label {
         margin-right: ${themeGet('space.3', '10')}px;
       }
@@ -28,7 +30,8 @@ const CheckBoxStyle = styled.div`
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
-
+      margin-inline: 0px 50px;
+      margin-block:7px 10px;
       .reusecore__field-label {
         margin-left: ${themeGet('space.3', '10')}px;
       }

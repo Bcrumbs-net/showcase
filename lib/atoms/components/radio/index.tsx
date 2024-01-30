@@ -7,6 +7,7 @@ export interface RadioProps {
     className?: string;
     /** labelText of the radio field */
     labelText?: string;
+    key?:string;
     /**
      * Note: id and htmlFor must be same.
      */
@@ -22,6 +23,7 @@ export interface RadioProps {
     /** disabled of the radio field */
     disabled?: boolean;
     isMaterial?: boolean;
+    onChange?: (value: string) => void;
 }
 
 export const Radio = ({
@@ -34,10 +36,9 @@ export const Radio = ({
   isMaterial,
   labelPosition,
   disabled,
+  onChange,
   ...props
 }: RadioProps) => {
-  // use toggle hooks
-  const [toggleValue, toggleHandler] = useToggle(isChecked);
 
   // Add all classs to an array
   const addAllClasses = ['reusecore__radio'];
@@ -73,8 +74,12 @@ export const Radio = ({
           className="radio"
           id={id?.toString()}
           value={value}
-          checked={toggleValue}
-          onChange={toggleHandler}
+          checked={isChecked}
+          onChange={() => {
+            if (onChange) {
+              onChange(value);
+            }
+          }}
           disabled={disabled}
           {...props}
         />
