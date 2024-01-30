@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { themeGet } from 'styled-system';
 import mapImage from '../../../../assets/image/charity/map-alt.png';
 
@@ -164,31 +164,66 @@ export const ButtonGroup = styled.div`
   }
 `;
 
+export const RequiredFields = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: 0px;
+    position: relative;
+  
+    &.required-label::after {
+      content: ' *'; 
+      color: red; 
+      position: absolute;
+      top: 0;
+      right: -10px;
+    }
+}
+`;
 export const ContactForm = styled.form`
   padding: 50px;
-  border-radius: 10px;
+  border-radius: 10px ;
   background-color: ${themeGet('colors.white', '#ffffff')};
   height: 100%;
+  .success{
+    color: green;
+    font-size: 24px; 
+    font-weight: 600;
+    margin-top:30px;
+
+  }
+  .failure{
+    color: red;
+    font-size: 24px; 
+    font-weight: 600;
+    margin-top:30px;
+  }
+.label{
+  margin-top:10px;
+}
   @media only screen and (max-width: 1440px) {
     padding: 50px 45px;
+
   }
   @media only screen and (max-width: 1360px) {
-    padding: 40px 35px;
+    padding: 50px 45px;
+
   }
   @media only screen and (max-width: 991px) {
-    padding: 30px 20px;
+    padding: 10px 20px;
+
   }
   @media only screen and (max-width: 480px) {
     margin-top: 20px;
   }
-
   input {
     width: 100%;
     height: 50px;
     font-size: 16px;
     font-weight: 600;
     padding: 0 20px;
-    border: 2px solid #f2f2f2;
+    border: 2px solid  #adadad;
     border-right-width: 1px;
     border-radius: 10px;
     color: #294859;
@@ -220,7 +255,6 @@ export const ContactForm = styled.form`
       margin-bottom: 10px;
     }
   }
-
   textarea {
     width: 100%;
     max-width: 100%;
@@ -228,7 +262,7 @@ export const ContactForm = styled.form`
     font-size: 16px;
     font-weight: 600;
     padding: 20px;
-    border: 2px solid #f2f2f2;
+    border: 2px solid  #adadad;
     border-right-width: 1px;
     border-radius: 10px;
     color: #294859;
@@ -366,8 +400,8 @@ export const SubmitButton = styled.button`
   background-color: ${themeGet('colors.primary', '#1C7C0C')};
   position: relative;
   overflow: hidden;
-  z-index: 1;
-  margin: 25px 0;
+  z-index: 0;
+  margin: 40px 0px 0px 0px;
   text-transform: uppercase;
   @media only screen and (max-width: 1440px) {
     font-size: 18px;
@@ -419,6 +453,19 @@ export const SubmitButton = styled.button`
       );
     }
   }
+  ${(props) =>
+    props.disabled &&
+    css`
+      cursor: not-allowed;
+      opacity: 0.5; 
+      &:hover {
+        &::before {
+          left: -100%;
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+    `}
 
   &:hover {
     &::before {

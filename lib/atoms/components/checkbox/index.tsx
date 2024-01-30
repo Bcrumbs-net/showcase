@@ -5,6 +5,7 @@ import CheckBoxStyle from './checkbox.style';
 export interface CheckboxProps {
     /** ClassName of the Checkbox */
     className?: string;
+    key?:string;
     /** labelText of the checkbox field */
     labelText?: string;
     /**
@@ -23,6 +24,7 @@ export interface CheckboxProps {
     disabled?: boolean;
     /** isMaterial of the checkbox field */
     isMaterial?: boolean;
+    onChange?: (isChecked: boolean) => void;
 }
 
 export const CheckBox = ({
@@ -35,10 +37,10 @@ export const CheckBox = ({
   labelPosition,
   isMaterial,
   disabled,
+  onChange,
   ...props
 }: CheckboxProps) => {
   // use toggle hooks
-  const [toggleValue, toggleHandler] = useToggle(isChecked);
 
   // Add all classs to an array
   const addAllClasses = ['reusecore__checkbox'];
@@ -74,8 +76,12 @@ export const CheckBox = ({
           className="checkbox"
           id={id?.toString()}
           value={value}
-          checked={toggleValue}
-          onChange={toggleHandler}
+          checked={isChecked}
+          onChange={() => {
+            if (onChange) {
+              onChange(!isChecked);
+            }
+          }}
           disabled={disabled}
           {...props}
         />
