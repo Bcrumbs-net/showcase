@@ -1,14 +1,6 @@
 import { useEffect, useState } from 'react';
-import {
-  Box,
-  Text,
-  Container,
-} from '../../../../../../lib/atoms';
-import SectionWrapper, {
-  Heading,
-  ContactForm,
-  SubmitButton,
-} from './style';
+import { Box, Text, Container } from '../../../../../../lib/atoms';
+import SectionWrapper, { Heading, ContactForm, SubmitButton } from './style';
 import withModelToDataObjProp from '../../../../utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import React from 'react';
@@ -30,7 +22,6 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
     submitted: false,
     isFormValid: false,
     isSuccess: false,
-
   });
   const { loading, formData, error } = useFormQuery(data.formID);
 
@@ -41,7 +32,6 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
         return acc;
       }, {});
       setFormFieldsState(initialState);
-
     }
   }, [formData]);
   useEffect(() => {
@@ -80,8 +70,12 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
       body: payload,
     })
       .then((res) => {
-        if (res.ok) return setState({ submitted: true, isFormValid: true, isSuccess: true });
-
+        if (res.ok)
+          return setState({
+            submitted: true,
+            isFormValid: true,
+            isSuccess: true,
+          });
         else return '';
       })
       .catch((error) => {
@@ -109,16 +103,26 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
     <>
       {formData.formFields &&
         Array.isArray(formData.formFields) &&
-        formData.formFields.filter((field) => !field.invisible)
-          .map((field) => (
-            <FormInput field={field} formFieldsState={formFieldsState} handleFormData={handleFormData} state={state} />
-          ))
-      }
-      <SubmitButton type="submit" disabled={!state.isFormValid || state.isSuccess}>
+        formData.formFields
+          .filter((field) => !field.invisible)
+          .map((field, index) => (
+            <FormInput
+              key={`FormInput_${index}`}
+              field={field}
+              formFieldsState={formFieldsState}
+              handleFormData={handleFormData}
+              state={state}
+            />
+          ))}
+      <SubmitButton
+        type="submit"
+        disabled={!state.isFormValid || state.isSuccess}
+      >
         {formData.submitButtonLabel}
-      </SubmitButton >
+      </SubmitButton>
     </>
   );
+  
   return (
     <SectionWrapper id={model.name} background={data.backgroundImage}>
       <Container>
@@ -131,19 +135,19 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
                   {failureMessage ? (
                     <>
                       {form}
-                        <Text className='failure' content={failureMessage} />
+                      <Text className="failure" content={failureMessage} />
                     </>
                   ) : (
                     <>
                       {form}
-                        <Text className='success' content={data.successMessage} />
+                      <Text className="success" content={data.successMessage} />
                     </>
                   )}
                 </>
               ) : (
                 form
               )}
-            </ContactForm >
+            </ContactForm>
           </Box>
         </Box>
       </Container>
