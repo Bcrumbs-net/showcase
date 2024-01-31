@@ -6,14 +6,14 @@ interface FormFieldType {
   id: string;
   name: string;
   type:
-    | 'String'
-    | 'Date'
-    | 'Number'
-    | 'Password'
-    | 'String - Multiple Lines'
-    | 'Predefined List'
-    | 'Predefined List - Checkboxes'
-    | 'Predefined List - Radio Buttons';
+  | 'String'
+  | 'Date'
+  | 'Number'
+  | 'Password'
+  | 'String - Multiple Lines'
+  | 'Predefined List'
+  | 'Predefined List - Checkboxes'
+  | 'Predefined List - Radio Buttons';
   invisible?: boolean;
   required?: boolean;
   choices?: string[];
@@ -28,9 +28,10 @@ interface FormInputProps {
     isFormValid: boolean;
     submitted: boolean;
   };
+  isAR: boolean;
 }
 
-const renderField = (field, formFieldsState, handleFormData, isSuccess) => {
+const renderField = (field, formFieldsState, handleFormData, isSuccess, isAR) => {
   const commonProps = {
     value: formFieldsState[field.name],
     onChange: (value) => handleFormData(value, field.name),
@@ -46,7 +47,8 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess) => {
     case 'Date':
       return (
         <div key={field.id}>
-          <Input inputType="date" {...commonProps} />
+          <Input
+            inputType="date" {...commonProps} />
         </div>
       );
     case 'Number':
@@ -75,6 +77,7 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess) => {
       return (
         <div key={field.id}>
           <Select
+            className='select_wrapper'
             value={{
               label: formFieldsState[field.name],
               value: formFieldsState[field.name],
@@ -98,19 +101,21 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess) => {
         <div key={field.id}>
           {field.choices.map((choice) => (
             <CheckBox
+              className='checkbox_group'
               key={choice}
               id={choice}
               htmlFor={choice}
               value={choice}
               labelText={choice}
+              labelPosition={isAR ? 'left' : 'right'}
               isChecked={formFieldsState[field.name]?.includes(choice)}
               onChange={(isChecked) => {
                 handleFormData(
                   isChecked
                     ? [...formFieldsState[field.name], choice]
                     : formFieldsState[field.name].filter(
-                        (item) => item !== choice
-                      ),
+                      (item) => item !== choice
+                    ),
                   field.name
                 );
               }}
@@ -124,11 +129,12 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess) => {
         <div key={field.id}>
           {field.choices.map((choice) => (
             <Radio
+              className='radio_group'
               key={choice}
               id={choice}
               labelText={choice}
               value={choice}
-              labelPosition="right"
+              labelPosition={isAR ? 'left' : 'right'}
               isChecked={formFieldsState[field.name] === choice}
               onChange={() => handleFormData(choice, field.name)}
               disabled={isSuccess}
@@ -146,22 +152,23 @@ const FormInput: React.FC<FormInputProps> = ({
   formFieldsState,
   handleFormData,
   state,
+  isAR
 }) => {
   if (field.required) {
     return (
-      <RequiredFields key={field.id}>
+      <RequiredFields key={field.id} isAR={isAR}>
         <div>
           <label className="required-label">{field.name}</label>
-          {renderField(field, formFieldsState, handleFormData, state.isSuccess)}
+          {renderField(field, formFieldsState, handleFormData, state.isSuccess, isAR)}
         </div>
       </RequiredFields>
     );
   }
 
   return (
-    <div key={field.id} className="label">
-      <label>{field.name}</label>
-      {renderField(field, formFieldsState, handleFormData, state.isSuccess)}
+    <div key={field.id}>
+      <label className="label">{field.name}</label>
+      {renderField(field, formFieldsState, handleFormData, state.isSuccess, isAR)}
     </div>
   );
 };

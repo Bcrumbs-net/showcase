@@ -15,7 +15,8 @@ interface FormSectionProps {
   data: Record<string, string>;
 }
 
-const FormSection = ({ row, col, model, data }: FormSectionProps) => {
+const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
+  isAR = true;
   const [formFieldsState, setFormFieldsState] = useState({});
   const [failureMessage, setFailureMessage] = useState('');
   const [state, setState] = useState({
@@ -112,6 +113,7 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
               formFieldsState={formFieldsState}
               handleFormData={handleFormData}
               state={state}
+              isAR={isAR}
             />
           ))}
       <SubmitButton
@@ -122,14 +124,14 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
       </SubmitButton>
     </>
   );
-  
+
   return (
     <SectionWrapper id={model.name} background={data.backgroundImage}>
       <Container>
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <Heading>{data.title}</Heading>
-            <ContactForm onSubmit={(e) => handleSubmit(e)}>
+            <ContactForm onSubmit={(e) => handleSubmit(e)} style={{ textAlign: isAR ? 'right' : 'left' }}>
               {state.submitted ? (
                 <>
                   {failureMessage ? (

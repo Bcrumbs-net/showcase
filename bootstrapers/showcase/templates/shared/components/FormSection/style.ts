@@ -164,22 +164,35 @@ export const ButtonGroup = styled.div`
   }
 `;
 
-export const RequiredFields = styled.div`
+export const RequiredFields = styled.div<{ isAR?: boolean }>`
   display: flex;
   flex-direction: column;
-
   label {
-    margin-bottom: 0px;
+    margin: 10px 0 20px 0;
+    padding: 0 5px;
     position: relative;
-  
-    &.required-label::after {
-      content: ' *'; 
-      color: red; 
-      position: absolute;
-      top: 0;
-      right: -10px;
-    }
-}
+    font-size:21px;
+    font-weight: 600;
+    &.required-label {
+      ${props => props.isAR ? `
+        &::before {
+          content: '* ';
+          color: red;
+          position: absolute;
+          top: 0;
+          left: -10px;
+        }
+      ` : `
+        &::after {
+          content: ' *';
+          color: red;
+          position: absolute;
+          top: 0;
+          right: -10px;
+        }
+      `}
+  }
+ }
 `;
 export const ContactForm = styled.form`
   padding: 50px;
@@ -200,7 +213,11 @@ export const ContactForm = styled.form`
     margin-top:30px;
   }
 .label{
-  margin-top:10px;
+  margin-bottom:20px;
+  padding: 0 5px;
+  font-size:21px;
+  font-weight: 600;
+
 }
   @media only screen and (max-width: 1440px) {
     padding: 50px 45px;
@@ -227,7 +244,7 @@ export const ContactForm = styled.form`
     border-right-width: 1px;
     border-radius: 10px;
     color: #294859;
-    margin: 10px 0;
+    margin: 10px 0 30px 0;
     @media only screen and (max-width: 1440px) {
       font-size: 14px;
       height: 60px;
@@ -265,8 +282,8 @@ export const ContactForm = styled.form`
     border: 2px solid  #adadad;
     border-right-width: 1px;
     border-radius: 10px;
-    color: #294859;
-    margin: 10px 0;
+    color: #294859;    
+    margin: 10px 0 30px 0;
     @media only screen and (max-width: 1440px) {
       font-size: 14px;
       height: 60px;
@@ -295,12 +312,13 @@ export const ContactForm = styled.form`
     }
   }
 
-  .select_wrapper {
+  .select_wrapper {   
+    margin: 10px 0 30px 0;
     @media only screen and (max-width: 1360px) {
-      width: 140px;
+      width: 100%;
     }
     @media only screen and (max-width: 480px) {
-      width: 110px;
+      width: 100%;
     }
     .current_option {
       @media only screen and (max-width: 1360px) {
@@ -332,24 +350,21 @@ export const ContactForm = styled.form`
       }
     }
   }
-
-  .radio_group {
-    margin-top: 50px;
-    @media only screen and (max-width: 1440px) {
-      margin-top: 45px;
+  .checkbox_group{
+    margin: 10px 0 30px 0;
+    label {
+      margin:0px 10px 0px 10px;
     }
-    @media only screen and (max-width: 1360px) {
-      margin-top: 35px;
-    }
-    @media only screen and (max-width: 991px) {
-      margin-top: 25px;
-    }
+  }
+  .radio_group {   
+    margin: 10px 0 30px 0;
     @media only screen and (max-width: 480px) {
       flex-direction: column;
       margin: 0;
     }
 
     label {
+      margin:0px 10px 0px 10px;
       @media only screen and (max-width: 1360px) {
         padding: 10px 15px;
       }
