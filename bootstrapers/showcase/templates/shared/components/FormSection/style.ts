@@ -194,7 +194,12 @@ export const RequiredFields = styled.div<{ isAR?: boolean }>`
   }
  }
 `;
-export const ContactForm = styled.form`
+export const ContactForm = styled.form<{ isAR?: boolean }>`
+  ${props => props.isAR ? `
+    text-align: right;
+      ` : `
+    text-align: left;
+  `}
   padding: 50px;
   border-radius: 10px ;
   background-color: ${themeGet('colors.white', '#ffffff')};
@@ -313,6 +318,11 @@ export const ContactForm = styled.form`
   }
 
   .select_wrapper {   
+    ${props => props.isAR ? `
+      direction: rtl;
+        ` : `
+      direction: ltr;
+   `}
     margin: 10px 0 30px 0;
     @media only screen and (max-width: 1360px) {
       width: 100%;
@@ -400,7 +410,7 @@ export const ContactForm = styled.form`
   }
 `;
 
-export const SubmitButton = styled.button`
+export const SubmitButton = styled.button<{ isLoading?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -416,21 +426,25 @@ export const SubmitButton = styled.button`
   position: relative;
   overflow: hidden;
   z-index: 0;
-  margin: 40px 0px 0px 0px;
+  margin: 40px 0 0 0;
   text-transform: uppercase;
+
   @media only screen and (max-width: 1440px) {
     font-size: 18px;
     height: 60px;
   }
+
   @media only screen and (max-width: 1360px) {
     font-size: 16px;
     height: 56px;
   }
+
   @media only screen and (max-width: 991px) {
     font-size: 14px;
     height: 54px;
     border-radius: 5px;
   }
+
   @media only screen and (max-width: 480px) {
     margin: 20px 0;
   }
@@ -452,19 +466,20 @@ export const SubmitButton = styled.button`
     visibility: hidden;
     background: repeating-linear-gradient(
       -45deg,
-      ${themeGet('colors.secondary', '#117600')},
-      ${themeGet('colors.secondary', '#117600')} 10px,
-      ${themeGet('colors.secondaryHover', '#FF282F')} 10px,
-      ${themeGet('colors.secondaryHover', '#FF282F')} 20px
+      ${({ theme }) => theme.colors.secondary || '#117600'},
+      ${({ theme }) => theme.colors.secondary || '#117600'} 10px,
+      ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 10px,
+      ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 20px
     );
     transition: all 0.45s ease;
+
     @media only screen and (max-width: 1440px) {
       background: repeating-linear-gradient(
         -45deg,
-        ${themeGet('colors.secondary', '#117600')},
-        ${themeGet('colors.secondary', '#117600')} 8px,
-        ${themeGet('colors.secondaryHover', '#FF282F')} 8px,
-        ${themeGet('colors.secondaryHover', '#FF282F')} 16px
+        ${({ theme }) => theme.colors.secondary || '#117600'},
+        ${({ theme }) => theme.colors.secondary || '#117600'} 8px,
+        ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 8px,
+        ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 16px
       );
     }
   }
@@ -491,4 +506,25 @@ export const SubmitButton = styled.button`
   }
 `;
 
+export const Loader = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid ${({ theme }) => theme.colors.white || '#ffffff'};
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+`;
 export default SectionWrapper;

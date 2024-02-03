@@ -19,6 +19,7 @@ export interface SelectProps {
   onChange: (selectedOption: Option | null) => any;
   options: Option[];
   isDisabled: boolean;
+  isAR?:boolean;
 }
 
 export const Select = ({
