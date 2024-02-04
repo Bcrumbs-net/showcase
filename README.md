@@ -24,6 +24,9 @@ In case you want a cloud version of Showcase with headless CMS to manage your da
 - [Contents](#contents)
 - [Features](#features)
 - [Running locally](#running-locally)
+- [Your data on our cloud](#your-data-on-our-cloud)
+  - [Testing locally](#testing-locally)
+  - [Deploying the code](#deploying-the-code)
 - [Create your own theme](#create-your-own-theme)
 - [Create your own section](#create-your-own-section)
 - [Community \& Support](#community--support)
@@ -54,11 +57,13 @@ Or
 yarn run dev
 ```
 
+## Your data on our cloud
+
+### Testing locally
 If you stored your data on a Showcase headless CMS account, you can tell the code to fetch the data from that account by adding your domain linked to that account as a query-string parameter in the URL:
 ```
 http://localhost:3000/?host=<your-domain>
 ```
-
 In order to build the project you can use:
 ```console
 npm run build
@@ -72,6 +77,13 @@ Also you have the option to build the project as a Docker image by using the nex
 ```console
 docker build .
 ```
+
+You can render a section using a specific content by using the `RenderSectionWithContent`, as the next example:
+--example will be added soon--
+
+
+### Deploying the code
+--will be added soon (we should explain how the custom website should be linked to our CMS)--
 
 ## Create your own theme
 --will be added soon--
