@@ -61,7 +61,7 @@ export const Input = ({
   const [state, setState] = useState({
     toggle: false,
     focus: false,
-    value: '',
+    value: value,
   });
 
   // toggle function
