@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Box, Text, Container } from '../../../../../../lib/atoms';
-import SectionWrapper, { Heading, ContactForm, SubmitButton, Loader } from './style';
+import SectionWrapper, {
+  Heading,
+  ContactForm,
+  SubmitButton,
+  Loader,
+} from './style';
 import withModelToDataObjProp from '../../../../utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import React from 'react';
@@ -35,6 +40,7 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
       setFormFieldsState(initialState);
     }
   }, [formData]);
+
   useEffect(() => {
     const isFormValid = Object.entries(formFieldsState).every(
       ([name, value]: [string, string]) => {
@@ -55,6 +61,7 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
       submitted: false,
     });
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -113,13 +120,13 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
     return null;
   }
 
-
   const form = (
     <>
       {formData.formFields &&
         Array.isArray(formData.formFields) &&
         formData.formFields
           .filter((field) => !field.invisible)
+          .sort((f1, f2) => (f1.priority > f2.priority ? 1 : -1))
           .map((field, index) => (
             <FormInput
               key={`FormInput_${index}`}
@@ -130,12 +137,12 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
               isAR={isAR}
             />
           ))}
-      <SubmitButton type="submit" isLoading={isLoading} disabled={!state.isFormValid || state.isSuccess || isLoading}>
-        {isLoading ? (
-          isLoading && <Loader />
-        ) : (
-          formData.submitButtonLabel
-        )}
+      <SubmitButton
+        type="submit"
+        isLoading={isLoading}
+        disabled={!state.isFormValid || state.isSuccess || isLoading}
+      >
+        {isLoading ? isLoading && <Loader /> : formData.submitButtonLabel}
       </SubmitButton>
     </>
   );
