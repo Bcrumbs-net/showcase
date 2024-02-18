@@ -4,9 +4,9 @@ const BCLinkWrapper = styled.div`
   position: fixed !important;
   z-index: 2147483647 !important;
   top: auto !important;
-  right: 10px !important;
+  left: 10px !important;
   bottom: 10px !important;
-  left: auto !important;
+  right: auto !important;
   opacity: 0.8;
   background-color: #fff !important;
   border-radius: 3px !important;

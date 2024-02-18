@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { themeGet } from 'styled-system';
 import mapImage from '../../../../assets/image/charity/map-alt.png';
 
@@ -164,35 +164,92 @@ export const ButtonGroup = styled.div`
   }
 `;
 
-export const ContactForm = styled.form`
+export const RequiredFields = styled.div<{ isAR?: boolean }>`
+  display: flex;
+  flex-direction: column;
+  label {
+    margin: 10px 0 20px 0;
+    padding: 0 5px;
+    position: relative;
+    font-size:21px;
+    font-weight: 600;
+    &.required-label {
+      ${props => props.isAR ? `
+        &::before {
+          content: '* ';
+          color: red;
+          position: absolute;
+          top: 0;
+          left: -10px;
+        }
+      ` : `
+        &::after {
+          content: ' *';
+          color: red;
+          position: absolute;
+          top: 0;
+          right: -10px;
+        }
+      `}
+  }
+ }
+`;
+export const ContactForm = styled.form<{ isAR?: boolean }>`
+  ${props => props.isAR ? `
+    text-align: right;
+      ` : `
+    text-align: left;
+  `}
   padding: 50px;
-  border-radius: 10px;
+  border-radius: 10px ;
   background-color: ${themeGet('colors.white', '#ffffff')};
   height: 100%;
+  .success{
+    color: green;
+    font-size: 24px; 
+    font-weight: 600;
+    margin-top:30px;
+
+  }
+  .failure{
+    color: red;
+    font-size: 24px; 
+    font-weight: 600;
+    margin-top:30px;
+  }
+.label{
+  margin-bottom:20px;
+  padding: 0 5px;
+  font-size:21px;
+  font-weight: 600;
+
+}
   @media only screen and (max-width: 1440px) {
     padding: 50px 45px;
+
   }
   @media only screen and (max-width: 1360px) {
-    padding: 40px 35px;
+    padding: 50px 45px;
+
   }
   @media only screen and (max-width: 991px) {
-    padding: 30px 20px;
+    padding: 10px 20px;
+
   }
   @media only screen and (max-width: 480px) {
     margin-top: 20px;
   }
-
   input {
     width: 100%;
     height: 50px;
     font-size: 16px;
     font-weight: 600;
     padding: 0 20px;
-    border: 2px solid #f2f2f2;
+    border: 2px solid  #adadad;
     border-right-width: 1px;
     border-radius: 10px;
     color: #294859;
-    margin: 10px 0;
+    margin: 10px 0 30px 0;
     @media only screen and (max-width: 1440px) {
       font-size: 14px;
       height: 60px;
@@ -220,7 +277,6 @@ export const ContactForm = styled.form`
       margin-bottom: 10px;
     }
   }
-
   textarea {
     width: 100%;
     max-width: 100%;
@@ -228,11 +284,11 @@ export const ContactForm = styled.form`
     font-size: 16px;
     font-weight: 600;
     padding: 20px;
-    border: 2px solid #f2f2f2;
+    border: 2px solid  #adadad;
     border-right-width: 1px;
     border-radius: 10px;
-    color: #294859;
-    margin: 10px 0;
+    color: #294859;    
+    margin: 10px 0 30px 0;
     @media only screen and (max-width: 1440px) {
       font-size: 14px;
       height: 60px;
@@ -261,12 +317,18 @@ export const ContactForm = styled.form`
     }
   }
 
-  .select_wrapper {
+  .select_wrapper {   
+    ${props => props.isAR ? `
+      direction: rtl;
+        ` : `
+      direction: ltr;
+   `}
+    margin: 10px 0 30px 0;
     @media only screen and (max-width: 1360px) {
-      width: 140px;
+      width: 100%;
     }
     @media only screen and (max-width: 480px) {
-      width: 110px;
+      width: 100%;
     }
     .current_option {
       @media only screen and (max-width: 1360px) {
@@ -298,24 +360,21 @@ export const ContactForm = styled.form`
       }
     }
   }
-
-  .radio_group {
-    margin-top: 50px;
-    @media only screen and (max-width: 1440px) {
-      margin-top: 45px;
+  .checkbox_group{
+    margin: 10px 0 30px 0;
+    label {
+      margin:0px 10px 0px 10px;
     }
-    @media only screen and (max-width: 1360px) {
-      margin-top: 35px;
-    }
-    @media only screen and (max-width: 991px) {
-      margin-top: 25px;
-    }
+  }
+  .radio_group {   
+    margin: 10px 0 30px 0;
     @media only screen and (max-width: 480px) {
       flex-direction: column;
       margin: 0;
     }
 
     label {
+      margin:0px 10px 0px 10px;
       @media only screen and (max-width: 1360px) {
         padding: 10px 15px;
       }
@@ -351,7 +410,7 @@ export const ContactForm = styled.form`
   }
 `;
 
-export const SubmitButton = styled.button`
+export const SubmitButton = styled.button<{ isLoading?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -366,22 +425,26 @@ export const SubmitButton = styled.button`
   background-color: ${themeGet('colors.primary', '#1C7C0C')};
   position: relative;
   overflow: hidden;
-  z-index: 1;
-  margin: 25px 0;
+  z-index: 0;
+  margin: 40px 0 0 0;
   text-transform: uppercase;
+
   @media only screen and (max-width: 1440px) {
     font-size: 18px;
     height: 60px;
   }
+
   @media only screen and (max-width: 1360px) {
     font-size: 16px;
     height: 56px;
   }
+
   @media only screen and (max-width: 991px) {
     font-size: 14px;
     height: 54px;
     border-radius: 5px;
   }
+
   @media only screen and (max-width: 480px) {
     margin: 20px 0;
   }
@@ -403,22 +466,36 @@ export const SubmitButton = styled.button`
     visibility: hidden;
     background: repeating-linear-gradient(
       -45deg,
-      ${themeGet('colors.secondary', '#117600')},
-      ${themeGet('colors.secondary', '#117600')} 10px,
-      ${themeGet('colors.secondaryHover', '#FF282F')} 10px,
-      ${themeGet('colors.secondaryHover', '#FF282F')} 20px
+      ${({ theme }) => theme.colors.secondary || '#117600'},
+      ${({ theme }) => theme.colors.secondary || '#117600'} 10px,
+      ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 10px,
+      ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 20px
     );
     transition: all 0.45s ease;
+
     @media only screen and (max-width: 1440px) {
       background: repeating-linear-gradient(
         -45deg,
-        ${themeGet('colors.secondary', '#117600')},
-        ${themeGet('colors.secondary', '#117600')} 8px,
-        ${themeGet('colors.secondaryHover', '#FF282F')} 8px,
-        ${themeGet('colors.secondaryHover', '#FF282F')} 16px
+        ${({ theme }) => theme.colors.secondary || '#117600'},
+        ${({ theme }) => theme.colors.secondary || '#117600'} 8px,
+        ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 8px,
+        ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 16px
       );
     }
   }
+  ${(props) =>
+    props.disabled &&
+    css`
+      cursor: not-allowed;
+      opacity: 0.5; 
+      &:hover {
+        &::before {
+          left: -100%;
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+    `}
 
   &:hover {
     &::before {
@@ -429,4 +506,25 @@ export const SubmitButton = styled.button`
   }
 `;
 
+export const Loader = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid ${({ theme }) => theme.colors.white || '#ffffff'};
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+`;
 export default SectionWrapper;

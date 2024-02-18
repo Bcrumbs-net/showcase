@@ -5,7 +5,7 @@ const WhatsAppLinkWrapper = styled.div`
   z-index: 2147483647 !important;
   top: auto !important;
   right: 50px !important;
-  bottom: 62px !important;
+  bottom: 24px !important;
   left: auto !important;
   border-radius: 100% !important;
   padding: 1px !important;

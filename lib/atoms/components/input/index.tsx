@@ -16,7 +16,7 @@ export interface InputProps {
   /** Password show hide icon button prop [*only for password field]. */
   passwordShowHide?: boolean;
   /** Set input type of the input element. Default type is text. */
-  inputType?: 'text' | 'email' | 'password' | 'number' | 'textarea';
+  inputType?: 'text' | 'email' | 'password' | 'number' | 'textarea' | 'date';
   /** Add icon in input field. This prop will not work with password
    * and textarea field.
    */
@@ -61,7 +61,7 @@ export const Input = ({
   const [state, setState] = useState({
     toggle: false,
     focus: false,
-    value: '',
+    value: value,
   });
 
   // toggle function
@@ -92,11 +92,12 @@ export const Input = ({
 
   // handle input value
   const handleOnChange = (event: any) => {
+    const inputValue = event.target.value;
     setState({
       ...state,
-      value: event.target.value,
+      value: inputValue,
     });
-    onChange?.(event.target.value);
+    onChange?.(inputValue);  // Pass the input value to the parent component
   };
 
   // get input focus class
@@ -163,7 +164,7 @@ export const Input = ({
             {...props}
             id={htmlFor}
             name={htmlFor}
-            type={state.toggle ? 'password' : 'text'}
+            type={state.toggle ? 'text' : 'password'}
             value={state.value}
             onChange={handleOnChange}
             onBlur={handleOnBlur}

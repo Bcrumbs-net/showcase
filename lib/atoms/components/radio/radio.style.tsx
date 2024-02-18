@@ -9,6 +9,7 @@ const RadioBoxStyle = styled.div`
     color: ${themeGet('colors.textColor', '#484848')};
     font-size: ${themeGet('fontSizes.4', '16')}px;
     font-weight: ${themeGet('fontWeights.4', '500')};
+
   }
 
   /* Switch label style when labelPosition on left */
@@ -16,8 +17,10 @@ const RadioBoxStyle = styled.div`
     label {
       display: flex;
       align-items: center;
+      margin-inline: 0px 50px;
+      margin-block:7px 10px;
       .reusecore__field-label {
-        margin-right: ${themeGet('space.3', '10')}px;
+        margin-right: ${themeGet('space.2', '10')}px;
       }
     }
   }
@@ -28,9 +31,10 @@ const RadioBoxStyle = styled.div`
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
-
+      margin-inline: 0px 50px;
+      margin-block:7px 10px;
       .reusecore__field-label {
-        margin-left: ${themeGet('space.3', '10')}px;
+        margin-left: ${themeGet('space.2', '10')}px;
       }
     }
   }

@@ -1,18 +1,33 @@
 import ReactSelect from 'react-select';
 import SelectStyle from './select.style';
+import React, { ReactNode } from 'react';
 
+interface Option {
+  label: string;
+  value: string;
+}
 /* eslint-disable-next-line */
 export interface SelectProps {
-    /** You can add your custom class for select wrapper component.
-     * note: We manualy add react-select className and classNamePrefix props value */
-    className?: string;
-    /** labelText of the select field */
-    labelText?: string;
-    /** Set label position of the select field. By default it's top */
-    labelPosition?: "top" | "bottom" | "left" | "right";
+  /** You can add your custom class for select wrapper component.
+   * note: We manualy add react-select className and classNamePrefix props value */
+  className?: string;
+  /** labelText of the select field */
+  labelText?: string;
+  /** Set label position of the select field. By default it's top */
+  labelPosition?: "top" | "bottom" | "left" | "right";
+  value?: Option;
+  onChange: (selectedOption: Option | null) => any;
+  options: Option[];
+  isDisabled: boolean;
+  isAR?:boolean;
 }
 
-export const Select = ({ className, labelText, labelPosition, ...props }: SelectProps) => {
+export const Select = ({
+  className,
+  labelText,
+  labelPosition,
+  ...props
+}: SelectProps) => {
   // Add all classes to an array
   const addAllClasses = ['reusecore__select'];
 

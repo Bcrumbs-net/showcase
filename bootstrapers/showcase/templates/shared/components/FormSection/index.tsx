@@ -1,31 +1,16 @@
 import { useEffect, useState } from 'react';
-import {
-  Box,
-  Textarea,
-  Text,
-  Input,
-  Container,
-  Select,
-} from '../../../../../../lib/atoms';
+import { Box, Text, Container } from '../../../../../../lib/atoms';
 import SectionWrapper, {
-  ContentArea,
   Heading,
-  ButtonGroup,
   ContactForm,
   SubmitButton,
+  Loader,
 } from './style';
-import { Icon } from 'react-icons-kit';
-import { mapMarker } from 'react-icons-kit/fa/mapMarker';
-import { phone } from 'react-icons-kit/fa/phone';
-import { facebook } from 'react-icons-kit/fa/facebook';
-import { instagram } from 'react-icons-kit/fa/instagram';
-import { twitter } from 'react-icons-kit/fa/twitter';
-import { youtube } from 'react-icons-kit/fa/youtube';
-import { envelope } from 'react-icons-kit/fa/envelope';
 import withModelToDataObjProp from '../../../../utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import React from 'react';
-import useFormQuery from '../../../../utils/fetchFormData';
+import useFormQuery from '../../../../utils/useFormQuery';
+import FormInput from './FormInput';
 
 interface FormSectionProps {
   row: object;
@@ -35,38 +20,92 @@ interface FormSectionProps {
   data: Record<string, string>;
 }
 
-const FormSection = ({ row, col, model, data }: FormSectionProps) => {
-
+const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
+  const [formFieldsState, setFormFieldsState] = useState({});
+  const [failureMessage, setFailureMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [state, setState] = useState({
     submitted: false,
+    isFormValid: false,
+    isSuccess: false,
   });
-
   const { loading, formData, error } = useFormQuery(data.formID);
+
+  useEffect(() => {
+    if (formData && formData.formFields) {
+      const initialState = formData.formFields.reduce((acc, field) => {
+        acc[field.name] = '';
+        return acc;
+      }, {});
+      setFormFieldsState(initialState);
+    }
+  }, [formData]);
+
+  useEffect(() => {
+    const isFormValid = Object.entries(formFieldsState).every(
+      ([name, value]: [string, string]) => {
+        const field = formData.formFields.find((f) => f.name === name);
+        return !field.required || (field.required && value?.trim() !== '');
+      }
+    );
+    setState((prevState) => ({ ...prevState, isFormValid }));
+  }, [formFieldsState, formData]);
+
   const handleFormData = (value, name) => {
+    setFormFieldsState((prevFieldsState) => ({
+      ...prevFieldsState,
+      [name]: value,
+    }));
     setState({
       ...state,
-      [name]: value,
       submitted: false,
     });
   };
 
-  const handleContact = (e) => {
-    e.preventDefault();
-    const payload = new URLSearchParams();
-    Object.keys(state).forEach((key) => {
-      payload.append(key, state[key]);
-    });
-    fetch(data.formActionUrl, {
-      method: 'post',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-      },
-      body: payload,
-    }).then((res) => {
-      if (res.ok) return setState({ submitted: true });
-      else return '';
-    });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!state.isFormValid || isLoading || state.isSuccess) {
+      return;
+    }
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const payload = new FormData();
+      Object.keys(formFieldsState).forEach((key) => {
+        payload.append(key, formFieldsState[key]);
+      });
+
+      fetch(data.formActionUrl, {
+        method: 'post',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+        },
+        body: payload,
+      })
+        .then((res) => {
+          if (res.ok) {
+            setState({
+              submitted: true,
+              isFormValid: true,
+              isSuccess: true,
+            });
+          } else {
+            return Promise.reject('Form submission failed');
+          }
+        })
+        .catch((error) => {
+          console.log('Failure Submit: ', error);
+          setFailureMessage(data.failureMessage);
+          setState({ submitted: true, isFormValid: false, isSuccess: false });
+        });
+    } catch (error) {
+      console.error('Form submission error:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -81,118 +120,32 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
     return null;
   }
 
-  const renderField = (field) => {
-    switch (field.type) {
-      case 'Date':
-        return (
-          <div key={field.id}>
-            <Input
-              type="date"
-              value={state[field.name]}
-              onChange={(e) => handleFormData(e.target?.value, field.name)}
+  const form = (
+    <>
+      {formData.formFields &&
+        Array.isArray(formData.formFields) &&
+        formData.formFields
+          .filter((field) => !field.invisible)
+          .sort((f1, f2) => (f1.priority > f2.priority ? 1 : -1))
+          .map((field, index) => (
+            <FormInput
+              key={`FormInput_${index}`}
+              field={field}
+              formFieldsState={formFieldsState}
+              handleFormData={handleFormData}
+              state={state}
+              isAR={isAR}
             />
-          </div>
-        );
-      case 'Number':
-        return (
-          <div key={field.id}>
-            <Input
-              type="number"
-              value={state[field.name]}
-              onChange={(e) => handleFormData(e.target?.value, field.name)}
-            />
-          </div>
-        );
-      case 'Password':
-        return (
-          <div key={field.id}>
-            <Input
-              type="password"
-              value={state[field.name]}
-              onChange={(e) => handleFormData(e.target?.value, field.name)}
-            />
-          </div>
-        );
-      case 'String':
-        return (
-          <div key={field.id}>
-            <Input
-              type="text"
-              value={state[field.name]}
-              onChange={(e) => handleFormData(e.target?.value, field.name)}
-            />
-          </div>
-        );
-      case 'Multiple Lines':
-        return (
-          <div key={field.id}>
-            <Textarea
-              value={state[field.name]}
-              onChange={(e) => handleFormData(e.target?.value, field.name)}
-            />
-          </div>
-        );
-      case 'Predefined List':
-        return (
-          <div key={field.id}>
-            <Select
-              value={state[field.name]}
-              onChange={(e) => handleFormData(e.target?.value, field.name)}
-            >
-              <option value="" disabled>
-                Select {field.title}
-              </option>
-              {field.choices.map((choice) => (
-                <option key={choice} value={choice}>
-                  {choice}
-                </option>
-              ))}
-            </Select>
-          </div>
-        );
-      case 'Checkboxes':
-        return (
-          <div key={field.id}>
-            {field.choices.map((choice) => (
-              <label key={choice}>
-                <Input
-                  type="checkbox"
-                  value={choice}
-                  checked={state[field.name].includes(choice)}
-                  onChange={(e) =>
-                    handleFormData(
-                      e.target.checked
-                        ? [...state[field.name], choice]
-                        : state[field.name].filter((item) => item !== choice),
-                      field.name
-                    )
-                  }
-                />
-                {choice}
-              </label>
-            ))}
-          </div>
-        );
-      case 'Radio Buttons':
-        return (
-          <div key={field.id}>
-            {field.choices.map((choice) => (
-              <label key={choice}>
-                <Input
-                  type="radio"
-                  value={choice}
-                  checked={state[field.name] === choice}
-                  onChange={() => handleFormData(choice, field.name)}
-                />
-                {choice}
-              </label>
-            ))}
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
+          ))}
+      <SubmitButton
+        type="submit"
+        isLoading={isLoading}
+        disabled={!state.isFormValid || state.isSuccess || isLoading}
+      >
+        {isLoading ? isLoading && <Loader /> : formData.submitButtonLabel}
+      </SubmitButton>
+    </>
+  );
 
   return (
     <SectionWrapper id={model.name} background={data.backgroundImage}>
@@ -200,20 +153,24 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <Heading>{data.title}</Heading>
-            <ContactForm onSubmit={(e) => handleContact(e)}>
-              {formData.formFields &&
-                Array.isArray(formData.formFields) &&
-                formData.formFields.filter((field) => !field.invisible)
-                  .map((field) => (
-                    <div key={field.id}>
-                      <label>{field.title}</label>
-                      {renderField(field)}
-                    </div>
-                  ))}
-              <SubmitButton type="submit">{formData.submitButtonLabel}</SubmitButton>
-              {state.submitted &&
-                //@ts-ignore
-                <Text content={formData.submitRedirectUrl}></Text>}
+            <ContactForm onSubmit={(e) => handleSubmit(e)} isAR={isAR}>
+              {state.submitted ? (
+                <>
+                  {failureMessage ? (
+                    <>
+                      {form}
+                      <Text className="failure" content={failureMessage} />
+                    </>
+                  ) : (
+                    <>
+                      {form}
+                      <Text className="success" content={data.successMessage} />
+                    </>
+                  )}
+                </>
+              ) : (
+                form
+              )}
             </ContactForm>
           </Box>
         </Box>
@@ -221,6 +178,7 @@ const FormSection = ({ row, col, model, data }: FormSectionProps) => {
     </SectionWrapper>
   );
 };
+
 // FormSection default style
 FormSection.defaultProps = {
   // FormSection row default style

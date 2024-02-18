@@ -37,6 +37,18 @@ export const RideTheme = ({
             <title>{data.title}</title>
             <meta name="Description" content={data.metaDescription} />
             <meta name="theme-color" content={rootModelData.primary} />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href={rootModelData.favicon32}
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href={rootModelData.favicon16}
+            />
             {isAR ? (
               /*<link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600;700&display=swap" rel="stylesheet"></link>*/
               <link
