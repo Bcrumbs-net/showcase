@@ -103,6 +103,7 @@ const GlobalStyle = createGlobalStyle`
         padding-left: 71px;
         padding-bottom: 56px;
         background-color: ${themeGet('colors.white', '#ffffff')};
+        font-size: 20px;
         img {
           width:18px;
           margin-bottom: -4px;
