@@ -1,8 +1,11 @@
 import CopyrightWrapper from './style';
 
-const CopyrightSection = ({ model }) => {
+const CopyrightSection = ({ model, isAR }) => {
   return (
-    <CopyrightWrapper className="copyright_section">
+    <CopyrightWrapper
+      className="copyright_section"
+      style={{ textAlign: isAR ? 'right' : 'left' }}
+    >
       <ul>
         {model.children &&
           model.children
@@ -18,7 +21,7 @@ const CopyrightSection = ({ model }) => {
                     {profile.icon ? (
                       <i className={profile.icon} />
                     ) : (
-                      <img src={profile.image} />
+                      <img src={profile.image} alt="social" />
                     )}
                   </a>
                 </li>

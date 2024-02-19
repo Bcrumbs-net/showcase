@@ -3,7 +3,12 @@ import { GraphContent } from '@bcrumbs.net/bc-api';
 //import { openModal, closeModal } from '@redq/reuse-modal';
 import CopyrightSection from './copyrights';
 import { Container } from './navbar.style';
-import { DrawerContext, NavbarWrapper, Drawer, HamburgMenu } from '../../../../atoms';
+import {
+  DrawerContext,
+  NavbarWrapper,
+  Drawer,
+  HamburgMenu,
+} from '../../../../atoms';
 import { Logo, ScrollSpyMenu } from '../../../../molecules';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 import { NavbarDataType } from '../../../types/navbarTypes';
@@ -135,14 +140,15 @@ const Navbar = ({ navbarStyle, logoStyle, model, isAR, data }: NavbarProps) => {
               model={model}
               isAR={isAR}
             />
-            {socialModel ? <CopyrightSection model={socialModel} /> : null}
+            {socialModel ? (
+              <CopyrightSection model={socialModel} isAR={isAR} />
+            ) : null}
           </Drawer>
         </div>
       </Container>
     </NavbarWrapper>
   );
 };
-
 
 Navbar.defaultProps = {
   // Default navbar style
