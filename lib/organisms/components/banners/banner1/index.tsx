@@ -64,14 +64,18 @@ const BannerSection = ({
       ) : null}
     </>
   );
-  
+
   return (
     <BannerWrapper
       style={{ backgroundImage: `url(${data.image})` }}
       id={model.name}
     >
       <BannerMask>
-      <ParticlesComponent/>
+        {data.floatingParticles == 'True' ? (
+          <ParticlesComponent />
+        ) : (
+          null
+        )}
         <Container>
           <Box className="row" {...row}>
             <Box

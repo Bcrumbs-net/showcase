@@ -60,7 +60,11 @@ const DomainSection = ({
 }: DomainSectionProps) => {
   return (
     <Box {...SectionWrapper}>
-      <ParticlesComponent />
+       {data.floatingParticles == 'True' ? (
+          <ParticlesComponent />
+        ) : (
+          null
+        )}
       <BannerSquareShape />
       <BannerCircleShape />
       <Container>
