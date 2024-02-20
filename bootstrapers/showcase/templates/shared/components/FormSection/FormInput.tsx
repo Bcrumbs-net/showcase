@@ -157,7 +157,7 @@ const FormInput: React.FC<FormInputProps> = ({
     return (
       <RequiredFields key={field.id} isAR={isAR}>
         <div>
-          <label className="required-label">{field.name}</label>
+          <label className="required-label">{field.title}</label>
           {renderField(field, formFieldsState, handleFormData, state.isSuccess, isAR)}
         </div>
       </RequiredFields>
@@ -166,7 +166,7 @@ const FormInput: React.FC<FormInputProps> = ({
 
   return (
     <div key={field.id}>
-      <label className="label">{field.name}</label>
+      <label className="label">{field.title}</label>
       {renderField(field, formFieldsState, handleFormData, state.isSuccess, isAR)}
     </div>
   );
