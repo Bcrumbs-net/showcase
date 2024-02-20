@@ -108,7 +108,6 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, isAR) =>
               htmlFor={choice}
               value={choice}
               labelText={choice}
-              labelPosition={isAR ? 'left' : 'right'}
               isChecked={formFieldsState[field.name]?.includes(choice)}
               onChange={(isChecked) => {
                 handleFormData(
@@ -135,7 +134,6 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, isAR) =>
               id={choice}
               labelText={choice}
               value={choice}
-              labelPosition={isAR ? 'left' : 'right'}
               isChecked={formFieldsState[field.name] === choice}
               onChange={() => handleFormData(choice, field.name)}
               disabled={isSuccess}
@@ -159,7 +157,7 @@ const FormInput: React.FC<FormInputProps> = ({
     return (
       <RequiredFields key={field.id} isAR={isAR}>
         <div>
-          <label className="required-label">{field.title}</label>
+          <label className="required-label">{field.name}</label>
           {renderField(field, formFieldsState, handleFormData, state.isSuccess, isAR)}
         </div>
       </RequiredFields>
@@ -168,7 +166,7 @@ const FormInput: React.FC<FormInputProps> = ({
 
   return (
     <div key={field.id}>
-      <label className="label">{field.title}</label>
+      <label className="label">{field.name}</label>
       {renderField(field, formFieldsState, handleFormData, state.isSuccess, isAR)}
     </div>
   );
