@@ -108,7 +108,6 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, isAR) =>
               htmlFor={choice}
               value={choice}
               labelText={choice}
-              labelPosition={isAR ? 'left' : 'right'}
               isChecked={formFieldsState[field.name]?.includes(choice)}
               onChange={(isChecked) => {
                 handleFormData(
@@ -135,7 +134,6 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, isAR) =>
               id={choice}
               labelText={choice}
               value={choice}
-              labelPosition={isAR ? 'left' : 'right'}
               isChecked={formFieldsState[field.name] === choice}
               onChange={() => handleFormData(choice, field.name)}
               disabled={isSuccess}
