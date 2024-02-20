@@ -77,7 +77,11 @@ const BannerSection = ({
 
   return (
     <CustomBannerWrapper id={model.name}>
-      <ParticlesComponent />
+       {data.floatingParticles == 'True' ? (
+          <ParticlesComponent />
+        ) : (
+          null
+        )}
       <Container>
         <Box className="row" {...row}>
           <Box className="col" {...col}>

@@ -18,4 +18,5 @@ export type BannerDataType = {
     jumpToSectionLink?: string; // examples (Scrolldown_Button_SectionId)
     jumpToSectionLabel?: string; // examples (Scrolldown_Button_Text)
     justToSectionOffset?: number; // examples (Scrolldown_Button_Offset)
+    floatingParticles?: boolean;
 }
