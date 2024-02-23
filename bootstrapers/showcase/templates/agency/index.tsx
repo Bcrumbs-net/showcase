@@ -16,11 +16,15 @@ export const AgencyTheme = ({
   config,
   path,
   data: queryData,
+  footer,
+  header,
 }: {
   config: Config;
   path: string;
   templateId: number;
   data: GraphContent[];
+  footer?: GraphContent;
+  header?:GraphContent;
 }) => {
   const data = queryData[0];
   const rootModelData: Record<string, string> = data.data.reduce(function (
@@ -32,6 +36,18 @@ export const AgencyTheme = ({
   },
     {});
   const isAR = config.lang === 'AR';
+
+  // Filter out header and footer content if they are defined in config
+  const filteredData = data.children.filter((child: any) => {
+    if (config?.headerID && child.id === config?.headerID) {
+      return false; // Exclude header content
+    }
+    if (config?.footerID && child.id === config?.footerID) {
+      return false; // Exclude footer content
+    }
+    return true; // Include other content
+  });
+
   return (
     <>
       {/*@ts-ignore: Unreachable code error*/}
@@ -87,17 +103,30 @@ export const AgencyTheme = ({
           {/* Start agency wrapper section */}
           <AgencyWrapper>
             <div id="fb-root"></div>
-            {data.children &&
-              data.children
-                .filter((m: any) => m.online)
-                .map((model: any, index: number) => (
-                  <ComponentResolver
-                    key={`BCComponent${index}`}
-                    modelId={model.modelId}
-                    model={model}
-                    isAR={isAR}
-                  />
-                ))}
+            {header && (
+              <ComponentResolver
+                key={`HeaderComponent`}
+                modelId={header.modelId}
+                model={header}
+                isAR={isAR}
+              />
+            )}
+            {filteredData.map((model: any, index: number) => (
+              <ComponentResolver
+                key={`BCComponent${index}`}
+                modelId={model.modelId}
+                model={model}
+                isAR={isAR}
+              />
+            ))}
+            {footer && (
+              <ComponentResolver
+                key={`FooterComponent`}
+                modelId={footer.modelId}
+                model={footer}
+                isAR={isAR}
+              />
+            )}
             <BCLink />
             {rootModelData.whatsappPhone ? (
               <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />

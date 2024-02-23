@@ -43,11 +43,15 @@ export const AppTheme = ({
   config,
   path,
   data: queryData,
+  footer,
+  header,
 }: {
   config: Config;
   path: string;
   templateId: number;
   data: GraphContent[];
+  footer?: GraphContent;
+  header?: GraphContent;
 }) => {
   const data = queryData[0];
   const rootModelData: Record<string, string> = data.data.reduce(function (map, obj) {
@@ -55,6 +59,16 @@ export const AppTheme = ({
     return map;
   }, {});
   const isAR = config.lang === 'AR';
+
+  const filteredData = data.children.filter((child: any) => {
+    if (config?.headerID && child.id === config?.headerID) {
+      return false; 
+    }
+    if (config?.footerID && child.id === config?.footerID) {
+      return false;
+    }
+    return true;
+  });
 
   return (
     <>
@@ -87,17 +101,30 @@ export const AppTheme = ({
           {/*@ts-ignore: Unreachable code error*/}
           <GlobalStyle />
           <AppWrapper>
-            {data.children &&
-              data.children
-                .filter((m) => m.online)
-                .map((model, index) => (
-                  <ComponentResolver
-                    key={`BCComponent${index}`}
-                    modelId={model.modelId}
-                    model={model}
-                    isAR={isAR}
-                  />
-                ))}
+            {header && (
+              <ComponentResolver
+                key={`HeaderComponent`}
+                modelId={header.modelId}
+                model={header}
+                isAR={isAR}
+              />
+            )}
+            {filteredData.map((model: any, index: number) => (
+              <ComponentResolver
+                key={`BCComponent${index}`}
+                modelId={model.modelId}
+                model={model}
+                isAR={isAR}
+              />
+            ))}
+            {footer && (
+              <ComponentResolver
+                key={`FooterComponent`}
+                modelId={footer.modelId}
+                model={footer}
+                isAR={isAR}
+              />
+            )}
             <BCLink />
             {rootModelData.whatsappPhone ? (
               <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />

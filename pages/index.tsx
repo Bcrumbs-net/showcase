@@ -16,12 +16,21 @@ export async function getServerSideProps({ req, query }) {
 
   let config = undefined;
   let contents = undefined;
+  let header = [];
+  let footer = [];
   try {
     // Getting needed data
     config = await fetchWebsiteConfig(targetDomain);
+
     contents = await fetchWebsiteContents(config, path);
     // Logging the visit
     logWebsiteVisit(domain);
+    if (config.headerID) {
+      header = contents[0].children.find((content: any) => content.id === config.headerID);
+    }
+    if (config.footerID) {
+      footer = contents[0].children.find((content: any) => content.id === config.footerID);
+    }
   } catch (ex) {
     return {
       props: {
@@ -31,7 +40,6 @@ export async function getServerSideProps({ req, query }) {
       },
     };
   }
-
   if (!config) {
     return {
       props: {
@@ -39,11 +47,12 @@ export async function getServerSideProps({ req, query }) {
       },
     };
   }
-
   return {
     props: {
       config,
       data: contents,
+      footer:footer,
+      header:header,
       query,
     },
   };
@@ -56,6 +65,8 @@ export const TemplateRouter = ({
   errorCode,
   error,
   invalid,
+  footer,
+  header,
 }: {
   errorCode?: number;
   error?: string;
@@ -66,6 +77,8 @@ export const TemplateRouter = ({
   };
   data?: GraphContent[];
   invalid?: boolean;
+  footer?: GraphContent;
+  header?: GraphContent;
 }) => {
   if (invalid) {
     return <Error />;
@@ -88,8 +101,7 @@ export const TemplateRouter = ({
   ) {
     return <Error />;
   }
-
-  return <ShowcaseBootstrapper config={config} path={path} data={data} />;
+  return <ShowcaseBootstrapper config={config} path={path} data={data} footer={footer} header={header} />;
 };
 
 export default TemplateRouter;
