@@ -82,9 +82,11 @@ export const CharityTheme = ({
                     />
                   ))}
             </ContentWrapper>
-            <BCLink />
+            {config.whitlabel ? (
+              < BCLink />
+            ) : null}
             {rootModelData.whatsappPhone ? (
-              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone}/>
+              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
             ) : null}
           </CharityWrapper>
           {/* End of charity wrapper section */}

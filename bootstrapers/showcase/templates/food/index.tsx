@@ -43,17 +43,17 @@ export const FoodTheme = ({
             <meta name="theme-color" content="#10ac84" />
             {/* <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" /> */}
             <link
-                rel="icon"
-                type="image/png"
-                sizes="32x32"
-                href={rootModelData.favicon32}
-              />
-              <link
-                rel="icon"
-                type="image/png"
-                sizes="16x16"
-                href={rootModelData.favicon16}
-              />
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href={rootModelData.favicon32}
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href={rootModelData.favicon16}
+            />
             {/*<link rel="manifest" href="/site.webmanifest"></link>*/}
             {/* Load google fonts */}
             {isAR ? (
@@ -97,7 +97,9 @@ export const FoodTheme = ({
                     isAR={isAR}
                   />
                 ))}
-            <BCLink />
+            {config.whitlabel ? (
+              < BCLink />
+            ) : null}
             {rootModelData.whatsappPhone ? (
               <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
             ) : null}
