@@ -11,8 +11,8 @@ const ShowcaseBootstraper = ({
   config: Config;
   path: string;
   data: GraphContent[];
-  footer?:GraphContent;
-  header?:GraphContent;
+  footer?: GraphContent;
+  header?: GraphContent;
 }) => {
   let subConfig;
   let templateId = config?.templateId;

@@ -10,6 +10,8 @@ import ComponentResolver from '../../mappers';
 import BCLink from '../shared/components/BCLink';
 import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 import WhatsAppLink from '../shared/components/WhatsAppLink';
+import { convertDataModelToDataObject } from '../../utils/withModelToDataObjProp';
+import { filterData } from '../../utils/filterData';
 
 export const CharityTheme = ({
   templateId,
@@ -27,21 +29,11 @@ export const CharityTheme = ({
   header?: GraphContent;
 }) => {
   const data = queryData[0];
-  const rootModelData: Record<string, string> = data.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
-  const isAR = config.lang === 'AR';
-  const filteredData = data.children.filter((child: any) => {
-    if (config?.headerID && child.id === config?.headerID) {
-      return false;
-    }
-    if (config?.footerID && child.id === config?.footerID) {
-      return false;
-    }
-    return true;
-  });
+  const rootModelData: Record<string, string> = convertDataModelToDataObject(data);
 
+  const filteredData = filterData(data.children, config);
+
+  const isAR = config.lang === 'AR';
 
   return (
     <>

@@ -22,15 +22,18 @@ export async function getServerSideProps({ req, query }) {
     // Getting needed data
     config = await fetchWebsiteConfig(targetDomain);
 
-    contents = await fetchWebsiteContents(config, path);
-    // Logging the visit
-    logWebsiteVisit(domain);
+    // Fetching contents
+    contents = await fetchWebsiteContents({ rootId: config.root, path });
+
+    // Fetching header and footer
     if (config.headerID) {
-      header = contents[0].children.find((content: any) => content.id === config.headerID);
+      header = await fetchWebsiteContents({ rootId: config.headerID, path });
     }
     if (config.footerID) {
-      footer = contents[0].children.find((content: any) => content.id === config.footerID);
+      footer = await fetchWebsiteContents({ rootId: config.footerID, path });
     }
+    // Logging the visit
+    logWebsiteVisit(domain);
   } catch (ex) {
     return {
       props: {
@@ -51,8 +54,8 @@ export async function getServerSideProps({ req, query }) {
     props: {
       config,
       data: contents,
-      footer:footer,
-      header:header,
+      footer: footer,
+      header: header,
       query,
     },
   };
@@ -101,6 +104,7 @@ export const TemplateRouter = ({
   ) {
     return <Error />;
   }
+
   return <ShowcaseBootstrapper config={config} path={path} data={data} footer={footer} header={header} />;
 };
 
