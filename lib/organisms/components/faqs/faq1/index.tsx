@@ -51,7 +51,7 @@ const FaqSection = ({
           <Accordion className='reusecore__accordion'>
             <Fragment>
               {data.subdata &&
-                 data.subdata.map((faqSectionMap, index) => {
+                data.subdata.map((faqSectionMap, index) => {
                   return (
                     <AccordionItem key={`accordion_key-${index}`}>
                       <Fragment>

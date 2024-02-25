@@ -1,6 +1,7 @@
 export type FaqDataType = {
   title?: string; // sectionTitle should be title
   subTitle?: string; // sectionSubTitle should be subTitle
+  url?: string;
   subdata?: FaqDataItemType[];
 };
 
