@@ -51,7 +51,7 @@ const PortfolioSection = ({
         </Box>
         <Box className="row" {...row}>
           {model.children.filter(m => m.online).map((blogSection, index) => {
-            const postMap = convertDataModelToDataObject(blogSection)
+            const postMap = convertDataModelToDataObject(blogSection) as Record<string, string>;
             return (
               <FeatureBlock
                 key={`post_key-${index}`}

@@ -67,7 +67,7 @@ const TestimonialSection = ({
             <>
               {model.children &&
                 model.children.map((item, index) => {
-                  const testimonialMap = convertDataModelToDataObject(item)
+                  const testimonialMap = convertDataModelToDataObject(item) as Record<string, string>;
                   return (
                     // @ts-ignore
                     <GlideSlide key={`testimonial-slide-${index}`}>

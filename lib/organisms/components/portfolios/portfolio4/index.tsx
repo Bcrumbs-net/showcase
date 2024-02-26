@@ -22,7 +22,7 @@ const BlogSection = ({ model, isAR, data }: BlogSectionProps) => {
   let blogsItems = [];
   if (model.children && model.children.length > 0) {
     blogsItems = model.children.map((blogData) => {
-      const blogMap = convertDataModelToDataObject(blogData);
+      const blogMap = convertDataModelToDataObject(blogData) as Record<string, string>;
       return blogMap;
     });
   }

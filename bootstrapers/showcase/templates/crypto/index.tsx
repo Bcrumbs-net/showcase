@@ -25,11 +25,11 @@ export const CryptoTheme = ({
   path: string;
   templateId: number;
   data: GraphContent[];
-  header: GraphContent;
-  footer: GraphContent;
+  header?: GraphContent;
+  footer?: GraphContent;
 }) => {
   const data = queryData[0];
-  const rootModelData: Record<string, string> = convertDataModelToDataObject(data);
+  const rootModelData = convertDataModelToDataObject(data) as Record<string, string>;
 
   const filteredData = filterData(data.children, config);
 

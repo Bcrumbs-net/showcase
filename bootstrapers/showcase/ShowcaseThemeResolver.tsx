@@ -16,8 +16,8 @@ export const ShowcaseThemeResolver = (props: {
   path: string;
   templateId: number;
   data: GraphContent[];
-  footer:GraphContent;
-  header:GraphContent;
+  footer?: GraphContent;
+  header?: GraphContent;
 }) => {
   switch (props.templateId) {
     case 1:

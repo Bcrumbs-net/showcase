@@ -8,7 +8,7 @@ interface ComponentMainInterface {
 
 export function convertDataModelToDataObject(
   model: GraphContent
-): Record<string, unknown> {
+): Record<string, string | unknown> {
   if (!model) {
     throw Error(
       'You need to either pass data to the organism component, or a model object'
@@ -30,9 +30,9 @@ export function convertDataModelToDataObject(
 
 export function convertChildrenModelToDataObject(
   model: GraphContent
-): Record<string, unknown>[] {
+): Record<string, string | unknown>[] {
   return model.children.map((subModel) => {
-    let subdata: Record<string, unknown>[] = undefined;
+    let subdata: Record<string, string | unknown>[] = undefined;
     if (subModel.children) {
       subdata = convertChildrenModelToDataObject(subModel);
     }
