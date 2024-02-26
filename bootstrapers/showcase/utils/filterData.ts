@@ -1,7 +1,7 @@
 import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 
 export const filterData = (data: GraphContent[], config: Config) => {
-    return data.filter((child: any) => {
+    return data.filter(m => m.online).filter((child: any) => {
         if (config?.headerID && child.id === config?.headerID) {
             return false;
         }

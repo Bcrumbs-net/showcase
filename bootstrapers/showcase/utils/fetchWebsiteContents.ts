@@ -7,14 +7,18 @@ import {
 interface FetchWebsiteContentsParams {
   rootId: string;
   deep?: number;
-  path: string;
+  path?: string;
 }
 /**
  *
  * @param targetDomain
  *
  */
-export async function fetchWebsiteContents({ rootId, deep , path }: FetchWebsiteContentsParams){
+export async function fetchWebsiteContents({
+  rootId,
+  deep,
+  path,
+}: FetchWebsiteContentsParams) {
   const dataResponse = await showcaseClient.query({
     query: showcaseContentsQuery,
     variables: {
@@ -22,7 +26,7 @@ export async function fetchWebsiteContents({ rootId, deep , path }: FetchWebsite
       deep: deep || 3,
       path,
     },
-    fetchPolicy: 'no-cache'
+    fetchPolicy: 'no-cache',
   });
 
   if (dataResponse && dataResponse.data) {

@@ -22,7 +22,7 @@
   "homepage": "https://github.com/Bcrumbs-net/showcase#readme",
   "dependencies": {
     "@apollo/client": "^3.5.10",
-    "@bcrumbs.net/bc-api": "^0.0.13",
+    "@bcrumbs.net/bc-api": "^0.0.14",
     "@glidejs/glide": "^3.3.0",
     "@redq/reuse-modal": "^2.0.0",
     "apollo": "^2.33.9",

@@ -14,10 +14,11 @@ export async function getServerSideProps({ req, query }) {
   const targetDomain = checkIfKnownDomain(domain);
   const path = query.path;
 
-  let config = undefined;
-  let contents = undefined;
-  let header = [];
-  let footer = [];
+  let config = null;
+  let contents = null;
+  let headerArr = null;
+  let footerArr = null;
+
   try {
     // Getting needed data
     config = await fetchWebsiteConfig(targetDomain);
@@ -27,11 +28,12 @@ export async function getServerSideProps({ req, query }) {
 
     // Fetching header and footer
     if (config.headerID) {
-      header = await fetchWebsiteContents({ rootId: config.headerID, path });
+      headerArr = await fetchWebsiteContents({ rootId: config.headerID });
     }
     if (config.footerID) {
-      footer = await fetchWebsiteContents({ rootId: config.footerID, path });
+      footerArr = await fetchWebsiteContents({ rootId: config.footerID });
     }
+
     // Logging the visit
     logWebsiteVisit(domain);
   } catch (ex) {
@@ -54,8 +56,8 @@ export async function getServerSideProps({ req, query }) {
     props: {
       config,
       data: contents,
-      footer: footer,
-      header: header,
+      footer: footerArr && footerArr.length > 0 ? footerArr[0] : null,
+      header: headerArr && headerArr.length > 0 ? headerArr[0] : null,
       query,
     },
   };
@@ -105,7 +107,15 @@ export const TemplateRouter = ({
     return <Error />;
   }
 
-  return <ShowcaseBootstrapper config={config} path={path} data={data} footer={footer} header={header} />;
+  return (
+    <ShowcaseBootstrapper
+      config={config}
+      path={path}
+      data={data}
+      footer={footer}
+      header={header}
+    />
+  );
 };
 
 export default TemplateRouter;
