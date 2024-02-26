@@ -14,12 +14,26 @@ export async function getServerSideProps({ req, query }) {
   const targetDomain = checkIfKnownDomain(domain);
   const path = query.path;
 
-  let config = undefined;
-  let contents = undefined;
+  let config = null;
+  let contents = null;
+  let headerArr = null;
+  let footerArr = null;
+
   try {
     // Getting needed data
     config = await fetchWebsiteConfig(targetDomain);
-    contents = await fetchWebsiteContents(config, path);
+
+    // Fetching contents
+    contents = await fetchWebsiteContents({ rootId: config.root, path });
+
+    // Fetching header and footer
+    if (config.headerID) {
+      headerArr = await fetchWebsiteContents({ rootId: config.headerID });
+    }
+    if (config.footerID) {
+      footerArr = await fetchWebsiteContents({ rootId: config.footerID });
+    }
+
     // Logging the visit
     logWebsiteVisit(domain);
   } catch (ex) {
@@ -31,7 +45,6 @@ export async function getServerSideProps({ req, query }) {
       },
     };
   }
-
   if (!config) {
     return {
       props: {
@@ -39,11 +52,12 @@ export async function getServerSideProps({ req, query }) {
       },
     };
   }
-
   return {
     props: {
       config,
       data: contents,
+      footer: footerArr && footerArr.length > 0 ? footerArr[0] : null,
+      header: headerArr && headerArr.length > 0 ? headerArr[0] : null,
       query,
     },
   };
@@ -56,6 +70,8 @@ export const TemplateRouter = ({
   errorCode,
   error,
   invalid,
+  footer,
+  header,
 }: {
   errorCode?: number;
   error?: string;
@@ -66,6 +82,8 @@ export const TemplateRouter = ({
   };
   data?: GraphContent[];
   invalid?: boolean;
+  footer?: GraphContent;
+  header?: GraphContent;
 }) => {
   if (invalid) {
     return <Error />;
@@ -89,7 +107,15 @@ export const TemplateRouter = ({
     return <Error />;
   }
 
-  return <ShowcaseBootstrapper config={config} path={path} data={data} />;
+  return (
+    <ShowcaseBootstrapper
+      config={config}
+      path={path}
+      data={data}
+      footer={footer}
+      header={header}
+    />
+  );
 };
 
 export default TemplateRouter;
