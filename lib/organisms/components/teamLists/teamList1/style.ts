@@ -55,6 +55,16 @@ const SocialLinks = styled.div`
         border-color: #fb3958;
         background-color: #fb3958;
       }
+      &.fa-whatsapp {
+        color: #ffffff;
+        border-color: #fb3958;
+        background-color: #0ea82a;
+      }
+      &.fa-telegram {
+        color: #ffffff;
+        border-color: #fb3958;
+        background-color: #2676de;
+      }
       &.flaticon-dribble-logo {
         color: #ffffff;
         border-color: #ea4c89;

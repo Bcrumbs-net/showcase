@@ -196,9 +196,9 @@ export const RequiredFields = styled.div<{ isAR?: boolean }>`
 `;
 export const ContactForm = styled.form<{ isAR?: boolean }>`
   ${props => props.isAR ? `
-    text-align: right;
+    direction: rtl;
       ` : `
-    text-align: left;
+    direction: ltr;
   `}
   padding: 50px;
   border-radius: 10px ;
@@ -366,13 +366,12 @@ export const ContactForm = styled.form<{ isAR?: boolean }>`
       margin:0px 10px 0px 10px;
     }
   }
-  .radio_group {   
+  .radio_group {
     margin: 10px 0 30px 0;
     @media only screen and (max-width: 480px) {
       flex-direction: column;
       margin: 0;
     }
-
     label {
       margin:0px 10px 0px 10px;
       @media only screen and (max-width: 1360px) {

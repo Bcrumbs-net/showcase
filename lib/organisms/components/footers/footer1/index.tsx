@@ -1,6 +1,6 @@
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import Link from 'next/link';
-import { Container, Box, Heading ,Image,Text} from '../../../../atoms';
+import { Container, Box, Heading, Text } from '../../../../atoms';
 import { Logo } from '../../../../molecules';
 import CopyrightSection from '../../navbars/navbar1/copyrights';
 import FooterWrapper from './style';
@@ -29,8 +29,15 @@ const Footer = ({
   textStyle,
   model,
   isAR,
-  data
+  data,
 }: FooterProps) => {
+  let socialModel;
+  if (model.children && model.children.length > 0) {
+    const socialModelQuery = model.children.filter((m) => m.modelId == 403193);
+    if (socialModelQuery && socialModelQuery.length > 0)
+      socialModel = socialModelQuery[0];
+  }
+
   return (
     <FooterWrapper id={model.name}>
       <Container>
@@ -46,7 +53,9 @@ const Footer = ({
             <Text content={data.number} {...textStyle} />
             <Text content={data.address} {...textStyle} />
             <Text content={data.other} {...textStyle} />
-            {/*<CopyrightSection model={socialModel} />*/}
+            {socialModel ? (
+              <CopyrightSection model={socialModel} isAR={isAR} />
+            ) : null}
           </Box>
           {/* End of footer logo column */}
 
@@ -58,10 +67,11 @@ const Footer = ({
               model.children
                 .filter((m) => m.online)
                 .map((footer, index) => {
-                  const footerItemMap: Record<string, string> = footer.data.reduce(function (map, obj) {
-                    map[obj.Key] = obj.Value;
-                    return map;
-                  }, {});
+                  const footerItemMap: Record<string, string> =
+                    footer.data.reduce(function (map, obj) {
+                      map[obj.Key] = obj.Value;
+                      return map;
+                    }, {});
 
                   return (
                     <Box key={'FooterItem' + index} className="col" {...col}>
@@ -72,30 +82,29 @@ const Footer = ({
                       />
                       <List>
                         {footer.children &&
-                          footer.children.map((menuItems, subIndex) => {
-                            const menuItemMap: Record<string, string> = menuItems.data.reduce(function (
-                              map,
-                              obj
-                            ) {
-                              map[obj.Key] = obj.Value;
-                              return map;
-                            },
-                            {});
-                            return (
-                              <ListItem
-                                key={`list__item-${subIndex}`}
-                                style={{ textAlign: isAR ? 'right' : 'left' }}
-                              >
-                                {menuItemMap && menuItemMap.url ? (
-                                  <Link href={menuItemMap.url}>
-                                    <a className="ListItem">
-                                      {menuItemMap.text}
-                                    </a>
-                                  </Link>
-                                ) : null}
-                              </ListItem>
-                            );
-                          })}
+                          footer.children
+                            .filter((m) => m.online)
+                            .map((menuItems, subIndex) => {
+                              const menuItemMap: Record<string, string> =
+                                menuItems.data.reduce(function (map, obj) {
+                                  map[obj.Key] = obj.Value;
+                                  return map;
+                                }, {});
+                              return (
+                                <ListItem
+                                  key={`list__item-${subIndex}`}
+                                  style={{ textAlign: isAR ? 'right' : 'left' }}
+                                >
+                                  {menuItemMap && menuItemMap.url ? (
+                                    <Link href={menuItemMap.url}>
+                                      <a className="ListItem">
+                                        {menuItemMap.text}
+                                      </a>
+                                    </Link>
+                                  ) : null}
+                                </ListItem>
+                              );
+                            })}
                       </List>
                     </Box>
                   );
