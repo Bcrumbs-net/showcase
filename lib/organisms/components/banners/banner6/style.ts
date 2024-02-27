@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { themeGet } from 'styled-system';
-import BannerBG from '../../../../assets/image/crypto/main_bg.svg';
+import BannerBG from './main_bg.svg';
 
 const BannerWrapper = styled.section`
   padding-top: 210px;

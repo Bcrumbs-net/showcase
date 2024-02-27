@@ -8,13 +8,9 @@ import {
   Heading,
   Image,
   Container,
-  Button,
 } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";
-import { PROOFS_FEATURE } from "../../../../data/Crypto";
 import { TrustedWrapper, FeatureSection } from "./style";
-import AppButton from "../../../assets/image/crypto/app.svg";
-import PlayButton from "../../../assets/image/crypto/playstore.svg";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 

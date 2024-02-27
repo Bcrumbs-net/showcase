@@ -9,7 +9,7 @@ import {
 } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";
 import PartnerHistoryWrapper, { CounterUpArea } from "./style";
-import BackgroundImg from "../../../../assets/image/app/partner-bg.png";
+import BackgroundImg from "./partner-bg.png";
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
 } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";

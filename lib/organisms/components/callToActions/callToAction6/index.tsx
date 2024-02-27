@@ -15,7 +15,7 @@ import SectionWrapper, {
   DonationForm,
   DonateButton,
 } from "./style";
-import heartImage from "../../../../assets/image/charity/heart-alt.svg";
+import heartImage from "./heart-alt.svg";
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
 } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";

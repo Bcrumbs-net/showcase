@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 import { themeGet } from 'styled-system';
-import mapImage from '../../../../assets/image/charity/map-alt.png';
+import mapImage from './map-alt.png';
 
 const SectionWrapper = styled.div<{ background?: string }>`
   width: 100%;

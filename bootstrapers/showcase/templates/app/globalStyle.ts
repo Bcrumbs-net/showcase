@@ -1,8 +1,8 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { themeGet } from 'styled-system';
 
-import Substract from '../../assets/image/app/substract.png';
-import SubstractHover from '../../assets/image/app/substract-hover.png';
+import Substract from './images/substract.png';
+import SubstractHover from './images/substract-hover.png';
 
 const GlobalStyle = createGlobalStyle`
   body {
