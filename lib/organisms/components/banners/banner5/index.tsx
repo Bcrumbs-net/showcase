@@ -1,6 +1,5 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import { Heading, Button, Image, Container, Box } from "../../../../atoms";
+import React from "react";
+import { Button, Image, Container } from "../../../../atoms";
 import BannerSectionWrapper, { ImageWrapper } from "./style";
 import { GlideCarousel, GlideSlide } from "../../../../molecules";
 
@@ -74,11 +73,7 @@ const FullScreenBannerSection = ({
   );
 };
 
-// VideoSection style props
-FullScreenBannerSection.propTypes = {
-  btnWrapperStyle: PropTypes.object,
-  btnStyle: PropTypes.object,
-};
+
 
 // VideoSection default style
 FullScreenBannerSection.defaultProps = {
