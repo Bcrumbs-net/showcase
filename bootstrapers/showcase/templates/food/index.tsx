@@ -97,9 +97,9 @@ export const FoodTheme = ({
                     isAR={isAR}
                   />
                 ))}
-            {config.whitlabel ? (
-              < BCLink />
-            ) : null}
+            {!config.whitlabel ? (
+              null
+            ) : <BCLink />}
             {rootModelData.whatsappPhone ? (
               <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
             ) : null}
