@@ -67,31 +67,33 @@ export const PortfolioTheme = ({
           {/*@ts-ignore: Unreachable code error*/}
           <GlobalStyle />
           <ContentWrapper>
-          {header && (
-            <ComponentResolver
-              key={`HeaderComponent`}
-              modelId={header.modelId}
-              model={header}
-              isAR={isAR}
-            />
-          )}
-          {filteredData.map((model: any, index: number) => (
-            <ComponentResolver
-              key={`BCComponent${index}`}
-              modelId={model.modelId}
-              model={model}
-              isAR={isAR}
-            />
-          ))}
-          {footer && (
-            <ComponentResolver
-              key={`FooterComponent`}
-              modelId={footer.modelId}
-              model={footer}
-              isAR={isAR}
-            />
-          )}
-            <BCLink />
+            {header && (
+              <ComponentResolver
+                key={`HeaderComponent`}
+                modelId={header.modelId}
+                model={header}
+                isAR={isAR}
+              />
+            )}
+            {filteredData.map((model: any, index: number) => (
+              <ComponentResolver
+                key={`BCComponent${index}`}
+                modelId={model.modelId}
+                model={model}
+                isAR={isAR}
+              />
+            ))}
+            {footer && (
+              <ComponentResolver
+                key={`FooterComponent`}
+                modelId={footer.modelId}
+                model={footer}
+                isAR={isAR}
+              />
+            )}
+            {!config.whitlabel ? (
+              null
+            ) : <BCLink />}
             {rootModelData.whatsappPhone ? (
               <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
             ) : null}

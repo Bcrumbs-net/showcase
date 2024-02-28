@@ -112,7 +112,9 @@ export const FoodTheme = ({
                 isAR={isAR}
               />
             )}
-            <BCLink />
+            {!config.whitlabel ? (
+              null
+            ) : <BCLink />}
             {rootModelData.whatsappPhone ? (
               <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
             ) : null}
