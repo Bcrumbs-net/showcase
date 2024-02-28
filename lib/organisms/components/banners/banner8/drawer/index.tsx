@@ -31,7 +31,7 @@ const DrawerSection = ({ model, isAR, data }: DrawerSectionProps) => {
   const scrollItems = [];
 
   model.children?.forEach((menuItem) => {
-    const menuItemData = convertDataModelToDataObject(menuItem);
+    const menuItemData = convertDataModelToDataObject(menuItem) as Record<string, string>;
     scrollItems.push(menuItemData.path.slice(1));
   });
 

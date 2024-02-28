@@ -70,7 +70,7 @@ const PartnerHistory = ({
           <Box className="col" {...col} {...cardArea}>
             <CounterUpArea>
               {model.children.map((client, index) => {
-                const clientMap = convertDataModelToDataObject(client);
+                const clientMap = convertDataModelToDataObject(client) as Record<string, string>;
                 return (
                   <Card
                     //@ts-ignore

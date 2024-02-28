@@ -1,19 +1,19 @@
-import React from "react";
-import Link from "next/link";
-import { Box, Text, Heading, Container } from "../../../../atoms";
-import { Logo } from "../../../../molecules";
+import React from 'react';
+import Link from 'next/link';
+import { Box, Text, Heading, Container } from '../../../../atoms';
+import { Logo } from '../../../../molecules';
 import FooterWrapper, {
   CopyrightText,
   SocialList,
   SelectWrapper,
   List,
   ListItem,
-} from "./style";
-import { socialLinks } from "../../../../data/Charity";
-import { GraphContent } from "@bcrumbs.net/bc-api";
+} from './style';
+import { socialLinks } from '../../../../data/Charity';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
-} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+} from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface FooterProps {
   row: object;
@@ -36,7 +36,10 @@ const Footer = ({
   let footerItems = [];
   if (model.children && model.children.length > 0) {
     footerItems = model.children.map((footerData) => {
-      const footerMap = convertDataModelToDataObject(footerData);
+      const footerMap = convertDataModelToDataObject(footerData) as Record<
+        string,
+        string
+      >;
       return footerMap;
     });
   }
@@ -78,7 +81,9 @@ const Footer = ({
           {/* End of logo column */}
           <Box className="col-two" {...colTwo}>
             {model.children.map((menuItem) => {
-              const itemMenuMap = convertDataModelToDataObject(menuItem);
+              const itemMenuMap = convertDataModelToDataObject(
+                menuItem
+              ) as Record<string, string>;
               return (
                 <Box
                   className="col"
@@ -92,8 +97,9 @@ const Footer = ({
                   />
                   <List>
                     {menuItem.children.map((submenuItem) => {
-                      const subItemMenuMap =
-                        convertDataModelToDataObject(submenuItem);
+                      const subItemMenuMap = convertDataModelToDataObject(
+                        submenuItem
+                      ) as Record<string, string>;
                       return (
                         <ListItem key={`list__item-${submenuItem.id}`}>
                           <Link href={subItemMenuMap.link}>
@@ -138,30 +144,30 @@ Footer.defaultProps = {
   // Footer row default style
   row: {
     flexBox: true,
-    flexWrap: "wrap",
-    ml: "-15px",
-    mr: "-15px",
+    flexWrap: 'wrap',
+    ml: '-15px',
+    mr: '-15px',
   },
   // Footer col one style
   colOne: {
-    width: ["100%", "30%", "35%", "30%"],
-    mt: [0, "13px", "0"],
-    mb: ["30px", 0],
-    pl: ["15px", 0],
-    pr: ["15px", "15px", 0],
+    width: ['100%', '30%', '35%', '30%'],
+    mt: [0, '13px', '0'],
+    mb: ['30px', 0],
+    pl: ['15px', 0],
+    pr: ['15px', '15px', 0],
   },
   // Footer col two style
   colTwo: {
-    width: ["100%", "70%", "65%", "70%"],
+    width: ['100%', '70%', '65%', '70%'],
     flexBox: true,
-    flexWrap: "wrap",
+    flexWrap: 'wrap',
   },
   // Footer col default style
   col: {
-    width: ["100%", "50%", "50%", "33.33%"],
-    pl: "15px",
-    pr: "15px",
-    mb: "30px",
+    width: ['100%', '50%', '50%', '33.33%'],
+    pl: '15px',
+    pr: '15px',
+    mb: '30px',
   },
 };
 

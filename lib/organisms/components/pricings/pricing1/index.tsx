@@ -113,7 +113,7 @@ const PricingSection = ({
           <Heading {...secHeading} content={data.subtitle} />
           <PricingButtonWrapper>
             {model.children.map((item, index) => {
-              const pricingTable = convertDataModelToDataObject(item)
+              const pricingTable = convertDataModelToDataObject(item) as Record<string, string>;
               return (
                 <Button
                   key={`PricingTabBtn${index}`}
@@ -136,7 +136,7 @@ const PricingSection = ({
                 model.children
                   .find(m => m.name == data1)
                   .children.map((item, index) => {
-                    const pricingTable = convertDataModelToDataObject(item)
+                    const pricingTable = convertDataModelToDataObject(item) as Record<string, string>;
                     return (
                       //@ts-ignore
                       <GlideSlide key={`pricing-table-${index}`}>
@@ -183,7 +183,7 @@ const PricingSection = ({
                           <PricingList>
                             {item.children &&
                               item.children.map((subitem, subIndex) => {
-                                const featureMap = convertDataModelToDataObject(subitem)
+                                const featureMap = convertDataModelToDataObject(subitem) as Record<string, string>;
                                 return (
                                   <ListItem
                                     key={`pricing-table-list-${subIndex}`}

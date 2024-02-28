@@ -5,16 +5,17 @@ import { chevronRight } from "react-icons-kit/feather/chevronRight";
 import { Text, Heading, Image } from "../../../../atoms";
 import { GlideCarousel, GlideSlide } from "../../../../molecules";
 import LeftBar from "./leftBar";
+
 import BannerWrapper, {
   ContentWrapper,
   TextArea,
   ImageArea,
   HighlightedText,
-} from "./style";
-import { GraphContent } from "@bcrumbs.net/bc-api";
+} from './style';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
-} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+} from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface BannerSectionProps {
   model: GraphContent;
@@ -23,7 +24,7 @@ interface BannerSectionProps {
 }
 const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
   const glideOptions = {
-    type: "carousel",
+    type: 'carousel',
     perView: 1,
     gap: 0,
   };

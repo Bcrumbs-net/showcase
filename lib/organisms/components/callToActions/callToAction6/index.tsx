@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Link from "next/link";
+import { useState } from 'react';
+import Link from 'next/link';
 import {
   Box,
   RadioGroup,
@@ -7,7 +7,7 @@ import {
   Text,
   Image,
   Container,
-} from "../../../../atoms";
+} from '../../../../atoms';
 import SectionWrapper, {
   ContentArea,
   Heading,
@@ -35,14 +35,19 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
   let flattenedArray = [];
   if (model.children && model.children.length > 0) {
     branchItems = model.children.map((branchData, index) => {
-      const branchMap = convertDataModelToDataObject(branchData);
+      const branchMap = convertDataModelToDataObject(branchData) as Record<
+        string,
+        string
+      >;
       //paymentPolicyItems mapping data
       paymentPolicyItems = model.children
         .filter((paymentMap) => {
           return paymentMap.modelId === 403127;
         })
         .map((subPaymentData) => {
-          const subPaymentMap = convertDataModelToDataObject(subPaymentData);
+          const subPaymentMap = convertDataModelToDataObject(
+            subPaymentData
+          ) as Record<string, string>;
           return subPaymentMap;
         });
 
@@ -52,7 +57,6 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
           return currencyMap.modelId === 403128;
         })
         .map((subCurrencyData) => {
-          let subCurrencyMap = convertDataModelToDataObject(subCurrencyData);
           return subCurrencyData.children.map((currencyOptionItem) => {
             const subCurrencyOptionItem =
               convertDataModelToDataObject(currencyOptionItem);
@@ -64,9 +68,9 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
     });
   }
   const [state, setState] = useState({
-    price: "",
-    currency: "usd",
-    policy: "oneTime",
+    price: '',
+    currency: 'usd',
+    policy: 'oneTime',
   });
 
   const handleFormData = (value, name) => {
@@ -80,7 +84,7 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
     e.preventDefault();
     setState({
       ...state,
-      price: "",
+      price: '',
     });
   };
 
@@ -117,20 +121,20 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
                 inputType="number"
                 placeholder="100.00"
                 inputValue={state.price}
-                inputOnChange={(e) => handleFormData(e.target.value, "price")}
+                inputOnChange={(e) => handleFormData(e.target.value, 'price')}
                 currency="$ USD"
                 selectedValue={state.currency}
                 selectOptions={finalCurrencyOptions}
-                selectOnUpdate={(value) => handleFormData(value, "currency")}
+                selectOnUpdate={(value) => handleFormData(value, 'currency')}
               />
               <RadioGroup
                 name="radioGroup"
                 value={state.policy}
                 items={paymentPolicyItems}
-                onUpdate={(value) => handleFormData(value, "policy")}
+                onUpdate={(value) => handleFormData(value, 'policy')}
               />
               <DonateButton type="submit">
-                {data.Donate_Button_Label}{" "}
+                {data.Donate_Button_Label}{' '}
                 <Image src={heartImage.src} alt="Charity Landing" />
               </DonateButton>
             </DonationForm>
@@ -146,16 +150,16 @@ DonateSection.defaultProps = {
   // DonateSection row default style
   row: {
     flexBox: true,
-    flexWrap: "wrap",
-    ml: "-15px",
-    mr: "-15px",
+    flexWrap: 'wrap',
+    ml: '-15px',
+    mr: '-15px',
   },
   // DonateSection col default style
   col: {
-    width: ["100%", "50%", "50%"],
-    pl: "15px",
-    pr: "15px",
-    mb: "30px",
+    width: ['100%', '50%', '50%'],
+    pl: '15px',
+    pr: '15px',
+    mb: '30px',
   },
 };
 
