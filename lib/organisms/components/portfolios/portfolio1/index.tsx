@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { GraphContent } from '@bcrumbs.net/bc-api';
-import PropTypes from 'prop-types';
 import BlogSectionWrapper from './style';
 import { Container, Box, Heading, Button,Text,Image,Link } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
@@ -99,18 +98,6 @@ const BlogSection = ({
       </Container>
     </BlogSectionWrapper>
   );
-};
-
-// BlogSection style props
-BlogSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  blogTitle: PropTypes.object,
-  blogMeta: PropTypes.object,
-  button: PropTypes.object,
 };
 
 // BlogSection default style

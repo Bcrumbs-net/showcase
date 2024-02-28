@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from 'react-icons-kit';
 import BannerWrapper from './style';
@@ -101,18 +100,6 @@ const BannerSection = ({
   );
 };
 
-BannerSection.propTypes = {
-  row: PropTypes.object,
-  contentArea: PropTypes.object,
-  imageArea: PropTypes.object,
-  greetingStyle: PropTypes.object,
-  nameStyle: PropTypes.object,
-  designationStyle: PropTypes.object,
-  aboutStyle: PropTypes.object,
-  roleStyle: PropTypes.object,
-  roleWrapper: PropTypes.object,
-  textAfterLink: PropTypes.object,
-};
 
 BannerSection.defaultProps = {
   row: {

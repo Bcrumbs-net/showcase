@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { themeGet } from 'styled-system';
 
 const ProductModalWrapper = styled.div`
   width: 100%;

@@ -20,7 +20,6 @@ import withModelToDataObjProp, {
   convertDataModelToDataObject,
 } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import { currencyOptions } from "../../../../data/Charity-review";
 interface DonateSectionProps {
   row: object;
   col: object;

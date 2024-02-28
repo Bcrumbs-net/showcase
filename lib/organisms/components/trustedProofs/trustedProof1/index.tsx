@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Link from "next/link";
 import Fade from "react-reveal/Fade";
 import {
@@ -114,16 +113,7 @@ const TrustedHistory = ({
   );
 };
 
-// Transactions style props
-TrustedHistory.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  featureTitleStyle: PropTypes.object,
-  featureDescriptionStyle: PropTypes.object,
-};
+
 
 // Trusted default style
 TrustedHistory.defaultProps = {

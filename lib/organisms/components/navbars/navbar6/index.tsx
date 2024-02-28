@@ -9,7 +9,6 @@ import {
   Container,
   HamburgMenu,
 } from "../../../../atoms";
-import { MENU_ITEMS } from "../../../../data/Crypto";
 import { ScrollSpyMenu, Logo } from "../../../../molecules";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";

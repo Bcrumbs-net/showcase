@@ -1,13 +1,10 @@
 import { Fragment } from "react";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import PropTypes from "prop-types";
-
 import Fade from "react-reveal/Fade";
 import SectionWrapper, {
   TeamCard,
   ImageWrapper,
   ImageLink,
-  TextWrapper,
   CarouselWrapper,
 } from "./style";
 import { Container, Box, Heading, Button, Image } from "../../../../atoms";

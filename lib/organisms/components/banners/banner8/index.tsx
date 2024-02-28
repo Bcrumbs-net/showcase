@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Link from "next/link";
 import { Icon } from "react-icons-kit";
 import { chevronRight } from "react-icons-kit/feather/chevronRight";
@@ -61,14 +61,15 @@ const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
             prevButton={<span className="prev_arrow" />}
           >
             <>
-              {model.children.map((bannerSlides,index) => {
-               const slideData = convertDataModelToDataObject(bannerSlides);
-                return(
+              {model.children.map((bannerSlides, index) => {
+                const slideData = convertDataModelToDataObject(bannerSlides);
+                return (
                   // @ts-ignore
-                <GlideSlide key={slideData.id}>
-                  <Image src={slideData.thumb_url} alt="Charity Landing" />
-                </GlideSlide>
-              );})}
+                  <GlideSlide key={slideData.id}>
+                    <Image src={slideData.thumb_url} alt="Charity Landing" />
+                  </GlideSlide>
+                );
+              })}
             </>
           </GlideCarousel>
         </ImageArea>
