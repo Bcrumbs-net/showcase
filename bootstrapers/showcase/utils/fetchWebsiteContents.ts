@@ -4,20 +4,29 @@ import {
   showcaseContentsQuery,
 } from '@bcrumbs.net/bc-api';
 
+interface FetchWebsiteContentsParams {
+  rootId: string;
+  deep?: number;
+  path?: string;
+}
 /**
  *
  * @param targetDomain
  *
  */
-export async function fetchWebsiteContents(config: Config, path: string) {
+export async function fetchWebsiteContents({
+  rootId,
+  deep,
+  path,
+}: FetchWebsiteContentsParams) {
   const dataResponse = await showcaseClient.query({
     query: showcaseContentsQuery,
     variables: {
-      rootId: config.root,
-      deep: config.deep || 3,
+      rootId,
+      deep: deep || 3,
       path,
     },
-    fetchPolicy: 'no-cache'
+    fetchPolicy: 'no-cache',
   });
 
   if (dataResponse && dataResponse.data) {

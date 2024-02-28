@@ -1,11 +1,11 @@
-import React from "react";
-import { Text, Heading, Container } from "../../../../atoms";
-import { BlogPost } from "../../../../molecules";
-import SectionWrapper, { SectionHeader, FeatureWrapper } from "./style";
-import { GraphContent } from "@bcrumbs.net/bc-api";
+import React from 'react';
+import { Text, Heading, Container } from '../../../../atoms';
+import { BlogPost } from '../../../../molecules';
+import SectionWrapper, { SectionHeader, FeatureWrapper } from './style';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
-} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+} from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface FeatureSectionProps {
   model: GraphContent;
@@ -13,7 +13,6 @@ interface FeatureSectionProps {
   data: Record<string, string>;
 }
 const FeatureSection = ({ model, isAR, data }: FeatureSectionProps) => {
-
   return (
     <SectionWrapper id={model.name}>
       <Container width="1260px">
@@ -23,7 +22,9 @@ const FeatureSection = ({ model, isAR, data }: FeatureSectionProps) => {
         </SectionHeader>
         <FeatureWrapper>
           {model.children.map((featureData, index) => {
-            const featureMap = convertDataModelToDataObject(featureData);
+            const featureMap = convertDataModelToDataObject(
+              featureData
+            ) as Record<string, string>;
             return (
               <BlogPost
                 key={`option_key${featureMap.id}`}

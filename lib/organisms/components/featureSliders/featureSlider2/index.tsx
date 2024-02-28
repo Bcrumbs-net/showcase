@@ -1,9 +1,9 @@
-import FeatureSectionTwoWrapper from "./style";
-import { Container, Box, Heading, Image, Text } from "../../../../atoms";
-import { GraphContent } from "@bcrumbs.net/bc-api";
+import FeatureSectionTwoWrapper from './style';
+import { Container, Box, Heading, Image, Text } from '../../../../atoms';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
-} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+} from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface FeatureSectionProps {
   sectionHeader?: object;
@@ -23,7 +23,10 @@ const FeatureSection = ({
   let featureItems = [];
   if (model.children && model.children.length > 0) {
     featureItems = model.children.map((featureData, index) => {
-      const featureMap = convertDataModelToDataObject(featureData);
+      const featureMap = convertDataModelToDataObject(featureData) as Record<
+        string,
+        string
+      >;
       return featureMap;
     });
   }
@@ -43,34 +46,34 @@ const FeatureSection = ({
 FeatureSection.defaultProps = {
   // section header default style
   sectionHeader: {
-    mb: ["56px", "56px"],
+    mb: ['56px', '56px'],
   },
   // sub section default style
   sectionSubTitle: {
-    content: "KEY FEATURES",
-    as: "span",
-    display: "block",
-    textAlign: "center",
-    fontSize: "14px",
-    letterSpacing: "0.13em",
-    fontWeight: "700",
-    color: "#1a73e8",
-    mb: "10px",
+    content: 'KEY FEATURES',
+    as: 'span',
+    display: 'block',
+    textAlign: 'center',
+    fontSize: '14px',
+    letterSpacing: '0.13em',
+    fontWeight: '700',
+    color: '#1a73e8',
+    mb: '10px',
   },
   // section title default style
   sectionTitle: {
-    content: "Key Features Of our App",
-    textAlign: "center",
-    fontSize: ["20px", "24px", "24px", "24px", "30px"],
-    fontWeight: "400",
-    color: "#0f2137",
-    letterSpacing: "-0.025em",
-    mb: "0",
+    content: 'Key Features Of our App',
+    textAlign: 'center',
+    fontSize: ['20px', '24px', '24px', '24px', '30px'],
+    fontWeight: '400',
+    color: '#0f2137',
+    letterSpacing: '-0.025em',
+    mb: '0',
   },
   // feature row default style
   row: {
     flexBox: true,
-    flexWrap: "wrap",
+    flexWrap: 'wrap',
   },
   // feature col default style
   col: {
@@ -78,35 +81,35 @@ FeatureSection.defaultProps = {
   },
   // feature block wrapper default style
   blockWrapperStyle: {
-    p: ["10px", "20px", "20px", "40px"],
+    p: ['10px', '20px', '20px', '40px'],
   },
   // feature icon default style
   iconStyle: {
-    width: "75px",
-    height: "75px",
-    m: "0 auto",
-    borderRadius: "50%",
-    bg: "#fff",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: "32px",
-    color: "#29cf8a",
-    overflow: "hidden",
-    mb: "15px",
+    width: '75px',
+    height: '75px',
+    m: '0 auto',
+    borderRadius: '50%',
+    bg: '#fff',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '32px',
+    color: '#29cf8a',
+    overflow: 'hidden',
+    mb: '15px',
   },
   // feature content default style
   contentStyle: {
-    textAlign: "center",
+    textAlign: 'center',
   },
   // feature title default style
   featureTitle: {
-    fontSize: ["16px", "18px"],
-    fontWeight: "400",
-    color: "#0f2137",
-    lineHeight: "1.5",
-    mb: "20px",
-    letterSpacing: "-0.020em",
+    fontSize: ['16px', '18px'],
+    fontWeight: '400',
+    color: '#0f2137',
+    lineHeight: '1.5',
+    mb: '20px',
+    letterSpacing: '-0.020em',
   },
 };
 

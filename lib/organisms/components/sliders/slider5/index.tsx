@@ -15,7 +15,7 @@ const ClientBlock = ({ model, isAR, data }: ClientBlockProps) => {
   let clientItems = [];
   if (model.children && model.children.length > 0) {
     clientItems = model.children.map((clientData) => {
-      const clientMap = convertDataModelToDataObject(clientData);
+      const clientMap = convertDataModelToDataObject(clientData) as Record<string, string>;
       return clientMap;
     });
   }

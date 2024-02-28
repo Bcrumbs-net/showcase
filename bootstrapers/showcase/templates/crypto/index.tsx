@@ -10,23 +10,29 @@ import ComponentResolver from '../../mappers';
 import BCLink from '../shared/components/BCLink';
 import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 import WhatsAppLink from '../shared/components/WhatsAppLink';
+import { convertDataModelToDataObject } from '../../utils/withModelToDataObjProp';
+import { filterData } from '../../utils/filterData';
 
 export const CryptoTheme = ({
   templateId,
   config,
   path,
   data: queryData,
+  header,
+  footer
 }: {
   config: Config;
   path: string;
   templateId: number;
   data: GraphContent[];
+  header?: GraphContent;
+  footer?: GraphContent;
 }) => {
   const data = queryData[0];
-  const rootModelData: Record<string, string> = data.data.reduce(function (map, obj) {
-    map[obj.Key] = obj.Value;
-    return map;
-  }, {});
+  const rootModelData = convertDataModelToDataObject(data) as Record<string, string>;
+
+  const filteredData = filterData(data.children, config);
+
   const isAR = config.lang === 'AR';
 
   return (
@@ -61,20 +67,31 @@ export const CryptoTheme = ({
           {/*@ts-ignore: Unreachable code error*/}
           <GlobalStyle />
           <ContentWrapper>
-            {data.children &&
-              data.children
-                .filter((m) => m.online)
-                .map((model, index) => (
-                  <ComponentResolver
-                    key={`BCComponent${index}`}
-                    modelId={model.modelId}
-                    model={model}
-                    isAR={isAR}
-                  />
-                ))}
-            {!config.whitlabel ? (
-              null
-            ) : <BCLink />}
+            {header && (
+              <ComponentResolver
+                key={`HeaderComponent`}
+                modelId={header.modelId}
+                model={header}
+                isAR={isAR}
+              />
+            )}
+            {filteredData.map((model: any, index: number) => (
+              <ComponentResolver
+                key={`BCComponent${index}`}
+                modelId={model.modelId}
+                model={model}
+                isAR={isAR}
+              />
+            ))}
+            {footer && (
+              <ComponentResolver
+                key={`FooterComponent`}
+                modelId={footer.modelId}
+                model={footer}
+                isAR={isAR}
+              />
+            )}
+            <BCLink />
             {rootModelData.whatsappPhone ? (
               <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
             ) : null}

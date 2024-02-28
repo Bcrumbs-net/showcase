@@ -15,6 +15,7 @@ import {
 } from "../../../../molecules";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
+import { FaqDataType } from "../../../types/faqTypes";
 
 interface FaqSectionProps {
   sectionHeader?: object;
@@ -27,7 +28,7 @@ interface FaqSectionProps {
   titleStyle: any;
   descriptionStyle: any;
   model: GraphContent;
-  data: Record<string, string>;
+  data: FaqDataType;
 }
 const FaqSection = ({
   sectionHeader,
@@ -50,13 +51,8 @@ const FaqSection = ({
         <Box className="row">
           <Accordion>
             <Fragment>
-              {model.children &&
-                model.children.map((faqSection, index) => {
-                  const faqSectionMap: Record<string, string> =
-                    faqSection.data.reduce(function (map, obj) {
-                      map[obj.Key] = obj.Value;
-                      return map;
-                    }, {});
+              {data.subdata &&
+                data.subdata.map((faqSectionMap, index) => {
                   return (
                     <AccordionItem
                       key={index}
