@@ -8,6 +8,7 @@ import TestimonialSectionWrapper, {
 import { Container, Box, Heading, Button,Image,Text } from '../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../molecules';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { TestimonialDataType } from '../../../types/testimonialTypes';
 interface TestimonialSectionProps {
   sectionHeader:object;
   sectionTitle:object;
@@ -22,7 +23,7 @@ interface TestimonialSectionProps {
   testimonialUrl:object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: TestimonialDataType;
 }
 
 const TestimonialSection = ({
@@ -49,8 +50,8 @@ const TestimonialSection = ({
     <TestimonialSectionWrapper id={model.name}>
       <Container>
         <Box {...sectionHeader}>
-          <Text content={data.sectionSubTitle} {...sectionSubTitle} />
-          <Heading content={data.sectionTitle} {...sectionTitle} />
+          <Text content={data.subTitle} {...sectionSubTitle} />
+          <Heading content={data.title} {...sectionTitle} />
         </Box>
         <GlideCarousel
           options={glideOptions}
@@ -73,17 +74,8 @@ const TestimonialSection = ({
           }
         >
           <Fragment>
-            {model.children &&
-              model.children.map((testimonial, index) => {
-                const testimonialMap: Record<string, string> = testimonial.data.reduce(function (
-                  map,
-                  obj
-                ) {
-                  map[obj.Key] = obj.Value;
-                  return map;
-                },
-                {});
-
+            {data.subdata &&
+                data.subdata.map((testimonialMap, index) => {
                 return (
                   //@ts-ignore
                   <GlideSlide key={index}>
@@ -106,7 +98,7 @@ const TestimonialSection = ({
                           {...testimonialUrl}
                         >
                           <Image
-                            src={testimonialMap.avatar_url}
+                            src={testimonialMap.avatarUrl}
                             alt="Client Image"
                           />
                         </a>

@@ -1,6 +1,6 @@
 import { Box, Container } from "../../../../atoms";
 import ImageGallery from "react-image-gallery";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp, { convertDataModelToDataObject } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import SliderDes from "./description";
 
@@ -23,12 +23,7 @@ const TestimonialSection = ({
   let testimonialLst = [];
   if (model.children && model.children.length > 0) {
     testimonialLst = model.children.map((testimonialData, index) => {
-      const testimonialMap: Record<string, string> =
-        testimonialData.data.reduce(function (map, obj) {
-          map[obj.Key] = obj.Value;
-          return map;
-        }, {});
-
+      const testimonialMap = convertDataModelToDataObject(testimonialData);
       return {
         thumbnail: `${testimonialMap.thumbnail}`,
         thumbnailAlt: testimonialMap.thumbnailAlt,

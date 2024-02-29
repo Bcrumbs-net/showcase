@@ -12,6 +12,7 @@ import TestimonialSectionWrapper, {
 } from "./style";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
+import { TestimonialDataType } from "../../../types/testimonialTypes";
 
 interface TestimonialSectionProps {
   sectionHeader: object;
@@ -26,7 +27,7 @@ interface TestimonialSectionProps {
   designationStyle: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: TestimonialDataType;
 }
 
 const TestimonialSection = ({
@@ -72,16 +73,8 @@ const TestimonialSection = ({
           }
         >
           <Fragment>
-            {model.children &&
-              model.children.map((item, index) => {
-                const testimonialMap: Record<string, string> = item.data.reduce(
-                  function (map, obj) {
-                    map[obj.Key] = obj.Value;
-                    return map;
-                  },
-                  {}
-                );
-
+            {data.dataitem &&
+              data.dataitem.map((testimonialMap, index) => {
                 return (
                   //@ts-ignore
                   <GlideSlide key={index}>
@@ -106,13 +99,13 @@ const TestimonialSection = ({
                       <ImageWrapper>
                         <RoundWrapper>
                           <Image
-                            src={testimonialMap.avatar_url}
+                            src={testimonialMap.avatarUrl}
                             alt="Client Image"
                           />
                         </RoundWrapper>
                         <Button
                           variant="fab"
-                          icon={<i className={testimonialMap.social_icon} />}
+                          icon={<i className={testimonialMap.socialIcon} />}
                           aria-label="social"
                         />
                       </ImageWrapper>
