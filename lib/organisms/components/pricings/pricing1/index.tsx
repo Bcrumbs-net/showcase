@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Link from 'next/link';
 import Icon from 'react-icons-kit';
 import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../molecules';
-import {
-  MONTHLY_PRICING_TABLE,
-  YEARLY_PRICING_TABLE,
-} from '../../../../data/Saas';
 import PricingTable, {
   PricingHead,
   PricingPrice,
@@ -220,19 +213,7 @@ const PricingSection = ({
   );
 };
 
-PricingSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secHeading: PropTypes.object,
-  secText: PropTypes.object,
-  nameStyle: PropTypes.object,
-  descriptionStyle: PropTypes.object,
-  priceStyle: PropTypes.object,
-  priceLabelStyle: PropTypes.object,
-  listContentStyle: PropTypes.object,
-};
+
 
 PricingSection.defaultProps = {
   sectionWrapper: {

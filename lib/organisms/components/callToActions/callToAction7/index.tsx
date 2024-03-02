@@ -17,9 +17,9 @@ import SectionWrapper, {
   DonateButton,
   ShareList,
   Item,
-} from './style';
-import heartImage from '../../../../assets/image/charity/heart.svg';
-import { GraphContent } from '@bcrumbs.net/bc-api';
+} from "./style";
+import heartImage from "./heart.svg";
+import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
 } from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';

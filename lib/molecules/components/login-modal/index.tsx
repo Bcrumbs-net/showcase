@@ -5,9 +5,9 @@ import TabContent from 'rc-tabs/lib/TabContent';
 import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
 import LoginModalWrapper from './style';
 import 'rc-tabs/assets/index.css';
-import LogoImage from '../../../assets/image/agency/logo.png';
-import LoginImage from '../../../assets/image/agency/login-bg.jpg';
-import GoogleLogo from '../../../assets/image/agency/google-icon.jpg';
+import LogoImage from './images/logo.png';
+import LoginImage from './images/login-bg.jpg';
+import GoogleLogo from './images/google-icon.jpg';
 import { Button, Box,Text, Heading,Image, Input, CheckBox } from '../../../atoms';
 
 interface LoginModalProps {

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { GraphContent } from '@bcrumbs.net/bc-api';
-import PropTypes from 'prop-types';
 import { Box, Heading, Image, Container } from '../../../../atoms';
 import VideoSectionWrapper from './style';
 import { FeatureBlock } from '../../../../molecules';

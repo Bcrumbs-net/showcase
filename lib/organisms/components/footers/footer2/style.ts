@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import FooterIamge from '../../../assets/image/agency/footer-bg.png';
 
 const FooterWrapper = styled.section`
   padding: 80px 0 55px;

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Link from "next/link";
 import Fade from "react-reveal/Fade";
 import {
@@ -8,13 +7,9 @@ import {
   Heading,
   Image,
   Container,
-  Button,
 } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";
-import { PROOFS_FEATURE } from "../../../../data/Crypto";
 import { TrustedWrapper, FeatureSection } from "./style";
-import AppButton from "../../../assets/image/crypto/app.svg";
-import PlayButton from "../../../assets/image/crypto/playstore.svg";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
@@ -118,16 +113,7 @@ const TrustedHistory = ({
   );
 };
 
-// Transactions style props
-TrustedHistory.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  featureTitleStyle: PropTypes.object,
-  featureDescriptionStyle: PropTypes.object,
-};
+
 
 // Trusted default style
 TrustedHistory.defaultProps = {

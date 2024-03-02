@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Mockup from '../../../../assets/image/app/iphone-mockup.png';
+import Mockup from './iphone-mockup.png';
 
 
 const FeatureSliderWrapper = styled.div`

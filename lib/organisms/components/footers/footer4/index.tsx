@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
 import { Box, Text, Container } from "../../../../atoms";
-import { FooterWrapper, Newsletter, FooterNav, FooterNavItem } from "./style";
+import { FooterWrapper,  FooterNav, FooterNavItem } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 

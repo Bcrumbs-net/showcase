@@ -11,7 +11,7 @@ import AppNavbar from "../../../lib/organisms/components/navbars/navbar2";
 import FoodNavbar from "../../../lib/organisms/components/navbars/navbar5";
 import SaaSClassicNavbar from "../../../lib/organisms/components/navbars/navbar7";
 import CryptoNavbar from "../../../lib/organisms/components/navbars/navbar6";
-import CryptoModern from "../../../lib/containers/CryptoModern/Navbar";
+import CryptoModern from "../../../lib/containers/Crypto2/Navbar";
 
 const resolveComponents = () => {
   return {

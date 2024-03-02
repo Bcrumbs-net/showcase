@@ -2,7 +2,7 @@ import React from "react";
 import Fade from "react-reveal/Fade";
 import { Box, Text, Heading, Image, Container } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";
-import { BETA_FEATURE } from "../../../../data/Crypto";
+import { BETA_FEATURE } from "../../../../data/Crypto/index.json";
 import { BetaSectionWrapper, FeatureSection } from "./style";
 
 interface BetaSectionProps {
