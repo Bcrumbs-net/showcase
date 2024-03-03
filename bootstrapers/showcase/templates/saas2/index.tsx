@@ -101,7 +101,7 @@ export const SaaS2Theme = ({
                 isAR={isAR}
               />
             )}
-            {!config.whitlabel ? (
+            {config.whitlabel ? (
               null
             ) : <BCLink />}
             {rootModelData.whatsappPhone ? (

@@ -114,7 +114,7 @@ export const AgencyTheme = ({
                 isAR={isAR}
               />
             )}
-            {!config.whitlabel ? (
+            {config.whitlabel ? (
               null
             ) : <BCLink />}
             {rootModelData.whatsappPhone ? (

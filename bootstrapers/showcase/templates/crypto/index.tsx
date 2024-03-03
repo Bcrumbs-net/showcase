@@ -91,7 +91,7 @@ export const CryptoTheme = ({
                 isAR={isAR}
               />
             )}
-            {!config.whitlabel ? (
+            {config.whitlabel ? (
               null
             ) : <BCLink />}
             {rootModelData.whatsappPhone ? (
