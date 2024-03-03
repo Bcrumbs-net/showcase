@@ -28,8 +28,40 @@ export interface ScrollSpyMenuProps {
    * Function to be executed when the active item has been updated [optional].
    */
   onUpdate?(...args: unknown[]): unknown;
-  drawerClose?(...args: unknown[]): unknown;
+  drawerClose?: boolean;
 }
+
+const ScrollSpyMenuItem = ({
+  index,
+  itemData,
+  toggleDrawer,
+  drawerClose,
+}: {
+  index: number;
+  itemData: any;
+  toggleDrawer: () => void;
+  drawerClose: boolean;
+}) => {
+  return (
+    <li key={`menu-item-${index}`}>
+      {itemData.staticLink ? (
+        <a href={itemData.path}>{itemData.label}</a>
+      ) : drawerClose ? (
+        <AnchorLink
+          href={itemData.path}
+          offset={itemData.offset}
+          onClick={toggleDrawer}
+        >
+          {itemData.label}
+        </AnchorLink>
+      ) : (
+        <AnchorLink href={itemData.path} offset={itemData.offset}>
+          {itemData.label}
+        </AnchorLink>
+      )}
+    </li>
+  );
+};
 
 /* eslint-disable-next-line */
 export const ScrollSpyMenu = ({
@@ -70,24 +102,14 @@ export const ScrollSpyMenu = ({
       drawerClose={drawerClose}
       {...props}
     >
-      {menuItems.map((menu, index) => (
-        <li key={`menu-item-${index}`}>
-          {menu.staticLink ? (
-            <a href={menu.path}>{menu.label}</a>
-          ) : drawerClose ? (
-            <AnchorLink
-              href={menu.path}
-              offset={menu.offset}
-              onClick={toggleDrawer}
-            >
-              {menu.label}
-            </AnchorLink>
-          ) : (
-            <AnchorLink href={menu.path} offset={menu.offset}>
-              {menu.label}
-            </AnchorLink>
-          )}
-        </li>
+      {menuItems.map((itemData, index) => (
+        <ScrollSpyMenuItem
+          key={`ScrollSpyMenuItem${index}`}
+          index={index}
+          itemData={itemData}
+          toggleDrawer={toggleDrawer}
+          drawerClose={drawerClose}
+        />
       ))}
     </Scrollspy>
   );

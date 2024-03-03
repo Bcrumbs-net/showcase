@@ -1,10 +1,10 @@
-import React from "react";
-import Link from "next/link";
-import { Icon } from "react-icons-kit";
-import { chevronRight } from "react-icons-kit/feather/chevronRight";
-import { Text, Heading, Image } from "../../../../atoms";
-import { GlideCarousel, GlideSlide } from "../../../../molecules";
-import LeftBar from "./leftBar";
+import React from 'react';
+import Link from 'next/link';
+import { Icon } from 'react-icons-kit';
+import { chevronRight } from 'react-icons-kit/feather/chevronRight';
+import { Text, Heading, Image } from '../../../../atoms';
+import { GlideCarousel, GlideSlide } from '../../../../molecules';
+import LeftBar from './leftBar';
 
 import BannerWrapper, {
   ContentWrapper,
@@ -63,7 +63,9 @@ const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
           >
             <>
               {model.children.map((bannerSlides, index) => {
-                const slideData = convertDataModelToDataObject(bannerSlides);
+                const slideData = convertDataModelToDataObject(
+                  bannerSlides
+                ) as Record<string, string>;
                 return (
                   // @ts-ignore
                   <GlideSlide key={slideData.id}>

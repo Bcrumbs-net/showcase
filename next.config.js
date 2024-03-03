@@ -34,7 +34,7 @@ const nextConfig = {
   typescript: {
     tsconfigPath: './tsconfig.github.json',
   },
-  experimental: { esmExternals: 'loose' },
+  experimental: { esmExternals: true },
   compiler: {
     styledComponents: true,
   },
