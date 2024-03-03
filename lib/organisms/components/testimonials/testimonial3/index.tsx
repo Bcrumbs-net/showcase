@@ -73,8 +73,8 @@ const TestimonialSection = ({
           }
         >
           <Fragment>
-            {data.dataitem &&
-              data.dataitem.map((testimonialMap, index) => {
+            {data.subdata &&
+              data.subdata.map((testimonialMap, index) => {
                 return (
                   //@ts-ignore
                   <GlideSlide key={index}>

@@ -3,6 +3,7 @@ import ImageGallery from "react-image-gallery";
 import withModelToDataObjProp, { convertDataModelToDataObject } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import SliderDes from "./description";
+import { TestimonialDataType } from "../../../types/testimonialTypes";
 
 interface TestimonialSectionProps {
   sectionWrapper: object;
@@ -10,7 +11,7 @@ interface TestimonialSectionProps {
   row: object;
   sectionSubTitle: object;
   model: GraphContent;
-  data: Record<string, string>;
+  data: TestimonialDataType;
 }
 
 const TestimonialSection = ({
@@ -21,25 +22,24 @@ const TestimonialSection = ({
   data,
 }: TestimonialSectionProps) => {
   let testimonialLst = [];
-  if (model.children && model.children.length > 0) {
-    testimonialLst = model.children.map((testimonialData, index) => {
-      const testimonialMap = convertDataModelToDataObject(testimonialData);
+  if (data.subdata && data.subdata.length > 0) {
+    testimonialLst = data.subdata.flatMap((testimonialData) => {
       return {
-        thumbnail: `${testimonialMap.thumbnail}`,
-        thumbnailAlt: testimonialMap.thumbnailAlt,
+        thumbnail: testimonialData.thumbnail,
+        thumbnailAlt: testimonialData.thumbnailAlt,
         description: (
           <SliderDes
             data={{
-              description: testimonialMap.description,
-              designation: testimonialMap.designation,
-              name: testimonialMap.name,
-              id: testimonialMap._id,
+              description: testimonialData.description,
+              designation: testimonialData.designation,
+              name: testimonialData.name,
             }}
           />
         ),
-      };
+      }
     });
   }
+
   return (
     <Box
       {...sectionWrapper}

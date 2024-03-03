@@ -24,7 +24,7 @@ export function convertDataModelToDataObject(
       subdata: model.children
         ? convertChildrenModelToDataObject(model)
         : undefined,
-    }
+    },
   );
 }
 
