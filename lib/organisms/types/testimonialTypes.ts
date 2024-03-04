@@ -20,12 +20,4 @@ export type TestimonialDataItemType = {
     twitterProfile?: string;
     tweetImage?: string;
     socialIcon?: string;
-    subdata?: TestimonialSubDataItemType[];
 };
-
-export type TestimonialSubDataItemType = {
-    _id?: number;
-    name?: string;
-    designation?: string;
-    description?: string;
-}
