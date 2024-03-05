@@ -1,109 +1,96 @@
-import { useEffect, useState } from 'react';
-import { Box, Text, Container } from '../../../../../../lib/atoms';
-import SectionWrapper, {
-  Heading,
-  ContactForm,
-  SubmitButton,
-  Loader,
-} from './style';
+import React, { useEffect, useState } from 'react';
+import { Box, Container } from '../../../../../../lib/atoms';
+import SectionWrapper, { Heading } from './style';
 import withModelToDataObjProp from '../../../../utils/withModelToDataObjProp';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import React from 'react';
 import useFormQuery from '../../../../utils/useFormQuery';
-import FormInput from './FormInput';
+import DynamicForm from './DynamicForm';
 
-interface FormSectionProps {
-  row: object;
-  col: object;
-  model: GraphContent;
-  isAR: boolean;
-  data: Record<string, string>;
-}
-
-const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
+const FormSection = ({ row, col, model, isAR, data }) => {
   const [formFieldsState, setFormFieldsState] = useState({});
   const [failureMessage, setFailureMessage] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [state, setState] = useState({
     submitted: false,
     isFormValid: false,
     isSuccess: false,
+    isLoading: false,
+    currentStep: 0,
   });
   const { loading, formData, error } = useFormQuery(data.formID);
 
   useEffect(() => {
-    if (formData && formData.formFields) {
-      const initialState = formData.formFields.reduce((acc, field) => {
-        acc[field.name] = '';
-        return acc;
-      }, {});
-      setFormFieldsState(initialState);
+    if (formData) {
+      if (formData.formFields && formData.subForms.length === 0) {
+        const initialState = formData.formFields.reduce((acc, field) => {
+          acc[field.name] = '';
+          return acc;
+        }, {});
+        setFormFieldsState(initialState);
+      } else if (formData.subForms && formData.subForms.length > 0 && formData.subForms[0].formFields) {
+        const initialState = formData.subForms[0].formFields.reduce((acc, field) => {
+          acc[field.name] = '';
+          return acc;
+        }, {});
+        setFormFieldsState(initialState);
+      }
     }
   }, [formData]);
-
   useEffect(() => {
     const isFormValid = Object.entries(formFieldsState).every(
       ([name, value]: [string, string]) => {
         const field = formData.formFields.find((f) => f.name === name);
         return !field.required || (field.required && value?.trim() !== '');
-      }
-    );
+      });
     setState((prevState) => ({ ...prevState, isFormValid }));
   }, [formFieldsState, formData]);
 
   const handleFormData = (value, name) => {
-    setFormFieldsState((prevFieldsState) => ({
+    setFormFieldsState(prevFieldsState => ({
       ...prevFieldsState,
       [name]: value,
     }));
-    setState({
-      ...state,
-      submitted: false,
-    });
+    setState(prevState => ({ ...prevState, submitted: false }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!state.isFormValid || isLoading || state.isSuccess) {
+    if (!state.isFormValid || state.isLoading || state.isSuccess) {
       return;
     }
-    setIsLoading(true);
+    setState(prevState => ({ ...prevState, isLoading: true }));
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 2000));
       const payload = new FormData();
       Object.keys(formFieldsState).forEach((key) => {
         payload.append(key, formFieldsState[key]);
       });
-
-      fetch(data.formActionUrl, {
+      const response = await fetch(data.formActionUrl, {
         method: 'post',
         headers: {
           Accept: 'application/json, text/plain, */*',
         },
         body: payload,
-      })
-        .then((res) => {
-          if (res.ok) {
-            setState({
-              submitted: true,
-              isFormValid: true,
-              isSuccess: true,
-            });
-          } else {
-            return Promise.reject('Form submission failed');
-          }
-        })
-        .catch((error) => {
-          console.log('Failure Submit: ', error);
-          setFailureMessage(data.failureMessage);
-          setState({ submitted: true, isFormValid: false, isSuccess: false });
-        });
+      });
+      if (response.ok) {
+        setState(prevState => ({ ...prevState, submitted: true, isFormValid: true, isSuccess: true }));
+      } else {
+        throw new Error('Form submission failed');
+      }
     } catch (error) {
       console.error('Form submission error:', error);
+      setFailureMessage(data.failureMessage);
+      setState(prevState => ({ ...prevState, submitted: true, isFormValid: false, isSuccess: false }));
     } finally {
-      setIsLoading(false);
+      setState(prevState => ({ ...prevState, isLoading: false }));
     }
+  };
+
+  const handleNextStep = () => {
+    setState(prevState => ({ ...prevState, currentStep: prevState.currentStep + 1 }));
+  };
+
+  const handlePrevStep = () => {
+    setState(prevState => ({ ...prevState, currentStep: prevState.currentStep - 1 }));
   };
 
   if (loading) {
@@ -115,63 +102,24 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
     return null;
   }
 
-  if (!formData) {
-    console.log(`Form with ID {data.formID} does not exist`);
-    return null;
-  }
-
-  const form = (
-    <>
-      {formData.formFields &&
-        Array.isArray(formData.formFields) &&
-        formData.formFields
-          .filter((field) => !field.invisible)
-          .sort((f1, f2) => (f1.priority > f2.priority ? 1 : -1))
-          .map((field, index) => (
-            <FormInput
-              key={`FormInput_${index}`}
-              field={field}
-              formFieldsState={formFieldsState}
-              handleFormData={handleFormData}
-              state={state}
-              isAR={isAR}
-            />
-          ))}
-      <SubmitButton
-        type="submit"
-        isLoading={isLoading}
-        disabled={!state.isFormValid || state.isSuccess || isLoading}
-      >
-        {isLoading ? isLoading && <Loader /> : formData.submitButtonLabel}
-      </SubmitButton>
-    </>
-  );
-
   return (
     <SectionWrapper id={model.name} background={data.backgroundImage}>
       <Container>
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <Heading>{data.title}</Heading>
-            <ContactForm onSubmit={(e) => handleSubmit(e)} isAR={isAR}>
-              {state.submitted ? (
-                <>
-                  {failureMessage ? (
-                    <>
-                      {form}
-                      <Text className="failure" content={failureMessage} />
-                    </>
-                  ) : (
-                    <>
-                      {form}
-                      <Text className="success" content={data.successMessage} />
-                    </>
-                  )}
-                </>
-              ) : (
-                form
-              )}
-            </ContactForm>
+            <DynamicForm
+              data={data}
+              formData={formData}
+              handleNextStep={handleNextStep}
+              handlePrevStep={handlePrevStep}
+              formFieldsState={formFieldsState}
+              handleFormData={handleFormData}
+              handleSubmit={handleSubmit}
+              state={state}
+              failureMessage={failureMessage}
+              isAR={isAR}
+            />
           </Box>
         </Box>
       </Container>

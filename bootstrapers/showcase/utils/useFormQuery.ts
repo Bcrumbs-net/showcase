@@ -3,13 +3,10 @@ import { gql, useQuery } from '@apollo/client';
 const GET_FORMDATA = gql`
   query GETFormData($id:Int!) {
     form(id:$id) {
-        backButtonLabel
         customSubmitPath
         id
         name
-        nextButtonLabel
         priority
-        submitButtonLabel
         submitRedirectUrl
         formFields {
           id
@@ -20,6 +17,23 @@ const GET_FORMDATA = gql`
           title
           type
           choices
+        }
+        subForms {
+          customSubmitPath
+          id
+          name
+          priority
+          submitRedirectUrl
+          formFields {
+            id
+            invisible
+            name
+            priority
+            required
+            title
+            type
+            choices
+          }
         }
     }
   }
