@@ -24,7 +24,7 @@ export function convertDataModelToDataObject(
       subdata: model.children
         ? convertChildrenModelToDataObject(model)
         : undefined,
-    }
+    },
   );
 }
 
@@ -40,6 +40,7 @@ export function convertChildrenModelToDataObject(
     return { ...convertDataModelToDataObject(subModel), subdata };
   });
 }
+
 
 const withModelToDataObjProp = (Component: React.FunctionComponent<any>) => {
   function ComponentWithModelToDataObjProp(props: ComponentMainInterface) {
