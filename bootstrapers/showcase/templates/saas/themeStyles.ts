@@ -1,23 +1,7 @@
 import colors from './colors';
-export const saasTheme = ({
-  transparent,
-  black,
-  white,
-  headingColor,
-  textColor,
-  labelColor,
-  inactiveField,
-  inactiveButton,
-  inactiveIcon,
-  primary,
-  primaryHover,
-  secondary,
-  secondaryHover,
-  yellow,
-  yellowHover,
-  primaryBoxShadow,
-}) => ({
-  breakpoints: [575, 768, 990, 1440],
+
+export const saasClassicTheme = {
+  breakpoints: [576, 768, 991, 1220],
   space: [0, 5, 8, 10, 15, 20, 25, 30, 33, 35, 40, 50, 60, 70, 80, 85, 90, 100],
   fontSizes: [10, 12, 14, 15, 16, 18, 20, 22, 24, 36, 48, 80, 96],
   fontWeights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
@@ -45,141 +29,103 @@ export const saasTheme = ({
   widths: [36, 40, 44, 48, 54, 70, 81, 128, 256],
   heights: [36, 40, 44, 46, 48, 54, 70, 81, 128],
   maxWidths: [16, 32, 64, 128, 256, 512, 768, 1024, 1536],
-  colors: {
-    transparent: transparent || colors.transparent,
-    black: black || colors.black,
-    white: white || colors.white,
-    headingColor: headingColor || colors.headingColor,
-    textColor: textColor || colors.textColor,
-    labelColor: labelColor || colors.labelColor,
-    inactiveField: inactiveButton || colors.inactiveButton,
-    inactiveButton: inactiveButton || colors.inactiveButton,
-    inactiveIcon: inactiveIcon || colors.inactiveIcon,
-    primary: primary || colors.primary,
-    primaryHover: primaryHover || colors.primaryHover,
-    secondary: secondary || colors.secondary,
-    secondaryHover: secondaryHover || colors.secondaryHover,
-    yellow: yellow || colors.yellow,
-    yellowHover: yellowHover || colors.yellowHover,
-    primaryBoxShadow: primaryBoxShadow || colors.primaryBoxShadow,
-  },
+  colors,
   colorStyles: {
     primary: {
-      color: primary || colors.primary,
-      border: '1px solid',
-      borderColor: primary || colors.primary,
-      backgroundColor: transparent || colors.transparent,
+      color: colors.primary,
+      borderColor: colors.transparent,
+      backgroundColor: colors.transparent,
       '&:hover': {
-        color: white || colors.white,
-        backgroundColor: primary || primaryHover || colors.primaryHover,
-        borderColor: transparent || colors.transparent,
-        boxShadow: '0px 9px 20px -5px rgba(82, 104, 219, 0.57)',
-        backgroundImage:
-          'linear-gradient( 31deg, rgba(215,178,233, 0.4) 0%, rgba(83,105,220, 0.4) 100%)',
+        color: colors.primary,
+        backgroundColor: colors.transparent,
       },
     },
     secondary: {
-      color: secondary || colors.secondary,
-      borderColor: secondary || colors.secondary,
+      color: colors.secondary,
+      borderColor: colors.transparent,
+      backgroundColor: colors.transparent,
       '&:hover': {
-        color:
-          secondary ||
-          secondaryHover ||
-          secondaryHover ||
-          colors.secondaryHover,
-        borderColor:
-          secondary ||
-          secondaryHover ||
-          secondaryHover ||
-          colors.secondaryHover,
+        color: colors.secondaryHover,
+        borderColor: colors.transparent,
+        backgroundColor: colors.transparent,
       },
     },
     warning: {
-      color: yellow || colors.yellow,
-      borderColor: yellow || colors.yellow,
+      color: colors.yellow,
+      borderColor: colors.yellow,
       '&:hover': {
-        color: yellow || yellowHover || colors.yellowHover,
-        borderColor: yellow || yellowHover || colors.yellowHover,
+        color: colors.yellowHover,
+        borderColor: colors.yellowHover,
       },
     },
     error: {
-      color:
-        secondary || secondaryHover || secondaryHover || colors.secondaryHover,
-      borderColor:
-        secondary || secondaryHover || secondaryHover || colors.secondaryHover,
+      color: colors.secondaryHover,
+      borderColor: colors.secondaryHover,
       '&:hover': {
-        color: secondary || colors.secondary,
-        borderColor: secondary || colors.secondary,
+        color: colors.secondary,
+        borderColor: colors.secondary,
       },
     },
     primaryWithBg: {
-      color: white || colors.white,
-      backgroundColor: primary || colors.primary,
-      borderColor: primary || colors.primary,
-      backgroundImage:
-        'linear-gradient( 31deg, rgba(215,178,233, 0.4) 0%, rgba(83,105,220, 0.4) 100%)',
+      color: colors.white,
+      backgroundColor: colors.primary,
+      borderColor: colors.primary,
+      border: '1px solid',
       '&:hover': {
-        backgroundColor: primary || primaryHover || colors.primaryHover,
-        borderColor: primary || primaryHover || colors.primaryHover,
-        boxShadow: '0px 9px 20px -5px rgba(82, 104, 219, 0.57)',
+        color: colors.white,
+        backgroundColor: colors.primaryHover,
+        borderColor: colors.primaryHover,
+        boxShadow: colors.primaryBoxShadow,
       },
     },
     secondaryWithBg: {
-      color: white || colors.white,
-      backgroundColor: secondary || colors.secondary,
-      borderColor: secondary || colors.secondary,
+      color: colors.black,
+      backgroundColor: colors.secondary,
+      borderColor: colors.secondary,
       '&:hover': {
-        backgroundColor:
-          secondary ||
-          secondaryHover ||
-          secondaryHover ||
-          colors.secondaryHover,
-        borderColor:
-          secondary ||
-          secondaryHover ||
-          secondaryHover ||
-          colors.secondaryHover,
+        color: colors.black,
+        backgroundColor: colors.secondaryHover,
+        borderColor: colors.secondaryHover,
+        boxShadow: colors.secondaryBoxShadow,
       },
     },
     warningWithBg: {
-      color: white || colors.white,
-      backgroundColor: yellow || colors.yellow,
-      borderColor: yellow || colors.yellow,
+      color: colors.white,
+      backgroundColor: colors.yellow,
+      borderColor: colors.yellow,
       '&:hover': {
-        backgroundColor: yellow || yellowHover || colors.yellowHover,
-        borderColor: yellow || yellowHover || colors.yellowHover,
+        backgroundColor: colors.yellowHover,
+        borderColor: colors.yellowHover,
       },
     },
     errorWithBg: {
-      color: white || colors.white,
-      backgroundColor:
-        secondary || secondaryHover || secondaryHover || colors.secondaryHover,
-      borderColor:
-        secondary || secondaryHover || secondaryHover || colors.secondaryHover,
+      color: colors.white,
+      backgroundColor: colors.secondaryHover,
+      borderColor: colors.secondaryHover,
       '&:hover': {
-        backgroundColor: secondary || colors.secondary,
-        borderColor: secondary || colors.secondary,
+        backgroundColor: colors.secondary,
+        borderColor: colors.secondary,
       },
     },
     transparentBg: {
-      backgroundColor: white || colors.white,
+      backgroundColor: colors.white,
       '&:hover': {
-        backgroundColor: white || colors.white,
+        backgroundColor: colors.white,
       },
     },
   },
   buttonStyles: {
     textButton: {
       border: 0,
-      color: primary || colors.primary,
+      color: colors.primary,
       padding: 0,
       height: 'auto',
-      backgroundColor: transparent || colors.transparent,
+      backgroundColor: colors.transparent,
     },
     outlined: {
       borderWidth: '1px',
       borderStyle: 'solid',
-      backgroundColor: transparent || colors.transparent,
+      backgroundColor: colors.transparent,
     },
     fab: {
       border: '0',
@@ -203,4 +149,4 @@ export const saasTheme = ({
   // FlexBox: {
   //   backgroundColor: 'green'
   // }
-});
+};
