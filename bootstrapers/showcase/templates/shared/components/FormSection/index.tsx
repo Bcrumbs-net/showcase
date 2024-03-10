@@ -38,7 +38,7 @@ const FormSection = ({ row, col, model, isAR, data }) => {
     const isFormValid = Object.entries(formFieldsState).every(
       ([name, value]: [string, string]) => {
         const field = formData.formFields.find((f) => f.name === name);
-        return !field.required || (field.required && value?.trim() !== '');
+        return !field?.required || (field?.required && value?.trim() !== '');
       });
     setState((prevState) => ({ ...prevState, isFormValid }));
   }, [formFieldsState, formData]);
@@ -64,10 +64,12 @@ const FormSection = ({ row, col, model, isAR, data }) => {
       Object.keys(formFieldsState).forEach((key) => {
         payload.append(key, formFieldsState[key]);
       });
+      payload.append('AjaxCall', 'true');
       const response = await fetch(data.formActionUrl, {
         method: 'post',
         headers: {
           Accept: 'application/json, text/plain, */*',
+          'Ajax': 'true',
         },
         body: payload,
       });
@@ -84,7 +86,6 @@ const FormSection = ({ row, col, model, isAR, data }) => {
       setState(prevState => ({ ...prevState, isLoading: false }));
     }
   };
-
   const handleNextStep = () => {
     setState(prevState => ({ ...prevState, currentStep: prevState.currentStep + 1 }));
   };

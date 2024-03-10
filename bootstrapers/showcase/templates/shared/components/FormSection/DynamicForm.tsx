@@ -1,11 +1,10 @@
 import React from 'react';
 import FormInput from './FormInput';
 import { Text } from '../../../../../../lib/atoms';
-import { ContactForm, SubmitButton, Loader } from './style';
+import { Button, ContactForm, Loader } from './style';
 
 const DynamicForm = ({ formData, data, handlePrevStep, failureMessage, handleNextStep, formFieldsState, handleFormData, handleSubmit, state, isAR }) => {
-    const isSingleStep = !formData.subForms || formData.subForms.length === 0;
-
+    const isSingleStep = formData.type === "Single Form";
     const renderFormFields = (fields) => {
         if (!fields) {
             console.log(`Form fields are undefined`);
@@ -28,40 +27,34 @@ const DynamicForm = ({ formData, data, handlePrevStep, failureMessage, handleNex
 
     return (
         <ContactForm onSubmit={(e) => handleSubmit(e)} isAR={isAR}>
-            {state.submitted ? (
-                <>
-                    {failureMessage ? (
-                        <>
-                            {renderFormFields(isSingleStep ? formData.formFields : formData.subForms[state.currentStep].formFields)}
-                            <Text className="failure" content={failureMessage} />
-                        </>
-                    ) : (
-                        <>
-                            {renderFormFields(isSingleStep ? formData.formFields : formData.subForms[state.currentStep].formFields)}
-                            <Text className="success" content={data.successMessage} />
-                        </>
-                    )}
-                </>
-            ) : (
-                renderFormFields(isSingleStep ? formData.formFields : formData.subForms[state.currentStep].formFields)
+            {renderFormFields(isSingleStep ? formData.formFields : formData.subForms[state.currentStep].formFields)}
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                {!isSingleStep && state.currentStep > 0 && (
+                    <Button type="button" onClick={handlePrevStep}>
+                        {data.backButtonLabel}
+                    </Button>
+                )}
+                {!isSingleStep && state.currentStep < formData.subForms.length - 1 && (
+                    <Button type="submit" onClick={handleNextStep}>
+                        {data.nextButtonLabel}
+                    </Button>
+                )}
+                {(isSingleStep || state.currentStep === formData.subForms.length - 1) && (
+                    <Button
+                        type="submit"
+                        disabled={!state.isFormValid || state.isSuccess}
+                    >
+                        {state.isLoading ? <Loader /> : data.submitButtonLabel}
+                    </Button>
+                )}
+            </div>
+            {state.submitted && failureMessage && (
+                <Text className="failure" content={failureMessage} />
+            )}
+            {state.submitted && !failureMessage && (
+                <Text className="success" content={data.successMessage} />
             )}
 
-            {!isSingleStep && state.currentStep > 0 && (
-                <button onClick={handlePrevStep}>{data.backButtonLabel}</button>
-            )}
-            {!isSingleStep && state.currentStep < formData.subForms.length - 1 && (
-                <SubmitButton type="button" onClick={handleNextStep}>
-                    {data.nextButtonLabel}
-                </SubmitButton>
-            )}
-            {(isSingleStep || state.currentStep === formData.subForms.length - 1) && (
-                <SubmitButton
-                    type="submit"
-                    disabled={!state.isFormValid || state.isSuccess}
-                >
-                    {state.isLoading ? <Loader /> : data.submitButtonLabel}
-                </SubmitButton>
-            )}
         </ContactForm>
     );
 };

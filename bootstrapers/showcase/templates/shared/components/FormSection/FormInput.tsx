@@ -1,6 +1,8 @@
 import React from 'react';
 import { RequiredFields } from './style';
 import { Input, Select, Radio, CheckBox } from '../../../../../../lib/atoms';
+import RichTextBox from '../../../../../../lib/atoms/components/rich_text_box';
+import BooleanField from '../../../../../../lib/atoms/components/boolean';
 
 interface FormFieldType {
   id: string;
@@ -139,6 +141,25 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, isAR) =>
               disabled={isSuccess}
             />
           ))}
+        </div>
+      );
+    case 'Rich Text Box':
+      return (
+        <div key={field.id}>
+          <RichTextBox htmlContent={formFieldsState[field.name]} />
+        </div>
+      );
+    case 'Boolean':
+      return (
+        <div key={field.id}>
+          <BooleanField
+            label={field.name}
+            id={field.id}
+            isChecked={formFieldsState[field.name]}
+            onChange={(isChecked) => handleFormData(isChecked, field.name)}
+            disabled={isSuccess}
+            required={field.required}
+          />
         </div>
       );
     default:

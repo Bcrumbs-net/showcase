@@ -8,6 +8,7 @@ const GET_FORMDATA = gql`
         name
         priority
         submitRedirectUrl
+        type
         formFields {
           id
           invisible
@@ -22,6 +23,7 @@ const GET_FORMDATA = gql`
           customSubmitPath
           id
           name
+          type
           priority
           submitRedirectUrl
           formFields {
