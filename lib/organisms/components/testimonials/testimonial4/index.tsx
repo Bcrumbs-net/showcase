@@ -14,6 +14,7 @@ import {
 import { twitter } from "react-icons-kit/icomoon/twitter";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp, { convertDataModelToDataObject } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { TestimonialDataType } from "../../../types/testimonialTypes";
 
 interface TestimonialSectionProps {
   sectionWrapper: object;
@@ -25,7 +26,7 @@ interface TestimonialSectionProps {
   designationStyle: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: TestimonialDataType;
 }
 const TestimonialSection = ({
   sectionWrapper,
@@ -41,8 +42,8 @@ const TestimonialSection = ({
 }: TestimonialSectionProps) => {
   //Carousel Options
   const carouselOptions = {
-    type: data.children && data.children.length > 5 ? "carousel" : "slider",
-    autoplay: data.children && data.children.length > 5 ? 6000 : false,
+    type: data.subdata && data.subdata.length > 5 ? "carousel" : "slider",
+    autoplay: data.subdata && data.subdata.length > 5 ? 6000 : false,
     perView: 3,
     gap: 28,
     animationDuration: 800,
@@ -81,41 +82,40 @@ const TestimonialSection = ({
             }
           >
             <>
-              {model.children &&
-                model.children.map((itemObj, index) => {
-                  const item = convertDataModelToDataObject(itemObj) as Record<string, string>;
+              {data.subdata &&
+                data.subdata.map((testimonialMap, index) => {
                   return (
                     // @ts-ignore
                     <GlideSlide key={`${model.name}-testimonial-item-${index}`}>
                       <TestimonialItem>
                         <TestimonialHead>
-                          <Link href={item.twitterProfile || "#"}>
+                          <Link href={testimonialMap.twitterProfile || "#"}>
                             <a aria-label="twitter">
-                              {item.tweetImage ? (
-                                <img src={item.tweetImage} alt="Icon" />
+                              {testimonialMap.tweetImage ? (
+                                <img src={testimonialMap.tweetImage} alt="Icon" />
                               ) : (
                                 <Icon icon={twitter} size={24} />
                               )}
                             </a>
                           </Link>
-                          {item.image ? (
+                          {testimonialMap.avatarUrl ? (
                             <TestimonialThumb>
                               <Image
-                                src={item.image}
-                                alt={`${item.name}-${index + 1}`}
+                                src={testimonialMap.avatarUrl}
+                                alt={`${testimonialMap.name}-${index + 1}`}
                               />
                             </TestimonialThumb>
                           ) : null}
                         </TestimonialHead>
-                        <Text {...reviewStyle} content={item.review} />
-                        <Heading as="h3" content={item.name} {...nameStyle} />
+                        <Text {...reviewStyle} content={testimonialMap.description} />
+                        <Heading as="h3" content={testimonialMap.name} {...nameStyle} />
                         <Text
                           as="span"
-                          content={item.designation}
+                          content={testimonialMap.designation}
                           {...designationStyle}
                         />
-                        <Link href={item.organizationURL || "#"}>
-                          <a className="reviewer_org">{item.organization}</a>
+                        <Link href={testimonialMap.organizationURL || "#"}>
+                          <a className="reviewer_org">{testimonialMap.organization}</a>
                         </Link>
                       </TestimonialItem>
                     </GlideSlide>
