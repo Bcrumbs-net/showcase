@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
-import data from '../../../../data/Agency';
-import { GlideCarousel, GlideSlide} from '../../../../molecules';
+import { GlideCarousel, GlideSlide } from '../../../../molecules';
 import TestimonialSectionWrapper, {
   TextWrapper,
   ImageWrapper,
@@ -10,16 +8,16 @@ import TestimonialSectionWrapper, {
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
-interface NewsSectionProps{
-  sectionHeader:object;
-  sectionTitle:object;
-  sectionSubTitle:object;
-  btnWrapperStyle:object;
-  commentStyle:object;
-  nameStyle:object;
-  btnStyle:object;
-  designationStyle:object;
-  testimonialUrl:object;
+interface NewsSectionProps {
+  sectionHeader: object;
+  sectionTitle: object;
+  sectionSubTitle: object;
+  btnWrapperStyle: object;
+  commentStyle: object;
+  nameStyle: object;
+  btnStyle: object;
+  designationStyle: object;
+  testimonialUrl: object;
   model: GraphContent;
   isAR: boolean;
   data: Record<string, string>;
@@ -36,7 +34,7 @@ const NewsSection = ({
   testimonialUrl,
   model,
   data
-}:NewsSectionProps) => {
+}: NewsSectionProps) => {
   // Glide js options
   const glideOptions = {
     type: 'carousel',
@@ -44,6 +42,7 @@ const NewsSection = ({
     perView: 1,
     animationDuration: 700,
   };
+ 
   return (
     <TestimonialSectionWrapper id={model.name}>
       <Container>
@@ -75,10 +74,10 @@ const NewsSection = ({
           <Fragment>
             {model.children &&
               model.children.filter(m => m.online).map((testimonial, index) => {
-                const newsMap: Record<string,string> =
-                testimonial.data.reduce(function (map, obj) {
-                    map[obj.Key] = obj.Value; return map; 
-                }, {});
+                const newsMap: Record<string, string> =
+                  testimonial.data.reduce(function (map, obj) {
+                    map[obj.Key] = obj.Value; return map;
+                  }, {});
                 return (
                   //@ts-ignore
                   <GlideSlide key={index}>
@@ -102,19 +101,6 @@ const NewsSection = ({
   );
 };
 
-// NewsSection style props
-NewsSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  btnStyle: PropTypes.object,
-  btnWrapperStyle: PropTypes.object,
-  nameStyle: PropTypes.object,
-  commentStyle: PropTypes.object,
-  designationStyle: PropTypes.object,
-};
 
 // NewsSection default style
 NewsSection.defaultProps = {

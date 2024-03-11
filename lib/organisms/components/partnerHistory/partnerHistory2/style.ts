@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import BgImage from '../../../../assets/image/saas/map.png';
+import BgImage from './map.png';
 
 const PartnerSectionWrapper = styled.section`
   padding: 120px 0;

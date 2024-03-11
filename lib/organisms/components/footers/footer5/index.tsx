@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { Box, Text, Heading, Image, Container } from "../../../../atoms";
 import FooterWrapper, { List, ListItem, BgImageWrapper } from "./style";
-import AppImage from "../../../../assets/image/ride/footerapp.svg";
-import PlaystoreImage from "../../../../assets/image/ride/footerplay.svg";
-import FooterBG from "../../../../assets/image/crypto/footer-bg.svg";
+import AppImage from "./images/footerapp.svg";
+import PlaystoreImage from "./images/footerplay.svg";
+import FooterBG from "./images/footer-bg.svg";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 

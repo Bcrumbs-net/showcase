@@ -17,7 +17,6 @@ import {
   PrevButton,
   NextButton,
 } from "../../../../../bootstrapers/showcase/templates/portfolio/globalStyle";
-import { PORTFOLIO_SHOWCASE } from "../../../../data/Portfolio/data";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 

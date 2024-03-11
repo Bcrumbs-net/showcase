@@ -101,7 +101,9 @@ export const CharityTheme = ({
                 />
               )}
             </ContentWrapper>
-            <BCLink />
+            {config.whitlabel ? (
+              null
+            ) : <BCLink />}
             {rootModelData.whatsappPhone ? (
               <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
             ) : null}

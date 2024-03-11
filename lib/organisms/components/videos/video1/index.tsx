@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import {
   Box,

@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Icon } from 'react-icons-kit';
 import { chevronRight } from 'react-icons-kit/feather/chevronRight';
 import { Text, Heading, Image } from '../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../molecules';
 import LeftBar from './leftBar';
+
 import BannerWrapper, {
   ContentWrapper,
   TextArea,

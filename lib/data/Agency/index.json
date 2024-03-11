@@ -126,21 +126,21 @@
     {
       "id": 1,
       "title": "Real home corporation",
-      "thumbnail_url": "../../assets/image/agency/blog/blog-img1.png",
+      "thumbnail_url": "./images/blog-img1.png",
       "date": "November 02, 2018",
       "postLink": "#1"
     },
     {
       "id": 2,
       "title": "Sheltech developer ltd.",
-      "thumbnail_url": "../../assets/image/agency/blog/blog-img2.png",
+      "thumbnail_url": "./images/blog-img2.png",
       "date": "November 12, 2018",
       "postLink": "#2"
     },
     {
       "id": 3,
       "title": "Alt architecture co.",
-      "thumbnail_url": "../../assets/image/agency/blog/blog-img3.png",
+      "thumbnail_url": "./images/blog-img3.png",
       "date": "December 09, 2018",
       "postLink": "#3"
     }
@@ -149,7 +149,7 @@
     {
       "id": 1,
       "name": "Jessica Fanddy",
-      "thumbnail_url": "../../assets/image/agency/team/member-1.jpg",
+      "thumbnail_url": "./images/member-1.jpg",
       "designation": "Co Founder",
       "social_links": [
         {
@@ -177,7 +177,7 @@
     {
       "id": 2,
       "name": "Devid Justingul",
-      "thumbnail_url": "../../assets/image/agency/team/member-2.jpg",
+      "thumbnail_url": "./images/member-2.jpg",
       "designation": "Senior Ui/UX Designer",
       "social_links": [
         {
@@ -205,7 +205,7 @@
     {
       "id": 3,
       "name": "Handdy Albuzz",
-      "thumbnail_url": "../../assets/image/agency/team/member-3.jpg",
+      "thumbnail_url": "./images/member-3.jpg",
       "designation": "Article Writer",
       "social_links": [
         {
@@ -237,28 +237,28 @@
       "name": "Jon Doe",
       "designation": "CEO of Denish Co.",
       "comment": "Best working experience  with this amazing team & in future, we want to work together",
-      "avatar_url": "../../assets/image/agency/client/denny.png"
+      "avatar_url": "./images/denny.png"
     },
     {
       "id": 2,
       "name": "Roman Ul Oman",
       "designation": "Co-founder of QatarDiaries",
       "comment": "Impressed with master class support of the team and really look forward for the future.",
-      "avatar_url": "../../assets/image/agency/client/menny.png"
+      "avatar_url": "./images/menny.png"
     },
     {
       "id": 3,
       "name": "Jon Doe",
       "designation": "Director of Beauty-queen",
       "comment": "I have bought more than 10 themes on ThemeForest, and this is the first one I review. Wow! Amazing React Theme",
-      "avatar_url": "../../assets/image/agency/client/denny.png"
+      "avatar_url": "./images/denny.png"
     },
     {
       "id": 4,
       "name": "Roman Ul Oman",
       "designation": "Co-founder of QatarDiaries",
       "comment": "Impressed with master class support of the team and really look forward for the future.",
-      "avatar_url": "../../assets/image/agency/client/menny.png"
+      "avatar_url": "./images/menny.png"
     }
   ],
   "faq": [

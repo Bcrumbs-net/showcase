@@ -14,13 +14,12 @@ import SectionWrapper, {
   ButtonGroup,
   DonationForm,
   DonateButton,
-} from './style';
-import heartImage from '../../../../assets/image/charity/heart-alt.svg';
+} from "./style";
+import heartImage from "./heart-alt.svg";
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
-} from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
-import { GraphContent } from '@bcrumbs.net/bc-api';
-import { currencyOptions } from '../../../../data/Charity-review';
+} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { GraphContent } from "@bcrumbs.net/bc-api";
 interface DonateSectionProps {
   row: object;
   col: object;

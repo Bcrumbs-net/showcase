@@ -11,7 +11,6 @@ import {
 import { plus } from "react-icons-kit/feather/plus";
 import { ButtonWrapper } from "../../../../../bootstrapers/showcase/templates/portfolio/globalStyle";
 import ProcessItem from "./style";
-import { PROCESS_STEPS, SERVICE_LIST } from "../../../../data/Portfolio/data";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 

@@ -22,35 +22,35 @@
   "featuresSliderTwo": [
     {
       "id": 1,
-      "image": "../../assets/image/app/6.svg",
+      "image": "./images/6.svg",
       "title": "Super Performance"
     },
     {
       "id": 2,
-      "image": "../../assets/image/app/1.svg",
+      "image": "./images/1.svg",
       "title": "Search Optimization"
     },
     {
       "id": 3,
-      "image": "../../assets/image/app/2.svg",
+      "image": "./images/2.svg",
       "title": "Customer Support"
     },
 
     {
       "id": 4,
-      "image": "../../assets/image/app/3.svg",
+      "image": "./images/3.svg",
       "title": "100% Response Time"
     },
 
     {
       "id": 5,
-      "image": "../../assets/image/app/4.svg",
+      "image": "./images/4.svg",
       "title": "Maintaining Milestones"
     },
 
     {
       "id": 6,
-      "image": "../../assets/image/app/5.svg",
+      "image": "./images/5.svg",
       "title": "Organised Code"
     }
   ],

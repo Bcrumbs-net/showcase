@@ -1,23 +1,5 @@
-import styled, { createGlobalStyle, keyframes } from 'styled-components';
-
-const Fade = keyframes`
-  0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-`;
-const FadeUp = keyframes`
-  0% {
-		opacity: 0;
-    transform: scale(.5)
-	}
-	100% {
-		opacity: 1;
-    transform: scale(1)
-	}
-`;
+import styled, { createGlobalStyle } from 'styled-components';
+import { themeGet } from 'styled-system';
 
 export const GlobalStyle = createGlobalStyle`
   body{
@@ -71,13 +53,13 @@ export const GlobalStyle = createGlobalStyle`
               font-size: 18px;
             }
             &:hover {
-              color: #2eb582;
+              color: #eb4d4b;
             }
             &:before{
               content: '';
               width: 7px;
               height: 7px;
-              background: #2eb582;
+              background: #eb4d4b;
               border-radius: 50%;
               position: absolute;
               top: 50%;
@@ -88,7 +70,7 @@ export const GlobalStyle = createGlobalStyle`
           }
           &.is-current {
             a {
-              color: #2eb582;
+              color: #eb4d4b;
               &:before{
                 opacity: 1;
               }
@@ -119,80 +101,45 @@ export const GlobalStyle = createGlobalStyle`
         content: '\f10b';
         font-family: Flaticon;
         font-size: 26px;
-        color: #2eb582;
+        color: #eb4d4b;
         transform: rotate(45deg);
         display: block;
       }
     }
   }
 
-  .video-modal{
-    background: rgba(0,0,0,0.6) !important;
-    border: 0 !important;
-    animation: ${Fade} .5s ease-out forwards !important;
-  }
+  /* Modal default style */
+  button.modalCloseBtn {
+    color: ${themeGet('colors.white', '#ffffff')} !important;
 
-  .video-modal{
-    background: transparent !important;
-    border: 0!important;
-    .innerRndComponent{
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-    }
-  }
-  .reuseModalOverlay,
-  .reuseModalParentWrapper{
-    z-index: 99999!important;
+    &.alt {
+      background-color: ${themeGet('colors.primary', '#5268db')} !important;
+      box-shadow: 0px 9px 20px -5px rgba(82, 104, 219, 0.57) !important;
+    }   
   }
 `;
 
 export const ContentWrapper = styled.div`
+  position: relative;
   overflow: hidden;
+  a:-webkit-any-link {
+    text-decoration: none;
+  }
   .sticky-nav-active {
-    .saas_navbar {
+    .hosting_navbar {
       background: #fff;
-      box-shadow: 0px 3px 8px 0px rgba(43, 83, 135, 0.08);
-      padding: 15px 0;
-      .main-logo {
-        display: none;
-      }
-      .logo-alt {
-        display: block;
-      }
-      .main_menu {
-        li {
-          a {
-            color: #000;
-            &:hover {
-              color: #2eb582;
-            }
-          }
-          &.is-current {
-            a {
-              color: #2eb582;
-            }
-          }
-        }
-      }
-    }
-    .hamburgMenu__bar {
-      > span {
-        background: #2eb582;
-      }
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      padding: 5px 0;
     }
   }
 
-  .saas_navbar {
+  .hosting_navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     transition: 0.35s ease-in-out;
-    padding: 30px 0;
-    .logo-alt {
-      display: none;
-    }
+    padding: 20px 0;
     .main_menu {
       margin-right: 40px;
       li {
@@ -207,17 +154,17 @@ export const ContentWrapper = styled.div`
         }
         &.is-current {
           a {
-            color: #2eb582;
+            color: #eb4d4b;
           }
         }
         a {
           padding: 5px;
           font-size: 16px;
           font-weight: 400;
-          color: #fff;
+          color: #343d48;
           transition: 0.15s ease-in-out;
           &:hover {
-            color: #2eb582;
+            color: #eb4d4b;
           }
         }
       }
@@ -238,6 +185,21 @@ export const ContentWrapper = styled.div`
         > span {
         }
       }
+    }
+  }
+
+  .trial-section {
+    background: linear-gradient(to bottom, #fafbff 0%, #f7f8fd 100%);
+    padding: 20px 0;
+    .button_group {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 990px) {
+    .glide__slide--active .pricing_table {
+      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.05);
+      border: 0;
     }
   }
 `;

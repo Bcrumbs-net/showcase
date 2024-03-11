@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import { GraphContent } from '@bcrumbs.net/bc-api';
-import PropTypes from 'prop-types';
 import TestimonialSectionWrapper, {
   TextWrapper,
   ImageWrapper,
@@ -114,19 +113,7 @@ const TestimonialSection = ({
   );
 };
 
-// TestimonialSection style props
-TestimonialSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  btnStyle: PropTypes.object,
-  btnWrapperStyle: PropTypes.object,
-  nameStyle: PropTypes.object,
-  commentStyle: PropTypes.object,
-  designationStyle: PropTypes.object,
-};
+
 
 // TestimonialSection default style
 TestimonialSection.defaultProps = {

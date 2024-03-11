@@ -3,12 +3,9 @@ import { Box, Textarea, Text, Input, Container } from "../../../../atoms";
 import SectionWrapper, {
   ContentArea,
   Heading,
-  ButtonGroup,
   ContactForm,
   SubmitButton,
 } from "./style";
-import { paymentPolicy, currencyOptions } from "../../../../data/Charity";
-import heartImage from "../../../assets/image/charity/heart-alt.svg";
 import { Icon } from "react-icons-kit";
 import { mapMarker } from "react-icons-kit/fa/mapMarker";
 import { phone } from "react-icons-kit/fa/phone";
@@ -16,7 +13,6 @@ import { facebook } from "react-icons-kit/fa/facebook";
 import { instagram } from "react-icons-kit/fa/instagram";
 import { twitter } from "react-icons-kit/fa/twitter";
 import { youtube } from "react-icons-kit/fa/youtube";
-import { envelope } from "react-icons-kit/fa/envelope";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 

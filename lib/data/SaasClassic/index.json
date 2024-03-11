@@ -365,21 +365,21 @@
       "review": "Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.",
       "name": "Jon Doe",
       "designation": "CEO of Dell Co.",
-      "avatar": "../../assets/image/saasClassic/author-1.jpg"
+      "avatar": "./images/author-1.jpg"
     },
     {
       "title": "Modern look & trending design",
       "review": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed eiusmod tempor incididunt labore dolore features Lorem ipsum dolor sit amet consectetur.",
       "name": "Jon Doe",
       "designation": "Co Founder of IBM",
-      "avatar": "../../assets/image/saasClassic/author-2.jpg"
+      "avatar": "./images/author-2.jpg"
     },
     {
       "title": "Modern look & trending design",
       "review": "Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.",
       "name": "Jeny Doe",
       "designation": "Manager of Hp co.",
-      "avatar": "../../assets/image/saasClassic/author-3.jpg"
+      "avatar": "./images/author-3.jpg"
     }
   ]
 }

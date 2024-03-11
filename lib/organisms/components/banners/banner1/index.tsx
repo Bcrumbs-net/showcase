@@ -1,6 +1,4 @@
-import { Fragment } from 'react';
 import { GraphContent } from '@bcrumbs.net/bc-api';
-import PropTypes from 'prop-types';
 import BannerWrapper, { DiscountLabel, BannerMask, Hspace } from './style';
 import { FeatureBlock } from '../../../../molecules';
 import { Button, Box, Text, Heading, Container } from '../../../../atoms';
@@ -107,15 +105,6 @@ const BannerSection = ({
   );
 };
 
-BannerSection.propTypes = {
-  title: PropTypes.object,
-  btnStyle: PropTypes.object,
-  description: PropTypes.object,
-  contentStyle: PropTypes.object,
-  discountText: PropTypes.object,
-  discountAmount: PropTypes.object,
-  outlineBtnStyle: PropTypes.object,
-};
 
 BannerSection.defaultProps = {
   row: {
