@@ -31,17 +31,37 @@ const FormSection = ({ row, col, model, isAR, data }) => {
           return acc;
         }, {});
         setFormFieldsState(initialState);
+
       }
     }
   }, [formData]);
   useEffect(() => {
     const isFormValid = Object.entries(formFieldsState).every(
-      ([name, value]: [string, string]) => {
-        const field = formData.formFields.find((f) => f.name === name);
-        return !field?.required || (field?.required && value?.trim() !== '');
-      });
-    setState((prevState) => ({ ...prevState, isFormValid }));
+      ([name, value]) => {
+        let field = null;
+        if (formData) {
+          // Check main form fields
+          if (formData.formFields) {
+            field = formData.formFields.find(f => f.name === name);
+          }
+          // Check subform fields
+          if (!field && formData.subForms && formData.subForms.length > 0) {
+            for (let i = 0; i < formData.subForms.length; i++) {
+              console.log(i);
+              field = formData.subForms[i].formFields.find(f => f.name === name);
+              console.log(field);
+              if (field) break; // If found in any subform, break the loop
+            }
+          }
+        }
+        return !field?.required || (field?.required && (typeof value === 'string' ? value.trim() !== '' : value !== ''));
+      }
+    );
+    setState(prevState => ({ ...prevState, isFormValid }));
   }, [formFieldsState, formData]);
+  console.log(state.isFormValid, 'index');
+
+
 
   const handleFormData = (value, name) => {
     setFormFieldsState(prevFieldsState => ({
@@ -87,11 +107,11 @@ const FormSection = ({ row, col, model, isAR, data }) => {
     }
   };
   const handleNextStep = () => {
-    setState(prevState => ({ ...prevState, currentStep: prevState.currentStep + 1 }));
+    setState(prevState => ({ ...prevState, currentStep: prevState.currentStep + 1, isFormValid: false }));
   };
 
   const handlePrevStep = () => {
-    setState(prevState => ({ ...prevState, currentStep: prevState.currentStep - 1 }));
+    setState(prevState => ({ ...prevState, currentStep: prevState.currentStep - 1, isFormValid: true }));
   };
 
   if (loading) {

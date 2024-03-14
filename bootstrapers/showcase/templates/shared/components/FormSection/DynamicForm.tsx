@@ -24,7 +24,6 @@ const DynamicForm = ({ formData, data, handlePrevStep, failureMessage, handleNex
                 />
             ));
     };
-
     return (
         <ContactForm onSubmit={(e) => handleSubmit(e)} isAR={isAR}>
             {renderFormFields(isSingleStep ? formData.formFields : formData.subForms[state.currentStep].formFields)}
@@ -35,7 +34,9 @@ const DynamicForm = ({ formData, data, handlePrevStep, failureMessage, handleNex
                     </Button>
                 )}
                 {!isSingleStep && state.currentStep < formData.subForms.length - 1 && (
-                    <Button type="submit" onClick={handleNextStep}>
+                    <Button type="submit"
+                        disabled={!state.isFormValid}
+                        onClick={handleNextStep}>
                         {data.nextButtonLabel}
                     </Button>
                 )}
