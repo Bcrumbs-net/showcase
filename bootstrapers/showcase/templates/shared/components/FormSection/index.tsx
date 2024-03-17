@@ -1,18 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Box, Container } from '../../../../../../lib/atoms';
 import SectionWrapper, { Heading } from './style';
 import withModelToDataObjProp from '../../../../utils/withModelToDataObjProp';
 import useFormQuery from '../../../../utils/useFormQuery';
 import DynamicForm from './DynamicForm';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
-const FormSection = ({ row, col, model, isAR, data }) => {
+interface FormSectionProps {
+  row: object;
+  col: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
+
+const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
   const [formFieldsState, setFormFieldsState] = useState({});
   const [failureMessage, setFailureMessage] = useState('');
   const [state, setState] = useState({
     submitted: false,
-    isFormValid: false,
     isSuccess: false,
     isLoading: false,
+    isFormValid: false,
     currentStep: 0,
   });
   const { loading, formData, error } = useFormQuery(data.formID);
@@ -31,44 +40,39 @@ const FormSection = ({ row, col, model, isAR, data }) => {
           return acc;
         }, {});
         setFormFieldsState(initialState);
-
       }
     }
   }, [formData]);
-  useEffect(() => {
-    const isFormValid = Object.entries(formFieldsState).every(
-      ([name, value]) => {
-        let field = null;
-        if (formData) {
-          // Check main form fields
-          if (formData.formFields) {
-            field = formData.formFields.find(f => f.name === name);
-          }
-          // Check subform fields
-          if (!field && formData.subForms && formData.subForms.length > 0) {
-            for (let i = 0; i < formData.subForms.length; i++) {
-              console.log(i);
-              field = formData.subForms[i].formFields.find(f => f.name === name);
-              console.log(field);
-              if (field) break; // If found in any subform, break the loop
-            }
-          }
-        }
-        return !field?.required || (field?.required && (typeof value === 'string' ? value.trim() !== '' : value !== ''));
+
+  const isFormValid = useMemo(() => {
+    if (!formData || !formData.subForms) {
+      return false;
+    }
+    for (let i = 0; i <= state.currentStep; i++) {
+      const stepFields = formData.subForms[i].formFields;
+      const isStepValid = stepFields
+        .filter((field) => field?.required)
+        .every((field) => {
+          const fieldValue = formFieldsState[field.name];
+          setState((prevState) => ({
+            ...prevState, isFormValid: typeof fieldValue === 'string' ?
+              (fieldValue.trim() !== '' || undefined) : (fieldValue !== '' || undefined)
+          }));
+          return state.isFormValid;
+        });
+      if (!isStepValid) {
+        setState((prevState) => ({ ...prevState, isFormValid: false }));
+        break;
       }
-    );
-    setState(prevState => ({ ...prevState, isFormValid }));
-  }, [formFieldsState, formData]);
-  console.log(state.isFormValid, 'index');
-
-
-
+    }
+    return state.isFormValid;
+  }, [formData, formFieldsState, state.currentStep, state.isFormValid]);
   const handleFormData = (value, name) => {
-    setFormFieldsState(prevFieldsState => ({
+    setFormFieldsState((prevFieldsState) => ({
       ...prevFieldsState,
       [name]: value,
     }));
-    setState(prevState => ({ ...prevState, submitted: false }));
+    setState((prevState) => ({ ...prevState, submitted: false }));
   };
 
   const handleSubmit = async (event) => {
@@ -77,9 +81,9 @@ const FormSection = ({ row, col, model, isAR, data }) => {
     if (!state.isFormValid || state.isLoading || state.isSuccess) {
       return;
     }
-    setState(prevState => ({ ...prevState, isLoading: true }));
+    setState((prevState) => ({ ...prevState, isLoading: true }));
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       const payload = new FormData();
       Object.keys(formFieldsState).forEach((key) => {
         payload.append(key, formFieldsState[key]);
@@ -89,29 +93,30 @@ const FormSection = ({ row, col, model, isAR, data }) => {
         method: 'post',
         headers: {
           Accept: 'application/json, text/plain, */*',
-          'Ajax': 'true',
+          Ajax: 'true',
         },
         body: payload,
       });
       if (response.ok) {
-        setState(prevState => ({ ...prevState, submitted: true, isFormValid: true, isSuccess: true }));
+        setState((prevState) => ({ ...prevState, submitted: true, isFormValid: true, isSuccess: true }));
       } else {
         throw new Error('Form submission failed');
       }
     } catch (error) {
       console.error('Form submission error:', error);
       setFailureMessage(data.failureMessage);
-      setState(prevState => ({ ...prevState, submitted: true, isFormValid: false, isSuccess: false }));
+      setState((prevState) => ({ ...prevState, submitted: true, isFormValid: false, isSuccess: false }));
     } finally {
-      setState(prevState => ({ ...prevState, isLoading: false }));
+      setState((prevState) => ({ ...prevState, isLoading: false }));
     }
   };
+
   const handleNextStep = () => {
-    setState(prevState => ({ ...prevState, currentStep: prevState.currentStep + 1, isFormValid: false }));
+    setState((prevState) => ({ ...prevState, currentStep: prevState.currentStep + 1 }));
   };
 
   const handlePrevStep = () => {
-    setState(prevState => ({ ...prevState, currentStep: prevState.currentStep - 1, isFormValid: true }));
+    setState((prevState) => ({ ...prevState, currentStep: prevState.currentStep - 1 }));
   };
 
   if (loading) {
