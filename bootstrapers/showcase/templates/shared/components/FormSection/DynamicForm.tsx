@@ -3,6 +3,27 @@ import FormInput from './FormInput';
 import { Text } from '../../../../../../lib/atoms';
 import { Button, ContactForm, Loader } from './style';
 
+interface stateProps  {
+  submitted?: boolean;
+  isSuccess?: boolean;
+  isLoading?: boolean;
+  currentStep?: number;
+}
+interface DynamicFormProps {
+  formData: any;
+  data: Record<string, string>;
+  handlePrevStep: () => void;
+  failureMessage: string;
+  handleNextStep: () => void;
+  formFieldsState: Record<string, string | number | string[]>;
+  handleFormData: (value: string | number | string[], name: string) => void;
+  handleSubmit: (event: any) => Promise<void>;
+  state: stateProps; 
+  isAR: boolean;
+  isFormValid: boolean;
+};
+
+
 const DynamicForm = ({
   formData,
   data,
@@ -15,7 +36,7 @@ const DynamicForm = ({
   state,
   isAR,
   isFormValid,
-}) => {
+}: DynamicFormProps) => {
   const isSingleStep = formData.type === 'Single Form';
 
   const renderFormFields = (fields) => {
@@ -62,13 +83,13 @@ const DynamicForm = ({
         )}
         {(isSingleStep ||
           state.currentStep === formData.subForms.length - 1) && (
-          <Button
-            type="submit"
-            disabled={!isFormValid || state.isSuccess}
-          >
-            {state.isLoading ? <Loader /> : data.submitButtonLabel}
-          </Button>
-        )}
+            <Button
+              type="submit"
+              disabled={!isFormValid || state.isSuccess}
+            >
+              {state.isLoading ? <Loader /> : data.submitButtonLabel}
+            </Button>
+          )}
       </div>
       {state.submitted && failureMessage && (
         <Text className="failure" content={failureMessage} />
