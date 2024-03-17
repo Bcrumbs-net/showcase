@@ -21,10 +21,24 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
     submitted: false,
     isSuccess: false,
     isLoading: false,
-    isFormValid: false,
     currentStep: 0,
   });
   const { loading, formData, error } = useFormQuery(data.formID);
+  const isFormValid = useMemo(() => {
+    if (!formData || !formData.subForms) {
+      return false;
+    }
+
+    const stepFields = formData.subForms[state.currentStep].formFields;
+    return stepFields
+      .filter((field) => field?.required)
+      .every((field) => {
+        const fieldValue = formFieldsState[field.name];
+        return typeof fieldValue === 'string'
+          ? fieldValue.trim() !== '' || undefined
+          : fieldValue !== '' || undefined;
+      });
+  }, [formData, formFieldsState, state.currentStep]);
 
   useEffect(() => {
     if (formData) {
@@ -34,39 +48,23 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
           return acc;
         }, {});
         setFormFieldsState(initialState);
-      } else if (formData.subForms && formData.subForms.length > 0 && formData.subForms[0].formFields) {
-        const initialState = formData.subForms[0].formFields.reduce((acc, field) => {
-          acc[field.name] = '';
-          return acc;
-        }, {});
+      } else if (
+        formData.subForms &&
+        formData.subForms.length > 0 &&
+        formData.subForms[0].formFields
+      ) {
+        const initialState = formData.subForms[0].formFields.reduce(
+          (acc, field) => {
+            acc[field.name] = '';
+            return acc;
+          },
+          {}
+        );
         setFormFieldsState(initialState);
       }
     }
   }, [formData]);
 
-  const isFormValid = useMemo(() => {
-    if (!formData || !formData.subForms) {
-      return false;
-    }
-    for (let i = 0; i <= state.currentStep; i++) {
-      const stepFields = formData.subForms[i].formFields;
-      const isStepValid = stepFields
-        .filter((field) => field?.required)
-        .every((field) => {
-          const fieldValue = formFieldsState[field.name];
-          setState((prevState) => ({
-            ...prevState, isFormValid: typeof fieldValue === 'string' ?
-              (fieldValue.trim() !== '' || undefined) : (fieldValue !== '' || undefined)
-          }));
-          return state.isFormValid;
-        });
-      if (!isStepValid) {
-        setState((prevState) => ({ ...prevState, isFormValid: false }));
-        break;
-      }
-    }
-    return state.isFormValid;
-  }, [formData, formFieldsState, state.currentStep, state.isFormValid]);
   const handleFormData = (value, name) => {
     setFormFieldsState((prevFieldsState) => ({
       ...prevFieldsState,
@@ -78,10 +76,12 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!state.isFormValid || state.isLoading || state.isSuccess) {
+    if (!isFormValid || state.isLoading || state.isSuccess) {
       return;
     }
+
     setState((prevState) => ({ ...prevState, isLoading: true }));
+
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       const payload = new FormData();
@@ -98,25 +98,39 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
         body: payload,
       });
       if (response.ok) {
-        setState((prevState) => ({ ...prevState, submitted: true, isFormValid: true, isSuccess: true }));
+        setState((prevState) => ({
+          ...prevState,
+          submitted: true,
+          isSuccess: true,
+        }));
       } else {
         throw new Error('Form submission failed');
       }
     } catch (error) {
       console.error('Form submission error:', error);
       setFailureMessage(data.failureMessage);
-      setState((prevState) => ({ ...prevState, submitted: true, isFormValid: false, isSuccess: false }));
+      setState((prevState) => ({
+        ...prevState,
+        submitted: true,
+        isSuccess: false,
+      }));
     } finally {
       setState((prevState) => ({ ...prevState, isLoading: false }));
     }
   };
 
   const handleNextStep = () => {
-    setState((prevState) => ({ ...prevState, currentStep: prevState.currentStep + 1 }));
+    setState((prevState) => ({
+      ...prevState,
+      currentStep: prevState.currentStep + 1,
+    }));
   };
 
   const handlePrevStep = () => {
-    setState((prevState) => ({ ...prevState, currentStep: prevState.currentStep - 1 }));
+    setState((prevState) => ({
+      ...prevState,
+      currentStep: prevState.currentStep - 1,
+    }));
   };
 
   if (loading) {
@@ -145,6 +159,7 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
               state={state}
               failureMessage={failureMessage}
               isAR={isAR}
+              isFormValid={isFormValid}
             />
           </Box>
         </Box>
