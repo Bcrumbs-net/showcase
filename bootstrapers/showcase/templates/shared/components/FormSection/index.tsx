@@ -34,9 +34,14 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
       .filter((field) => field?.required)
       .every((field) => {
         const fieldValue = formFieldsState[field.name];
+
+        if (!fieldValue) {
+          return false;
+        }
+
         return typeof fieldValue === 'string'
-          ? fieldValue.trim() !== '' || undefined
-          : fieldValue !== '' || undefined;
+          ? fieldValue.trim() !== ''
+          : fieldValue !== '';
       });
   }, [formData, formFieldsState, state.currentStep]);
 
