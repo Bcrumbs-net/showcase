@@ -26,9 +26,8 @@ interface FormInputProps {
   formFieldsState: Record<string, string | number | string[]>;
   handleFormData: (value: string | number | string[], name: string) => void;
   state: {
-    isSuccess: boolean;
-    isFormValid: boolean;
-    submitted: boolean;
+    isSuccess?: boolean;
+    submitted?: boolean;
   };
   isAR: boolean;
 }
@@ -140,12 +139,6 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, isAR) =>
               disabled={isSuccess}
             />
           ))}
-        </div>
-      );
-    case 'Html Content':
-      return (
-        <div key={field.id}>
-          <HtmlContent htmlContent={formFieldsState[field.name]} height="200px" />
         </div>
       );
     case 'Boolean':
