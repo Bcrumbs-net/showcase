@@ -409,8 +409,7 @@ export const ContactForm = styled.form<{ isAR?: boolean }>`
   }
 `;
 
-
-export const Button = styled.button<{ type: 'submit' | 'button' ; isLoading?: boolean }>`
+export const Button = styled.button<{ type: 'submit' | 'button'; isLoading?: boolean; isAR?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -423,14 +422,21 @@ export const Button = styled.button<{ type: 'submit' | 'button' ; isLoading?: bo
   cursor: ${({ isLoading }) => (isLoading ? 'not-allowed' : 'pointer')};
   color: ${({ theme }) => theme.colors.white || '#ffffff'};
   background-color: ${({ theme, type }) =>
-    type === 'submit'  ? theme.colors.primary || '#1C7C0C' : theme.colors.gray || '#808080'};
+    type === 'submit' ? theme.colors.primary || '#1C7C0C' : theme.colors.gray || '#808080'};
   position: relative;
   overflow: hidden;
   z-index: 0;
-  margin: ${({ type }) => (type === 'submit'  ? '40px 0 0 auto' : '40px auto 0 0')};
+  margin: ${({ type, isAR }) =>
+    isAR
+      ? type === 'submit'
+        ? '40px auto 0 0'
+        : '40px 0 0 auto'
+      : type === 'submit'
+      ? '40px 0 0 auto'
+      : '40px auto 0 0'};
   text-transform: uppercase;
-  left: ${({ type }) => (type === 'submit'  ? 'auto' : '0px')};
-  right: ${({ type }) => (type === 'submit'  ? '0px' : 'auto')};
+  right: ${({ isAR }) => (isAR ? 'auto' : '0px')};
+  left: ${({ isAR }) => (isAR ? '0px' : 'auto')};
 
   &::before {
     content: '';
@@ -439,7 +445,7 @@ export const Button = styled.button<{ type: 'submit' | 'button' ; isLoading?: bo
     height: 100%;
     position: absolute;
     top: 0;
-    left: -100%;
+    ${({ isAR }) => (isAR ? 'right' : 'left')}: -100%;
     z-index: -1;
     opacity: 0;
     visibility: hidden;
@@ -451,8 +457,6 @@ export const Button = styled.button<{ type: 'submit' | 'button' ; isLoading?: bo
       ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 20px
     );
     transition: all 0.45s ease;
-
-    /* Media queries for background... */
   }
 
   ${(props) =>
@@ -461,7 +465,7 @@ export const Button = styled.button<{ type: 'submit' | 'button' ; isLoading?: bo
       opacity: 0.5;
       &:hover {
         &::before {
-          left: -100%;
+          ${ isAR  => (isAR ? 'right' : 'left')}: -100%;
           opacity: 0;
           visibility: hidden;
         }
@@ -470,7 +474,7 @@ export const Button = styled.button<{ type: 'submit' | 'button' ; isLoading?: bo
 
   &:hover {
     &::before {
-      left: 0;
+      ${({ isAR }) => (isAR ? 'right' : 'left')}: 0;
       opacity: 0.2;
       visibility: visible;
     }
@@ -497,32 +501,11 @@ export const Button = styled.button<{ type: 'submit' | 'button' ; isLoading?: bo
   }
 
   img {
-    margin-left: 13px;
-  }
-
- 
-  ${(props) =>
-    props.disabled &&
-    css`
-      cursor: not-allowed;
-      opacity: 0.5;
-      &:hover {
-        &::before {
-          left: -100%;
-          opacity: 0;
-          visibility: hidden;
-        }
-      }
-    `}
-
-  &:hover {
-    &::before {
-      left: 0;
-      opacity: 0.2;
-      visibility: visible;
-    }
+    margin-left: ${({ isAR }) => (isAR ? '0' : '13px')};
+    margin-right: ${({ isAR }) => (isAR ? '13px' : '0')};
   }
 `;
+
 
 
 export const Loader = styled.div`

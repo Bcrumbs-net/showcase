@@ -3,7 +3,7 @@ import FormInput from './FormInput';
 import { Text } from '../../../../../../lib/atoms';
 import { Button, ContactForm, Loader } from './style';
 
-interface stateProps  {
+interface stateProps {
   submitted?: boolean;
   isSuccess?: boolean;
   isLoading?: boolean;
@@ -18,7 +18,7 @@ interface DynamicFormProps {
   formFieldsState: Record<string, string | number | string[]>;
   handleFormData: (value: string | number | string[], name: string) => void;
   handleSubmit: (event: any) => Promise<void>;
-  state: stateProps; 
+  state: stateProps;
   isAR: boolean;
   isFormValid: boolean;
 };
@@ -68,13 +68,16 @@ const DynamicForm = ({
       )}
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         {!isSingleStep && state.currentStep > 0 && (
-          <Button type="button" onClick={handlePrevStep}>
+          <Button type="button"
+            isAR={isAR}
+            onClick={handlePrevStep}>
             {data.backButtonLabel}
           </Button>
         )}
         {!isSingleStep && state.currentStep < formData.subForms.length - 1 && (
           <Button
             type="submit"
+            isAR={isAR}
             disabled={!isFormValid}
             onClick={handleNextStep}
           >
@@ -85,6 +88,7 @@ const DynamicForm = ({
           state.currentStep === formData.subForms.length - 1) && (
             <Button
               type="submit"
+              isAR={isAR}
               disabled={!isFormValid || state.isSuccess}
             >
               {state.isLoading ? <Loader /> : data.submitButtonLabel}
