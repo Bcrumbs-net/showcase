@@ -21,8 +21,7 @@ interface DynamicFormProps {
   state: stateProps;
   isAR: boolean;
   isFormValid: boolean;
-};
-
+}
 
 const DynamicForm = ({
   formData,
@@ -60,17 +59,21 @@ const DynamicForm = ({
   };
 
   return (
-    <ContactForm onSubmit={(e) => handleSubmit(e)} isAR={isAR}>
+    <ContactForm isAR={isAR}>
       {renderFormFields(
         isSingleStep
           ? formData.formFields
           : formData.subForms[state.currentStep].formFields
       )}
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          direction: isAR ? 'rtl' : 'ltr',
+        }}
+      >
         {!isSingleStep && state.currentStep > 0 && (
-          <Button type="button"
-            isAR={isAR}
-            onClick={handlePrevStep}>
+          <Button type="button" isAR={isAR} onClick={handlePrevStep}>
             {data.backButtonLabel}
           </Button>
         )}
@@ -86,14 +89,15 @@ const DynamicForm = ({
         )}
         {(isSingleStep ||
           state.currentStep === formData.subForms.length - 1) && (
-            <Button
-              type="submit"
-              isAR={isAR}
-              disabled={!isFormValid || state.isSuccess}
-            >
-              {state.isLoading ? <Loader /> : data.submitButtonLabel}
-            </Button>
-          )}
+          <Button
+            type="submit"
+            isAR={isAR}
+            disabled={!isFormValid || state.isSuccess}
+            onClick={handleSubmit}
+          >
+            {state.isLoading ? <Loader /> : data.submitButtonLabel}
+          </Button>
+        )}
       </div>
       {state.submitted && failureMessage && (
         <Text className="failure" content={failureMessage} />
