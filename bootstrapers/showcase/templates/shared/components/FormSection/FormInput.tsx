@@ -8,14 +8,14 @@ interface FormFieldType {
   name: string;
   title: string;
   type:
-  | 'String'
-  | 'Date'
-  | 'Number'
-  | 'Password'
-  | 'String - Multiple Lines'
-  | 'Predefined List'
-  | 'Predefined List - Checkboxes'
-  | 'Predefined List - Radio Buttons';
+    | 'String'
+    | 'Date'
+    | 'Number'
+    | 'Password'
+    | 'String - Multiple Lines'
+    | 'Predefined List'
+    | 'Predefined List - Checkboxes'
+    | 'Predefined List - Radio Buttons';
   invisible?: boolean;
   required?: boolean;
   choices?: string[];
@@ -30,19 +30,31 @@ interface FormInputProps {
     submitted?: boolean;
   };
   isAR: boolean;
-  node?: string;
+  preContent?: {
+    content: string;
+    fieldName: string;
+  };
 }
 
-const renderField = (field, formFieldsState, handleFormData, isSuccess, node, isAR) => {
+const renderField = (
+  field,
+  formFieldsState,
+  handleFormData,
+  isSuccess,
+  preContent,
+  isAR
+) => {
   const commonProps = {
     value: formFieldsState[field.name],
     onChange: (value) => handleFormData(value, field.name),
     disabled: isSuccess,
   };
-  const hasNode = node && node?.fieldName === field.name;
-  const nodeContent = hasNode ? (
-    <HtmlContent htmlContent={node?.content} height="110px" />
-  ) : null;
+
+  const nodeContent =
+    preContent && preContent.content ? (
+      <HtmlContent htmlContent={preContent?.content} height="400px" />
+    ) : null;
+
   switch (field.type) {
     case 'String':
       return (
@@ -99,7 +111,7 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, node, is
           {nodeContent}
           <div key={field.id}>
             <Select
-              className='select_wrapper'
+              className="select_wrapper"
               value={{
                 label: formFieldsState[field.name],
                 value: formFieldsState[field.name],
@@ -126,7 +138,7 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, node, is
           <div key={field.id}>
             {field.choices.map((choice) => (
               <CheckBox
-                className='checkbox_group'
+                className="checkbox_group"
                 key={choice}
                 id={choice}
                 htmlFor={choice}
@@ -138,8 +150,8 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, node, is
                     isChecked
                       ? [...formFieldsState[field.name], choice]
                       : formFieldsState[field.name].filter(
-                        (item) => item !== choice
-                      ),
+                          (item) => item !== choice
+                        ),
                     field.name
                   );
                 }}
@@ -156,7 +168,7 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, node, is
           <div key={field.id}>
             {field.choices.map((choice) => (
               <Radio
-                className='radio_group'
+                className="radio_group"
                 key={choice}
                 id={choice}
                 labelText={choice}
@@ -175,7 +187,7 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, node, is
           {nodeContent}
           <div key={field.id}>
             <CheckBox
-              className='checkbox_group'
+              className="checkbox_group"
               isChecked={formFieldsState[field.name]}
               onChange={(isChecked) => handleFormData(isChecked, field.name)}
               id={field.id}
@@ -195,15 +207,22 @@ const FormInput: React.FC<FormInputProps> = ({
   formFieldsState,
   handleFormData,
   state,
-  node,
-  isAR
+  preContent,
+  isAR,
 }) => {
   if (field.required) {
     return (
       <RequiredFields key={field.id} isAR={isAR}>
         <div>
           <label className="required-label">{field.title}</label>
-          {renderField(field, formFieldsState, handleFormData, state.isSuccess, node, isAR)}
+          {renderField(
+            field,
+            formFieldsState,
+            handleFormData,
+            state.isSuccess,
+            preContent,
+            isAR
+          )}
         </div>
       </RequiredFields>
     );
@@ -212,7 +231,14 @@ const FormInput: React.FC<FormInputProps> = ({
   return (
     <div key={field.id}>
       <label className="label">{field.title}</label>
-      {renderField(field, formFieldsState, handleFormData, state.isSuccess, node, isAR)}
+      {renderField(
+        field,
+        formFieldsState,
+        handleFormData,
+        state.isSuccess,
+        preContent,
+        isAR
+      )}
     </div>
   );
 };
