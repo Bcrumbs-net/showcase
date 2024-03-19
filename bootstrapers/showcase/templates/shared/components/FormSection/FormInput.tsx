@@ -145,6 +145,7 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, isAR) =>
       return (
         <div key={field.id}>
           <CheckBox
+            className='checkbox_group'
             isChecked={formFieldsState[field.name]}
             onChange={(isChecked) => handleFormData(isChecked, field.name)}
             id={field.id}
