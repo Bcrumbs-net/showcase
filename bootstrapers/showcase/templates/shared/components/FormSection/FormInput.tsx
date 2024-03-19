@@ -30,129 +30,160 @@ interface FormInputProps {
     submitted?: boolean;
   };
   isAR: boolean;
+  node?: string;
 }
 
-const renderField = (field, formFieldsState, handleFormData, isSuccess, isAR) => {
+const renderField = (field, formFieldsState, handleFormData, isSuccess, node, isAR) => {
   const commonProps = {
     value: formFieldsState[field.name],
     onChange: (value) => handleFormData(value, field.name),
     disabled: isSuccess,
   };
+  const hasNode = node && node?.fieldName === field.name;
+  const nodeContent = hasNode ? (
+    <HtmlContent htmlContent={node?.content} height="110px" />
+  ) : null;
   switch (field.type) {
     case 'String':
       return (
-        <div key={field.id}>
-          <Input inputType="text" {...commonProps} />
-        </div>
+        <>
+          {nodeContent}
+          <div key={field.id}>
+            <Input inputType="text" {...commonProps} />
+          </div>
+        </>
       );
     case 'Date':
       return (
-        <div key={field.id}>
-          <Input
-            inputType="date" {...commonProps} />
-        </div>
+        <>
+          {nodeContent}
+          <div key={field.id}>
+            <Input inputType="date" {...commonProps} />
+          </div>
+        </>
       );
     case 'Number':
       return (
-        <div key={field.id}>
-          <Input inputType="number" {...commonProps} />
-        </div>
+        <>
+          {nodeContent}
+          <div key={field.id}>
+            <Input inputType="number" {...commonProps} />
+          </div>
+        </>
       );
     case 'Password':
       return (
-        <div key={field.id}>
-          <Input
-            inputType="password"
-            {...commonProps}
-            passwordShowHide={false}
-          />
-        </div>
+        <>
+          {nodeContent}
+          <div key={field.id}>
+            <Input
+              inputType="password"
+              {...commonProps}
+              passwordShowHide={false}
+            />
+          </div>
+        </>
       );
     case 'String - Multiple Lines':
       return (
-        <div key={field.id}>
-          <Input inputType="textarea" {...commonProps} />
-        </div>
+        <>
+          {nodeContent}
+          <div key={field.id}>
+            <Input inputType="textarea" {...commonProps} />
+          </div>
+        </>
       );
     case 'Predefined List':
       return (
-        <div key={field.id}>
-          <Select
-            className='select_wrapper'
-            value={{
-              label: formFieldsState[field.name],
-              value: formFieldsState[field.name],
-            }}
-            onChange={(selectedOption) =>
-              handleFormData(selectedOption.value, field.name)
-            }
-            options={[
-              { label: `Select ${field.name}`, value: '', isDisabled: true },
-              ...field.choices.map((choice) => ({
-                label: choice,
-                value: choice,
-              })),
-            ]}
-            isDisabled={isSuccess}
-          />
-        </div>
+        <>
+          {nodeContent}
+          <div key={field.id}>
+            <Select
+              className='select_wrapper'
+              value={{
+                label: formFieldsState[field.name],
+                value: formFieldsState[field.name],
+              }}
+              onChange={(selectedOption) =>
+                handleFormData(selectedOption.value, field.name)
+              }
+              options={[
+                { label: `Select ${field.name}`, value: '', isDisabled: true },
+                ...field.choices.map((choice) => ({
+                  label: choice,
+                  value: choice,
+                })),
+              ]}
+              isDisabled={isSuccess}
+            />
+          </div>
+        </>
       );
     case 'Predefined List - Checkboxes':
       return (
-        <div key={field.id}>
-          {field.choices.map((choice) => (
-            <CheckBox
-              className='checkbox_group'
-              key={choice}
-              id={choice}
-              htmlFor={choice}
-              value={choice}
-              labelText={choice}
-              isChecked={formFieldsState[field.name]?.includes(choice)}
-              onChange={(isChecked) => {
-                handleFormData(
-                  isChecked
-                    ? [...formFieldsState[field.name], choice]
-                    : formFieldsState[field.name].filter(
-                      (item) => item !== choice
-                    ),
-                  field.name
-                );
-              }}
-              disabled={isSuccess}
-            />
-          ))}
-        </div>
+        <>
+          {nodeContent}
+          <div key={field.id}>
+            {field.choices.map((choice) => (
+              <CheckBox
+                className='checkbox_group'
+                key={choice}
+                id={choice}
+                htmlFor={choice}
+                value={choice}
+                labelText={choice}
+                isChecked={formFieldsState[field.name]?.includes(choice)}
+                onChange={(isChecked) => {
+                  handleFormData(
+                    isChecked
+                      ? [...formFieldsState[field.name], choice]
+                      : formFieldsState[field.name].filter(
+                        (item) => item !== choice
+                      ),
+                    field.name
+                  );
+                }}
+                disabled={isSuccess}
+              />
+            ))}
+          </div>
+        </>
       );
     case 'Predefined List - Radio Buttons':
       return (
-        <div key={field.id}>
-          {field.choices.map((choice) => (
-            <Radio
-              className='radio_group'
-              key={choice}
-              id={choice}
-              labelText={choice}
-              value={choice}
-              isChecked={formFieldsState[field.name] === choice}
-              onChange={() => handleFormData(choice, field.name)}
-              disabled={isSuccess}
-            />
-          ))}
-        </div>
+        <>
+          {nodeContent}
+          <div key={field.id}>
+            {field.choices.map((choice) => (
+              <Radio
+                className='radio_group'
+                key={choice}
+                id={choice}
+                labelText={choice}
+                value={choice}
+                isChecked={formFieldsState[field.name] === choice}
+                onChange={() => handleFormData(choice, field.name)}
+                disabled={isSuccess}
+              />
+            ))}
+          </div>
+        </>
       );
     case 'Boolean':
       return (
-        <div key={field.id}>
-          <CheckBox
-            className='checkbox_group'
-            isChecked={formFieldsState[field.name]}
-            onChange={(isChecked) => handleFormData(isChecked, field.name)}
-            id={field.id}
-            labelText={field.name}
-            disabled={isSuccess}
-          />
-        </div>
+        <>
+          {nodeContent}
+          <div key={field.id}>
+            <CheckBox
+              className='checkbox_group'
+              isChecked={formFieldsState[field.name]}
+              onChange={(isChecked) => handleFormData(isChecked, field.name)}
+              id={field.id}
+              labelText={field.name}
+              disabled={isSuccess}
+            />
+          </div>
+        </>
       );
     default:
       return null;
@@ -164,6 +195,7 @@ const FormInput: React.FC<FormInputProps> = ({
   formFieldsState,
   handleFormData,
   state,
+  node,
   isAR
 }) => {
   if (field.required) {
@@ -171,7 +203,7 @@ const FormInput: React.FC<FormInputProps> = ({
       <RequiredFields key={field.id} isAR={isAR}>
         <div>
           <label className="required-label">{field.title}</label>
-          {renderField(field, formFieldsState, handleFormData, state.isSuccess, isAR)}
+          {renderField(field, formFieldsState, handleFormData, state.isSuccess, node, isAR)}
         </div>
       </RequiredFields>
     );
@@ -180,7 +212,7 @@ const FormInput: React.FC<FormInputProps> = ({
   return (
     <div key={field.id}>
       <label className="label">{field.title}</label>
-      {renderField(field, formFieldsState, handleFormData, state.isSuccess, isAR)}
+      {renderField(field, formFieldsState, handleFormData, state.isSuccess, node, isAR)}
     </div>
   );
 };

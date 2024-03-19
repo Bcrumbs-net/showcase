@@ -23,7 +23,6 @@ interface DynamicFormProps {
   isFormValid: boolean;
 };
 
-
 const DynamicForm = ({
   formData,
   data,
@@ -38,7 +37,6 @@ const DynamicForm = ({
   isFormValid,
 }: DynamicFormProps) => {
   const isSingleStep = formData.type === 'Single Form';
-
   const renderFormFields = (fields) => {
     if (!fields) {
       console.log(`Form fields are undefined`);
@@ -46,17 +44,30 @@ const DynamicForm = ({
     }
     return fields
       .filter((field) => !field.invisible)
-      .sort((f1, f2) => (f1.priority > f2.priority ? 1 : -1))
-      .map((field, index) => (
-        <FormInput
-          key={`FormInput_${index}`}
-          field={field}
-          formFieldsState={formFieldsState}
-          handleFormData={handleFormData}
-          state={state}
-          isAR={isAR}
-        />
-      ));
+      .sort((f1, f2) => f1.priority - f2.priority)
+      .map((field, index) => {
+        const node = Array.isArray(data.subdata) && data.subdata.find(nodeField => nodeField.fieldName === field.name);
+        return node ? (
+          <FormInput
+            key={`FormInput_${index}`}
+            field={field}
+            formFieldsState={formFieldsState}
+            handleFormData={handleFormData}
+            state={state}
+            node={node}
+            isAR={isAR}
+          />
+        ) : (
+          <FormInput
+            key={`FormInput_${index}`}
+            field={field}
+            formFieldsState={formFieldsState}
+            handleFormData={handleFormData}
+            state={state}
+            isAR={isAR}
+          />
+        );
+      });
   };
 
   return (
@@ -68,32 +79,20 @@ const DynamicForm = ({
       )}
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         {!isSingleStep && state.currentStep > 0 && (
-          <Button type="button"
-            isAR={isAR}
-            onClick={handlePrevStep}>
+          <Button type="button" isAR={isAR} onClick={handlePrevStep}>
             {data.backButtonLabel}
           </Button>
         )}
         {!isSingleStep && state.currentStep < formData.subForms.length - 1 && (
-          <Button
-            type="submit"
-            isAR={isAR}
-            disabled={!isFormValid}
-            onClick={handleNextStep}
-          >
+          <Button type="submit" isAR={isAR} disabled={!isFormValid} onClick={handleNextStep}>
             {data.nextButtonLabel}
           </Button>
         )}
-        {(isSingleStep ||
-          state.currentStep === formData.subForms.length - 1) && (
-            <Button
-              type="submit"
-              isAR={isAR}
-              disabled={!isFormValid || state.isSuccess}
-            >
-              {state.isLoading ? <Loader /> : data.submitButtonLabel}
-            </Button>
-          )}
+        {(isSingleStep || state.currentStep === formData.subForms.length - 1) && (
+          <Button type="submit" isAR={isAR} disabled={!isFormValid || state.isSuccess}>
+            {state.isLoading ? <Loader /> : data.submitButtonLabel}
+          </Button>
+        )}
       </div>
       {state.submitted && failureMessage && (
         <Text className="failure" content={failureMessage} />
@@ -106,3 +105,4 @@ const DynamicForm = ({
 };
 
 export default DynamicForm;
+
