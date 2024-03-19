@@ -409,24 +409,76 @@ export const ContactForm = styled.form<{ isAR?: boolean }>`
   }
 `;
 
-export const SubmitButton = styled.button<{ isLoading?: boolean }>`
+export const Button = styled.button<{ type: 'submit' | 'button'; isLoading?: boolean; isAR?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 45%;
   height: 65px;
   border: 0;
   font-size: 20px;
   font-weight: 700;
   border-radius: 10px;
-  cursor: pointer;
-  color: ${themeGet('colors.white', '#ffffff')};
-  background-color: ${themeGet('colors.primary', '#1C7C0C')};
+  cursor: ${({ isLoading }) => (isLoading ? 'not-allowed' : 'pointer')};
+  color: ${({ theme }) => theme.colors.white || '#ffffff'};
+  background-color: ${({ theme, type }) =>
+    type === 'submit' ? theme.colors.primary || '#1C7C0C' : theme.colors.gray || '#808080'};
   position: relative;
   overflow: hidden;
   z-index: 0;
-  margin: 40px 0 0 0;
+  margin: ${({ type, isAR }) =>
+    isAR
+      ? type === 'submit'
+        ? '40px auto 0 0'
+        : '40px 0 0 auto'
+      : type === 'submit'
+      ? '40px 0 0 auto'
+      : '40px auto 0 0'};
   text-transform: uppercase;
+  right: ${({ isAR }) => (isAR ? 'auto' : '0px')};
+  left: ${({ isAR }) => (isAR ? '0px' : 'auto')};
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    ${({ isAR }) => (isAR ? 'right' : 'left')}: -100%;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    background: repeating-linear-gradient(
+      -45deg,
+      ${({ theme }) => theme.colors.secondary || '#117600'},
+      ${({ theme }) => theme.colors.secondary || '#117600'} 10px,
+      ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 10px,
+      ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 20px
+    );
+    transition: all 0.45s ease;
+  }
+
+  ${(props) =>
+    props.disabled &&
+    css`
+      opacity: 0.5;
+      &:hover {
+        &::before {
+          ${ isAR  => (isAR ? 'right' : 'left')}: -100%;
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+    `}
+
+  &:hover {
+    &::before {
+      ${({ isAR }) => (isAR ? 'right' : 'left')}: 0;
+      opacity: 0.2;
+      visibility: visible;
+    }
+  }
 
   @media only screen and (max-width: 1440px) {
     font-size: 18px;
@@ -449,61 +501,12 @@ export const SubmitButton = styled.button<{ isLoading?: boolean }>`
   }
 
   img {
-    margin-left: 13px;
-  }
-
-  &::before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: -100%;
-    z-index: -1;
-    opacity: 0;
-    visibility: hidden;
-    background: repeating-linear-gradient(
-      -45deg,
-      ${({ theme }) => theme.colors.secondary || '#117600'},
-      ${({ theme }) => theme.colors.secondary || '#117600'} 10px,
-      ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 10px,
-      ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 20px
-    );
-    transition: all 0.45s ease;
-
-    @media only screen and (max-width: 1440px) {
-      background: repeating-linear-gradient(
-        -45deg,
-        ${({ theme }) => theme.colors.secondary || '#117600'},
-        ${({ theme }) => theme.colors.secondary || '#117600'} 8px,
-        ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 8px,
-        ${({ theme }) => theme.colors.secondaryHover || '#FF282F'} 16px
-      );
-    }
-  }
-  ${(props) =>
-    props.disabled &&
-    css`
-      cursor: not-allowed;
-      opacity: 0.5; 
-      &:hover {
-        &::before {
-          left: -100%;
-          opacity: 0;
-          visibility: hidden;
-        }
-      }
-    `}
-
-  &:hover {
-    &::before {
-      left: 0;
-      opacity: 0.2;
-      visibility: visible;
-    }
+    margin-left: ${({ isAR }) => (isAR ? '0' : '13px')};
+    margin-right: ${({ isAR }) => (isAR ? '13px' : '0')};
   }
 `;
+
+
 
 export const Loader = styled.div`
   position: absolute;

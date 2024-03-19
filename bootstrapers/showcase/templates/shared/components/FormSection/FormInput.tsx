@@ -1,6 +1,7 @@
 import React from 'react';
 import { RequiredFields } from './style';
 import { Input, Select, Radio, CheckBox } from '../../../../../../lib/atoms';
+import HtmlContent from '../../../../../../lib/atoms/components/html_content';
 
 interface FormFieldType {
   id: string;
@@ -25,9 +26,8 @@ interface FormInputProps {
   formFieldsState: Record<string, string | number | string[]>;
   handleFormData: (value: string | number | string[], name: string) => void;
   state: {
-    isSuccess: boolean;
-    isFormValid: boolean;
-    submitted: boolean;
+    isSuccess?: boolean;
+    submitted?: boolean;
   };
   isAR: boolean;
 }
@@ -139,6 +139,19 @@ const renderField = (field, formFieldsState, handleFormData, isSuccess, isAR) =>
               disabled={isSuccess}
             />
           ))}
+        </div>
+      );
+    case 'Boolean':
+      return (
+        <div key={field.id}>
+          <CheckBox
+            className='checkbox_group'
+            isChecked={formFieldsState[field.name]}
+            onChange={(isChecked) => handleFormData(isChecked, field.name)}
+            id={field.id}
+            labelText={field.name}
+            disabled={isSuccess}
+          />
         </div>
       );
     default:
