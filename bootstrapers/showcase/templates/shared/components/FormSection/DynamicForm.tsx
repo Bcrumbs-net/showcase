@@ -37,6 +37,7 @@ const DynamicForm = ({
   isFormValid,
 }: DynamicFormProps) => {
   const isSingleStep = formData.type === 'Single Form';
+
   const renderFormFields = (fields) => {
     if (!fields) {
       console.log(`Form fields are undefined`);

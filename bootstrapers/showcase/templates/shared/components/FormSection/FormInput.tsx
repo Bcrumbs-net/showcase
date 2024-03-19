@@ -197,6 +197,19 @@ const renderField = (
           </div>
         </>
       );
+    case 'Boolean':
+      return (
+        <div key={field.id}>
+          <CheckBox
+            className='checkbox_group'
+            isChecked={formFieldsState[field.name]}
+            onChange={(isChecked) => handleFormData(isChecked, field.name)}
+            id={field.id}
+            labelText={field.name}
+            disabled={isSuccess}
+          />
+        </div>
+      );
     default:
       return null;
   }
