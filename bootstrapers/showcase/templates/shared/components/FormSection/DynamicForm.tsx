@@ -45,17 +45,29 @@ const DynamicForm = ({
     }
     return fields
       .filter((field) => !field.invisible)
-      .sort((f1, f2) => (f1.priority > f2.priority ? 1 : -1))
-      .map((field, index) => (
-        <FormInput
-          key={`FormInput_${index}`}
-          field={field}
-          formFieldsState={formFieldsState}
-          handleFormData={handleFormData}
-          state={state}
-          isAR={isAR}
-        />
-      ));
+      .sort((f1, f2) => f1.priority - f2.priority)
+      .map((field, index) => {
+        const preContent =
+          Array.isArray(data.subdata) &&
+          (data.subdata.find(
+            (nodeField) => nodeField.fieldName === field.name
+          ) as {
+            content: string;
+            fieldName: string;
+          });
+
+        return (
+          <FormInput
+            key={`FormInput_${index}`}
+            field={field}
+            formFieldsState={formFieldsState}
+            handleFormData={handleFormData}
+            state={state}
+            preContent={preContent}
+            isAR={isAR}
+          />
+        );
+      });
   };
 
   return (
