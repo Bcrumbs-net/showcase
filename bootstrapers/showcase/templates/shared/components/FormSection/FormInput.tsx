@@ -8,6 +8,7 @@ interface FormFieldType {
   name: string;
   title: string;
   type:
+    | 'Phone Number'
     | 'String'
     | 'Date'
     | 'Number'
@@ -57,6 +58,7 @@ const renderField = (
 
   switch (field.type) {
     case 'String':
+    case 'Phone Number':
       return (
         <>
           {nodeContent}
@@ -196,19 +198,6 @@ const renderField = (
             />
           </div>
         </>
-      );
-    case 'Boolean':
-      return (
-        <div key={field.id}>
-          <CheckBox
-            className='checkbox_group'
-            isChecked={formFieldsState[field.name]}
-            onChange={(isChecked) => handleFormData(isChecked, field.name)}
-            id={field.id}
-            labelText={field.name}
-            disabled={isSuccess}
-          />
-        </div>
       );
     default:
       return null;

@@ -126,7 +126,9 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
     }
   };
 
-  const handleNextStep = () => {
+  const handleNextStep = (event) => {
+    event.preventDefault();
+
     setState((prevState) => ({
       ...prevState,
       currentStep: prevState.currentStep + 1,
