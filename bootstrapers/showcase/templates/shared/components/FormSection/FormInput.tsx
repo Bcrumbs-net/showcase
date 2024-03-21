@@ -58,11 +58,19 @@ const renderField = (
 
   switch (field.type) {
     case 'String':
-    case 'Phone Number':
       return (
         <>
           {nodeContent}
           <div key={field.id}>
+            <Input inputType="text" {...commonProps} />
+          </div>
+        </>
+      );
+    case 'Phone Number':
+      return (
+        <>
+          {nodeContent}
+          <div key={field.id} style={{ direction: 'ltr' }}>
             <Input inputType="text" {...commonProps} />
           </div>
         </>

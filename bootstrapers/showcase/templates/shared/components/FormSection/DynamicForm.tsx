@@ -14,7 +14,7 @@ interface DynamicFormProps {
   data: Record<string, string>;
   handlePrevStep: () => void;
   failureMessage: string;
-  handleNextStep: () => void;
+  handleNextStep: (event: any) => void;
   formFieldsState: Record<string, string | number | string[]>;
   handleFormData: (value: string | number | string[], name: string) => void;
   handleSubmit: (event: any) => Promise<void>;
