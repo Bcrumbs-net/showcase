@@ -8,6 +8,7 @@ const Container = styled.div<{ height?: string }>`
   height: ${(props) => props.height || '150px'};
   overflow-y: auto;
   border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 10px;
 `;
 

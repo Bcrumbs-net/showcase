@@ -39,6 +39,7 @@ export interface InputProps {
    */
   placeholder?: string;
   onChange?(...args: any[]): any;
+  disabled:boolean;
 }
 
 export const Input = ({
