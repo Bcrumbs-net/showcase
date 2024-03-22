@@ -163,37 +163,32 @@ export const ButtonGroup = styled.div`
     }
   }
 `;
-
 export const RequiredFields = styled.div<{ isAR?: boolean }>`
-  display: flex;
-  flex-direction: column;
-  label {
-    margin: 10px 0 20px 0;
-    padding: 0 5px;
-    position: relative;
-    font-size:21px;
-    font-weight: 600;
-    &.required-label {
+display: flex;
+flex-direction: column;
+label {
+  margin: 10px 0 20px 0;
+  padding: 0 5px;
+  position: relative;
+  font-size: 21px;
+  font-weight: 600;
+  &.required-label {
+    &::after {
+      content: '*';
+      color: red;
+      position: absolute;
       ${props => props.isAR ? `
-        &::before {
-          content: '* ';
-          color: red;
-          position: absolute;
-          top: 0;
-          left: -10px;
-        }
+        left: -10;
+        bottom: 0;
       ` : `
-        &::after {
-          content: ' *';
-          color: red;
-          position: absolute;
-          top: 0;
-          right: -10px;
-        }
+        right: -10;
+        bottom: 0;
       `}
+    }
   }
- }
+}
 `;
+
 export const ContactForm = styled.form<{ isAR?: boolean }>`
   ${props => props.isAR ? `
     direction: rtl;
