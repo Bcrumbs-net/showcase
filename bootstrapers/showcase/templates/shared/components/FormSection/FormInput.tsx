@@ -232,7 +232,7 @@ const renderField = (
                 value: formFieldsState[field.name],
               }}
               onChange={(selectedOption) =>
-                handleFormData(selectedOption.value, field.name)
+                handleFormData(selectedOption.label, field.name)
               }
               options={countryOptions}
               isDisabled={isSuccess}
