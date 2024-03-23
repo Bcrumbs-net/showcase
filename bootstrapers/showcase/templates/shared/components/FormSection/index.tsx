@@ -28,9 +28,10 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
     if (!formData || !formData.subForms) {
       return false;
     }
-    if (formData.subForms.length > 0) {
-      const stepFields = formData.subForms[state.currentStep].formFields;
-      return stepFields
+    //I will add this status to the single form to check if the form is valid to toggle the submit button to enable
+    if (formData.subForms.length == 0) {
+      const fields = formData.formFields;
+      return fields
         .filter((field) => field?.required)
         .every((field) => {
           const fieldValue = formFieldsState[field.name];
@@ -44,9 +45,21 @@ const FormSection = ({ row, col, model, isAR, data }: FormSectionProps) => {
             : fieldValue !== '';
         });
     }
-
+    if (formData.subForms.length > 0) {
+      const stepFields = formData.subForms[state.currentStep].formFields;
+      return stepFields
+        .filter((field) => field?.required)
+        .every((field) => {
+          const fieldValue = formFieldsState[field.name];
+          if (!fieldValue) {
+            return false;
+          }
+          return typeof fieldValue === 'string'
+            ? fieldValue.trim() !== ''
+            : fieldValue !== '';
+        });
+    }
   }, [formData, formFieldsState, state.currentStep]);
-
   useEffect(() => {
     if (formData) {
       if (formData.formFields && formData.subForms.length === 0) {

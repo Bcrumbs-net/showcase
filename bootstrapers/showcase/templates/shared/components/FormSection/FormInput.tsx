@@ -2,21 +2,22 @@ import React from 'react';
 import { RequiredFields } from './style';
 import { Input, Select, Radio, CheckBox } from '../../../../../../lib/atoms';
 import HtmlContent from '../../../../../../lib/atoms/components/html_content';
+import PhoneNumber from '../../../../../../lib/atoms/components/phone-number-input';
 
 interface FormFieldType {
   id: string;
   name: string;
   title: string;
   type:
-    | 'Phone Number'
-    | 'String'
-    | 'Date'
-    | 'Number'
-    | 'Password'
-    | 'String - Multiple Lines'
-    | 'Predefined List'
-    | 'Predefined List - Checkboxes'
-    | 'Predefined List - Radio Buttons';
+  | 'Phone Number'
+  | 'String'
+  | 'Date'
+  | 'Number'
+  | 'Password'
+  | 'String - Multiple Lines'
+  | 'Predefined List'
+  | 'Predefined List - Checkboxes'
+  | 'Predefined List - Radio Buttons';
   invisible?: boolean;
   required?: boolean;
   choices?: string[];
@@ -53,7 +54,7 @@ const renderField = (
 
   const nodeContent =
     preContent && preContent.content ? (
-      <HtmlContent htmlContent={preContent?.content} height="400px" />
+      <HtmlContent htmlContent={preContent?.content} height={`${preContent?.height}px`} />
     ) : null;
 
   switch (field.type) {
@@ -71,7 +72,9 @@ const renderField = (
         <>
           {nodeContent}
           <div key={field.id} style={{ direction: 'ltr' }}>
-            <Input inputType="text" {...commonProps} />
+            <PhoneNumber
+              {...commonProps}
+            />
           </div>
         </>
       );
@@ -160,8 +163,8 @@ const renderField = (
                     isChecked
                       ? [...formFieldsState[field.name], choice]
                       : formFieldsState[field.name].filter(
-                          (item) => item !== choice
-                        ),
+                        (item) => item !== choice
+                      ),
                     field.name
                   );
                 }}
