@@ -19,13 +19,10 @@ const PhoneNumberField = styled.div`
 
 const PhoneInputWrapper = styled(PhoneInput)`
   width: 100%;
-  padding: 0.5rem;
-  margin-top:10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-sizing: border-box;
-
+  .PhoneInputCountry {
+    padding: 0 15px;
+    margin: 10px 0 30px 0;
+  }
   &:focus {
     outline: none;
     border-color: #00bfff;
@@ -56,7 +53,6 @@ const PhoneNumber: React.FC<PhoneNumberProps> = ({
                 name={htmlFor}
                 value={value}
                 onChange={handleOnChange}
-                placeholder="Enter phone number"
             />
         </PhoneNumberField>
     );
