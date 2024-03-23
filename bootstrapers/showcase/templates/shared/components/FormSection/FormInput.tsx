@@ -3,6 +3,7 @@ import { RequiredFields } from './style';
 import { Input, Select, Radio, CheckBox } from '../../../../../../lib/atoms';
 import HtmlContent from '../../../../../../lib/atoms/components/html_content';
 import PhoneNumber from '../../../../../../lib/atoms/components/phone-number-input';
+import { getCountryDataList } from 'countries-list';
 
 interface FormFieldType {
   id: string;
@@ -56,6 +57,15 @@ const renderField = (
     preContent && preContent.content ? (
       <HtmlContent htmlContent={preContent?.content} height={`${preContent?.height}px`} />
     ) : null;
+
+  const countriesData = getCountryDataList();
+  const countryOptions = [
+    { label: `Select ${field.name}`, value: '', isDisabled: true },
+    ...countriesData.map((country) => ({
+      label: country.name,
+      value: country.iso2,
+    })),
+  ];
 
   switch (field.type) {
     case 'String':
@@ -206,6 +216,26 @@ const renderField = (
               id={field.id}
               labelText={field.name}
               disabled={isSuccess}
+            />
+          </div>
+        </>
+      );
+    case 'Country':
+      return (
+        <>
+          {nodeContent}
+          <div key={field.id}>
+            <Select
+              className="select_wrapper"
+              value={{
+                label: formFieldsState[field.name],
+                value: formFieldsState[field.name],
+              }}
+              onChange={(selectedOption) =>
+                handleFormData(selectedOption.label, field.name)
+              }
+              options={countryOptions}
+              isDisabled={isSuccess}
             />
           </div>
         </>
