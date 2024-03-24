@@ -414,7 +414,7 @@ export const Button = styled.button<{ type: 'submit' | 'button'; isLoading?: boo
   font-size: 20px;
   font-weight: 700;
   border-radius: 10px;
-  cursor: ${({ isLoading }) => (isLoading ? 'not-allowed' : 'pointer')};
+  cursor: ${({ isLoading, disabled }) => (isLoading || disabled ? 'not-allowed' : 'pointer')};
   color: ${({ theme }) => theme.colors.white || '#ffffff'};
   background-color: ${({ theme, type }) =>
     type === 'submit' ? theme.colors.primary || '#1C7C0C' : theme.colors.gray || '#808080'};
