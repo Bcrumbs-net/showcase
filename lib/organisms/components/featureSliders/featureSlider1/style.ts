@@ -63,7 +63,6 @@ const FeatureSliderWrapper = styled.div`
     padding-top: 200px;
     padding-bottom: 100px;
     position: relative;
-
     .image-gallery {
       position: relative;
       z-index: 2;
@@ -96,7 +95,7 @@ const FeatureSliderWrapper = styled.div`
         content: '';
         background-image: url(${Mockup.src});
         position: absolute;
-        width: 100%;
+        width: 100%;      
         height: 100%;
         top: 0;
         left: 0;
@@ -117,10 +116,8 @@ const FeatureSliderWrapper = styled.div`
         border-radius: 50px;
       }
       .image-gallery-swipe {
-        padding: 19px 24px 22px 23px;
+        padding: 22px 24px 22px 23px;
         overflow: hidden;
-        
-        
       }
     }
     .image-gallery-thumbnails-wrapper {
