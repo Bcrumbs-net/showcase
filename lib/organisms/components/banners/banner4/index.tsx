@@ -7,6 +7,7 @@ import { cornerDownRight } from 'react-icons-kit/feather/cornerDownRight';
 import { Text, Image, Container, Box, Heading } from '../../../../atoms';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { BannerDataType } from '../../../types/bannerTypes';
 
 interface BannerSectionProps {
   row: object;
@@ -21,7 +22,7 @@ interface BannerSectionProps {
   textAfterLink: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: BannerDataType;
 }
 const BannerSection = ({
   row,
@@ -57,12 +58,12 @@ const BannerSection = ({
       <Container noGutter mobileGutter width="1200px">
         <Box {...row}>
           <Box {...contentArea}>
-            {data.welcome_message ? (
-              <Heading content={data.welcome_message} {...greetingStyle} />
+            {data.welcomeMessage ? (
+              <Heading content={data.welcomeMessage} {...greetingStyle} />
             ) : null}
             {data.name ? <Heading content={data.name} {...nameStyle} /> : null}
-            {data.position ? (
-              <Heading content={data.position} {...designationStyle} />
+            {data.subTitle ? (
+              <Heading content={data.subTitle} {...designationStyle} />
             ) : null}
             {data.title ? (
               <Box {...roleWrapper}>
@@ -74,15 +75,15 @@ const BannerSection = ({
                 <Heading content={data.title} {...roleStyle} />
               </Box>
             ) : null}
-            {data.message ? (
-              <Text content={data.message} {...aboutStyle} />
+            {data.description ? (
+              <Text content={data.description} {...aboutStyle} />
             ) : null}
-            {data.link ? (
+            {data.ctaUrl ? (
               <PortfolioLink>
-                <a target="_blank" href={data.link || '#'} rel="noreferrer">
-                  {data.linkText}
+                <a target="_blank" href={data.ctaUrl || '#'} rel="noreferrer">
+                  {data.ctaLabel}
+                  <Text content={data.ctaDescription} {...textAfterLink} />
                 </a>{' '}
-                <Text content={data.textAfterLink} {...textAfterLink} />
               </PortfolioLink>
             ) : null}
             {/*<SocialProfile items={SOCIAL_PROFILES} model={model} />*/}
