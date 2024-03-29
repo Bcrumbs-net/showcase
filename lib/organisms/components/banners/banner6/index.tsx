@@ -14,6 +14,7 @@ import BannerBG from "./white_bg1.svg";
 import BannerWrapper, { BgImageWrapper } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { BannerDataType } from "../../../types/bannerTypes";
 
 interface BannerSectionProps {
   row: object;
@@ -26,7 +27,7 @@ interface BannerSectionProps {
   outlineBtnStyle: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: BannerDataType;
 }
 const BannerSection = ({
   row,
@@ -43,9 +44,9 @@ const BannerSection = ({
 }: BannerSectionProps) => {
   const ButtonGroup = () => (
     <>
-      <Button title={data.image_button_label} {...btnStyle} />
+      <Button title={data.ctaLabel} {...btnStyle} />
       <Button
-        title={data.image_url_label}
+        title={data.secCtaLabel}
         variant="textButton"
         icon={<i className="flaticon-next" />}
         {...outlineBtnStyle}
@@ -55,7 +56,7 @@ const BannerSection = ({
   const ShareButtonGroup = () => (
     <>
       <Button
-        title={data.twitter_share_label}
+        title={data.twitterLabel}
         variant="textButton"
         iconPosition="left"
         icon={<Icon icon={socialTwitter} />}
@@ -63,7 +64,7 @@ const BannerSection = ({
         className="btnWithoutColor"
       />
       <Button
-        title={data.fb_share_label}
+        title={data.fbLabel}
         variant="textButton"
         iconPosition="left"
         icon={<Icon icon={facebook2} />}
@@ -84,8 +85,8 @@ const BannerSection = ({
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <FeatureBlock
-              title={<Heading content={data.image_header} {...title} />}
-              description={<Text content={data.image_desc} {...description} />}
+              title={<Heading content={data.title} {...title} />}
+              description={<Text content={data.description} {...description} />}
               button={<ButtonGroup />}
             />
             <FeatureBlock button={<ShareButtonGroup />} />

@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Image, Container } from "../../../../atoms";
 import BannerSectionWrapper, { ImageWrapper } from "./style";
 import { GlideCarousel, GlideSlide } from "../../../../molecules";
+import { convertDataModelToDataObject } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
 interface FullScreenBannerSectionProps {
   btnWrapperStyle: object;
@@ -50,11 +51,7 @@ const FullScreenBannerSection = ({
               model.children
                 .filter((m) => m.online)
                 .map((testimonial, index) => {
-                  const sliderMap: Record<string, string> =
-                    testimonial.data.reduce(function (map, obj) {
-                      map[obj.Key] = obj.Value;
-                      return map;
-                    }, {});
+                  const sliderMap = convertDataModelToDataObject(testimonial) as Record<string, string>;
                   return (
                     //@ts-ignore
                     <GlideSlide key={index}>
