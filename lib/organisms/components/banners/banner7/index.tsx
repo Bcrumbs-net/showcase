@@ -29,12 +29,12 @@ import { BannerDataType } from "../../../types/bannerTypes";
 // close button for modal
 const CloseModalButton = () =>
   null;
-  // <Button
-  //   className="modalCloseBtn"
-  //   variant="fab"
-  //   onClick={() => closeModal()}
-  //   icon={<i className="flaticon-plus-symbol" />}
-  // />
+// <Button
+//   className="modalCloseBtn"
+//   variant="fab"
+//   onClick={() => closeModal()}
+//   icon={<i className="flaticon-plus-symbol" />}
+// />
 interface BannerSectionProps {
   row: object;
   contentWrapper: object;
@@ -64,7 +64,7 @@ const BannerSection = ({
   model,
   data,
   isAR,
-}:BannerSectionProps) => {
+}: BannerSectionProps) => {
   // modal handler
   const ModalContent = () => (
     <VideoWrapper>
@@ -96,7 +96,7 @@ const BannerSection = ({
   };
   return (
     <BannerWrapper id={model.name}>
-      <TiltShape className="banner-shape" />
+      <TiltShape className={"banner-shape"} />
       <Container>
         <Box {...row}>
           <Box {...contentWrapper}>
@@ -139,9 +139,9 @@ const BannerSection = ({
             <Fade bottom>
               <VideoModal>
                 <Image src={data.image} alt="banner image" />
-                <PlayButton 
-                // @ts-ignore
-                tabIndex="1000" onClick={handleVideoModal}>
+                <PlayButton
+                  // @ts-ignore
+                  tabIndex="1000" onClick={handleVideoModal}>
                   <Icon icon={play} size={40} />
                 </PlayButton>
               </VideoModal>

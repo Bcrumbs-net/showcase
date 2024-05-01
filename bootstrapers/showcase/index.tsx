@@ -16,6 +16,7 @@ const ShowcaseBootstraper = ({
 }) => {
   let subConfig;
   let templateId = config?.templateId;
+  console.log(config);
 
   if (path && config.pages) {
     const targetPageArr = config.pages.filter(
