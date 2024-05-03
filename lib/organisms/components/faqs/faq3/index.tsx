@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Link from "next/link";
 import { Box, Text, Heading, Container, Button } from "../../../../atoms";
 import {
@@ -11,67 +10,89 @@ import {
   OpenIcon,
   CloseIcon,
 } from "../../../../molecules";
-
 import { Icon } from "react-icons-kit";
 import { plus } from "react-icons-kit/entypo/plus";
 import { minus } from "react-icons-kit/entypo/minus";
-
 import FaqWrapper from "./.style";
-import { FAQ_DATA } from "../../../../data/SaasModern";
+import { GraphContent } from "@bcrumbs.net/bc-api";
+import { FaqDataType } from "../../../types/faqTypes";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+
+interface FaqSectionProps {
+  sectionWrapper?: object;
+  row?: object;
+  col?: object;
+  sectionTitle?: object;
+  secText: object;
+  sectionSubTitle?: object;
+  buttonWrapper?: object;
+  button?: object;
+  title: any;
+  description: any;
+  model: GraphContent;
+  data: FaqDataType;
+  isAR: boolean;
+}
 
 const FaqSection = ({
   sectionWrapper,
   row,
   col,
-  secTitleWrapper,
-  secHeading,
+  sectionTitle,
+  sectionSubTitle,
   secText,
   title,
   description,
   buttonWrapper,
   button,
-}) => {
+  model,
+  data,
+  isAR
+}: FaqSectionProps) => {
   return (
-    <Box {...sectionWrapper} id="faq_section">
+    <Box {...sectionWrapper} id={model.name}>
       <Container>
-        <Box {...secTitleWrapper}>
-          <Text {...secText} content="FREQUENTLY ASK QUESTION" />
-          <Heading {...secHeading} content="Want to ask something from us?" />
+        <Box {...sectionTitle}>
+          <Text {...secText} content={data.title} />
+          <Heading {...sectionSubTitle} content={data.subTitle} />
         </Box>
         <Box {...row}>
           <Box {...col}>
             <FaqWrapper>
               <Accordion>
                 <>
-                  {FAQ_DATA.map((accordionItem, index) => (
-                    <AccordionItem
-                      className="accordion_item"
-                      key={`accordion-${index}`}
-                      allowZeroExpanded={accordionItem.expend}
-                    >
-                      <>
-                        <AccordionTitle className="accordion_title">
+                  {data.subdata &&
+                    data.subdata.map((faqSectionMap, index) => {
+                      return (
+                        <AccordionItem
+                          className="accordion_item"
+                          key={`accordion-${index}`}
+                          allowZeroExpanded={faqSectionMap.expand}
+                        >
                           <>
-                            <Heading {...title} content={accordionItem.title} />
-                            <IconWrapper>
-                              <OpenIcon>
-                                <Icon icon={minus} size={18} />
-                              </OpenIcon>
-                              <CloseIcon>
-                                <Icon icon={plus} size={18} />
-                              </CloseIcon>
-                            </IconWrapper>
+                            <AccordionTitle className="accordion_title">
+                              <>
+                                <Heading {...title} content={faqSectionMap.title} />
+                                <IconWrapper>
+                                  <OpenIcon>
+                                    <Icon icon={minus} size={18} />
+                                  </OpenIcon>
+                                  <CloseIcon>
+                                    <Icon icon={plus} size={18} />
+                                  </CloseIcon>
+                                </IconWrapper>
+                              </>
+                            </AccordionTitle>
+                            <AccordionBody className="accordion_body">
+                              <Text
+                                {...description}
+                                content={faqSectionMap.description}
+                              />
+                            </AccordionBody>
                           </>
-                        </AccordionTitle>
-                        <AccordionBody className="accordion_body">
-                          <Text
-                            {...description}
-                            content={accordionItem.description}
-                          />
-                        </AccordionBody>
-                      </>
-                    </AccordionItem>
-                  ))}
+                        </AccordionItem>
+                      );
+                    })}
                 </>
               </Accordion>
             </FaqWrapper>
@@ -89,26 +110,13 @@ const FaqSection = ({
   );
 };
 
-FaqSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  secHeading: PropTypes.object,
-  secText: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
-  buttonWrapper: PropTypes.object,
-  button: PropTypes.object,
-};
-
 FaqSection.defaultProps = {
   sectionWrapper: {
     as: "section",
     pt: ["20px", "30px", "50px", "50px"],
     pb: ["60px", "80px", "80px", "80px"],
   },
-  secTitleWrapper: {
+  sectionTitle: {
     mb: ["55px", "65px"],
   },
   secText: {
@@ -121,7 +129,7 @@ FaqSection.defaultProps = {
     color: "#2aa275",
     mb: "5px",
   },
-  secHeading: {
+  sectionSubTitle: {
     textAlign: "center",
     fontSize: ["20px", "24px"],
     fontWeight: "500",
@@ -168,4 +176,4 @@ FaqSection.defaultProps = {
   },
 };
 
-export default FaqSection;
+export default withModelToDataObjProp(FaqSection);

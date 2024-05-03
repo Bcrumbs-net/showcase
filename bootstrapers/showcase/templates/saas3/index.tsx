@@ -29,9 +29,7 @@ export const SaaS3Theme = ({
     header?: GraphContent;
 }) => {
     const data = queryData[0];
-    console.log(data);
     const rootModelData = convertDataModelToDataObject(data) as Record<string, string>;
-
     const filteredData = filterData(data.children, config);
 
     const isAR = config.lang === 'AR';
@@ -39,7 +37,7 @@ export const SaaS3Theme = ({
     return (
         <>
             {/*@ts-ignore: Unreachable code error*/}
-            <ThemeProvider theme={saasModernTheme(rootModelData)}>
+            <ThemeProvider theme={saasModernTheme}>
                 <Fragment>
                     <Head>
                         <title>{data.title}</title>

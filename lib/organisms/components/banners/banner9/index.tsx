@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Icon from 'react-icons-kit';
 import Fade from 'react-reveal/Fade';
@@ -10,6 +9,7 @@ import { ic_play_circle_filled } from 'react-icons-kit/md/ic_play_circle_filled'
 import TiltShape from './tiltShape';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import { BannerDataType } from '../../../types/bannerTypes';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface BannerSectionProps {
   row: object;
@@ -41,7 +41,6 @@ const BannerSection = ({
   isAR,
   data
 }: BannerSectionProps) => {
-  console.log(data);
   return (
     <BannerWrapper id={model.name}>
       <TiltShape />
@@ -50,32 +49,32 @@ const BannerSection = ({
           <Box {...contentWrapper}>
             <DiscountWrapper>
               <DiscountLabel>
-                <Text {...discountAmount} content="25% Save" />
+                <Text {...discountAmount} content={data.discount} />
                 <Text
                   {...discountText}
-                  content="for first month trail version"
+                  content={data.discountLabel}
                 />
               </DiscountLabel>
             </DiscountWrapper>
             <Heading
               {...title}
-              content="Ultimate Platform to monitor your best workflow."
+              content={data.title}
             />
             <Text
               {...description}
-              content="For Enhanced performance we use LiteSpeed Web Server, HTTP/2, PHP7. We make your website faster, which will help you to increase search ranking!"
+              content={data.description}
             />
             <Box {...buttonWrapper}>
-              <Link href="#">
+              <Link href={data.ctaUrl}>
                 <a>
-                  <Button {...fillButton} title="FREE TRIAL" />
+                  <Button {...fillButton} title={data.ctaLabel} />
                 </a>
               </Link>
-              <Link href="#">
+              <Link href={data.secCtaBtnUrl}>
                 <a>
                   <Button
                     {...button}
-                    title="WATCH VIDEO"
+                    title={data.secCtaLabel}
                     icon={<Icon icon={ic_play_circle_filled} size={30} />}
                     iconPosition="left"
                   />
@@ -94,18 +93,6 @@ const BannerSection = ({
   );
 };
 
-BannerSection.propTypes = {
-  row: PropTypes.object,
-  contentWrapper: PropTypes.object,
-  discountAmount: PropTypes.object,
-  discountText: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
-  imageWrapper: PropTypes.object,
-  buttonWrapper: PropTypes.object,
-  button: PropTypes.object,
-  fillButton: PropTypes.object,
-};
 
 BannerSection.defaultProps = {
   row: {
@@ -178,4 +165,4 @@ BannerSection.defaultProps = {
   },
 };
 
-export default BannerSection;
+export default withModelToDataObjProp(BannerSection);

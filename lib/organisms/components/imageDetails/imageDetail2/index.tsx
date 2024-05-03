@@ -10,7 +10,7 @@ import {
   Image,
   Button,
   Container
-} from '../../../atoms';
+} from '../../../../atoms';
 
 import InfoSectionWrapper from './style';
 import ImageOne from './dash-1.png';

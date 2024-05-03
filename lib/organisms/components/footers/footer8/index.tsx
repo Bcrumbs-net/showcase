@@ -1,12 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Box, Text, Heading, Container } from '../../../../atoms';
 import { Logo } from '../../../../molecules';
 import FooterWrapper, { List, ListItem } from './style';
-import LogoImage from '../../../assets/image/saasModern/logo.png';
-import { FOOTER_WIDGET } from '../../../../data/SaasModern';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp, { convertDataModelToDataObject } from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface FooterProps {
+  row: object;
+  col: object;
+  colOne: object;
+  colTwo: object;
+  titleStyle: object;
+  logoStyle: object;
+  textStyle: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const Footer = ({
   row,
   col,
@@ -15,54 +26,56 @@ const Footer = ({
   titleStyle,
   logoStyle,
   textStyle,
-}) => {
+  model,
+  data,
+  isAR
+}: FooterProps) => {
   return (
     <FooterWrapper>
-      <Container className="footer_container">
+      <Container className={model.name}>
         <Box className="row" {...row}>
           <Box {...colOne}>
             <Logo
               href="#"
-              logoSrc={`${LogoImage}`}
+              logoSrc={data.logo}
               title="Hosting"
               logoStyle={logoStyle}
             />
-            <Text content="hello@redq.io" {...textStyle} />
-            <Text content="+479-443-9334" {...textStyle} />
+            <Text content={data.email} {...textStyle} />
+            <Text content={data.phone} {...textStyle} />
           </Box>
           {/* End of footer logo column */}
           <Box {...colTwo}>
-            {FOOTER_WIDGET.map((widget, index) => (
-              <Box className="col" {...col} key={`footer-widget-${index}`}>
-                <Heading content={widget.title} {...titleStyle} />
-                <List>
-                  {widget.menuItems.map((item, index) => (
-                    <ListItem key={`footer-list-item-${index}`}>
-                      <Link href={item.url}>
-                        <a className="ListItem">{item.text}</a>
-                      </Link>
-                    </ListItem>
-                  ))}
-                </List>
-              </Box>
-            ))}
+            {model.children.map((widget, index) => {
+              const listMap = convertDataModelToDataObject(
+                widget
+              ) as Record<string, string>;
+              return (
+                <Box className="col" {...col} key={`footer-widget-${index}`}>
+                  <Heading content={listMap.title} {...titleStyle} />
+                  <List>
+                    {widget.children.map((item, index) => {
+                      const itemMenuMap = convertDataModelToDataObject(
+                        item
+                      ) as Record<string, string>;
+                      return (
+                        <ListItem key={`footer-list-item-${index}`}>
+                          <Link href={itemMenuMap.Url}>
+                            <a className="ListItem">{itemMenuMap.text}</a>
+                          </Link>
+                        </ListItem>
+                      );
+                    })}
+                  </List>
+                </Box>
+              );
+            })}
           </Box>
           {/* End of footer List column */}
         </Box>
       </Container>
     </FooterWrapper>
   );
-};
-
-// Footer style props
-Footer.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  colOne: PropTypes.object,
-  colTwo: PropTypes.object,
-  titleStyle: PropTypes.object,
-  textStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
 };
 
 // Footer default style
@@ -115,4 +128,4 @@ Footer.defaultProps = {
   },
 };
 
-export default Footer;
+export default withModelToDataObjProp(Footer);
