@@ -1,14 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Box, Container } from '../../../../atoms';
 import { Text } from '../../../../atoms';
 import { Heading } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
 import { Image } from '../../../../atoms';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp, { convertDataModelToDataObject } from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
-
-import { FEATURES } from '../../../../data/SaasModern';
-
+interface FeatureSectionProps {
+  sectionWrapper: object;
+  secTitleWrapper: object;
+  secText: object;
+  secHeading: object;
+  row: object;
+  col: object;
+  FeatureItemStyle: object;
+  iconStyle: object;
+  contentStyle: object;
+  featureTitle: object;
+  featureDescription: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const FeatureSection = ({
   sectionWrapper,
   secTitleWrapper,
@@ -21,17 +35,30 @@ const FeatureSection = ({
   contentStyle,
   featureTitle,
   featureDescription,
-}) => {
+  model,
+  data,
+  isAR
+}: FeatureSectionProps) => {
+  let featuresItems = [];
+  if (model.children && model.children.length > 0) {
+    featuresItems = model.children.map((featurehData, index) => {
+      const featurehMap = convertDataModelToDataObject(featurehData) as Record<
+        string,
+        string
+      >;
+      return featurehMap;
+    });
+  }
   return (
-    <Box {...sectionWrapper} as="section" id="feature_section">
+    <Box {...sectionWrapper} as="section" id={model.name}>
       <Container>
         <Box {...secTitleWrapper}>
-          <Text {...secText} content="FEATURES" />
-          <Heading {...secHeading} content="Why you choose Our Plugin" />
+          <Text {...secText} content={data.title} />
+          <Heading {...secHeading} content={data.subTitle} />
         </Box>
 
         <Box {...row}>
-          {FEATURES.map((item, index) => (
+          {featuresItems.map((item, index) => (
             <Box {...col} key={`feature-item-${index}`}>
               <FeatureBlock
                 icon={
@@ -57,20 +84,6 @@ const FeatureSection = ({
   );
 };
 
-FeatureSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  sectionWrapper: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secText: PropTypes.object,
-  secHeading: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  FeatureItemStyle: PropTypes.object,
-  iconStyle: PropTypes.object,
-  contentStyle: PropTypes.object,
-  featureTitle: PropTypes.object,
-  featureDescription: PropTypes.object,
-};
 
 FeatureSection.defaultProps = {
   sectionWrapper: {
@@ -136,4 +149,4 @@ FeatureSection.defaultProps = {
   },
 };
 
-export default FeatureSection;
+export default withModelToDataObjProp(FeatureSection);

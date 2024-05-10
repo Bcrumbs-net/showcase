@@ -10,6 +10,7 @@ import AgencyNavbar from "../../../lib/organisms/components/navbars/navbar1";
 import AppNavbar from "../../../lib/organisms/components/navbars/navbar2";
 import FoodNavbar from "../../../lib/organisms/components/navbars/navbar5";
 import SaaSClassicNavbar from "../../../lib/organisms/components/navbars/navbar7";
+import SaaSModernNavbar from "../../../lib/organisms/components/navbars/navbar9";
 import CryptoNavbar from "../../../lib/organisms/components/navbars/navbar6";
 import CryptoModern from "../../../lib/containers/Crypto2/Navbar";
 
@@ -115,6 +116,17 @@ const resolveComponents = () => {
         </Sticky>
       ),
       name: "Saas Classic Navbar",
+      category: "Navbar",
+    },
+    403206: {
+      render: (props) => (
+        <Sticky top={0} innerZ={9999} activeClass="sticky-nav-active">
+          <DrawerProvider>
+            <SaaSModernNavbar {...props} />
+          </DrawerProvider>
+        </Sticky>
+      ),
+      name: "Saas Modern Navbar",
       category: "Navbar",
     },
     403143: {

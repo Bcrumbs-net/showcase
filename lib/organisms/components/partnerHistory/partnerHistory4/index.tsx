@@ -1,10 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
 import PartnerSectionWrapper from './style';
-import Partner from './partner.png';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface PartnerSectionProps {
+  row: object;
+  col: object;
+  title: object;
+  description: object;
+  button: object;
+  textArea: object;
+  imageArea: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const PartnerSection = ({
   row,
   col,
@@ -13,27 +25,30 @@ const PartnerSection = ({
   button,
   textArea,
   imageArea,
-}) => {
+  model,
+  data,
+  isAR
+}: PartnerSectionProps) => {
   return (
     <PartnerSectionWrapper>
       <Container>
         <Box {...row}>
           <Box {...col} {...imageArea}>
-            <Image src={Partner.src} alt="Domain Image" />
+            <Image src={data.image} alt="Domain Image" />
           </Box>
           <Box {...col} {...textArea}>
             <Heading
               {...title}
-              content="Meet our business partner who work behind the scene"
+              content={data.title}
             />
             <Text
               {...description}
-              content="You can trust us for any kind of services and some of the world class companies have also trusted us.So have faith and keep in touch with us ."
+              content={data.description}
             />
             <Box>
-              <Link href="#">
+              <Link href={data.ctaLink}>
                 <a>
-                  <Button {...button} title="LEARN MORE" />
+                  <Button {...button} title={data.ctaLabel} />
                 </a>
               </Link>
             </Box>
@@ -44,15 +59,6 @@ const PartnerSection = ({
   );
 };
 
-PartnerSection.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
-  button: PropTypes.object,
-  textArea: PropTypes.object,
-  imageArea: PropTypes.object,
-};
 
 PartnerSection.defaultProps = {
   row: {
@@ -102,4 +108,4 @@ PartnerSection.defaultProps = {
   },
 };
 
-export default PartnerSection;
+export default withModelToDataObjProp(PartnerSection);

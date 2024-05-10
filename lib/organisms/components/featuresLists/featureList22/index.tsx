@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Fade from 'react-reveal/Fade';
 import {
@@ -11,11 +10,28 @@ import {
   Button,
   Container
 } from '../../../../atoms';
-
 import InfoSectionWrapper from './style';
-import ImageOne from './dash-1.png';
-import ImageTwo from './dash-2.png';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface InfoSectionProps {
+  row: object;
+  col: object;
+  title: object;
+  description: object;
+  button: object;
+  textArea: object;
+  imageArea: object;
+  imageAreaRow: object;
+  imageWrapper: object;
+  imageWrapperOne: object;
+  imageWrapperTwo: object;
+  fadeStyle: object;
+  textAreaRow: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const InfoSection = ({
   row,
   col,
@@ -29,20 +45,24 @@ const InfoSection = ({
   imageWrapperOne,
   imageWrapperTwo,
   textAreaRow,
-}) => {
+  fadeStyle,
+  model,
+  data,
+  isAR
+}: InfoSectionProps) => {
   return (
     <InfoSectionWrapper>
       <Container fullWidth noGutter className="info-sec-container">
         <Box {...row} {...imageAreaRow}>
           <Box {...col} {...imageArea} className="image_area">
             <Card {...imageWrapper} {...imageWrapperOne}>
-              <Fade left>
-                <Image src={ImageOne.src} alt="Info Image One" />
+              <Fade {...fadeStyle} className="fadeStyle" left>
+                <Image src={data.image} alt="Info Image One" />
               </Fade>
             </Card>
             <Card {...imageWrapper} {...imageWrapperTwo}>
               <Fade bottom>
-                <Image src={ImageTwo.src} alt="Info Image Two" />
+                <Image src={data.image2} alt="Info Image Two" />
               </Fade>
             </Card>
           </Box>
@@ -53,16 +73,16 @@ const InfoSection = ({
           <Box {...col} {...textArea}>
             <Heading
               {...title}
-              content="Make your website growth with next level visitors"
+              content={data.title}
             />
             <Text
               {...description}
-              content="For Enhanced performance we use LiteSpeed Web Server, HTTP/2, PHP7. We make your website faster, which will help you to increase search ranking!."
+              content={data.description}
             />
             <Box>
               <Link href="#">
                 <a>
-                  <Button {...button} title="HOW IT WORKS" />
+                  <Button {...button} title="HOW IT WORKS55" />
                 </a>
               </Link>
             </Box>
@@ -71,21 +91,6 @@ const InfoSection = ({
       </Container>
     </InfoSectionWrapper>
   );
-};
-
-InfoSection.propTypes = {
-  row: PropTypes.object,
-  col: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
-  button: PropTypes.object,
-  textArea: PropTypes.object,
-  imageArea: PropTypes.object,
-  imageAreaRow: PropTypes.object,
-  imageWrapper: PropTypes.object,
-  imageWrapperOne: PropTypes.object,
-  imageWrapperTwo: PropTypes.object,
-  textAreaRow: PropTypes.object,
 };
 
 InfoSection.defaultProps = {
@@ -111,13 +116,26 @@ InfoSection.defaultProps = {
   },
   imageWrapper: {
     boxShadow: 'none',
+    margin: "50px",
   },
   imageWrapperOne: {
     mr: ['-250px', '-250px', '-200px', '-250px', '-400px'],
   },
   imageWrapperTwo: {
     alignSelf: 'flex-end',
-    mb: '-60px',
+    marginBottom: '-3px',
+    marginLeft: '100px',
+    borderRadius: '20px',
+    boxShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.2)',
+    zIndex: "1000",
+  },
+  fadeStyle: {
+    animationFillMode: 'both',
+    animationDuration: '1000ms',
+    animationDelay: '0ms',
+    animationIterationCount: 1,
+    opacity: 1,
+    animationName: 'react-reveal-803164563166763-2',
   },
   title: {
     fontSize: ['26px', '32px', '36px', '40px', '48px'],
@@ -144,4 +162,4 @@ InfoSection.defaultProps = {
   },
 };
 
-export default InfoSection;
+export default withModelToDataObjProp(InfoSection);

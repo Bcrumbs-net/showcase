@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BgImage from "../../../assets/image/saasModern/dash-bg.png";
+import BgImage from "./dash-bg.png";
 
 const InfoSectionWrapper = styled.section`
   padding: 380px 0 250px 0;
@@ -35,10 +35,10 @@ const InfoSectionWrapper = styled.section`
 
     .image_area {
       background-image: url(${BgImage.src});
-      background-position: bottom left;
+      background-position: top right;
       background-size: contain;
       background-repeat: no-repeat;
-      padding: 50px 0 60px 0;
+      padding: 50px 0px 60px 0;
       @media (max-width: 767px) {
         padding-top: 0;
       }

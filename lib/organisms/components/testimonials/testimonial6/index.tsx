@@ -1,9 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Box, Text, Heading, Image, Container } from '../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../molecules';
-import { TESTIMONIALS } from '../../../../data/SaasModern';
-
 import {
   TestimonialSlideWrapper,
   TestimonialItem,
@@ -11,7 +8,23 @@ import {
   AuthorInfo,
   AuthorImage,
 } from './style';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import { TestimonialDataType } from '../../../types/testimonialTypes';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface TestimonialSectionProps {
+  sectionWrapper: object;
+  secTitleWrapper: object;
+  secText: object;
+  secHeading: object;
+  reviewTitle: object;
+  review: object;
+  name: object;
+  designation: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: TestimonialDataType;
+}
 const TestimonialSection = ({
   sectionWrapper,
   secTitleWrapper,
@@ -21,7 +34,10 @@ const TestimonialSection = ({
   review,
   name,
   designation,
-}) => {
+  data,
+  model,
+  isAR
+}: TestimonialSectionProps) => {
   const carouselOptions = {
     type: 'carousel',
     autoplay: 6000,
@@ -36,11 +52,11 @@ const TestimonialSection = ({
   };
 
   return (
-    <Box {...sectionWrapper} as="section" id="testimonial_section">
+    <Box {...sectionWrapper} as="section" id={model.name}>
       <Container>
         <Box {...secTitleWrapper}>
-          <Text {...secText} content="TESTIMONIAL" />
-          <Heading {...secHeading} content="What our client say about us" />
+          <Text {...secText} content={data.title} />
+          <Heading {...secHeading} content={data.subTitle} />
         </Box>
         <TestimonialSlideWrapper>
           <GlideCarousel
@@ -48,42 +64,41 @@ const TestimonialSection = ({
             carouselSelector="testimonial__slider"
             controls={false}
             bullets={true}
-            numberOfBullets={TESTIMONIALS.length}
+            numberOfBullets={data.subdata.length}
           >
             <>
-              {TESTIMONIALS.map((item, index) => (
-                // @ts-ignore
-                <GlideSlide key={`testimonial-slide-${index}`}>
-                  <TestimonialItem>
-                    <Heading as="h3" content={item.title} {...reviewTitle} />
-                    <Text content={item.review} {...review} />
-                    <TestimonialMeta>
-                      <AuthorInfo>
-                        <AuthorImage>
-                          <Image
-                            src={item.avatar}
-                            alt={`reviewer-image-${index}`}
-                          />
-                        </AuthorImage>
-                        <Box>
-                          <Heading as="h3" content={item.name} {...name} />
-                          <Text content={item.designation} {...designation} />
-                        </Box>
-                      </AuthorInfo>
-                    </TestimonialMeta>
-                  </TestimonialItem>
-                </GlideSlide>
-              ))}
+              {data.subdata &&
+                data.subdata.map((testimonialMap, index) => {
+                  return (
+                    // @ts-ignore
+                    <GlideSlide key={`testimonial-slide-${index}`}>
+                      <TestimonialItem>
+                        <Heading as="h3" content={testimonialMap.title} {...reviewTitle} />
+                        <Text content={testimonialMap.description} {...review} />
+                        <TestimonialMeta>
+                          <AuthorInfo>
+                            <AuthorImage>
+                              <Image
+                                src={testimonialMap.avatarUrl}
+                                alt={`reviewer-image-${index}`}
+                              />
+                            </AuthorImage>
+                            <Box>
+                              <Heading as="h3" content={testimonialMap.name} {...name} />
+                              <Text content={testimonialMap.designation} {...designation} />
+                            </Box>
+                          </AuthorInfo>
+                        </TestimonialMeta>
+                      </TestimonialItem>
+                    </GlideSlide>
+                  );
+                })}
             </>
           </GlideCarousel>
         </TestimonialSlideWrapper>
       </Container>
     </Box>
   );
-};
-
-TestimonialSection.propTypes = {
-  sectionHeader: PropTypes.object,
 };
 
 TestimonialSection.defaultProps = {
@@ -141,4 +156,4 @@ TestimonialSection.defaultProps = {
   },
 };
 
-export default TestimonialSection;
+export default withModelToDataObjProp(TestimonialSection);

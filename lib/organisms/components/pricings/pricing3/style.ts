@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { themeGet } from 'styled-system';
+import styled from "styled-components";
+import { themeGet } from "styled-system";
 
-const PricingTable = styled.div`
+const PricingTable = styled.div<{ freePlan: string }>`
   border: 1px solid #f2f4f7;
   border-radius: 5px;
   padding: 60px 45px;
@@ -48,11 +48,11 @@ const SwitchWrapper = styled.div`
       color: #5c636c;
       cursor: pointer;
     }
-    input[type='checkbox'] {
+    input[type="checkbox"] {
       &:checked {
         + div {
           width: 40px !important;
-          background-color: ${themeGet('colors.primary')};
+          background-color: ${themeGet("colors.primary")};
           > div {
             left: 17px !important;
           }

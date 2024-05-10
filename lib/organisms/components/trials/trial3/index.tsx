@@ -1,8 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
-import VendorLogos from './vendor-logos.png';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface TrialSectionProps {
+  sectionWrapper: object;
+  row: object;
+  title: object;
+  description: object;
+  textArea: object;
+  imageArea: object;
+  ImageOne: object;
+  btnStyle: object;
+  outlineBtnStyle: object;
+  buttonWrapper: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const TrialSection = ({
   sectionWrapper,
   row,
@@ -14,27 +29,30 @@ const TrialSection = ({
   btnStyle,
   outlineBtnStyle,
   buttonWrapper,
-}) => {
+  model,
+  data,
+  isAR
+}: TrialSectionProps) => {
   return (
     <Box {...sectionWrapper}>
       <Container>
         <Box {...row}>
           <Box {...imageArea}>
-            <Image {...ImageOne} src={VendorLogos} alt="VendorLogos" />
+            <Image {...ImageOne} src={data.image} alt="VendorLogos" />
           </Box>
           <Box {...textArea}>
             <Heading
               {...title}
-              content="Start your 30 days free trials today!"
+              content={data.title}
             />
             <Text
               {...description}
-              content="Lorem ipsum dolor sit amet consectetur adipisicing elit sed eiusmod tempor incididunt labore dolore."
+              content={data.description}
             />
             <Box {...buttonWrapper}>
-              <Button title="JOIN WITH SLACK" {...btnStyle} />
+              <Button title={data.ctaLabel} {...btnStyle} />
               <Button
-                title="Login with Email"
+                title={data.secCtaLabel}
                 variant="textButton"
                 {...outlineBtnStyle}
               />
@@ -44,16 +62,6 @@ const TrialSection = ({
       </Container>
     </Box>
   );
-};
-
-TrialSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  row: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
-  button: PropTypes.object,
-  imageArea: PropTypes.object,
-  ImageOne: PropTypes.object,
 };
 
 TrialSection.defaultProps = {
@@ -117,4 +125,4 @@ TrialSection.defaultProps = {
   },
 };
 
-export default TrialSection;
+export default withModelToDataObjProp(TrialSection);

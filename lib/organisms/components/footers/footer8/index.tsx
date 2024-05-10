@@ -32,7 +32,7 @@ const Footer = ({
 }: FooterProps) => {
   return (
     <FooterWrapper>
-      <Container className={model.name}>
+      <Container className={"footer_container"}>
         <Box className="row" {...row}>
           <Box {...colOne}>
             <Logo
@@ -61,7 +61,7 @@ const Footer = ({
                       return (
                         <ListItem key={`footer-list-item-${index}`}>
                           <Link href={itemMenuMap.Url}>
-                            <a className="ListItem">{itemMenuMap.text}</a>
+                            <a className="ListItem">{itemMenuMap.title}</a>
                           </Link>
                         </ListItem>
                       );

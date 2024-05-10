@@ -84,7 +84,7 @@ const BannerSection = ({
           </Box>
           <Box {...imageWrapper}>
             <Fade bottom>
-              <Image src={BannerImage.src} alt="banner image" />
+              <Image src={data.image} alt="banner image" />
             </Fade>
           </Box>
         </Box>

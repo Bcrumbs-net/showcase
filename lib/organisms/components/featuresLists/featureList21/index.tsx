@@ -1,9 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Box, Text, Heading, Image, Container } from '../../../../atoms';
 import ProcessItem, { ProcessIndex } from './style';
-import { PROCESS_ITEMS } from '../../../../data/SaasModern';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp, { convertDataModelToDataObject } from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface WorkingProcessSectionProps {
+  sectionWrapper: object;
+  secTitleWrapper: object;
+  secText: object;
+  secHeading: object;
+  processRow: object;
+  processCol: object;
+  processImageStyle: object;
+  processTitleStyle: object;
+  processDescriptionStyle: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const WorkingProcessSection = ({
   sectionWrapper,
   secTitleWrapper,
@@ -14,20 +28,33 @@ const WorkingProcessSection = ({
   processImageStyle,
   processTitleStyle,
   processDescriptionStyle,
-}) => {
+  model,
+  isAR,
+  data
+}: WorkingProcessSectionProps) => {
+  let featuresItems = [];
+  if (model.children && model.children.length > 0) {
+    featuresItems = model.children.map((featurehData, index) => {
+      const featurehMap = convertDataModelToDataObject(featurehData) as Record<
+        string,
+        string
+      >;
+      return featurehMap;
+    });
+  }
   return (
     <Box {...sectionWrapper} as="section">
       <Container>
         <Box {...secTitleWrapper}>
-          <Text {...secText} content="WORKING PROCESS" />
+          <Text {...secText} content={data.title} />
           <Heading
             {...secHeading}
-            content="Our Featured Service that We Provide"
+            content={data.subTitle}
           />
         </Box>
 
         <Box {...processRow}>
-          {PROCESS_ITEMS.map((item, index) => (
+          {featuresItems.map((item, index) => (
             <Box
               {...processCol}
               key={`process-item-${index}`}
@@ -51,17 +78,6 @@ const WorkingProcessSection = ({
   );
 };
 
-WorkingProcessSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secTitle: PropTypes.object,
-  secDescription: PropTypes.object,
-  processRow: PropTypes.object,
-  processCol: PropTypes.object,
-  processImageStyle: PropTypes.object,
-  processTitleStyle: PropTypes.object,
-  processDescriptionStyle: PropTypes.object,
-};
 
 WorkingProcessSection.defaultProps = {
   sectionWrapper: {
@@ -121,4 +137,4 @@ WorkingProcessSection.defaultProps = {
   },
 };
 
-export default WorkingProcessSection;
+export default withModelToDataObjProp(WorkingProcessSection);

@@ -1,19 +1,35 @@
 import { useContext } from 'react';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import {
   Button, Drawer, NavbarWrapper, DrawerContext, Box, Container,
   HamburgMenu,
 } from '../../../../atoms';
-import { MENU_ITEMS } from '../../../../data/SaasModern';
 import { ScrollSpyMenu, Logo } from '../../../../molecules';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import { NavbarDataType } from '../../../types/navbarTypes';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
-import LogoImage from './logo-white.png';
-import LogoImageAlt from './logo.png';
-
-const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
+interface NavbarProps {
+  navbarStyle: object;
+  logoStyle: object;
+  button: object;
+  row: object;
+  menuWrapper: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: NavbarDataType;
+}
+const Navbar = ({
+  navbarStyle,
+  logoStyle,
+  button,
+  row,
+  menuWrapper,
+  model,
+  data,
+  isAR
+}: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
-
   // Toggle drawer
   const toggleHandler = () => {
     dispatch({
@@ -22,19 +38,19 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
   };
 
   return (
-    <NavbarWrapper {...navbarStyle} className="saas_navbar">
+    <NavbarWrapper {...navbarStyle} className={"saas_navbar"}>
       <Container>
         <Box {...row}>
           <Logo
             href="#"
-            logoSrc={LogoImage.src}
+            logoSrc={data.whiteLogoSrc}
             title="Portfolio"
             logoStyle={logoStyle}
             className="main-logo"
           />
           <Logo
             href="#"
-            logoSrc={LogoImageAlt.src}
+            logoSrc={data.logoSrc}
             title="Portfolio"
             logoStyle={logoStyle}
             className="logo-alt"
@@ -42,12 +58,12 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
           <Box {...menuWrapper}>
             <ScrollSpyMenu
               className="main_menu"
-              menuItems={MENU_ITEMS}
               offset={-70}
+              model={model}
             />
-            <Link href="#">
+            <Link href={data.ctaLink}>
               <a className="navbar_button">
-                <Button {...button} title="GET STARTED" />
+                <Button {...button} title={data.ctaLabel} />
               </a>
             </Link>
             <Drawer
@@ -59,13 +75,13 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
             >
               <ScrollSpyMenu
                 className="mobile_menu"
-                menuItems={MENU_ITEMS}
                 drawerClose={true}
                 offset={-100}
+                model={model}
               />
-              <Link href="#">
+              <Link href={data.ctaLink}>
                 <a className="navbar_drawer_button">
-                  <Button {...button} title="GET STARTED" />
+                  <Button {...button} title={data.ctaLabel} />
                 </a>
               </Link>
             </Drawer>
@@ -74,14 +90,6 @@ const Navbar = ({ navbarStyle, logoStyle, button, row, menuWrapper }) => {
       </Container>
     </NavbarWrapper>
   );
-};
-
-Navbar.propTypes = {
-  navbarStyle: PropTypes.object,
-  logoStyle: PropTypes.object,
-  button: PropTypes.object,
-  row: PropTypes.object,
-  menuWrapper: PropTypes.object,
 };
 
 Navbar.defaultProps = {
@@ -115,4 +123,4 @@ Navbar.defaultProps = {
   },
 };
 
-export default Navbar;
+export default withModelToDataObjProp(Navbar);

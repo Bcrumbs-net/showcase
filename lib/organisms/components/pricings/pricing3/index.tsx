@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import Icon from 'react-icons-kit';
 import { Box, Text, Heading, Button, Container } from '../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../molecules';
-
-import {
-  MONTHLY_PRICING_TABLE,
-  YEARLY_PRICING_TABLE,
-} from '../../../../data/SaasModern';
-
 import PricingTable, {
   PricingHead,
   PricingPrice,
@@ -18,9 +11,27 @@ import PricingTable, {
   ListItem,
   PricingButtonWrapper,
 } from './style';
-
 import { checkmark } from 'react-icons-kit/icomoon/checkmark';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
+interface PricingSectionProps {
+  sectionWrapper: object;
+  row: object;
+  secTitleWrapper: object;
+  secHeading: object;
+  secText: object;
+  nameStyle: object;
+  descriptionStyle: object;
+  priceStyle: object;
+  priceLabelStyle: object;
+  buttonStyle: object;
+  buttonFillStyle: object;
+  listContentStyle: object;
+  model: GraphContent;
+  isAR: boolean;
+  data: Record<string, string>;
+}
 const PricingSection = ({
   sectionWrapper,
   row,
@@ -34,10 +45,12 @@ const PricingSection = ({
   buttonStyle,
   buttonFillStyle,
   listContentStyle,
-}) => {
+  model,
+  data,
+  isAR
+}: PricingSectionProps) => {
   const [state, setState] = useState({
-    data: MONTHLY_PRICING_TABLE,
-    active: true,
+    data: model.children.length > 0 ? model.children[0].name : null,
   });
 
   const [loading, setLoading] = useState(false);
@@ -47,9 +60,7 @@ const PricingSection = ({
     }, 500);
   });
 
-  const data = state.data;
-  const activeStatus = state.active;
-
+  const stateData = state.data;
   const pricingCarouselOptions = {
     type: 'slider',
     perView: 3,
@@ -93,29 +104,32 @@ const PricingSection = ({
   };
 
   return (
-    <Box {...sectionWrapper} id="pricing_section">
+    <Box {...sectionWrapper} id={model.name}>
       <Container>
         <Box {...secTitleWrapper}>
-          <Text {...secText} content="PRICING PLAN" />
+          <Text {...secText} content={data.title} />
           <Heading
             {...secHeading}
-            content="What’s our monthly pricing subscription"
+            content={data.description}
           />
           <PricingButtonWrapper>
-            <Button
-              title="Monthly Plan"
-              className={activeStatus ? 'active-item' : ''}
-              onClick={() =>
-                setState({ data: MONTHLY_PRICING_TABLE, active: true })
-              }
-            />
-            <Button
-              title="Annual Plan"
-              className={activeStatus === false ? 'active-item' : ''}
-              onClick={() =>
-                setState({ data: YEARLY_PRICING_TABLE, active: false })
-              }
-            />
+            {model.children.map((item, index) => {
+              const pricingTable: Record<string, string> = item.data.reduce(
+                function (map, obj) {
+                  map[obj.Key] = obj.Value;
+                  return map;
+                },
+                {}
+              );
+              return (
+                <Button
+                  key={`PricingTabBtn${index}`}
+                  title={pricingTable.name}
+                  className={stateData === item.name ? "active-item" : ""}
+                  onClick={() => setState({ data: item.name })}
+                />
+              );
+            })}
           </PricingButtonWrapper>
         </Box>
         <Box {...row}>
@@ -125,77 +139,83 @@ const PricingSection = ({
             controls={false}
           >
             <>
-              {data.map((pricingTable, index) => (
-                <GlideSlide key={`pricing-table-${index}`}>
-                  <PricingTable
-                    freePlan={pricingTable.freePlan}
-                    className="pricing_table"
-                  >
-                    <PricingHead>
-                      <Heading content={pricingTable.name} {...nameStyle} />
-                      <Text
-                        content={pricingTable.description}
-                        {...descriptionStyle}
-                      />
-                    </PricingHead>
-                    <PricingPrice>
-                      <Text content={pricingTable.price} {...priceStyle} />
-                      <Text
-                        content={pricingTable.priceLabel}
-                        {...priceLabelStyle}
-                      />
-                    </PricingPrice>
-                    <PricingButton>
-                      <Link href={pricingTable.url}>
-                        <a>
-                          {pricingTable.freePlan ? (
-                            <Button
-                              title={pricingTable.buttonLabel}
-                              {...buttonStyle}
+              {model.children.find((m) => m.name == stateData) &&
+                model.children
+                  .find((m) => m.name == stateData)
+                  .children.map((item, index) => {
+                    const pricingTable: Record<string, string> =
+                      item.data.reduce(function (map, obj) {
+                        map[obj.Key] = obj.Value;
+                        return map;
+                      }, {});
+                    return (
+                      // @ts-ignore
+                      <GlideSlide key={`pricing-table-${index}`}>
+                        <PricingTable
+                          freePlan={pricingTable.freePlan}
+                          className="pricing_table"
+                        >
+                          <PricingHead>
+                            <Heading content={pricingTable.name} {...nameStyle} />
+                            <Text
+                              content={pricingTable.description}
+                              {...descriptionStyle}
                             />
-                          ) : (
-                            <Button
-                              title={pricingTable.buttonLabel}
-                              {...buttonFillStyle}
+                          </PricingHead>
+                          <PricingPrice>
+                            <Text content={pricingTable.price} {...priceStyle} />
+                            <Text
+                              content={pricingTable.priceLabel}
+                              {...priceLabelStyle}
                             />
-                          )}
-                        </a>
-                      </Link>
-                    </PricingButton>
-                    <PricingList>
-                      {pricingTable.listItems.map((item, index) => (
-                        <ListItem key={`pricing-table-list-${index}`}>
-                          <Icon
-                            icon={checkmark}
-                            className="price_list_icon"
-                            size={13}
-                          />
-                          <Text content={item.content} {...listContentStyle} />
-                        </ListItem>
-                      ))}
-                    </PricingList>
-                  </PricingTable>
-                </GlideSlide>
-              ))}
+                          </PricingPrice>
+                          <PricingList>
+                            {item.children &&
+                              item.children.map((subitem, subIndex) => {
+                                const featureMap: Record<string, string> =
+                                  subitem.data.reduce(function (map, obj) {
+                                    map[obj.Key] = obj.Value;
+                                    return map;
+                                  }, {});
+                                return (
+                                  <ListItem
+                                    key={`pricing-table-list-${subIndex}`}
+                                  >
+                                    <Text
+                                      content={featureMap.content}
+                                      {...listContentStyle}
+                                    />
+                                  </ListItem>
+                                );
+                              })}
+                          </PricingList>
+                          <PricingButton>
+                            <Link href={pricingTable.url}>
+                              <a>
+                                {pricingTable.freePlan ? (
+                                  <Button
+                                    title={pricingTable.ctaLabel}
+                                    {...buttonStyle}
+                                  />
+                                ) : (
+                                  <Button
+                                    title={pricingTable.ctaLabel}
+                                    {...buttonFillStyle}
+                                  />
+                                )}
+                              </a>
+                            </Link>
+                          </PricingButton>
+                        </PricingTable>
+                      </GlideSlide>
+                    );
+                  })}
             </>
           </GlideCarousel>
         </Box>
       </Container>
     </Box>
   );
-};
-
-PricingSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  row: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secHeading: PropTypes.object,
-  secText: PropTypes.object,
-  nameStyle: PropTypes.object,
-  descriptionStyle: PropTypes.object,
-  priceStyle: PropTypes.object,
-  priceLabelStyle: PropTypes.object,
-  listContentStyle: PropTypes.object,
 };
 
 PricingSection.defaultProps = {
@@ -301,4 +321,4 @@ PricingSection.defaultProps = {
   },
 };
 
-export default PricingSection;
+export default withModelToDataObjProp(PricingSection);
