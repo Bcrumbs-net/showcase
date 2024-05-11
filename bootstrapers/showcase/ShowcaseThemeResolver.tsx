@@ -4,6 +4,7 @@ import {
   CryptoTheme,
   SaaSTheme,
   SaaS2Theme,
+  SaaS3Theme,
   PortfolioTheme,
   AppTheme,
   FoodTheme,
@@ -34,6 +35,8 @@ export const ShowcaseThemeResolver = (props: {
       return <PortfolioTheme {...props} />;
     case 3:
       return <SaaS2Theme {...props} />;
+    case 5:
+      return <SaaS3Theme {...props} />;
     case 13:
       return <FoodTheme {...props} />;
     // case 15:

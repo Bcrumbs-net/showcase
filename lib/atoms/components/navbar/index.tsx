@@ -6,6 +6,7 @@ import { CSSProperties } from 'styled-components';
 export interface NavbarProps {
   /** ClassName of the Navbar. Default class is reusecore__navbar*/
   className?: string;
+  id?: string;
   /** Used to render menu, logo, button or any component that
    * you want to show in navbar. */
   children?: React.ReactElement;

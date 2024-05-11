@@ -30,7 +30,6 @@ export const SaaSTheme = ({
 }) => {
   const data = queryData[0];
   const rootModelData = convertDataModelToDataObject(data) as Record<string, string>;
-
   const filteredData = filterData(data.children, config);
 
   const isAR = config.lang === 'AR';
