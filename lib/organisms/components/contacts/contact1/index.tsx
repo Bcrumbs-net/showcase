@@ -1,8 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ButtonWrapper } from '../../../../../bootstrapers/showcase/templates/portfolio/globalStyle';
 import { ActiveStatus } from './style';
-import Author from '../../../assets/image/portfolio/avatar.png';
 import { Box, Container, Heading, Button,Text,Image } from '../../../../atoms';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
@@ -61,16 +59,6 @@ const ContactSection = ({
   );
 };
 
-ContactSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secTitle: PropTypes.object,
-  secDescription: PropTypes.object,
-  replyWrapper: PropTypes.object,
-  replyTime: PropTypes.object,
-  buttonStyle: PropTypes.object,
-  buttonWrapper: PropTypes.object,
-};
 
 ContactSection.defaultProps = {
   sectionWrapper: {

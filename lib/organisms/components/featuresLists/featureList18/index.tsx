@@ -1,16 +1,16 @@
-import React from "react";
-import Link from "next/link";
-import { Heading, Container, Box, Image, Text } from "../../../../atoms";
+import React from 'react';
+import Link from 'next/link';
+import { Heading, Container, Box, Image, Text } from '../../../../atoms';
 import BlockWrapper, {
   ContentWrapper,
   List,
   Item,
   ImageWrapper,
-} from "./style";
+} from './style';
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
-} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
-import { GraphContent } from "@bcrumbs.net/bc-api";
+} from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface PromotionBlockProps {
   row: object;
@@ -29,7 +29,9 @@ const PromotionBlock = ({
   let promotionItems = [];
   if (model.children && model.children.length > 0) {
     promotionItems = model.children.map((promotionData, index) => {
-      const promotionMap = convertDataModelToDataObject(promotionData);
+      const promotionMap = convertDataModelToDataObject(
+        promotionData
+      ) as Record<string, string>;
       return promotionMap;
     });
   }
@@ -73,16 +75,16 @@ PromotionBlock.defaultProps = {
   // PromotionBlock row default style
   row: {
     flexBox: true,
-    flexWrap: "wrap",
-    ml: "-15px",
-    mr: "-15px",
+    flexWrap: 'wrap',
+    ml: '-15px',
+    mr: '-15px',
   },
   // PromotionBlock col default style
   col: {
-    width: ["100%", "50%", "50%"],
-    pl: "15px",
-    pr: "15px",
-    mb: "30px",
+    width: ['100%', '50%', '50%'],
+    pl: '15px',
+    pr: '15px',
+    mb: '30px',
   },
 };
 

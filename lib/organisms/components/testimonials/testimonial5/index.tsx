@@ -9,7 +9,8 @@ import {
   AuthorImage,
 } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp, { convertDataModelToDataObject } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { TestimonialDataType } from "../../../types/testimonialTypes";
 
 interface TestimonialSectionProps {
   sectionWrapper: object;
@@ -22,7 +23,7 @@ interface TestimonialSectionProps {
   designation: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: TestimonialDataType;
 }
 const TestimonialSection = ({
   sectionWrapper,
@@ -53,8 +54,8 @@ const TestimonialSection = ({
     <Box {...sectionWrapper} as="section" id={model.name}>
       <Container>
         <Box {...secTitleWrapper}>
-          <Text {...secText} content={data.tilte} />
-          <Heading {...secHeading} content={data.subtitle} />
+          <Text {...secText} content={data.title} />
+          <Heading {...secHeading} content={data.subTitle} />
         </Box>
         <TestimonialSlideWrapper>
           <GlideCarousel
@@ -62,12 +63,11 @@ const TestimonialSection = ({
             carouselSelector="testimonial__slider"
             controls={false}
             bullets={true}
-            numberOfBullets={model.children.length}
+            numberOfBullets={data.subdata.length}
           >
             <>
-              {model.children &&
-                model.children.map((item, index) => {
-                  const testimonialMap = convertDataModelToDataObject(item)
+              {data.subdata &&
+                data.subdata.map((testimonialMap, index) => {
                   return (
                     // @ts-ignore
                     <GlideSlide key={`testimonial-slide-${index}`}>
@@ -77,12 +77,12 @@ const TestimonialSection = ({
                           content={testimonialMap.title}
                           {...reviewTitle}
                         />
-                        <Text content={testimonialMap.review} {...review} />
+                        <Text content={testimonialMap.description} {...review} />
                         <TestimonialMeta>
                           <AuthorInfo>
                             <AuthorImage>
                               <Image
-                                src={testimonialMap.avatar}
+                                src={testimonialMap.avatarUrl}
                                 alt={`reviewer-image-${index}`}
                               />
                             </AuthorImage>

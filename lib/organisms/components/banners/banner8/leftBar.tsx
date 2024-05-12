@@ -4,7 +4,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 interface LeftBarProps {
   sectionId: string;
   offset: number;
-  onClick: () => void;
+  onClick?: () => void;
   text: string;
 }
 const LeftBar = ({ sectionId, offset, onClick, text }: LeftBarProps) => {

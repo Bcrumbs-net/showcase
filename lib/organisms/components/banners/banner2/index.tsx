@@ -23,6 +23,7 @@ import {
 import { FeatureBlock } from "../../../../molecules";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
+import { BannerDataType } from "../../../types/bannerTypes";
 
 interface DomainSectionProps {
   row: object;
@@ -40,7 +41,7 @@ interface DomainSectionProps {
   discountAmount?: object;
   SectionWrapper?: object;
   model: GraphContent;
-  data: Record<string, string>;
+  data: BannerDataType;
 }
 const DomainSection = ({
   SectionWrapper,
@@ -60,7 +61,11 @@ const DomainSection = ({
 }: DomainSectionProps) => {
   return (
     <Box {...SectionWrapper}>
-      <ParticlesComponent />
+       {data.floatingParticles == true ? (
+          <ParticlesComponent />
+        ) : (
+          null
+        )}
       <BannerSquareShape />
       <BannerCircleShape />
       <Container>
@@ -71,11 +76,11 @@ const DomainSection = ({
                 <DiscountLabel>
                   <Text
                     {...discountAmount}
-                    content={data.discountAmount}
+                    content={data.discount}
                     //@ts-ignore
                     className="discountAmount"
                   />
-                  <Text {...discountText} content={data.discountText} />
+                  <Text {...discountText} content={data.discountLabel} />
                 </DiscountLabel>
               </DiscountWrapper>
             </Box>
@@ -124,7 +129,7 @@ const DomainSection = ({
             </ButtonWrapper>
           </Box>
           <Box {...col} {...imageArea}>
-            <Image src={data.AppScreenShot} alt="Domain Image" {...image} />
+            <Image src={data.image} alt="Domain Image" {...image} />
           </Box>
         </Box>
       </Container>

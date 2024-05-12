@@ -3,7 +3,7 @@ import { Image, DrawerContext, Container } from "../../../../atoms";
 import { Logo } from "../../../../molecules";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import NavbarWrapper, { MenuWrapper, Button } from "./style";
-import withModelToDataObjProp, { convertDataModelToDataObject } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import { NavbarDataType } from "../../../types/navbarTypes";
 

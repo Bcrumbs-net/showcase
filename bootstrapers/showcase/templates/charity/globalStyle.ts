@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import { themeGet } from 'styled-system';
-import footerBg from '../../assets/image/charity/footer-bg.png';
+import footerBg from './footer-bg.png';
 
 const shake = keyframes`
 0% {

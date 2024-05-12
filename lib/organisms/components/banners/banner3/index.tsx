@@ -13,6 +13,7 @@ import { FeatureBlock } from "../../../../molecules";
 import ParticlesComponent from "./particles";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { BannerDataType } from "../../../types/bannerTypes";
 
 interface BannerSectionProps {
   row: object;
@@ -25,7 +26,7 @@ interface BannerSectionProps {
   outlineBtnStyle?: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: BannerDataType;
 }
 
 const BannerSection = ({
@@ -43,22 +44,22 @@ const BannerSection = ({
 }: BannerSectionProps) => {
   const ButtonGroup = () => (
     <>
-      {data.pri_button_label && data.pri_button_url ? (
+      {data.ctaLabel && data.ctaUrl ? (
         <Button
-          title={data.pri_button_label}
+          title={data.ctaLabel}
           {...btnStyle}
           onClick={() => {
-            window.location.href = data.pri_button_url;
+            window.location.href = data.ctaUrl;
           }}
         />
       ) : null}
-      {data.sec_button_label && data.sec_button_url ? (
+      {data.secCtaLabel && data.secCtaBtnUrl ? (
         <Button
           className="outlined"
-          title={data.sec_button_label}
+          title={data.secCtaLabel}
           variant="outlined"
           onClick={() => {
-            window.location.href = data.sec_button_url;
+            window.location.href = data.secCtaBtnUrl;
           }}
           {...outlineBtnStyle}
         />
@@ -77,13 +78,17 @@ const BannerSection = ({
 
   return (
     <CustomBannerWrapper id={model.name}>
-      <ParticlesComponent />
+       {data.floatingParticles == true ? (
+          <ParticlesComponent />
+        ) : (
+          null
+        )}
       <Container>
         <Box className="row" {...row}>
           <Box className="col" {...col}>
             <DiscountLabel>
-              <Text content={data.discount_label} {...discountAmount} />
-              <Text content={data.discount_second_text} {...discountText} />
+              <Text content={data.discount} {...discountAmount} />
+              <Text content={data.discountLabel} {...discountText} />
             </DiscountLabel>
             <FeatureBlock
               title={<Heading content={data.title} {...title} />}
@@ -95,9 +100,9 @@ const BannerSection = ({
       </Container>
       <BannerObject>
         <div className="objectWrapper">
-          <Image src={data.back_image} alt="BannerObject1" />
+          <Image src={data.backgroundImage} alt="BannerObject1" />
           <div className="dashboardWrapper">
-            <Image src={data.front_image} alt="BannerObject2" />
+            <Image src={data.image} alt="BannerObject2" />
           </div>
         </div>
       </BannerObject>

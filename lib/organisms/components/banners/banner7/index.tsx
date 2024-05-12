@@ -24,16 +24,17 @@ import { ic_play_circle_filled } from "react-icons-kit/md/ic_play_circle_filled"
 import { play } from "react-icons-kit/entypo/play";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+import { BannerDataType } from "../../../types/bannerTypes";
 
 // close button for modal
 const CloseModalButton = () =>
   null;
-  // <Button
-  //   className="modalCloseBtn"
-  //   variant="fab"
-  //   onClick={() => closeModal()}
-  //   icon={<i className="flaticon-plus-symbol" />}
-  // />
+// <Button
+//   className="modalCloseBtn"
+//   variant="fab"
+//   onClick={() => closeModal()}
+//   icon={<i className="flaticon-plus-symbol" />}
+// />
 interface BannerSectionProps {
   row: object;
   contentWrapper: object;
@@ -47,7 +48,7 @@ interface BannerSectionProps {
   fillButton: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: BannerDataType;
 }
 const BannerSection = ({
   row,
@@ -63,14 +64,14 @@ const BannerSection = ({
   model,
   data,
   isAR,
-}:BannerSectionProps) => {
+}: BannerSectionProps) => {
   // modal handler
   const ModalContent = () => (
     <VideoWrapper>
       <iframe
         width="560"
         height="315"
-        src={data.video_url}
+        src={data.videoUrl}
         frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen={false}
@@ -95,26 +96,26 @@ const BannerSection = ({
   };
   return (
     <BannerWrapper id={model.name}>
-      <TiltShape className="banner-shape" />
+      <TiltShape className={"banner-shape"} />
       <Container>
         <Box {...row}>
           <Box {...contentWrapper}>
             <DiscountWrapper>
               <DiscountLabel>
-                <Text {...discountAmount} content={data.banner_subtitle} />
+                <Text {...discountAmount} content={data.subTitle} />
                 <Text {...discountText} content="" />
               </DiscountLabel>
             </DiscountWrapper>
-            <Heading {...title} content={data.banner_title} />
-            <Text {...description} content={data.banner_description} />
+            <Heading {...title} content={data.title} />
+            <Text {...description} content={data.description} />
             <Box {...buttonWrapper}>
               <Link href="#">
                 <a>
                   <Button
                     {...fillButton}
-                    title={data.button_1_label}
+                    title={data.ctaLabel}
                     onClick={() => {
-                      window.location.href = data.button_1_url;
+                      window.location.href = data.ctaUrl;
                     }}
                   />
                 </a>
@@ -123,11 +124,11 @@ const BannerSection = ({
                 <a>
                   <Button
                     {...button}
-                    title={data.video_button_label}
+                    title={data.secCtaLabel}
                     icon={<Icon icon={ic_play_circle_filled} size={30} />}
                     iconPosition="left"
                     onClick={() => {
-                      window.location.href = data.video_button_url;
+                      window.location.href = data.secCtaBtnUrl;
                     }}
                   />
                 </a>
@@ -137,10 +138,10 @@ const BannerSection = ({
           <Box {...imageWrapper}>
             <Fade bottom>
               <VideoModal>
-                <Image src={data.video_section_image} alt="banner image" />
-                <PlayButton 
-                // @ts-ignore
-                tabIndex="1000" onClick={handleVideoModal}>
+                <Image src={data.image} alt="banner image" />
+                <PlayButton
+                  // @ts-ignore
+                  tabIndex="1000" onClick={handleVideoModal}>
                   <Icon icon={play} size={40} />
                 </PlayButton>
               </VideoModal>
