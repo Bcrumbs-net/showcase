@@ -23,6 +23,7 @@
   "dependencies": {
     "@apollo/client": "^3.9.5",
     "@bcrumbs.net/bc-api": "^0.0.20",
+    "@datadog/browser-rum": "^5.20.0",
     "@glidejs/glide": "^3.3.0",
     "@redq/reuse-modal": "^2.0.0",
     "apollo": "^2.33.9",
