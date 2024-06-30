@@ -1,5 +1,5 @@
-import styled, { createGlobalStyle } from 'styled-components';
-import { themeGet } from 'styled-system';
+import styled, { createGlobalStyle } from "styled-components";
+import { themeGet } from "styled-system";
 
 export const GlobalStyle = createGlobalStyle`
   body{
@@ -110,10 +110,10 @@ export const GlobalStyle = createGlobalStyle`
 
   /* Modal default style */
   button.modalCloseBtn {
-    color: ${themeGet('colors.white', '#ffffff')} !important;
+    color: ${themeGet("colors.white", "#ffffff")} !important;
 
     &.alt {
-      background-color: ${themeGet('colors.primary', '#5268db')} !important;
+      background-color: ${themeGet("colors.primary", "#5268db")} !important;
       box-shadow: 0px 9px 20px -5px rgba(82, 104, 219, 0.57) !important;
     }
   }
@@ -247,7 +247,7 @@ export const ContentWrapper = styled.div`
         }
 
         &:before {
-          content: '';
+          content: "";
           position: absolute;
           width: 85%;
           height: 0;

@@ -6,7 +6,7 @@ export interface InputProps {
   /** className of the Input component. */
   className?: string;
   /** type of the Input component. */
-  type?:string;
+  type?: string;
   /** Set input label value. */
   label?: string;
   /** The input value, required for a controlled component. */
@@ -39,6 +39,7 @@ export interface InputProps {
    */
   placeholder?: string;
   onChange?(...args: any[]): any;
+  disabled?: boolean;
 }
 
 export const Input = ({
@@ -97,7 +98,7 @@ export const Input = ({
       ...state,
       value: inputValue,
     });
-    onChange?.(inputValue);  // Pass the input value to the parent component
+    onChange?.(inputValue); // Pass the input value to the parent component
   };
 
   // get input focus class

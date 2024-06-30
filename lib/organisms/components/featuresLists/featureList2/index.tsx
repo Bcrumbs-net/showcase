@@ -1,5 +1,4 @@
 import { GraphContent } from "@bcrumbs.net/bc-api";
-import PropTypes from "prop-types";
 import Fade from "react-reveal/Fade";
 import AboutUsSectionWrapper from "./style";
 import { Box, Card, Heading, Button, Image, Text } from "../../../../atoms";

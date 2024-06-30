@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Link from 'next/link';
 import Icon from 'react-icons-kit';
 import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../molecules';
-import {
-  MONTHLY_PRICING_TABLE,
-  YEARLY_PRICING_TABLE,
-} from '../../../../data/Saas';
 import PricingTable, {
   PricingHead,
   PricingPrice,
@@ -120,7 +113,7 @@ const PricingSection = ({
           <Heading {...secHeading} content={data.subtitle} />
           <PricingButtonWrapper>
             {model.children.map((item, index) => {
-              const pricingTable = convertDataModelToDataObject(item)
+              const pricingTable = convertDataModelToDataObject(item) as Record<string, string>;
               return (
                 <Button
                   key={`PricingTabBtn${index}`}
@@ -143,7 +136,7 @@ const PricingSection = ({
                 model.children
                   .find(m => m.name == data1)
                   .children.map((item, index) => {
-                    const pricingTable = convertDataModelToDataObject(item)
+                    const pricingTable = convertDataModelToDataObject(item) as Record<string, string>;
                     return (
                       //@ts-ignore
                       <GlideSlide key={`pricing-table-${index}`}>
@@ -190,7 +183,7 @@ const PricingSection = ({
                           <PricingList>
                             {item.children &&
                               item.children.map((subitem, subIndex) => {
-                                const featureMap = convertDataModelToDataObject(subitem)
+                                const featureMap = convertDataModelToDataObject(subitem) as Record<string, string>;
                                 return (
                                   <ListItem
                                     key={`pricing-table-list-${subIndex}`}
@@ -220,19 +213,7 @@ const PricingSection = ({
   );
 };
 
-PricingSection.propTypes = {
-  sectionWrapper: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  secTitleWrapper: PropTypes.object,
-  secHeading: PropTypes.object,
-  secText: PropTypes.object,
-  nameStyle: PropTypes.object,
-  descriptionStyle: PropTypes.object,
-  priceStyle: PropTypes.object,
-  priceLabelStyle: PropTypes.object,
-  listContentStyle: PropTypes.object,
-};
+
 
 PricingSection.defaultProps = {
   sectionWrapper: {

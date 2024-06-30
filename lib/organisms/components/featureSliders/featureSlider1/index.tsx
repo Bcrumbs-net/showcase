@@ -1,10 +1,10 @@
-import ImageGallery from "react-image-gallery";
-import FeatureSliderWrapper from "./style";
-import { Container, Box, Heading, Text } from "../../../../atoms";
-import { GraphContent } from "@bcrumbs.net/bc-api";
+import ImageGallery from 'react-image-gallery';
+import FeatureSliderWrapper from './style';
+import { Container, Box, Heading, Text } from '../../../../atoms';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
-} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+} from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface FeatureSliderProps {
   sectionHeader?: object;
@@ -24,7 +24,10 @@ const FeatureSlider = ({
   let images = [];
   if (model.children && model.children.length > 0) {
     images = model.children.map((featureSlider, index) => {
-      const sliderMap = convertDataModelToDataObject(featureSlider);
+      const sliderMap = convertDataModelToDataObject(featureSlider) as Record<
+        string,
+        string
+      >;
       return sliderMap;
     });
   }
@@ -60,25 +63,25 @@ const FeatureSlider = ({
 FeatureSlider.defaultProps = {
   sectionHeader: {},
   sectionSubTitle: {
-    content: "WHY CHOOSE US",
-    as: "span",
-    display: "block",
-    textAlign: "center",
-    fontSize: "14px",
-    letterSpacing: "0.13em",
-    fontWeight: "700",
-    color: "#1a73e8",
-    mb: "10px",
+    content: 'WHY CHOOSE US',
+    as: 'span',
+    display: 'block',
+    textAlign: 'center',
+    fontSize: '14px',
+    letterSpacing: '0.13em',
+    fontWeight: '700',
+    color: '#1a73e8',
+    mb: '10px',
   },
   // section title default style
   sectionTitle: {
-    content: "Key Features of Our App",
-    textAlign: "center",
-    fontSize: ["20px", "24px", "24px", "24px", "30px"],
-    fontWeight: "400",
-    color: "#0f2137",
-    letterSpacing: "-0.025em",
-    mb: "0",
+    content: 'Key Features of Our App',
+    textAlign: 'center',
+    fontSize: ['20px', '24px', '24px', '24px', '30px'],
+    fontWeight: '400',
+    color: '#0f2137',
+    letterSpacing: '-0.025em',
+    mb: '0',
   },
 };
 

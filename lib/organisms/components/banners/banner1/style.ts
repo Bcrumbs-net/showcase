@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { themeGet } from 'styled-system';
-import BannerBG from '../../../../assets/image/agency/agency-banner.png';
-import BannerMaskImage from '../../../../assets/image/agency/agency-banner-mask.png';
+import BannerBG from './images/agency-banner.png';
+import BannerMaskImage from './images/agency-banner-mask.png';
 
 const BannerWrapper = styled.section`
   background-image: url(${BannerBG.src});

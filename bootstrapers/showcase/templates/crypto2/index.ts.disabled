@@ -6,21 +6,21 @@ import { ResetCSS } from '../../assets/css/style';
 import {
   GlobalStyle,
   CryptoWrapper,
-} from '../../../lib/containers/CryptoModern/cryptoModern.style';
+} from '../../../lib/containers/Crypto2/cryptoModern.style';
 import Sticky from 'react-stickynode';
-import Navbar from '../../../lib/containers/CryptoModern/Navbar';
-import Banner from '../../../lib/containers/CryptoModern/Banner';
-import CountDown from '../../../lib/containers/CryptoModern/CountDown';
-import Features from '../../../lib/containers/CryptoModern/FeatureSection';
-import WorkHistory from '../../../lib/containers/CryptoModern/WorkHistory';
-import Investment from '../../../lib/containers/CryptoModern/Investment';
-import FundRaising from '../../../lib/containers/CryptoModern/FundRaising';
-import Privacypolicy from '../../../lib/containers/CryptoModern/Privacy';
-import WalletSection from '../../../lib/containers/CryptoModern/WalletSection';
-import MapSection from '../../../lib/containers/CryptoModern/MapSection';
-import FaqSection from '../../../lib/containers/CryptoModern/FaqSection';
-import Newsletter from '../../../lib/containers/CryptoModern/Newsletter';
-import Footer from '../../../lib/containers/CryptoModern/Footer';
+import Navbar from '../../../lib/containers/Crypto2/Navbar';
+import Banner from '../../../lib/containers/Crypto2/Banner';
+import CountDown from '../../../lib/containers/Crypto2/CountDown';
+import Features from '../../../lib/containers/Crypto2/FeatureSection';
+import WorkHistory from '../../../lib/containers/Crypto2/WorkHistory';
+import Investment from '../../../lib/containers/Crypto2/Investment';
+import FundRaising from '../../../lib/containers/Crypto2/FundRaising';
+import Privacypolicy from '../../../lib/containers/Crypto2/Privacy';
+import WalletSection from '../../../lib/containers/Crypto2/WalletSection';
+import MapSection from '../../../lib/containers/Crypto2/MapSection';
+import FaqSection from '../../../lib/containers/Crypto2/FaqSection';
+import Newsletter from '../../../lib/containers/Crypto2/Newsletter';
+import Footer from '../../../lib/containers/Crypto2/Footer';
 import QUERY from '../graphql/showcase-query';
 import BCComponent from '../pool';
 import BCLink from '../../../lib/containers/_Shared/BCLink';

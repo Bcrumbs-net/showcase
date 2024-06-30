@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react";
-import Scrollspy from "react-scrollspy";
-import AnchorLink from "react-anchor-link-smooth-scroll";
-import { Drawer, Image, DrawerContext } from "../../../../../atoms";
-import InnerWrapper, { SpreadButton } from "./style";
+import React, { useState, useContext } from 'react';
+import Scrollspy from 'react-scrollspy';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
+import { Drawer, Image, DrawerContext } from '../../../../../atoms';
+import InnerWrapper, { SpreadButton } from './style';
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
-} from "../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
-import { GraphContent } from "@bcrumbs.net/bc-api";
+} from '../../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface DrawerSectionProps {
   model: GraphContent;
@@ -23,7 +23,7 @@ const DrawerSection = ({ model, isAR, data }: DrawerSectionProps) => {
 
   const handleDrawerToggle = () => {
     dispatch({
-      type: "TOGGLE",
+      type: 'TOGGLE',
     });
     handleActiveClass();
   };
@@ -31,7 +31,10 @@ const DrawerSection = ({ model, isAR, data }: DrawerSectionProps) => {
   const scrollItems = [];
 
   model.children?.forEach((menuItem) => {
-    const menuItemData = convertDataModelToDataObject(menuItem);
+    const menuItemData = convertDataModelToDataObject(menuItem) as Record<
+      string,
+      string
+    >;
     scrollItems.push(menuItemData.path.slice(1));
   });
 
@@ -41,7 +44,7 @@ const DrawerSection = ({ model, isAR, data }: DrawerSectionProps) => {
       placement="right"
       drawerHandler={
         <button
-          className={`drawer_btn ${toggleState ? "active" : ""}`}
+          className={`drawer_btn ${toggleState ? 'active' : ''}`}
           onClick={handleActiveClass}
           aria-label="drawer toggle button"
         >
@@ -73,7 +76,10 @@ const DrawerSection = ({ model, isAR, data }: DrawerSectionProps) => {
             model.children
               .filter((m) => m.online)
               .map((menuItem, index) => {
-                const menu = convertDataModelToDataObject(menuItem);
+                const menu = convertDataModelToDataObject(menuItem) as Record<
+                  string,
+                  string
+                >;
                 return (
                   <li key={`menu_key${index}`}>
                     <AnchorLink

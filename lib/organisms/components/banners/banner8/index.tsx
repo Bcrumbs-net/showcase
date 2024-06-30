@@ -1,29 +1,31 @@
-import React, { Fragment } from "react";
-import Link from "next/link";
-import { Icon } from "react-icons-kit";
-import { chevronRight } from "react-icons-kit/feather/chevronRight";
-import { Text, Heading, Image } from "../../../../atoms";
-import { GlideCarousel, GlideSlide } from "../../../../molecules";
-import LeftBar from "./leftBar";
+import React from 'react';
+import Link from 'next/link';
+import { Icon } from 'react-icons-kit';
+import { chevronRight } from 'react-icons-kit/feather/chevronRight';
+import { Text, Heading, Image } from '../../../../atoms';
+import { GlideCarousel, GlideSlide } from '../../../../molecules';
+import LeftBar from './leftBar';
+
 import BannerWrapper, {
   ContentWrapper,
   TextArea,
   ImageArea,
   HighlightedText,
-} from "./style";
-import { GraphContent } from "@bcrumbs.net/bc-api";
+} from './style';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
-} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+} from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { BannerDataType } from '../../../types/bannerTypes';
 
 interface BannerSectionProps {
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: BannerDataType;
 }
 const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
   const glideOptions = {
-    type: "carousel",
+    type: 'carousel',
     perView: 1,
     gap: 0,
   };
@@ -40,16 +42,16 @@ const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
       <ContentWrapper>
         <TextArea>
           <HighlightedText className="highlighted_text">
-            <strong>{data.News_Title}</strong> {data.News_Text}
+            <strong>{data.title}</strong> {data.subTitle}
             <Icon icon={chevronRight} />
           </HighlightedText>
-          <Heading content={data.Heading_1} />
-          <Heading as="h4" content={data.Heading_2} />
-          <Text content={data.Text} />
-          <Link href={data.Button_Url}>
+          <Heading content={data.heading} />
+          <Heading as="h4" content={data.secHeading} />
+          <Text content={data.description} />
+          <Link href={data.ctaUrl}>
             <a className="learn__more-btn">
               <span className="hyphen" />
-              <span className="btn_text">{data.Button_Text}</span>
+              <span className="btn_text">{data.ctaLabel}</span>
             </a>
           </Link>
         </TextArea>
@@ -61,14 +63,14 @@ const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
             prevButton={<span className="prev_arrow" />}
           >
             <>
-              {model.children.map((bannerSlides,index) => {
-               const slideData = convertDataModelToDataObject(bannerSlides);
-                return(
+              {data.subdata.map((slideData, index) => {
+                return (
                   // @ts-ignore
-                <GlideSlide key={slideData.id}>
-                  <Image src={slideData.thumb_url} alt="Charity Landing" />
-                </GlideSlide>
-              );})}
+                  <GlideSlide key={slideData.id}>
+                    <Image src={slideData.thumbUrl} alt="Charity Landing" />
+                  </GlideSlide>
+                );
+              })}
             </>
           </GlideCarousel>
         </ImageArea>

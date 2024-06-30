@@ -1,9 +1,9 @@
-import React from "react";
-import Link from "next/link";
-import { Image, Text, Heading, Container } from "../../../../atoms";
-import { Icon } from "react-icons-kit";
-import { twitter } from "react-icons-kit/fa/twitter";
-import { facebookSquare } from "react-icons-kit/fa/facebookSquare";
+import React from 'react';
+import Link from 'next/link';
+import { Image, Text, Heading, Container } from '../../../../atoms';
+import { Icon } from 'react-icons-kit';
+import { twitter } from 'react-icons-kit/fa/twitter';
+import { facebookSquare } from 'react-icons-kit/fa/facebookSquare';
 import SectionWrapper, {
   SectionHeader,
   ContentArea,
@@ -18,11 +18,11 @@ import SectionWrapper, {
   ShareList,
   Item,
 } from "./style";
-import heartImage from "../../../../assets/image/charity/heart.svg";
+import heartImage from "./heart.svg";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
-} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
+} from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 
 interface FundraiserSectionProps {
   model: GraphContent;
@@ -33,7 +33,9 @@ const FundraiserSection = ({ model, isAR, data }: FundraiserSectionProps) => {
   let fundraiserItems = [];
   if (model.children && model.children.length > 0) {
     fundraiserItems = model.children.map((fundraiserData) => {
-      const fundraiserMap = convertDataModelToDataObject(fundraiserData);
+      const fundraiserMap = convertDataModelToDataObject(
+        fundraiserData
+      ) as Record<string, string>;
       return fundraiserMap;
     });
   }
@@ -45,7 +47,7 @@ const FundraiserSection = ({ model, isAR, data }: FundraiserSectionProps) => {
           <Text content={data.subtitle} />
         </SectionHeader>
         {fundraiserItems.map((item, index) => (
-          <ContentArea key={"FundraiserSection" + index}>
+          <ContentArea key={'FundraiserSection' + index}>
             <ImageWrapper>
               <Image src={item.image} alt="Charity" />
             </ImageWrapper>
@@ -63,7 +65,7 @@ const FundraiserSection = ({ model, isAR, data }: FundraiserSectionProps) => {
               <DonationProgressbar>
                 <BarArea>
                   <CurrentStatus>
-                    <strong>{item.fundraiserAchieved}</strong> of{" "}
+                    <strong>{item.fundraiserAchieved}</strong> of{' '}
                     {item.fundraiserGoal}
                   </CurrentStatus>
                   <Text content={item.LastDonationLabel} />
@@ -72,16 +74,16 @@ const FundraiserSection = ({ model, isAR, data }: FundraiserSectionProps) => {
                   as="h5"
                   content={
                     item.RaisedByLabel +
-                    " " +
+                    ' ' +
                     item.RaisedByCount +
-                    " " +
+                    ' ' +
                     item.RaisedByPeriod
                   }
                 />
               </DonationProgressbar>
               <ShareArea>
                 <DonateButton href="#donate" offset={81}>
-                  DONATE NOW{" "}
+                  DONATE NOW{' '}
                   <Image src={heartImage.src} alt="Charity Landing" />
                 </DonateButton>
                 <ShareList>

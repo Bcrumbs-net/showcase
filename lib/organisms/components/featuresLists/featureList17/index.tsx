@@ -1,16 +1,16 @@
-import React from "react";
-import Link from "next/link";
-import { Heading, Text, Image, Box, Container } from "../../../../atoms";
+import React from 'react';
+import Link from 'next/link';
+import { Heading, Text, Image, Box, Container } from '../../../../atoms';
 import BlockWrapper, {
   ContentWrapper,
   List,
   Item,
   ImageWrapper,
-} from "./style";
+} from './style';
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
-} from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
-import { GraphContent } from "@bcrumbs.net/bc-api";
+} from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface HumanityBlockProps {
   row: object;
@@ -23,7 +23,10 @@ const HumanityBlock = ({ row, col, model, isAR, data }: HumanityBlockProps) => {
   let humanityItems = [];
   if (model.children && model.children.length > 0) {
     humanityItems = model.children.map((humanityData) => {
-      const humanityMap = convertDataModelToDataObject(humanityData);
+      const humanityMap = convertDataModelToDataObject(humanityData) as Record<
+        string,
+        string
+      >;
       return humanityMap;
     });
   }
@@ -65,16 +68,16 @@ HumanityBlock.defaultProps = {
   // HumanityBlock row default style
   row: {
     flexBox: true,
-    flexWrap: "wrap",
-    ml: "-15px",
-    mr: "-15px",
+    flexWrap: 'wrap',
+    ml: '-15px',
+    mr: '-15px',
   },
   // HumanityBlock col default style
   col: {
-    width: ["100%", "50%", "50%"],
-    pl: "15px",
-    pr: "15px",
-    mb: "30px",
+    width: ['100%', '50%', '50%'],
+    pl: '15px',
+    pr: '15px',
+    mb: '30px',
   },
 };
 

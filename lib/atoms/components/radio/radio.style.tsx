@@ -34,6 +34,7 @@ const RadioBoxStyle = styled.div`
       margin-inline: 0px 50px;
       margin-block:7px 10px;
       .reusecore__field-label {
+        margin-right: ${themeGet('space.2', '10')}px;
         margin-left: ${themeGet('space.2', '10')}px;
       }
     }

@@ -1,11 +1,10 @@
-import { Fragment } from 'react';
 import { GraphContent } from '@bcrumbs.net/bc-api';
-import PropTypes from 'prop-types';
 import BannerWrapper, { DiscountLabel, BannerMask, Hspace } from './style';
 import { FeatureBlock } from '../../../../molecules';
 import { Button, Box, Text, Heading, Container } from '../../../../atoms';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 import ParticlesComponent from './particles';
+import { BannerDataType } from '../../../types/bannerTypes';
 
 interface BannerSectionProps {
   row: object;
@@ -19,7 +18,7 @@ interface BannerSectionProps {
   outlineBtnStyle?: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: BannerDataType;
 }
 const BannerSection = ({
   row,
@@ -36,21 +35,21 @@ const BannerSection = ({
 }: BannerSectionProps) => {
   const ButtonGroup = () => (
     <>
-      {data.primaryBtnText ? (
+      {data.ctaLabel ? (
         <Button
-          title={data.primaryBtnText}
+          title={data.ctaLabel}
           {...btnStyle}
           onClick={() => {
-            window.location.href = data.primaryBtnUrl;
+            window.location.href = data.ctaUrl;
           }}
         />
       ) : null}
-      {data.secondaryBtnText ? (
+      {data.secCtaLabel ? (
         <Button
-          title={data.secondaryBtnText}
+          title={data.secCtaLabel}
           variant="textButton"
           onClick={() => {
-            window.location.href = data.secondaryBtnUrl;
+            window.location.href = data.secCtaBtnUrl;
           }}
           icon={
             isAR ? (
@@ -64,14 +63,18 @@ const BannerSection = ({
       ) : null}
     </>
   );
-  
+
   return (
     <BannerWrapper
       style={{ backgroundImage: `url(${data.image})` }}
       id={model.name}
     >
       <BannerMask>
-      <ParticlesComponent/>
+        {data.floatingParticles == true ? (
+          <ParticlesComponent />
+        ) : (
+          null
+        )}
         <Container>
           <Box className="row" {...row}>
             <Box
@@ -83,10 +86,10 @@ const BannerSection = ({
               }}
             >
               {data.logo ? <img src={data.logo} alt="" /> : <Hspace />}
-              {data.discount && data.discountNote ? (
+              {data.discount && data.discountLabel ? (
                 <DiscountLabel>
                   <Text content={data.discount} {...discountAmount} />
-                  <Text content={data.discountNote} {...discountText} />
+                  <Text content={data.discountLabel} {...discountText} />
                 </DiscountLabel>
               ) : null}
               <FeatureBlock
@@ -103,15 +106,6 @@ const BannerSection = ({
   );
 };
 
-BannerSection.propTypes = {
-  title: PropTypes.object,
-  btnStyle: PropTypes.object,
-  description: PropTypes.object,
-  contentStyle: PropTypes.object,
-  discountText: PropTypes.object,
-  discountAmount: PropTypes.object,
-  outlineBtnStyle: PropTypes.object,
-};
 
 BannerSection.defaultProps = {
   row: {

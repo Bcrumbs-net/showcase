@@ -9,7 +9,7 @@ import {
 } from "../../../../atoms";
 import { FeatureBlock } from "../../../../molecules";
 import PartnerHistoryWrapper, { CounterUpArea } from "./style";
-import BackgroundImg from "../../../../assets/image/app/partner-bg.png";
+import BackgroundImg from "./partner-bg.png";
 import withModelToDataObjProp, {
   convertDataModelToDataObject,
 } from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
@@ -70,7 +70,7 @@ const PartnerHistory = ({
           <Box className="col" {...col} {...cardArea}>
             <CounterUpArea>
               {model.children.map((client, index) => {
-                const clientMap = convertDataModelToDataObject(client);
+                const clientMap = convertDataModelToDataObject(client) as Record<string, string>;
                 return (
                   <Card
                     //@ts-ignore

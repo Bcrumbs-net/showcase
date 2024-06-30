@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Image,Heading,Box, Container } from '../../../../atoms';
 import { FeatureBlock } from '../../../../molecules';
 import PortfolioSectionWrapper from './style';
@@ -51,7 +50,7 @@ const PortfolioSection = ({
         </Box>
         <Box className="row" {...row}>
           {model.children.filter(m => m.online).map((blogSection, index) => {
-            const postMap = convertDataModelToDataObject(blogSection)
+            const postMap = convertDataModelToDataObject(blogSection) as Record<string, string>;
             return (
               <FeatureBlock
                 key={`post_key-${index}`}
@@ -84,17 +83,7 @@ const PortfolioSection = ({
   );
 };
 
-// BlogSection style props
-PortfolioSection.propTypes = {
-  sectionHeader: PropTypes.object,
-  row: PropTypes.object,
-  col: PropTypes.object,
-  sectionTitle: PropTypes.object,
-  sectionSubTitle: PropTypes.object,
-  blogTitle: PropTypes.object,
-  blogMeta: PropTypes.object,
-  contentStyle: PropTypes.object,
-};
+
 
 // BlogSection default style
 PortfolioSection.defaultProps = {

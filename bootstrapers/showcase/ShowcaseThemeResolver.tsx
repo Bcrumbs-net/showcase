@@ -4,6 +4,7 @@ import {
   CryptoTheme,
   SaaSTheme,
   SaaS2Theme,
+  SaaS3Theme,
   PortfolioTheme,
   AppTheme,
   FoodTheme,
@@ -16,6 +17,8 @@ export const ShowcaseThemeResolver = (props: {
   path: string;
   templateId: number;
   data: GraphContent[];
+  footer?: GraphContent;
+  header?: GraphContent;
 }) => {
   switch (props.templateId) {
     case 1:
@@ -27,11 +30,13 @@ export const ShowcaseThemeResolver = (props: {
     case 9:
       return <CryptoTheme {...props} />;
     case 10:
-      return <SaaS2Theme {...props} />;
+      return <SaaSTheme {...props} />;
     case 11:
       return <PortfolioTheme {...props} />;
     case 3:
-      return <SaaSTheme {...props} />;
+      return <SaaS2Theme {...props} />;
+    case 5:
+      return <SaaS3Theme {...props} />;
     case 13:
       return <FoodTheme {...props} />;
     // case 15:

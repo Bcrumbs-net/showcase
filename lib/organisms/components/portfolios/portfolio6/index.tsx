@@ -20,7 +20,7 @@ const MilestoneBlock = ({ model, isAR, data }: MilestoneBlockProps) => {
   let milestoneItems = [];
   if (model.children && model.children.length > 0) {
     milestoneItems = model.children.map((milestoneData, index) => {
-      const milestoneMap = convertDataModelToDataObject(milestoneData);
+      const milestoneMap = convertDataModelToDataObject(milestoneData) as Record<string, string>;
       return milestoneMap;
     });
   }

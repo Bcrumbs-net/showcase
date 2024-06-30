@@ -1,31 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from 'react-icons-kit';
-import SocialProfile from '../../socialProfiles/socialProfile1';
 import BannerWrapper from './style';
 import { PortfolioLink } from './style';
-import { SOCIAL_PROFILES } from '../../../../data/Portfolio/data';
 import { cornerDownRight } from 'react-icons-kit/feather/cornerDownRight';
-import PersonImage from '../../../assets/image/portfolio/person.png';
-import { Text,Image,Container, Box, Heading,Button } from '../../../../atoms';
+import { Text, Image, Container, Box, Heading } from '../../../../atoms';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { BannerDataType } from '../../../types/bannerTypes';
 
-interface BannerSectionProps{
-  row:object;
-  contentArea:object;
-  imageArea:object;
-  greetingStyle:object;
-  nameStyle:object;
-  designationStyle:object;
-  aboutStyle:object;
-  roleStyle:object;
-  roleWrapper:object;
-  textAfterLink:object;
+interface BannerSectionProps {
+  row: object;
+  contentArea: object;
+  imageArea: object;
+  greetingStyle: object;
+  nameStyle: object;
+  designationStyle: object;
+  aboutStyle: object;
+  roleStyle: object;
+  roleWrapper: object;
+  textAfterLink: object;
   model: GraphContent;
   isAR: boolean;
-  data: Record<string, string>;
+  data: BannerDataType;
 }
 const BannerSection = ({
   row,
@@ -41,7 +38,7 @@ const BannerSection = ({
   model,
   isAR,
   data,
-}:BannerSectionProps) => {
+}: BannerSectionProps) => {
   let CustomBannerWrapper;
   if (data.backgroundImage) {
     CustomBannerWrapper = styled(BannerWrapper)`
@@ -61,12 +58,12 @@ const BannerSection = ({
       <Container noGutter mobileGutter width="1200px">
         <Box {...row}>
           <Box {...contentArea}>
-            {data.welcome_message ? (
-              <Heading content={data.welcome_message} {...greetingStyle} />
+            {data.welcomeMessage ? (
+              <Heading content={data.welcomeMessage} {...greetingStyle} />
             ) : null}
             {data.name ? <Heading content={data.name} {...nameStyle} /> : null}
-            {data.position ? (
-              <Heading content={data.position} {...designationStyle} />
+            {data.subTitle ? (
+              <Heading content={data.subTitle} {...designationStyle} />
             ) : null}
             {data.title ? (
               <Box {...roleWrapper}>
@@ -78,15 +75,15 @@ const BannerSection = ({
                 <Heading content={data.title} {...roleStyle} />
               </Box>
             ) : null}
-            {data.message ? (
-              <Text content={data.message} {...aboutStyle} />
+            {data.description ? (
+              <Text content={data.description} {...aboutStyle} />
             ) : null}
-            {data.link ? (
+            {data.ctaUrl ? (
               <PortfolioLink>
-                <a target="_blank" href={data.link || '#'} rel="noreferrer">
-                  {data.linkText}
+                <a target="_blank" href={data.ctaUrl || '#'} rel="noreferrer">
+                  {data.ctaLabel}
+                  <Text content={data.ctaDescription} {...textAfterLink} />
                 </a>{' '}
-                <Text content={data.textAfterLink} {...textAfterLink} />
               </PortfolioLink>
             ) : null}
             {/*<SocialProfile items={SOCIAL_PROFILES} model={model} />*/}
@@ -104,18 +101,6 @@ const BannerSection = ({
   );
 };
 
-BannerSection.propTypes = {
-  row: PropTypes.object,
-  contentArea: PropTypes.object,
-  imageArea: PropTypes.object,
-  greetingStyle: PropTypes.object,
-  nameStyle: PropTypes.object,
-  designationStyle: PropTypes.object,
-  aboutStyle: PropTypes.object,
-  roleStyle: PropTypes.object,
-  roleWrapper: PropTypes.object,
-  textAfterLink: PropTypes.object,
-};
 
 BannerSection.defaultProps = {
   row: {

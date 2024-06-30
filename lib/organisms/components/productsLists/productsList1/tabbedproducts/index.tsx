@@ -93,7 +93,7 @@ const TabbedProductSection = ({
           className="update-screen-tab"
         >
           {model.children.filter(m => m.online).map((item, index) => {
-            const screenMap = convertDataModelToDataObject(item)
+            const screenMap = convertDataModelToDataObject(item) as Record<string, string>;
             return (
               <TabPane
                 tab={
@@ -107,7 +107,7 @@ const TabbedProductSection = ({
                 <Box className="row" {...row}>
                   {item.children &&
                     item.children.map((blogSection, index) => {
-                      const postMap = convertDataModelToDataObject(blogSection)
+                      const postMap = convertDataModelToDataObject(blogSection) as Record<string, string>;
                       return (
                         <FeatureBlock
                           key={`post_key-${index}`}
