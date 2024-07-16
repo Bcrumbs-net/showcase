@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
 import { Box, Text, Container } from "../../../../atoms";
-import { FooterWrapper,  FooterNav, FooterNavItem } from "./style";
+import { FooterWrapper, FooterNav, FooterNavItem } from "./style";
 import { GraphContent } from "@bcrumbs.net/bc-api";
 import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
 
@@ -38,7 +38,7 @@ const Footer = ({
   model,
   isAR,
   data
-}:FooterProps) => {
+}: FooterProps) => {
   return (
     <FooterWrapper id={model.name}>
       <Container noGutter mobileGutter width="1200px">
@@ -109,7 +109,7 @@ const Footer = ({
                     return (
                       <FooterNavItem key={`footer-nav-item-${index}`}>
                         <Link href={item.path || "#"}>
-                          <a>{item.label}</a>
+                          {item.label}
                         </Link>
                       </FooterNavItem>
                     );

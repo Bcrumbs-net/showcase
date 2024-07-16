@@ -94,8 +94,8 @@ const ControlSection = ({
             />
             <Box className="readMoreSection">
               <Text {...readMoreTitle} />
-              <Link href="#">
-                <a className="readMore">{data.header_2_url_label} </a>
+              <Link href="#" className="readMore">
+                {data.header_2_url_label} 
               </Link>
             </Box>
             <Fade up>

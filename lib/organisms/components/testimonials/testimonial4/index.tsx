@@ -89,14 +89,14 @@ const TestimonialSection = ({
                     <GlideSlide key={`${model.name}-testimonial-item-${index}`}>
                       <TestimonialItem>
                         <TestimonialHead>
-                          <Link href={testimonialMap.twitterProfile || "#"}>
-                            <a aria-label="twitter">
-                              {testimonialMap.tweetImage ? (
-                                <img src={testimonialMap.tweetImage} alt="Icon" />
-                              ) : (
-                                <Icon icon={twitter} size={24} />
-                              )}
-                            </a>
+                          <Link href={testimonialMap.twitterProfile || "#"} aria-label="twitter">
+
+                            {testimonialMap.tweetImage ? (
+                              <img src={testimonialMap.tweetImage} alt="Icon" />
+                            ) : (
+                              <Icon icon={twitter} size={24} />
+                            )}
+
                           </Link>
                           {testimonialMap.avatarUrl ? (
                             <TestimonialThumb>
@@ -114,8 +114,8 @@ const TestimonialSection = ({
                           content={testimonialMap.designation}
                           {...designationStyle}
                         />
-                        <Link href={testimonialMap.organizationURL || "#"}>
-                          <a className="reviewer_org">{testimonialMap.organization}</a>
+                        <Link href={testimonialMap.organizationURL || "#"} className="reviewer_org">
+                          {testimonialMap.organization}
                         </Link>
                       </TestimonialItem>
                     </GlideSlide>

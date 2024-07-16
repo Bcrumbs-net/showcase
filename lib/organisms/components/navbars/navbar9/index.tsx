@@ -61,10 +61,10 @@ const Navbar = ({
               offset={-70}
               model={model}
             />
-            <Link href={data.ctaLink}>
-              <a className="navbar_button">
-                <Button {...button} title={data.ctaLabel} />
-              </a>
+            <Link href={data.ctaLink} className="navbar_button">
+
+              <Button {...button} title={data.ctaLabel} />
+
             </Link>
             <Drawer
               width="420px"
@@ -79,10 +79,10 @@ const Navbar = ({
                 offset={-100}
                 model={model}
               />
-              <Link href={data.ctaLink}>
-                <a className="navbar_drawer_button">
-                  <Button {...button} title={data.ctaLabel} />
-                </a>
+              <Link href={data.ctaLink} className="navbar_drawer_button">
+
+                <Button {...button} title={data.ctaLabel} />
+
               </Link>
             </Drawer>
           </Box>

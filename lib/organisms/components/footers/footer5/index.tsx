@@ -50,14 +50,14 @@ const Footer = ({
             />
             <Box className="imageWrapper">
               <Link href="#">
-                <a>
-                  <Image src={AppImage.src} alt="App Image" />
-                </a>
+
+                <Image src={AppImage.src} alt="App Image" />
+
               </Link>
               <Link href="#">
-                <a>
-                  <Image src={PlaystoreImage.src} alt="PlaystoreImage Image" />
-                </a>
+
+                <Image src={PlaystoreImage.src} alt="PlaystoreImage Image" />
+
               </Link>
             </Box>
           </Box>
@@ -83,8 +83,8 @@ const Footer = ({
                             }, {});
                           return (
                             <ListItem key={`list__item-${subIndex}`}>
-                              <Link href={menuItemMap.url}>
-                                <a className="ListItem">{menuItemMap.text}</a>
+                              <Link href={menuItemMap.url} className="ListItem">
+                                {menuItemMap.text}
                               </Link>
                             </ListItem>
                           );

@@ -12,6 +12,7 @@ import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 import WhatsAppLink from '../shared/components/WhatsAppLink';
 import { convertDataModelToDataObject } from '../../utils/withModelToDataObjProp';
 import { filterData } from '../../utils/filterData';
+import StyledComponentsRegistry from '../../../../lib/registry';
 
 export const AgencyTheme = ({
   templateId,
@@ -37,6 +38,7 @@ export const AgencyTheme = ({
 
   return (
     <>
+      {/* <StyledComponentsRegistry> */}
       {/*@ts-ignore: Unreachable code error*/}
       <ThemeProvider theme={agencyTheme(rootModelData)}>
         <Fragment>
@@ -124,6 +126,7 @@ export const AgencyTheme = ({
           {/* End of agency wrapper section */}
         </Fragment>
       </ThemeProvider>
+      {/* </StyledComponentsRegistry> */}
     </>
   );
 };

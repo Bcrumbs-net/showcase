@@ -12,6 +12,7 @@ import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 import WhatsAppLink from '../shared/components/WhatsAppLink';
 import { convertDataModelToDataObject } from '../../utils/withModelToDataObjProp';
 import { filterData } from '../../utils/filterData';
+import StyledComponentsRegistry from '../../../../lib/registry';
 
 export const CharityTheme = ({
   templateId,
@@ -37,6 +38,8 @@ export const CharityTheme = ({
 
   return (
     <>
+
+      {/* <StyledComponentsRegistry> */}
       {/*@ts-ignore: Unreachable code error*/}
       <ThemeProvider theme={charityTheme(rootModelData)}>
         <Fragment>
@@ -111,6 +114,8 @@ export const CharityTheme = ({
           {/* End of charity wrapper section */}
         </Fragment>
       </ThemeProvider>
+
+      {/* </StyledComponentsRegistry> */}
     </>
   );
 };

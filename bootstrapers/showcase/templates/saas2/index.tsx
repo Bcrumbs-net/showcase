@@ -12,6 +12,7 @@ import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 import WhatsAppLink from '../shared/components/WhatsAppLink';
 import { filterData } from '../../utils/filterData';
 import { convertDataModelToDataObject } from '../../utils/withModelToDataObjProp';
+import StyledComponentsRegistry from '../../../../lib/registry';
 
 export const SaaS2Theme = ({
   templateId,
@@ -37,6 +38,7 @@ export const SaaS2Theme = ({
 
   return (
     <>
+      {/* <StyledComponentsRegistry> */}
       {/*@ts-ignore: Unreachable code error*/}
       <ThemeProvider theme={saasTheme(rootModelData)}>
         <Fragment>
@@ -100,6 +102,7 @@ export const SaaS2Theme = ({
           </ContentWrapper>
         </Fragment>
       </ThemeProvider>
+      {/* </StyledComponentsRegistry> */}
     </>
   );
 };

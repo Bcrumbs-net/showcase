@@ -79,9 +79,9 @@ const ControllSection = ({
               description={<Text content={data.description} {...description} />}
               button={
                 <Link href="#">
-                  <a>
-                    <Button title={data.button} {...button} {...btnStyle} />
-                  </a>
+
+                  <Button title={data.button} {...button} {...btnStyle} />
+
                 </Link>
               }
             />

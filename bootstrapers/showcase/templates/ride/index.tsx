@@ -9,6 +9,7 @@ import { GlobalStyle, ContentWrapper } from './globalStyle';
 import ComponentResolver from '../../mappers';
 import BCLink from '../shared/components/BCLink';
 import { Config, GraphContent } from '@bcrumbs.net/bc-api';
+import StyledComponentsRegistry from '../../../../lib/registry';
 
 export const RideTheme = ({
   templateId,
@@ -30,6 +31,7 @@ export const RideTheme = ({
 
   return (
     <>
+      {/* <StyledComponentsRegistry> */}
       {/*@ts-ignore: Unreachable code error*/}
       <ThemeProvider theme={rideTheme}>
         <Fragment>
@@ -88,6 +90,7 @@ export const RideTheme = ({
           </ContentWrapper>
         </Fragment>
       </ThemeProvider>
+      {/* </StyledComponentsRegistry> */}
     </>
   );
 };

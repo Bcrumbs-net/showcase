@@ -12,6 +12,7 @@ import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 import WhatsAppLink from '../shared/components/WhatsAppLink';
 import { convertDataModelToDataObject } from '../../utils/withModelToDataObjProp';
 import { filterData } from '../../utils/filterData';
+import StyledComponentsRegistry from '../../../../lib/registry';
 
 export const CryptoTheme = ({
   templateId,
@@ -37,6 +38,7 @@ export const CryptoTheme = ({
 
   return (
     <>
+      {/* <StyledComponentsRegistry> */}
       {/*@ts-ignore: Unreachable code error*/}
       <ThemeProvider theme={cryptoTheme}>
         <Fragment>
@@ -100,6 +102,7 @@ export const CryptoTheme = ({
           </ContentWrapper>
         </Fragment>
       </ThemeProvider>
+      {/* </StyledComponentsRegistry> */}
     </>
   );
 };

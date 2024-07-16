@@ -54,26 +54,26 @@ const TrustedHistory = ({
             <Fade up>
               <div className="TrustedImageBtn">
                 {data.apple_store_url ? (
-                  <Link href={data.apple_store_url}>
-                    <a>
-                      <Image
-                        src={data.apple_store_icon}
-                        className="app_image_area"
-                        alt="App Image"
-                      />
-                    </a>
-                  </Link>
+                  (<Link href={data.apple_store_url}>
+
+                    <Image
+                      src={data.apple_store_icon}
+                      className="app_image_area"
+                      alt="App Image"
+                    />
+
+                  </Link>)
                 ) : null}
                 {data.google_play_url ? (
-                  <Link href={data.google_play_url}>
-                    <a>
-                      <Image
-                        src={data.google_play_icon}
-                        className="play_image_area"
-                        alt="GooglePlay Image"
-                      />
-                    </a>
-                  </Link>
+                  (<Link href={data.google_play_url}>
+
+                    <Image
+                      src={data.google_play_icon}
+                      className="play_image_area"
+                      alt="GooglePlay Image"
+                    />
+
+                  </Link>)
                 ) : null}
               </div>
             </Fade>

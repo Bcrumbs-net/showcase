@@ -12,6 +12,7 @@ import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 import WhatsAppLink from '../shared/components/WhatsAppLink';
 import { convertDataModelToDataObject } from '../../utils/withModelToDataObjProp';
 import { filterData } from '../../utils/filterData';
+import StyledComponentsRegistry from '../../../../lib/registry';
 
 function getSize() {
   return {
@@ -66,6 +67,7 @@ export const AppTheme = ({
   return (
     <>
       {/*@ts-ignore: Unreachable code error*/}
+      {/* <StyledComponentsRegistry> */}
       <ThemeProvider theme={appTheme}>
         <>
           <Head>
@@ -127,6 +129,7 @@ export const AppTheme = ({
           </AppWrapper>
         </>
       </ThemeProvider>
+      {/* </StyledComponentsRegistry> */}
     </>
   );
 };

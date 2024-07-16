@@ -11,6 +11,7 @@ import '../public/assets/css/fontAwesome/font-awesome.css';
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import 'react-accessible-accordion/dist/fancy-example.css';
 import 'react-image-gallery/styles/css/image-gallery.css';
+import StyledComponentsRegistry from '../lib/registry';
 
 datadogRum.init({
   applicationId: 'c9934a80-e82c-4c71-9b7c-e07f3fc99f3d',

@@ -56,8 +56,8 @@ const Footer = ({
             />
             <Text className="text" content={data.phone1} />
             <Text className="text" content={data.phone2} />
-            <Link href={data.label_url}>
-              <a className="mail">{data.label}</a>
+            <Link href={data.label_url} className="mail">
+              {data.label}
             </Link>
             <SelectWrapper>
               <select aria-label="language switcher">
@@ -103,7 +103,7 @@ const Footer = ({
                       return (
                         <ListItem key={`list__item-${submenuItem.id}`}>
                           <Link href={subItemMenuMap.link}>
-                            <a>{subItemMenuMap.text}</a>
+                            {subItemMenuMap.text}
                           </Link>
                         </ListItem>
                       );
@@ -126,8 +126,8 @@ const Footer = ({
           <SocialList>
             {socialLinks.map((item) => (
               <li className={item.name} key={`social__link-key${item.id}`}>
-                <Link href={item.link}>
-                  <a aria-label="social share link">{item.icon}</a>
+                <Link href={item.link} aria-label="social share link">
+                  {item.icon}
                 </Link>
               </li>
             ))}

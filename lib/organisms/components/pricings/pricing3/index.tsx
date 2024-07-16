@@ -191,19 +191,19 @@ const PricingSection = ({
                           </PricingList>
                           <PricingButton>
                             <Link href={pricingTable.url}>
-                              <a>
-                                {pricingTable.freePlan ? (
-                                  <Button
-                                    title={pricingTable.ctaLabel}
-                                    {...buttonStyle}
-                                  />
-                                ) : (
-                                  <Button
-                                    title={pricingTable.ctaLabel}
-                                    {...buttonFillStyle}
-                                  />
-                                )}
-                              </a>
+
+                              {pricingTable.freePlan ? (
+                                <Button
+                                  title={pricingTable.ctaLabel}
+                                  {...buttonStyle}
+                                />
+                              ) : (
+                                <Button
+                                  title={pricingTable.ctaLabel}
+                                  {...buttonFillStyle}
+                                />
+                              )}
+
                             </Link>
                           </PricingButton>
                         </PricingTable>

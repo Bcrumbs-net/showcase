@@ -10,6 +10,7 @@ import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 import WhatsAppLink from '../shared/components/WhatsAppLink';
 import { filterData } from '../../utils/filterData';
 import { convertDataModelToDataObject } from '../../utils/withModelToDataObjProp';
+import StyledComponentsRegistry from '../../../../lib/registry';
 
 export const FoodTheme = ({
   templateId,
@@ -35,6 +36,7 @@ export const FoodTheme = ({
 
   return (
     <>
+      {/* <StyledComponentsRegistry> */}
       {/*@ts-ignore: Unreachable code error*/}
       <ThemeProvider theme={foodTheme(rootModelData)}>
         <Fragment>
@@ -122,6 +124,7 @@ export const FoodTheme = ({
           {/* End of agency wrapper section */}
         </Fragment>
       </ThemeProvider>
+      {/* </StyledComponentsRegistry> */}
     </>
   );
 };

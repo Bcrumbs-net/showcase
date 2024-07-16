@@ -63,8 +63,8 @@ const ContactSection = ({
               </ContactFromWrapper>
               <Box className="contactdes">
                 <Text as="span" {...note} content={data.promotion_text} />
-                <Link href="#">
-                  <a className="">{data.promotion_label} </a>
+                <Link href="#" className="">
+                  {data.promotion_label} 
                 </Link>
               </Box>
             </Box>

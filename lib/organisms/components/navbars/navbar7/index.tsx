@@ -48,19 +48,19 @@ const Navbar = ({
           {data.logoSrc ? (
             <Logo
               href="#"
-              logoSrc={data.logoSrc}
+              logoSrc={data.whiteLogoSrc}
               title="Portfolio"
               logoStyle={logoStyle}
               className="main-logo"
             />
           ) : null}
-          {/*<Logo
+          <Logo
             href="#"
-            logoSrc={LogoImageAlt}
+            logoSrc={data.logoSrc}
             title="Portfolio"
             logoStyle={logoStyle}
             className="logo-alt"
-          />*/}
+          />
           <Box {...menuWrapper}>
             <ScrollSpyMenu
               className="main_menu"
@@ -68,9 +68,7 @@ const Navbar = ({
               model={model}
             />
             <a href={data.ctaLink}>
-              <a className="navbar_button">
-                <Button {...button} title="GET STARTED" />
-              </a>
+              <Button {...button} title="GET STARTED" />
             </a>
             <Drawer
               width="420px"

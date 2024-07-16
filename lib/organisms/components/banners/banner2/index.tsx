@@ -112,19 +112,19 @@ const DomainSection = ({
             </EmailInputWrapper>
             <ButtonWrapper>
               <Link href="#services">
-                <a>
-                  <Button {...button} {...btnStyle} />
-                </a>
+
+                <Button {...button} {...btnStyle} />
+
               </Link>
               <Link href="#">
-                <a>
-                  <Button
-                    {...button}
-                    {...btnStyleTwo}
-                    icon={<Icon icon={ic_arrow_forward} />}
-                    className="withoutBg"
-                  />
-                </a>
+
+                <Button
+                  {...button}
+                  {...btnStyleTwo}
+                  icon={<Icon icon={ic_arrow_forward} />}
+                  className="withoutBg"
+                />
+
               </Link>
             </ButtonWrapper>
           </Box>

@@ -48,11 +48,11 @@ const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
           <Heading content={data.heading} />
           <Heading as="h4" content={data.secHeading} />
           <Text content={data.description} />
-          <Link href={data.ctaUrl}>
-            <a className="learn__more-btn">
-              <span className="hyphen" />
-              <span className="btn_text">{data.ctaLabel}</span>
-            </a>
+          <Link href={data.ctaUrl} className="learn__more-btn">
+
+            <span className="hyphen" />
+            <span className="btn_text">{data.ctaLabel}</span>
+
           </Link>
         </TextArea>
         <ImageArea>

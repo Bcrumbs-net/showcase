@@ -110,28 +110,28 @@ const BannerSection = ({
             <Text {...description} content={data.description} />
             <Box {...buttonWrapper}>
               <Link href="#">
-                <a>
-                  <Button
-                    {...fillButton}
-                    title={data.ctaLabel}
-                    onClick={() => {
-                      window.location.href = data.ctaUrl;
-                    }}
-                  />
-                </a>
+
+                <Button
+                  {...fillButton}
+                  title={data.ctaLabel}
+                  onClick={() => {
+                    window.location.href = data.ctaUrl;
+                  }}
+                />
+
               </Link>
               <Link href="#">
-                <a>
-                  <Button
-                    {...button}
-                    title={data.secCtaLabel}
-                    icon={<Icon icon={ic_play_circle_filled} size={30} />}
-                    iconPosition="left"
-                    onClick={() => {
-                      window.location.href = data.secCtaBtnUrl;
-                    }}
-                  />
-                </a>
+
+                <Button
+                  {...button}
+                  title={data.secCtaLabel}
+                  icon={<Icon icon={ic_play_circle_filled} size={30} />}
+                  iconPosition="left"
+                  onClick={() => {
+                    window.location.href = data.secCtaBtnUrl;
+                  }}
+                />
+
               </Link>
             </Box>
           </Box>
