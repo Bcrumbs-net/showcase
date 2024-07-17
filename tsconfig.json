@@ -13,17 +13,13 @@
     "isolatedModules": true,
     "incremental": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["app/*"]
-    }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    "next-env.d.ts",
-    "app"
+    "next-env.d.ts"
   ],
   "exclude": ["node_modules"]
 }
