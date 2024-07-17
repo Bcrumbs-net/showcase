@@ -81,9 +81,9 @@ const InfoSection = ({
             />
             <Box>
               <Link href="#">
-                <a>
-                  <Button {...button} title="HOW IT WORKS55" />
-                </a>
+
+                <Button {...button} title="HOW IT WORKS55" />
+
               </Link>
             </Box>
           </Box>

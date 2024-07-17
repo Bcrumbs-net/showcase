@@ -47,9 +47,9 @@ const PartnerSection = ({
             />
             <Box>
               <Link href={data.ctaLink}>
-                <a>
-                  <Button {...button} title={data.ctaLabel} />
-                </a>
+
+                <Button {...button} title={data.ctaLabel} />
+
               </Link>
             </Box>
           </Box>

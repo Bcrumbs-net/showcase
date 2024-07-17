@@ -22,14 +22,15 @@
     "baseUrl": ".",
     "typeRoots": [
       "./node_modules/@types"
-    ]
+    ],
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.jsx",
-    "**/*.js"
+    "**/*.js",
   ],
   "exclude": [
     "node_modules",

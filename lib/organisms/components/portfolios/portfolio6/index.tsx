@@ -31,11 +31,11 @@ const MilestoneBlock = ({ model, isAR, data }: MilestoneBlockProps) => {
           <Text content={data.title} />
           <Heading content={data.amount} />
           <Text content={data.text} />
-          <Link href="{data.meetOurDonateLabel}">
-            <a className="learn__more-btn">
-              <span className="hyphen" />
-              <span className="btn_text">{data.meetOurDonateLabel}</span>
-            </a>
+          <Link href="{data.meetOurDonateLabel}" className="learn__more-btn">
+
+            <span className="hyphen" />
+            <span className="btn_text">{data.meetOurDonateLabel}</span>
+
           </Link>
         </MilestoneCard>
       </BlockWrapper>

@@ -66,19 +66,19 @@ const BannerSection = ({
             />
             <Box {...buttonWrapper}>
               <Link href={data.ctaUrl}>
-                <a>
-                  <Button {...fillButton} title={data.ctaLabel} />
-                </a>
+
+                <Button {...fillButton} title={data.ctaLabel} />
+
               </Link>
               <Link href={data.secCtaBtnUrl}>
-                <a>
-                  <Button
-                    {...button}
-                    title={data.secCtaLabel}
-                    icon={<Icon icon={ic_play_circle_filled} size={30} />}
-                    iconPosition="left"
-                  />
-                </a>
+
+                <Button
+                  {...button}
+                  title={data.secCtaLabel}
+                  icon={<Icon icon={ic_play_circle_filled} size={30} />}
+                  iconPosition="left"
+                />
+
               </Link>
             </Box>
           </Box>

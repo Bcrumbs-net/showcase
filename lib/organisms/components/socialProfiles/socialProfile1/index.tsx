@@ -43,13 +43,13 @@ const SocialProfile = ({
               key={`social-item-${index}`}
               className="social_profile_item"
             >
-              <Link href={socialLink.url || "#"}>
-                <a aria-label="social icon">
-                  {/*<Icon
-                    icon={socialLink.icon || socialDribbbleOutline}
-                    size={iconSize || 22}
-                  />*/}
-                </a>
+              <Link href={socialLink.url || "#"} aria-label="social icon">
+
+                {/*<Icon
+                  icon={socialLink.icon || socialDribbbleOutline}
+                  size={iconSize || 22}
+                />*/}
+
               </Link>
             </SocialProfileItem>
           );

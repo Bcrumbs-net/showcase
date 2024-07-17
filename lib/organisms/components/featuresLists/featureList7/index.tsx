@@ -74,9 +74,9 @@ const ContactSection = ({ row, col, model, data }: ContactSectionProps) => {
     });
   };
   return (
-    <SectionWrapper id={model.name} 
-    // @ts-ignore
-    background={data.backgroundImage}>
+    <SectionWrapper id={model.name}
+      // @ts-ignore
+      background={data.backgroundImage}>
       <Container>
         <Box className="row" {...row}>
           <Box className="col" {...col}>

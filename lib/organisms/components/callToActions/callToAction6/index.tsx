@@ -99,18 +99,18 @@ const DonateSection = ({ row, col, model, isAR, data }: DonateSectionProps) => {
               </Heading>
               <Text content={data.subTitle} />
               <ButtonGroup>
-                <Link href="{data.button_1_Url}">
-                  <a className="learn__more-btn alt">
-                    <span className="hyphen" />
-                    <span className="btn_text">{data.button_1_Label}</span>
-                  </a>
+                <Link href="{data.button_1_Url}" className="learn__more-btn alt">
+
+                  <span className="hyphen" />
+                  <span className="btn_text">{data.button_1_Label}</span>
+
                 </Link>
                 <Text content="or" />
-                <Link href="{data.button_2_Url}">
-                  <a className="learn__more-btn">
-                    <span className="hyphen" />
-                    <span className="btn_text">{data.button_2_Label}</span>
-                  </a>
+                <Link href="{data.button_2_Url}" className="learn__more-btn">
+
+                  <span className="hyphen" />
+                  <span className="btn_text">{data.button_2_Label}</span>
+
                 </Link>
               </ButtonGroup>
             </ContentArea>

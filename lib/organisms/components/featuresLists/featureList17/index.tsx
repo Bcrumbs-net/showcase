@@ -49,11 +49,11 @@ const HumanityBlock = ({ row, col, model, isAR, data }: HumanityBlockProps) => {
                   <Item key={`list_key${item.id}`}>{item.text}</Item>
                 ))}
               </List>
-              <Link href="{data.LearnMoreUrl}">
-                <a className="learn__more-btn">
-                  <span className="hyphen" />
-                  <span className="btn_text">{data.LearnMoreLabel} </span>
-                </a>
+              <Link href="{data.LearnMoreUrl}" className="learn__more-btn">
+
+                <span className="hyphen" />
+                <span className="btn_text">{data.LearnMoreLabel} </span>
+
               </Link>
             </ContentWrapper>
           </Box>

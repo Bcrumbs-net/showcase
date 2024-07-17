@@ -48,9 +48,9 @@ const PartnerSection = ({
             <Text {...description} content={data.description} />
             <Box>
               <Link href={data.button_url}>
-                <a>
-                  <Button {...button} title={data.button_label} />
-                </a>
+
+                <Button {...button} title={data.button_label} />
+
               </Link>
             </Box>
           </Box>

@@ -79,7 +79,7 @@ const WorkHistory = ({
                 <Text content="& Much More" />
                 {data.btnUrl ? (
                   <Link href={data.btnUrl}>
-                    <a>View work history</a>
+                    View work history
                   </Link>
                 ) : null}
               </Card>

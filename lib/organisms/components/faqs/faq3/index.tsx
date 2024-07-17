@@ -98,9 +98,9 @@ const FaqSection = ({
             </FaqWrapper>
             <Box {...buttonWrapper}>
               <Link href="#">
-                <a>
-                  <Button {...button} title="EXPLORE FORUM" />
-                </a>
+
+                <Button {...button} title="EXPLORE FORUM" />
+
               </Link>
             </Box>
           </Box>
