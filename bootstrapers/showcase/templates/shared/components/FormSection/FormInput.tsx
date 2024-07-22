@@ -140,7 +140,7 @@ const renderField = (
                 value: formFieldsState[field.name],
               }}
               onChange={(selectedOption) =>
-                handleFormData(selectedOption.value, field.name)
+                handleFormData(selectedOption?.value, field.name)
               }
               options={[
                 { label: `Select ${field.name}`, value: '', isDisabled: true },
@@ -232,7 +232,7 @@ const renderField = (
                 value: formFieldsState[field.name],
               }}
               onChange={(selectedOption) =>
-                handleFormData(selectedOption.label, field.name)
+                handleFormData(selectedOption?.label, field.name)
               }
               options={countryOptions}
               isDisabled={isSuccess}

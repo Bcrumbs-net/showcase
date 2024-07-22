@@ -78,7 +78,7 @@ const TabbedProductSection = ({
       mdItemHeight={data.mdItemHeight}
       smItemHeight={data.smItemHeight}
       xsItemHeight={data.xsItemHeight}
-      showTabs={model.children.length > 1}
+      showTabs={model.children && model.children.length > 1}
       marginTop={data.marginTop}
     >
       <Container>
@@ -92,7 +92,7 @@ const TabbedProductSection = ({
           renderTabContent={() => <TabContent animated={false} />}
           className="update-screen-tab"
         >
-          {model.children.filter(m => m.online).map((item, index) => {
+          {model.children?.filter(m => m.online).map((item, index) => {
             const screenMap = convertDataModelToDataObject(item) as Record<string, string>;
             return (
               <TabPane

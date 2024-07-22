@@ -29,7 +29,7 @@ const SocialProfile = ({
   return (
     <SocialProfileWrapper className={addAllClasses.join(" ")}>
       {model.children &&
-        model.children.map((item, index) => {
+        model.children?.map((item, index) => {
           const socialLink: Record<string, string> = item.data.reduce(function (
             map,
             obj

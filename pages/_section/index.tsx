@@ -46,9 +46,9 @@ export const RenderSection = ({
         templateId,
         templateContextId,
         root: 0,
-        pages: null,
+        pages: undefined,
       }}
-      path={null}
+      path={""}
       templateId={templateId}
       data={[
         {

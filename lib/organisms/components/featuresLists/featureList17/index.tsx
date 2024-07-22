@@ -20,7 +20,7 @@ interface HumanityBlockProps {
   data: Record<string, string>;
 }
 const HumanityBlock = ({ row, col, model, isAR, data }: HumanityBlockProps) => {
-  let humanityItems = [];
+  let humanityItems;
   if (model.children && model.children.length > 0) {
     humanityItems = model.children.map((humanityData) => {
       const humanityMap = convertDataModelToDataObject(humanityData) as Record<

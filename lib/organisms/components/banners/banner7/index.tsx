@@ -115,7 +115,7 @@ const BannerSection = ({
                   {...fillButton}
                   title={data.ctaLabel}
                   onClick={() => {
-                    window.location.href = data.ctaUrl;
+                    if(data.ctaUrl) window.location.href = data.ctaUrl;
                   }}
                 />
 
@@ -128,7 +128,7 @@ const BannerSection = ({
                   icon={<Icon icon={ic_play_circle_filled} size={30} />}
                   iconPosition="left"
                   onClick={() => {
-                    window.location.href = data.secCtaBtnUrl;
+                    if(data.secCtaBtnUrl) window.location.href = data.secCtaBtnUrl;
                   }}
                 />
 

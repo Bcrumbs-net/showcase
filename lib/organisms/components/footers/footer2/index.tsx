@@ -33,7 +33,7 @@ const Footer = ({
   model,
   data,
 }: FooterProps) => {
-  let footerItems = [];
+  let footerItems;
   if (model.children && model.children.length > 0) {
     footerItems = model.children.map((footerData) => {
       let footerMap = footerData.data.reduce(function (map, obj) {
@@ -49,7 +49,7 @@ const Footer = ({
         <Box className="row" {...row}>
           {/* End of footer logo column */}
           <Box {...colOne}>
-            {model.children.map((widget) => (
+            {model.children?.map((widget) => (
               <Box className="col" {...col} key={widget.id}>
                 <Heading content={widget.name} {...titleStyle} />
                 <List>

@@ -47,14 +47,14 @@ const DynamicForm = ({
       .filter((field) => !field.invisible)
       .sort((f1, f2) => f1.priority - f2.priority)
       .map((field, index) => {
-        const preContent =
-          Array.isArray(data.subdata) &&
-          (data.subdata.find(
-            (nodeField) => nodeField.fieldName === field.name
-          ) as {
-            content: string;
-            fieldName: string;
-          });
+        const preContent = Array.isArray(data.subdata)
+          ? (data.subdata.find(
+              (nodeField) => nodeField.fieldName === field.name
+            ) as {
+              content: string;
+              fieldName: string;
+            })
+          : undefined;
 
         return (
           <FormInput
@@ -75,7 +75,7 @@ const DynamicForm = ({
       {renderFormFields(
         isSingleStep
           ? formData.formFields
-          : formData.subForms[state.currentStep].formFields
+          : formData.subForms[state.currentStep || 0].formFields
       )}
       <div
         style={{
@@ -84,12 +84,14 @@ const DynamicForm = ({
           direction: isAR ? 'rtl' : 'ltr',
         }}
       >
-        {!isSingleStep && state.currentStep > 0 && (
+        {!isSingleStep && state.currentStep && state.currentStep > 0 ? (
           <Button type="button" isAR={isAR} onClick={handlePrevStep}>
             {data.backButtonLabel}
           </Button>
-        )}
-        {!isSingleStep && state.currentStep < formData.subForms.length - 1 && (
+        ) : undefined}
+        {!isSingleStep &&
+        state.currentStep &&
+        state.currentStep < formData.subForms.length - 1 ? (
           <Button
             type="submit"
             isAR={isAR}
@@ -98,9 +100,8 @@ const DynamicForm = ({
           >
             {data.nextButtonLabel}
           </Button>
-        )}
-        {(isSingleStep ||
-          state.currentStep === formData.subForms.length - 1) && (
+        ) : undefined}
+        {isSingleStep || state.currentStep === formData.subForms.length - 1 ? (
           <Button
             type="submit"
             isAR={isAR}
@@ -109,7 +110,7 @@ const DynamicForm = ({
           >
             {state.isLoading ? <Loader /> : data.submitButtonLabel}
           </Button>
-        )}
+        ) : undefined}
       </div>
       {state.submitted && failureMessage && (
         <Text className="failure" content={failureMessage} />

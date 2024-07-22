@@ -30,7 +30,7 @@ interface FundraiserSectionProps {
   data: Record<string, string>;
 }
 const FundraiserSection = ({ model, isAR, data }: FundraiserSectionProps) => {
-  let fundraiserItems = [];
+  let fundraiserItems;
   if (model.children && model.children.length > 0) {
     fundraiserItems = model.children.map((fundraiserData) => {
       const fundraiserMap = convertDataModelToDataObject(

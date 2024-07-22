@@ -47,10 +47,13 @@ const PricingSection = ({
   listContentStyle,
   model,
   data,
-  isAR
+  isAR,
 }: PricingSectionProps) => {
   const [state, setState] = useState({
-    data: model.children.length > 0 ? model.children[0].name : null,
+    data:
+      model.children && model.children.length > 0
+        ? model.children[0].name
+        : null,
   });
 
   const [loading, setLoading] = useState(false);
@@ -108,12 +111,9 @@ const PricingSection = ({
       <Container>
         <Box {...secTitleWrapper}>
           <Text {...secText} content={data.title} />
-          <Heading
-            {...secHeading}
-            content={data.description}
-          />
+          <Heading {...secHeading} content={data.description} />
           <PricingButtonWrapper>
-            {model.children.map((item, index) => {
+            {model.children?.map((item, index) => {
               const pricingTable: Record<string, string> = item.data.reduce(
                 function (map, obj) {
                   map[obj.Key] = obj.Value;
@@ -125,7 +125,7 @@ const PricingSection = ({
                 <Button
                   key={`PricingTabBtn${index}`}
                   title={pricingTable.name}
-                  className={stateData === item.name ? "active-item" : ""}
+                  className={stateData === item.name ? 'active-item' : ''}
                   onClick={() => setState({ data: item.name })}
                 />
               );
@@ -139,10 +139,10 @@ const PricingSection = ({
             controls={false}
           >
             <>
-              {model.children.find((m) => m.name == stateData) &&
+              {model.children?.find((m) => m.name == stateData) &&
                 model.children
-                  .find((m) => m.name == stateData)
-                  .children.map((item, index) => {
+                  ?.find((m) => m.name == stateData)
+                  ?.children?.map((item, index) => {
                     const pricingTable: Record<string, string> =
                       item.data.reduce(function (map, obj) {
                         map[obj.Key] = obj.Value;
@@ -156,14 +156,20 @@ const PricingSection = ({
                           className="pricing_table"
                         >
                           <PricingHead>
-                            <Heading content={pricingTable.name} {...nameStyle} />
+                            <Heading
+                              content={pricingTable.name}
+                              {...nameStyle}
+                            />
                             <Text
                               content={pricingTable.description}
                               {...descriptionStyle}
                             />
                           </PricingHead>
                           <PricingPrice>
-                            <Text content={pricingTable.price} {...priceStyle} />
+                            <Text
+                              content={pricingTable.price}
+                              {...priceStyle}
+                            />
                             <Text
                               content={pricingTable.priceLabel}
                               {...priceLabelStyle}
@@ -191,7 +197,6 @@ const PricingSection = ({
                           </PricingList>
                           <PricingButton>
                             <Link href={pricingTable.url}>
-
                               {pricingTable.freePlan ? (
                                 <Button
                                   title={pricingTable.ctaLabel}
@@ -203,7 +208,6 @@ const PricingSection = ({
                                   {...buttonFillStyle}
                                 />
                               )}
-
                             </Link>
                           </PricingButton>
                         </PricingTable>

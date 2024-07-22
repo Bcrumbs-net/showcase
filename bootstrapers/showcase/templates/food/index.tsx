@@ -90,15 +90,15 @@ export const FoodTheme = ({
           {/* End of agency head section */}
           {/* Start agency wrapper section */}
           <ContentWrapper>
-            {header && (
+            {header && header.modelId ? (
               <ComponentResolver
                 key={`HeaderComponent`}
                 modelId={header.modelId}
                 model={header}
                 isAR={isAR}
               />
-            )}
-            {filteredData.map((model: any, index: number) => (
+            ) : undefined}
+            {filteredData?.map((model: any, index: number) => (
               <ComponentResolver
                 key={`BCComponent${index}`}
                 modelId={model.modelId}
@@ -106,14 +106,14 @@ export const FoodTheme = ({
                 isAR={isAR}
               />
             ))}
-            {footer && (
+            {footer && footer.modelId ? (
               <ComponentResolver
                 key={`FooterComponent`}
                 modelId={footer.modelId}
                 model={footer}
                 isAR={isAR}
               />
-            )}
+            ) : undefined}
             {config.whitlabel ? null : <BCLink />}
             {rootModelData.whatsappPhone ? (
               <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />

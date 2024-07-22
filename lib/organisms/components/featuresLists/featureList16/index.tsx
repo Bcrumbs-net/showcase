@@ -21,7 +21,7 @@ const FeatureSection = ({ model, isAR, data }: FeatureSectionProps) => {
           <Text content={data.slogan} />
         </SectionHeader>
         <FeatureWrapper>
-          {model.children.map((featureData, index) => {
+          {model.children?.map((featureData, index) => {
             const featureMap = convertDataModelToDataObject(
               featureData
             ) as Record<string, string>;

@@ -56,77 +56,77 @@ export const AppTheme = ({
   header?: GraphContent;
 }) => {
   const data = queryData[0];
-  const rootModelData = convertDataModelToDataObject(data) as Record<string, string>;
+  const rootModelData = convertDataModelToDataObject(data) as Record<
+    string,
+    string
+  >;
 
   const filteredData = filterData(data.children, config);
 
   const isAR = config.lang === 'AR';
 
-
   return (
     <>
       {/*@ts-ignore: Unreachable code error*/}
-        <ThemeProvider theme={appTheme}>
-          <>
-            <Head>
-              <title>{rootModelData.title}</title>
-              <meta name="Description" content={data.metaDescription} />
-              <meta name="theme-color" content={rootModelData.primary} />
-              <link
-                rel="icon"
-                type="image/png"
-                sizes="32x32"
-                href={rootModelData.favicon32}
+      <ThemeProvider theme={appTheme}>
+        <>
+          <Head>
+            <title>{rootModelData.title}</title>
+            <meta name="Description" content={data.metaDescription} />
+            <meta name="theme-color" content={rootModelData.primary} />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href={rootModelData.favicon32}
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href={rootModelData.favicon16}
+            />
+            <link
+              href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
+              rel="stylesheet"
+            />
+          </Head>
+          {/*@ts-ignore: Unreachable code error*/}
+          <ResetCSS />
+          {/*@ts-ignore: Unreachable code error*/}
+          <GlobalStyle />
+          <AppWrapper>
+            {header && header.modelId ? (
+              <ComponentResolver
+                key={`HeaderComponent`}
+                modelId={header.modelId}
+                model={header}
+                isAR={isAR}
               />
-              <link
-                rel="icon"
-                type="image/png"
-                sizes="16x16"
-                href={rootModelData.favicon16}
+            ) : undefined}
+            {filteredData?.map((model: any, index: number) => (
+              <ComponentResolver
+                key={`BCComponent${index}`}
+                modelId={model.modelId}
+                model={model}
+                isAR={isAR}
               />
-              <link
-                href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
-                rel="stylesheet"
+            ))}
+            {footer && footer.modelId ? (
+              <ComponentResolver
+                key={`FooterComponent`}
+                modelId={footer.modelId}
+                model={footer}
+                isAR={isAR}
               />
-            </Head>
-            {/*@ts-ignore: Unreachable code error*/}
-            <ResetCSS />
-            {/*@ts-ignore: Unreachable code error*/}
-            <GlobalStyle />
-            <AppWrapper>
-              {header && (
-                <ComponentResolver
-                  key={`HeaderComponent`}
-                  modelId={header.modelId}
-                  model={header}
-                  isAR={isAR}
-                />
-              )}
-              {filteredData.map((model: any, index: number) => (
-                <ComponentResolver
-                  key={`BCComponent${index}`}
-                  modelId={model.modelId}
-                  model={model}
-                  isAR={isAR}
-                />
-              ))}
-              {footer && (
-                <ComponentResolver
-                  key={`FooterComponent`}
-                  modelId={footer.modelId}
-                  model={footer}
-                  isAR={isAR}
-                />
-              )}
-              {config.whitlabel ? (
-                null
-              ) : <BCLink />}
-              {rootModelData.whatsappPhone ? (
-                <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
-              ) : null}
-            </AppWrapper>
-          </>
-        </ThemeProvider>
+            ) : undefined}
+            {config.whitlabel ? null : <BCLink />}
+            {rootModelData.whatsappPhone ? (
+              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
+            ) : null}
+          </AppWrapper>
+        </>
+      </ThemeProvider>
     </>
   );
 };

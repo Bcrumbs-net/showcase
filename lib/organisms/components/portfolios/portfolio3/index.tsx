@@ -49,7 +49,7 @@ const PortfolioSection = ({
           <Heading content={data.title} {...sectionTitle} />
         </Box>
         <Box className="row" {...row}>
-          {model.children.filter(m => m.online).map((blogSection, index) => {
+          {model.children?.filter(m => m.online).map((blogSection, index) => {
             const postMap = convertDataModelToDataObject(blogSection) as Record<string, string>;
             return (
               <FeatureBlock

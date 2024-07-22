@@ -31,7 +31,7 @@ const UpdateScreen = ({ secTitleWrapper, secText, secHeading, data, model, isAR 
           renderTabContent={() => <TabContent animated={false} />}
           className="update-screen-tab"
         >
-          {model.children && model.children.map((item, index) => {
+          {model.children && model.children?.map((item, index) => {
             const screenMap: Record<string, string> = item.data.reduce((obj, i) => {
               obj[i.Key] = i.Value;
               return obj;

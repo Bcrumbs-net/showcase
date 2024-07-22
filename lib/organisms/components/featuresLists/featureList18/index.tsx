@@ -26,7 +26,7 @@ const PromotionBlock = ({
   isAR,
   data,
 }: PromotionBlockProps) => {
-  let promotionItems = [];
+  let promotionItems;
   if (model.children && model.children.length > 0) {
     promotionItems = model.children.map((promotionData, index) => {
       const promotionMap = convertDataModelToDataObject(

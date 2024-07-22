@@ -74,7 +74,7 @@ const VideoLibrary = ({
             {renderVideo()}
           </Box>
           <Box className="col" {...col2}>
-            {model.children.map((video, index) => {
+            {model.children?.map((video, index) => {
               const videoMap: Record<string, string> = video.data.reduce(function (map, obj) {
                 map[obj.Key] = obj.Value;
                 return map;

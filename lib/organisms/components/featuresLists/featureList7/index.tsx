@@ -30,7 +30,7 @@ const ContactSection = ({ row, col, model, data }: ContactSectionProps) => {
     Contact_us_Phone: "",
     Contact_us_Message: "",
   };
-  let branchItems = [];
+  let branchItems;
   if (model.children && model.children.length > 0) {
     branchItems = model.children.map((branchData, index) => {
       const branchMap: Record<string, string> = branchData.data.reduce(

@@ -64,7 +64,7 @@ const TestimonialSection = ({
             carouselSelector="testimonial__slider"
             controls={false}
             bullets={true}
-            numberOfBullets={data.subdata.length}
+            numberOfBullets={data.subdata?.length || 0}
           >
             <>
               {data.subdata &&

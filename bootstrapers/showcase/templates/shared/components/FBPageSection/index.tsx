@@ -20,8 +20,8 @@ const FBPageSection = ({
   col:object;
   textArea:object;
   buttonStyle:object;
-  model?:GraphContent;
-  data?: Record<string, string>;
+  model:GraphContent;
+  data: Record<string, string>;
   isAR?:boolean;
   title:object;
   description:object;

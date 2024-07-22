@@ -19,7 +19,7 @@ interface BlogSectionProps {
   data: Record<string, string>;
 }
 const BlogSection = ({ model, isAR, data }: BlogSectionProps) => {
-  let blogsItems = [];
+  let blogsItems;
   if (model.children && model.children.length > 0) {
     blogsItems = model.children.map((blogData) => {
       const blogMap = convertDataModelToDataObject(blogData) as Record<string, string>;

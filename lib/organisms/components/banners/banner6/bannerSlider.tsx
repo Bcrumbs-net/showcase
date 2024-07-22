@@ -49,7 +49,7 @@ const BannerSliderSection = ({
             controls={false}
           >
             <>
-              {model.children.map((testimonial, index) => {
+              {model.children?.map((testimonial, index) => {
                 const testimonialMap: Record<string, string> =
                   testimonial.data.reduce(function (map, obj) {
                     map[obj.Key] = obj.Value;

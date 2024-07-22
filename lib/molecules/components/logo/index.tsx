@@ -4,7 +4,7 @@ import { Text, Link, Image } from '../../../atoms';
 interface LogoProps {
   className?:string;
   logoSrc?: string;
-  title: string;
+  title?: string;
   logoWrapperStyle?: object;
   logoStyle?: object;
   titleStyle?: object;

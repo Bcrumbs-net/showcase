@@ -80,7 +80,7 @@ const TrustedHistory = ({
           </Box>
           <Box className="colright" {...col} {...cardArea}>
             <FeatureSection>
-              {model.children.map((item, index) => {
+              {model.children?.map((item, index) => {
                 const featureMap: Record<string, string> = item.data.reduce(
                   function (map, obj) {
                     map[obj.Key] = obj.Value;

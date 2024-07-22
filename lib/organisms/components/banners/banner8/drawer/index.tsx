@@ -28,7 +28,7 @@ const DrawerSection = ({ model, isAR, data }: DrawerSectionProps) => {
     handleActiveClass();
   };
 
-  const scrollItems = [];
+  const scrollItems: string[] = [];
 
   model.children?.forEach((menuItem) => {
     const menuItemData = convertDataModelToDataObject(menuItem) as Record<

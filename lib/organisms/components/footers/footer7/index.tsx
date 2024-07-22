@@ -33,7 +33,7 @@ const Footer = ({
   isAR,
   data,
 }: FooterProps) => {
-  let footerItems = [];
+  let footerItems;
   if (model.children && model.children.length > 0) {
     footerItems = model.children.map((footerData) => {
       const footerMap = convertDataModelToDataObject(footerData) as Record<
@@ -80,7 +80,7 @@ const Footer = ({
           </Box>
           {/* End of logo column */}
           <Box className="col-two" {...colTwo}>
-            {model.children.map((menuItem) => {
+            {model.children?.map((menuItem) => {
               const itemMenuMap = convertDataModelToDataObject(
                 menuItem
               ) as Record<string, string>;
@@ -96,7 +96,7 @@ const Footer = ({
                     content={itemMenuMap.text}
                   />
                   <List>
-                    {menuItem.children.map((submenuItem) => {
+                    {menuItem.children?.map((submenuItem) => {
                       const subItemMenuMap = convertDataModelToDataObject(
                         submenuItem
                       ) as Record<string, string>;

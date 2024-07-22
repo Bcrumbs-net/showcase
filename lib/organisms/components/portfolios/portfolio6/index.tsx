@@ -17,7 +17,7 @@ interface MilestoneBlockProps {
   data: Record<string, string>;
 }
 const MilestoneBlock = ({ model, isAR, data }: MilestoneBlockProps) => {
-  let milestoneItems = [];
+  let milestoneItems;
   if (model.children && model.children.length > 0) {
     milestoneItems = model.children.map((milestoneData, index) => {
       const milestoneMap = convertDataModelToDataObject(milestoneData) as Record<string, string>;

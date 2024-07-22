@@ -32,7 +32,7 @@ const WorkingProcessSection = ({
   isAR,
   data
 }: WorkingProcessSectionProps) => {
-  let featuresItems = [];
+  let featuresItems;
   if (model.children && model.children.length > 0) {
     featuresItems = model.children.map((featurehData, index) => {
       const featurehMap = convertDataModelToDataObject(featurehData) as Record<

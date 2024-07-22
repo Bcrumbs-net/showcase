@@ -16,7 +16,7 @@ const BranchSection = ({ model, isAR, data }: BranchSectionProps) => {
   const title = (text) => {
     return { __html: text };
   };
-  let branchItems = [];
+  let branchItems;
   if (model.children && model.children.length > 0) {
     branchItems = model.children.map((branchData, index) => {
       const branchMap = convertDataModelToDataObject(branchData) as Record<string, string>;

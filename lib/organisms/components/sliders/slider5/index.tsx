@@ -12,7 +12,7 @@ interface ClientBlockProps {
   data: Record<string, string>;
 }
 const ClientBlock = ({ model, isAR, data }: ClientBlockProps) => {
-  let clientItems = [];
+  let clientItems;
   if (model.children && model.children.length > 0) {
     clientItems = model.children.map((clientData) => {
       const clientMap = convertDataModelToDataObject(clientData) as Record<string, string>;

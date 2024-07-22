@@ -74,7 +74,7 @@ const TimelineSection = ({
           <Box {...col} {...textArea}>
             <TimelineWrapper>
               {model.children &&
-                model.children.map((item, index) => {
+                model.children?.map((item, index) => {
                   const subDataMap: Record<string, string> = item.data.reduce(
                     function (map, obj) {
                       map[obj.Key] = obj.Value;

@@ -33,7 +33,7 @@ const Footer = ({
 }: FooterProps) => {
   let socialModel;
   if (model.children && model.children.length > 0) {
-    const socialModelQuery = model.children.filter((m) => m.modelId == 403193);
+    const socialModelQuery = model.children?.filter((m) => m.modelId == 403193);
     if (socialModelQuery && socialModelQuery.length > 0)
       socialModel = socialModelQuery[0];
   }

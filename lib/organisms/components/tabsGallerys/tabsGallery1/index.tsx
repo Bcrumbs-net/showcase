@@ -36,7 +36,7 @@ const UpdateScreen = ({
           renderTabContent={() => <TabContent animated={false} />}
           className="update-screen-tab"
         >
-          {model.children.map((item, index) => {
+          {model.children?.map((item, index) => {
             const screenMap: Record<string, string> = item.data.reduce(
               function (map, obj) {
                 map[obj.Key] = obj.Value;
