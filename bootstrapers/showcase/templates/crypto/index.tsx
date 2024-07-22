@@ -12,7 +12,6 @@ import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 import WhatsAppLink from '../shared/components/WhatsAppLink';
 import { convertDataModelToDataObject } from '../../utils/withModelToDataObjProp';
 import { filterData } from '../../utils/filterData';
-import StyledComponentsRegistry from '../../../../lib/registry';
 
 export const CryptoTheme = ({
   templateId,
@@ -20,7 +19,7 @@ export const CryptoTheme = ({
   path,
   data: queryData,
   header,
-  footer
+  footer,
 }: {
   config: Config;
   path: string;
@@ -30,7 +29,10 @@ export const CryptoTheme = ({
   footer?: GraphContent;
 }) => {
   const data = queryData[0];
-  const rootModelData = convertDataModelToDataObject(data) as Record<string, string>;
+  const rootModelData = convertDataModelToDataObject(data) as Record<
+    string,
+    string
+  >;
 
   const filteredData = filterData(data.children, config);
 
@@ -38,71 +40,67 @@ export const CryptoTheme = ({
 
   return (
     <>
-      <StyledComponentsRegistry>
-        {/*@ts-ignore: Unreachable code error*/}
-        <ThemeProvider theme={cryptoTheme}>
-          <Fragment>
-            <Head>
-              <title>{data.title}</title>
-              <meta name="Description" content={data.metaDescription} />
-              <meta name="theme-color" content={rootModelData.primary} />
-              <link
-                rel="icon"
-                type="image/png"
-                sizes="32x32"
-                href={rootModelData.favicon32}
+      {/*@ts-ignore: Unreachable code error*/}
+      <ThemeProvider theme={cryptoTheme}>
+        <Fragment>
+          <Head>
+            <title>{data.title}</title>
+            <meta name="Description" content={data.metaDescription} />
+            <meta name="theme-color" content={rootModelData.primary} />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href={rootModelData.favicon32}
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href={rootModelData.favicon16}
+            />
+            {/* Load google fonts */}
+            <link
+              href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Heebo:300,400,500,700"
+              rel="stylesheet"
+            />
+          </Head>
+          {/*@ts-ignore: Unreachable code error*/}
+          <ResetCSS />
+          {/*@ts-ignore: Unreachable code error*/}
+          <GlobalStyle />
+          <ContentWrapper>
+            {header && (
+              <ComponentResolver
+                key={`HeaderComponent`}
+                modelId={header.modelId}
+                model={header}
+                isAR={isAR}
               />
-              <link
-                rel="icon"
-                type="image/png"
-                sizes="16x16"
-                href={rootModelData.favicon16}
+            )}
+            {filteredData.map((model: any, index: number) => (
+              <ComponentResolver
+                key={`BCComponent${index}`}
+                modelId={model.modelId}
+                model={model}
+                isAR={isAR}
               />
-              {/* Load google fonts */}
-              <link
-                href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Heebo:300,400,500,700"
-                rel="stylesheet"
+            ))}
+            {footer && (
+              <ComponentResolver
+                key={`FooterComponent`}
+                modelId={footer.modelId}
+                model={footer}
+                isAR={isAR}
               />
-            </Head>
-            {/*@ts-ignore: Unreachable code error*/}
-            <ResetCSS />
-            {/*@ts-ignore: Unreachable code error*/}
-            <GlobalStyle />
-            <ContentWrapper>
-              {header && (
-                <ComponentResolver
-                  key={`HeaderComponent`}
-                  modelId={header.modelId}
-                  model={header}
-                  isAR={isAR}
-                />
-              )}
-              {filteredData.map((model: any, index: number) => (
-                <ComponentResolver
-                  key={`BCComponent${index}`}
-                  modelId={model.modelId}
-                  model={model}
-                  isAR={isAR}
-                />
-              ))}
-              {footer && (
-                <ComponentResolver
-                  key={`FooterComponent`}
-                  modelId={footer.modelId}
-                  model={footer}
-                  isAR={isAR}
-                />
-              )}
-              {config.whitlabel ? (
-                null
-              ) : <BCLink />}
-              {rootModelData.whatsappPhone ? (
-                <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
-              ) : null}
-            </ContentWrapper>
-          </Fragment>
-        </ThemeProvider>
-      </StyledComponentsRegistry>
+            )}
+            {config.whitlabel ? null : <BCLink />}
+            {rootModelData.whatsappPhone ? (
+              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
+            ) : null}
+          </ContentWrapper>
+        </Fragment>
+      </ThemeProvider>
     </>
   );
 };

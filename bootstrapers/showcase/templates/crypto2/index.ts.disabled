@@ -94,7 +94,6 @@ export default props => {
             {/* end of global and reset style */}
             {/* start app classic landing */}
             <CryptoWrapper>
-              <div id="fb-root"></div>
               {data.children &&
                 data.children
                   .filter(m => m.online)

@@ -12,7 +12,6 @@ import { Config, GraphContent } from '@bcrumbs.net/bc-api';
 import WhatsAppLink from '../shared/components/WhatsAppLink';
 import { convertDataModelToDataObject } from '../../utils/withModelToDataObjProp';
 import { filterData } from '../../utils/filterData';
-import StyledComponentsRegistry from '../../../../lib/registry';
 
 export const CharityTheme = ({
   templateId,
@@ -30,7 +29,10 @@ export const CharityTheme = ({
   header?: GraphContent;
 }) => {
   const data = queryData[0];
-  const rootModelData = convertDataModelToDataObject(data) as Record<string, string>;
+  const rootModelData = convertDataModelToDataObject(data) as Record<
+    string,
+    string
+  >;
 
   const filteredData = filterData(data.children, config);
 
@@ -38,83 +40,78 @@ export const CharityTheme = ({
 
   return (
     <>
-
-      <StyledComponentsRegistry>
-        {/*@ts-ignore: Unreachable code error*/}
-        <ThemeProvider theme={charityTheme(rootModelData)}>
-          <Fragment>
-            {/* Start charity head section */}
-            <Head>
-              <title>{data.title}</title>
-              <meta name="Description" content={data.metaDescription} />
-              <meta name="theme-color" content={rootModelData.primary} />
-              {/*<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />*/}
-              <link
-                rel="icon"
-                type="image/png"
-                sizes="32x32"
-                href={rootModelData.favicon32}
-              />
-              <link
-                rel="icon"
-                type="image/png"
-                sizes="16x16"
-                href={rootModelData.favicon16}
-              />
-              <meta
-                name="viewport"
-                content="width=device-width, initial-scale=1.0"
-              />
-              {/* Load google fonts */}
-              <link
-                href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap"
-                rel="stylesheet"
-              />
-            </Head>
-            {/*@ts-ignore: Unreachable code error*/}
-            <ResetCSS />
-            {/*@ts-ignore: Unreachable code error*/}
-            <GlobalStyle />
-            {/* End of charity head section */}
-            {/* Start charity wrapper section */}
-            <CharityWrapper>
-              <ContentWrapper>
-                {header && (
-                  <ComponentResolver
-                    key={`HeaderComponent`}
-                    modelId={header.modelId}
-                    model={header}
-                    isAR={isAR}
-                  />
-                )}
-                {filteredData.map((model: any, index: number) => (
-                  <ComponentResolver
-                    key={`BCComponent${index}`}
-                    modelId={model.modelId}
-                    model={model}
-                    isAR={isAR}
-                  />
-                ))}
-                {footer && (
-                  <ComponentResolver
-                    key={`FooterComponent`}
-                    modelId={footer.modelId}
-                    model={footer}
-                    isAR={isAR}
-                  />
-                )}
-              </ContentWrapper>
-              {config.whitlabel ? (
-                null
-              ) : <BCLink />}
-              {rootModelData.whatsappPhone ? (
-                <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
-              ) : null}
-            </CharityWrapper>
-            {/* End of charity wrapper section */}
-          </Fragment>
-        </ThemeProvider>
-      </StyledComponentsRegistry>
+      {/*@ts-ignore: Unreachable code error*/}
+      <ThemeProvider theme={charityTheme(rootModelData)}>
+        <Fragment>
+          {/* Start charity head section */}
+          <Head>
+            <title>{data.title}</title>
+            <meta name="Description" content={data.metaDescription} />
+            <meta name="theme-color" content={rootModelData.primary} />
+            {/*<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />*/}
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href={rootModelData.favicon32}
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href={rootModelData.favicon16}
+            />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1.0"
+            />
+            {/* Load google fonts */}
+            <link
+              href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap"
+              rel="stylesheet"
+            />
+          </Head>
+          {/*@ts-ignore: Unreachable code error*/}
+          <ResetCSS />
+          {/*@ts-ignore: Unreachable code error*/}
+          <GlobalStyle />
+          {/* End of charity head section */}
+          {/* Start charity wrapper section */}
+          <CharityWrapper>
+            <ContentWrapper>
+              {header && (
+                <ComponentResolver
+                  key={`HeaderComponent`}
+                  modelId={header.modelId}
+                  model={header}
+                  isAR={isAR}
+                />
+              )}
+              {filteredData.map((model: any, index: number) => (
+                <ComponentResolver
+                  key={`BCComponent${index}`}
+                  modelId={model.modelId}
+                  model={model}
+                  isAR={isAR}
+                />
+              ))}
+              {footer && (
+                <ComponentResolver
+                  key={`FooterComponent`}
+                  modelId={footer.modelId}
+                  model={footer}
+                  isAR={isAR}
+                />
+              )}
+            </ContentWrapper>
+            {config.whitlabel ? null : <BCLink />}
+            {rootModelData.whatsappPhone ? (
+              <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
+            ) : null}
+          </CharityWrapper>
+          {/* End of charity wrapper section */}
+        </Fragment>
+      </ThemeProvider>
     </>
   );
 };

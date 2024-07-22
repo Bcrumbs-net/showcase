@@ -6,7 +6,7 @@ const ShowcaseBootstraper = ({
   path,
   data,
   footer,
-  header
+  header,
 }: {
   config: Config;
   path: string;
