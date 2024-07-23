@@ -74,13 +74,27 @@ export const FoodTheme = ({
               />
             )}
             {rootModelData.facebookAppId ? (
-              <script
-                async
-                defer
-                crossOrigin="anonymous"
-                src={`https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=${rootModelData.facebookAppId}&autoLogAppEvents=1`}
-                nonce="d5wHYRBY"
-              ></script>
+              <>
+                <script
+                  dangerouslySetInnerHTML={{
+                    __html: `window.fbAsyncInit = function() {
+                    FB.init({
+                      appId            : ${rootModelData.facebookAppId},
+                      xfbml            : true,
+                      version          : 'v20.0'
+                    });
+                  };`,
+                  }}
+                />
+
+                <script
+                  async
+                  defer
+                  crossOrigin="anonymous"
+                  src={`https://connect.facebook.net/en_US/sdk.js`}
+                  nonce="d5wHYRBY"
+                ></script>
+              </>
             ) : null}
           </Head>
           {/*@ts-ignore: Unreachable code error*/}

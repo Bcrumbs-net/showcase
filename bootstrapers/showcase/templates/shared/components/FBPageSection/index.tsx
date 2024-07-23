@@ -4,6 +4,7 @@ import { FeatureBlock } from '../../../../../../lib/molecules';
 import FBPageSectionWrapper from './style';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 import withModelToDataObjProp from '../../../../utils/withModelToDataObjProp';
+import FBPageScript from './FBPageScript';
 
 const FBPageSection = ({
   row,
@@ -16,38 +17,16 @@ const FBPageSection = ({
   title,
   description,
 }: {
-  row:object;
-  col:object;
-  textArea:object;
-  buttonStyle:object;
-  model:GraphContent;
+  row: object;
+  col: object;
+  textArea: object;
+  buttonStyle: object;
+  model: GraphContent;
   data: Record<string, string>;
-  isAR?:boolean;
-  title:object;
-  description:object;
+  isAR?: boolean;
+  title: object;
+  description: object;
 }) => {
-  const FBPageScript = () => (
-    <Box width="100%">
-      <Box
-        className="fb-page"
-        data-href={data.pageUrl}
-        data-tabs="timeline"
-        data-height="600"
-        data-width="420"
-        data-small-header="false"
-        data-adapt-container-width="true"
-        data-hide-cover="false"
-        data-show-facepile="true"
-      >
-        <blockquote
-          cite="https://www.facebook.com/dleafca/"
-          className="fb-xfbml-parse-ignore"
-        >
-          <a href="https://www.facebook.com/dleafca/">{data.widgetTitle}</a>
-        </blockquote>
-      </Box>
-    </Box>
-  );
   return (
     <FBPageSectionWrapper id={model.name}>
       <Box className="row" {...row}>
@@ -63,7 +42,7 @@ const FBPageSection = ({
           </Box>
         </Box>
         <Box className="col" {...col}>
-          {FBPageScript()}
+          <FBPageScript data={data} />
         </Box>
       </Box>
     </FBPageSectionWrapper>

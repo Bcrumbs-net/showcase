@@ -1,7 +1,13 @@
 /* eslint-disable @next/next/next-script-for-ga */
 /* eslint-disable react/display-name */
 import { Fragment, ReactElement } from 'react';
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class CustomDocument extends Document {
@@ -12,7 +18,8 @@ export default class CustomDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -47,6 +54,7 @@ export default class CustomDocument extends Document {
           />
         </Head>
         <body>
+          <div id="fb-root"></div>
           <Main />
           <NextScript />
         </body>
