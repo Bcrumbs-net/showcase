@@ -47,6 +47,7 @@ export const RenderSection = ({
         templateContextId,
         root: 0,
         pages: undefined,
+        whitlabel: true
       }}
       path={""}
       templateId={templateId}
