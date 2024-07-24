@@ -23,7 +23,12 @@
     "typeRoots": [
       "./node_modules/@types"
     ],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
@@ -31,6 +36,7 @@
     "**/*.tsx",
     "**/*.jsx",
     "**/*.js",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
