@@ -46,7 +46,7 @@ const Footer = ({
           </Box>
           {/* End of footer logo column */}
           <Box {...colTwo}>
-            {model.children.map((widget, index) => {
+            {model.children?.map((widget, index) => {
               const listMap = convertDataModelToDataObject(
                 widget
               ) as Record<string, string>;
@@ -54,14 +54,14 @@ const Footer = ({
                 <Box className="col" {...col} key={`footer-widget-${index}`}>
                   <Heading content={listMap.title} {...titleStyle} />
                   <List>
-                    {widget.children.map((item, index) => {
+                    {widget.children?.map((item, index) => {
                       const itemMenuMap = convertDataModelToDataObject(
                         item
                       ) as Record<string, string>;
                       return (
                         <ListItem key={`footer-list-item-${index}`}>
-                          <Link href={itemMenuMap.Url}>
-                            <a className="ListItem">{itemMenuMap.title}</a>
+                          <Link href={itemMenuMap.Url} className="ListItem">
+                            {itemMenuMap.title}
                           </Link>
                         </ListItem>
                       );

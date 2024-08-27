@@ -14,10 +14,10 @@ export async function getServerSideProps({ req, query }) {
   const targetDomain = checkIfKnownDomain(domain);
   const path = query.path;
 
-  let config = null;
-  let contents = null;
-  let headerArr = null;
-  let footerArr = null;
+  let config;
+  let contents;
+  let headerArr;
+  let footerArr;
 
   try {
     // Getting needed data
@@ -99,10 +99,16 @@ export const TemplateRouter = ({
     path += `/${query.path2}`;
   }
 
+  if (!config || !data) {
+    return <Error />;
+  }
+
   if (
     path &&
     (!config.pages ||
-      !config.pages.some((m) => m.path.toLowerCase() == path.toLowerCase()))
+      !config.pages.some(
+        (m) => m.path && m.path.toLowerCase() == path.toLowerCase()
+      ))
   ) {
     return <Error />;
   }

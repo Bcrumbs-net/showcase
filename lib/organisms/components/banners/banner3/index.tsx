@@ -49,7 +49,7 @@ const BannerSection = ({
           title={data.ctaLabel}
           {...btnStyle}
           onClick={() => {
-            window.location.href = data.ctaUrl;
+            if (data.ctaUrl) window.location.href = data.ctaUrl;
           }}
         />
       ) : null}
@@ -59,7 +59,7 @@ const BannerSection = ({
           title={data.secCtaLabel}
           variant="outlined"
           onClick={() => {
-            window.location.href = data.secCtaBtnUrl;
+            if(data.secCtaBtnUrl) window.location.href = data.secCtaBtnUrl;
           }}
           {...outlineBtnStyle}
         />

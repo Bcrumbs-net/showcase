@@ -65,10 +65,10 @@ const Navbar = ({
               offset={-70}
               model={model}
             />
-            <Link href="#">
-              <a className="navbar_button">
-                <Button {...button} title="GET STARTED" />
-              </a>
+            <Link href="#" className="navbar_button">
+
+              <Button {...button} title="GET STARTED" />
+
             </Link>
             <Drawer
               width="420px"
@@ -83,10 +83,10 @@ const Navbar = ({
                 drawerClose={true}
                 offset={-100}
               />
-              <Link href="#">
-                <a className="navbar_drawer_button">
-                  <Button {...button} title="GET STARTED" />
-                </a>
+              <Link href="#" className="navbar_drawer_button">
+
+                <Button {...button} title="GET STARTED" />
+
               </Link>
             </Drawer>
           </Box>

@@ -27,7 +27,10 @@ export const FoodTheme = ({
   header?: GraphContent;
 }) => {
   const data = queryData[0];
-  const rootModelData = convertDataModelToDataObject(data) as Record<string, string>;
+  const rootModelData = convertDataModelToDataObject(data) as Record<
+    string,
+    string
+  >;
 
   const filteredData = filterData(data.children, config);
 
@@ -71,13 +74,27 @@ export const FoodTheme = ({
               />
             )}
             {rootModelData.facebookAppId ? (
-              <script
-                async
-                defer
-                crossOrigin="anonymous"
-                src={`https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=${rootModelData.facebookAppId}&autoLogAppEvents=1`}
-                nonce="d5wHYRBY"
-              ></script>
+              <>
+                <script
+                  dangerouslySetInnerHTML={{
+                    __html: `window.fbAsyncInit = function() {
+                    FB.init({
+                      appId            : ${rootModelData.facebookAppId},
+                      xfbml            : true,
+                      version          : 'v20.0'
+                    });
+                  };`,
+                  }}
+                />
+
+                <script
+                  async
+                  defer
+                  crossOrigin="anonymous"
+                  src={`https://connect.facebook.net/en_US/sdk.js`}
+                  nonce="d5wHYRBY"
+                ></script>
+              </>
             ) : null}
           </Head>
           {/*@ts-ignore: Unreachable code error*/}
@@ -87,16 +104,15 @@ export const FoodTheme = ({
           {/* End of agency head section */}
           {/* Start agency wrapper section */}
           <ContentWrapper>
-            <div id="fb-root"></div>
-            {header && (
+            {header && header.modelId ? (
               <ComponentResolver
                 key={`HeaderComponent`}
                 modelId={header.modelId}
                 model={header}
                 isAR={isAR}
               />
-            )}
-            {filteredData.map((model: any, index: number) => (
+            ) : undefined}
+            {filteredData?.map((model: any, index: number) => (
               <ComponentResolver
                 key={`BCComponent${index}`}
                 modelId={model.modelId}
@@ -104,17 +120,15 @@ export const FoodTheme = ({
                 isAR={isAR}
               />
             ))}
-            {footer && (
+            {footer && footer.modelId ? (
               <ComponentResolver
                 key={`FooterComponent`}
                 modelId={footer.modelId}
                 model={footer}
                 isAR={isAR}
               />
-            )}
-            {config.whitlabel ? (
-              null
-            ) : <BCLink />}
+            ) : undefined}
+            {config.whitlabel ? null : <BCLink />}
             {rootModelData.whatsappPhone ? (
               <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
             ) : null}

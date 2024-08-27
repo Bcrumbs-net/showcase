@@ -31,7 +31,7 @@ const BlogSection = ({
   data
 }: BlogSliderSectionProps) => {
   const [showAll, setShowAll] = useState(false);
-  let targetSections = [];
+  let targetSections;
 
   if (model.children && model.children.length > 0) {
     targetSections = showAll ? model.children : model.children.slice(0, 6);

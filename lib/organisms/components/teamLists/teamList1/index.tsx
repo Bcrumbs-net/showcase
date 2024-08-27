@@ -49,7 +49,7 @@ const TeamSection = ({
           {...row}
           style={{ flexDirection: isAR ? 'row-reverse' : 'row' }}
         >
-          {model.children.map((team, index) => {
+          {model.children?.map((team, index) => {
             const teamMap: Record<string, string> = team.data.reduce(function (
               map,
               obj

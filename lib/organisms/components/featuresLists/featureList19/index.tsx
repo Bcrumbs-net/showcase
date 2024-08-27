@@ -13,7 +13,7 @@ interface WorkSectionProps {
   data: Record<string, string>;
 }
 const WorkSection = ({ model, isAR, data }: WorkSectionProps) => {
-  let featuresItems = [];
+  let featuresItems;
   if (model.children && model.children.length > 0) {
     featuresItems = model.children.map((featurehData, index) => {
       const featurehMap = convertDataModelToDataObject(featurehData) as Record<

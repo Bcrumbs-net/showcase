@@ -40,8 +40,8 @@ import tabbedImagesListResolver from './tabbedImagesList';
 import newsletterResolver from './newsletter';
 import forms from './forms';
 export interface ComponentsPropsType {
-  model: any;
-  modelId: number;
+  model?: any;
+  modelId?: number;
   isAR?: boolean;
 }
 
@@ -95,6 +95,8 @@ const ComponentsPool: {
 };
 
 const ComponentResolver = (props: ComponentsPropsType) => {
+  if(!props.modelId) return null;
+
   const targetComponent = ComponentsPool[props.modelId];
   return targetComponent ? targetComponent.render(props) : null;
 };

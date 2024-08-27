@@ -43,7 +43,7 @@ const FeatureSection = ({
           <Heading {...secHeading} content={data.subtitle} />
         </Box>
         <Box {...row}>
-          {model.children.map((item, index) => {
+          {model.children?.map((item, index) => {
             const featureMap: Record<string, string> = item.data.reduce(
               function (map, obj) {
                 map[obj.Key] = obj.Value;

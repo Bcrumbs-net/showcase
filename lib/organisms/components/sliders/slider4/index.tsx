@@ -50,7 +50,7 @@ const FeatureSlider = ({
   isAR,
   data,
 }: FeatureSliderProps) => {
-  const images = model.children.map((item, index) => {
+  const images = model.children?.map((item, index) => {
     const imageMap: Record<string, string> = item.data.reduce(function (
       map,
       obj

@@ -1,16 +1,16 @@
-import React from "react";
-import { Box, Text, Heading, Image, Container } from "../../../../atoms";
-import { GlideCarousel, GlideSlide } from "../../../../molecules";
+import React from 'react';
+import { Box, Text, Heading, Image, Container } from '../../../../atoms';
+import { GlideCarousel, GlideSlide } from '../../../../molecules';
 import {
   TestimonialSlideWrapper,
   TestimonialItem,
   TestimonialMeta,
   AuthorInfo,
   AuthorImage,
-} from "./style";
-import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
-import { TestimonialDataType } from "../../../types/testimonialTypes";
+} from './style';
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { TestimonialDataType } from '../../../types/testimonialTypes';
 
 interface TestimonialSectionProps {
   sectionWrapper: object;
@@ -39,7 +39,7 @@ const TestimonialSection = ({
   data,
 }: TestimonialSectionProps) => {
   const carouselOptions = {
-    type: "carousel",
+    type: 'carousel',
     autoplay: 6000,
     perView: 2,
     gap: 30,
@@ -63,7 +63,7 @@ const TestimonialSection = ({
             carouselSelector="testimonial__slider"
             controls={false}
             bullets={true}
-            numberOfBullets={data.subdata.length}
+            numberOfBullets={data.subdata?.length || 0}
           >
             <>
               {data.subdata &&
@@ -77,7 +77,10 @@ const TestimonialSection = ({
                           content={testimonialMap.title}
                           {...reviewTitle}
                         />
-                        <Text content={testimonialMap.description} {...review} />
+                        <Text
+                          content={testimonialMap.description}
+                          {...review}
+                        />
                         <TestimonialMeta>
                           <AuthorInfo>
                             <AuthorImage>
@@ -113,59 +116,59 @@ const TestimonialSection = ({
 
 TestimonialSection.defaultProps = {
   sectionWrapper: {
-    pt: ["60px", "80px", "90px", "100px", "100px"],
-    pb: ["60px", "80px", "90px", "100px", "100px"],
+    pt: ['60px', '80px', '90px', '100px', '100px'],
+    pb: ['60px', '80px', '90px', '100px', '100px'],
   },
   secTitleWrapper: {
-    mb: ["40px", "60px"],
+    mb: ['40px', '60px'],
   },
   secText: {
-    as: "span",
-    display: "block",
-    textAlign: "center",
-    fontSize: "14px",
-    letterSpacing: "0.15em",
-    fontWeight: "700",
-    color: "#2eb582",
-    mb: "12px",
+    as: 'span',
+    display: 'block',
+    textAlign: 'center',
+    fontSize: '14px',
+    letterSpacing: '0.15em',
+    fontWeight: '700',
+    color: '#2eb582',
+    mb: '12px',
   },
   secHeading: {
-    textAlign: "center",
-    fontSize: ["20px", "24px", "36px", "36px"],
-    fontWeight: "700",
-    color: "#0f2137",
-    letterSpacing: "-0.025em",
-    mb: "0",
-    ml: "auto",
-    mr: "auto",
-    lineHeight: "1.12",
-    width: "500px",
-    maxWidth: "100%",
+    textAlign: 'center',
+    fontSize: ['20px', '24px', '36px', '36px'],
+    fontWeight: '700',
+    color: '#0f2137',
+    letterSpacing: '-0.025em',
+    mb: '0',
+    ml: 'auto',
+    mr: 'auto',
+    lineHeight: '1.12',
+    width: '500px',
+    maxWidth: '100%',
   },
   reviewTitle: {
-    fontSize: ["15px", "16px"],
-    fontWeight: "500",
-    color: "#343d48",
-    lineHeight: "1.5",
-    mb: "13px",
+    fontSize: ['15px', '16px'],
+    fontWeight: '500',
+    color: '#343d48',
+    lineHeight: '1.5',
+    mb: '13px',
   },
   review: {
-    fontSize: ["16px", "19px"],
-    fontWeight: "300",
-    color: "#343d48",
-    lineHeight: "1.7",
+    fontSize: ['16px', '19px'],
+    fontWeight: '300',
+    color: '#343d48',
+    lineHeight: '1.7',
     mb: 0,
   },
   name: {
-    fontSize: ["14px", "16px"],
-    fontWeight: "500",
-    color: "#0f2137",
-    letterSpacing: "-0.025em",
-    mb: "8px",
+    fontSize: ['14px', '16px'],
+    fontWeight: '500',
+    color: '#0f2137',
+    letterSpacing: '-0.025em',
+    mb: '8px',
   },
   designation: {
-    fontSize: ["12px", "14px"],
-    color: "#6f7a87",
+    fontSize: ['12px', '14px'],
+    color: '#6f7a87',
     mb: 0,
   },
 };

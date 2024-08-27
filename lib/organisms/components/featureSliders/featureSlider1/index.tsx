@@ -21,7 +21,7 @@ const FeatureSlider = ({
   model,
   data,
 }: FeatureSliderProps) => {
-  let images = [];
+  let images;
   if (model.children && model.children.length > 0) {
     images = model.children.map((featureSlider, index) => {
       const sliderMap = convertDataModelToDataObject(featureSlider) as Record<

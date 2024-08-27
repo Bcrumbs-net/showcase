@@ -33,7 +33,7 @@ const Footer = ({
 }: FooterProps) => {
   let socialModel;
   if (model.children && model.children.length > 0) {
-    const socialModelQuery = model.children.filter((m) => m.modelId == 403193);
+    const socialModelQuery = model.children?.filter((m) => m.modelId == 403193);
     if (socialModelQuery && socialModelQuery.length > 0)
       socialModel = socialModelQuery[0];
   }
@@ -96,11 +96,11 @@ const Footer = ({
                                   style={{ textAlign: isAR ? 'right' : 'left' }}
                                 >
                                   {menuItemMap && menuItemMap.url ? (
-                                    <Link href={menuItemMap.url}>
-                                      <a className="ListItem">
-                                        {menuItemMap.text}
-                                      </a>
-                                    </Link>
+                                    (<Link href={menuItemMap.url} className="ListItem">
+
+                                      {menuItemMap.text}
+
+                                    </Link>)
                                   ) : null}
                                 </ListItem>
                               );

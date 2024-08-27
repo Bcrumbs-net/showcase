@@ -78,7 +78,7 @@ export const GlideCarousel = ({
   }
 
   // number of bullets loop
-  const totalBullets = [];
+  const totalBullets: number[] = [];
   for (let i = 0; i < numberOfBullets; i++) {
     totalBullets.push(i);
   }

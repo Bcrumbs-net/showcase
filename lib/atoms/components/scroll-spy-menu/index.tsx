@@ -108,7 +108,7 @@ export const ScrollSpyMenu = ({
           index={index}
           itemData={itemData}
           toggleDrawer={toggleDrawer}
-          drawerClose={drawerClose}
+          drawerClose={drawerClose || false}
         />
       ))}
     </Scrollspy>

@@ -94,7 +94,7 @@ const VisitorSection = ({
                 <a href={data.button_url}>
                   <Button title={data.button_label} {...btnStyle} />
                 </a>
-              ) : null
+              ) : undefined
             }
           />
         </Box>

@@ -17,7 +17,7 @@ interface MilestoneBlockProps {
   data: Record<string, string>;
 }
 const MilestoneBlock = ({ model, isAR, data }: MilestoneBlockProps) => {
-  let milestoneItems = [];
+  let milestoneItems;
   if (model.children && model.children.length > 0) {
     milestoneItems = model.children.map((milestoneData, index) => {
       const milestoneMap = convertDataModelToDataObject(milestoneData) as Record<string, string>;
@@ -31,11 +31,11 @@ const MilestoneBlock = ({ model, isAR, data }: MilestoneBlockProps) => {
           <Text content={data.title} />
           <Heading content={data.amount} />
           <Text content={data.text} />
-          <Link href="{data.meetOurDonateLabel}">
-            <a className="learn__more-btn">
-              <span className="hyphen" />
-              <span className="btn_text">{data.meetOurDonateLabel}</span>
-            </a>
+          <Link href="{data.meetOurDonateLabel}" className="learn__more-btn">
+
+            <span className="hyphen" />
+            <span className="btn_text">{data.meetOurDonateLabel}</span>
+
           </Link>
         </MilestoneCard>
       </BlockWrapper>

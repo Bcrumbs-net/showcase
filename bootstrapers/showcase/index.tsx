@@ -6,7 +6,7 @@ const ShowcaseBootstraper = ({
   path,
   data,
   footer,
-  header
+  header,
 }: {
   config: Config;
   path: string;
@@ -19,7 +19,7 @@ const ShowcaseBootstraper = ({
 
   if (path && config.pages) {
     const targetPageArr = config.pages.filter(
-      (m) => m.path.toLowerCase() == path.toLowerCase()
+      (m) => m.path && m.path.toLowerCase() == path.toLowerCase()
     );
 
     subConfig = targetPageArr[0];

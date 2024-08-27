@@ -33,7 +33,7 @@ const Footer = ({
   isAR,
   data,
 }: FooterProps) => {
-  let footerItems = [];
+  let footerItems;
   if (model.children && model.children.length > 0) {
     footerItems = model.children.map((footerData) => {
       const footerMap = convertDataModelToDataObject(footerData) as Record<
@@ -56,8 +56,8 @@ const Footer = ({
             />
             <Text className="text" content={data.phone1} />
             <Text className="text" content={data.phone2} />
-            <Link href={data.label_url}>
-              <a className="mail">{data.label}</a>
+            <Link href={data.label_url} className="mail">
+              {data.label}
             </Link>
             <SelectWrapper>
               <select aria-label="language switcher">
@@ -80,7 +80,7 @@ const Footer = ({
           </Box>
           {/* End of logo column */}
           <Box className="col-two" {...colTwo}>
-            {model.children.map((menuItem) => {
+            {model.children?.map((menuItem) => {
               const itemMenuMap = convertDataModelToDataObject(
                 menuItem
               ) as Record<string, string>;
@@ -96,14 +96,14 @@ const Footer = ({
                     content={itemMenuMap.text}
                   />
                   <List>
-                    {menuItem.children.map((submenuItem) => {
+                    {menuItem.children?.map((submenuItem) => {
                       const subItemMenuMap = convertDataModelToDataObject(
                         submenuItem
                       ) as Record<string, string>;
                       return (
                         <ListItem key={`list__item-${submenuItem.id}`}>
                           <Link href={subItemMenuMap.link}>
-                            <a>{subItemMenuMap.text}</a>
+                            {subItemMenuMap.text}
                           </Link>
                         </ListItem>
                       );
@@ -126,8 +126,8 @@ const Footer = ({
           <SocialList>
             {socialLinks.map((item) => (
               <li className={item.name} key={`social__link-key${item.id}`}>
-                <Link href={item.link}>
-                  <a aria-label="social share link">{item.icon}</a>
+                <Link href={item.link} aria-label="social share link">
+                  {item.icon}
                 </Link>
               </li>
             ))}

@@ -30,7 +30,7 @@ interface FundraiserSectionProps {
   data: Record<string, string>;
 }
 const FundraiserSection = ({ model, isAR, data }: FundraiserSectionProps) => {
-  let fundraiserItems = [];
+  let fundraiserItems;
   if (model.children && model.children.length > 0) {
     fundraiserItems = model.children.map((fundraiserData) => {
       const fundraiserMap = convertDataModelToDataObject(
@@ -54,10 +54,9 @@ const FundraiserSection = ({ model, isAR, data }: FundraiserSectionProps) => {
             <TextWrapper>
               <TextAndLink>
                 <Heading as="h4" content={item.subject} />
-                <Link href="#1">
-                  <a className="text_btn">
-                    SEE ALL <i className="flaticon-next" />
-                  </a>
+                <Link href="#1" className="text_btn">
+                  SEE ALL<i className="flaticon-next" />
+
                 </Link>
               </TextAndLink>
               <Heading as="h3" content={item.title} />
@@ -89,25 +88,25 @@ const FundraiserSection = ({ model, isAR, data }: FundraiserSectionProps) => {
                 <ShareList>
                   <Item>Share on</Item>
                   <Item>
-                    <Link href={item.social_media_url}>
-                      <a
-                        target="_blank"
-                        className="twitter"
-                        aria-label="social share link"
-                      >
-                        <Icon icon={twitter} />
-                      </a>
+                    <Link
+                      href={item.social_media_url}
+                      target="_blank"
+                      className="twitter"
+                      aria-label="social share link">
+
+                      <Icon icon={twitter} />
+
                     </Link>
                   </Item>
                   <Item>
-                    <Link href={item.social_media_2_url}>
-                      <a
-                        target="_blank"
-                        className="facebook"
-                        aria-label="social share link"
-                      >
-                        <Icon icon={facebookSquare} />
-                      </a>
+                    <Link
+                      href={item.social_media_2_url}
+                      target="_blank"
+                      className="facebook"
+                      aria-label="social share link">
+
+                      <Icon icon={facebookSquare} />
+
                     </Link>
                   </Item>
                 </ShareList>

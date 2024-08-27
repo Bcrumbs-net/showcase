@@ -1,7 +1,12 @@
 import { useContext } from 'react';
 import Link from 'next/link';
 import {
-  Button, Drawer, NavbarWrapper, DrawerContext, Box, Container,
+  Button,
+  Drawer,
+  NavbarWrapper,
+  DrawerContext,
+  Box,
+  Container,
   HamburgMenu,
 } from '../../../../atoms';
 import { ScrollSpyMenu, Logo } from '../../../../molecules';
@@ -27,7 +32,7 @@ const Navbar = ({
   menuWrapper,
   model,
   data,
-  isAR
+  isAR,
 }: NavbarProps) => {
   const { state, dispatch } = useContext(DrawerContext);
   // Toggle drawer
@@ -38,7 +43,7 @@ const Navbar = ({
   };
 
   return (
-    <NavbarWrapper {...navbarStyle} className={"saas_navbar"}>
+    <NavbarWrapper {...navbarStyle} className={'saas_navbar'}>
       <Container>
         <Box {...row}>
           <Logo
@@ -56,16 +61,13 @@ const Navbar = ({
             className="logo-alt"
           />
           <Box {...menuWrapper}>
-            <ScrollSpyMenu
-              className="main_menu"
-              offset={-70}
-              model={model}
-            />
-            <Link href={data.ctaLink}>
-              <a className="navbar_button">
+            <ScrollSpyMenu className="main_menu" offset={-70} model={model} />
+            {data.ctaLink ? (
+              <Link href={data.ctaLink} className="navbar_button">
                 <Button {...button} title={data.ctaLabel} />
-              </a>
-            </Link>
+              </Link>
+            ) : undefined}
+
             <Drawer
               width="420px"
               placement="right"
@@ -79,11 +81,11 @@ const Navbar = ({
                 offset={-100}
                 model={model}
               />
-              <Link href={data.ctaLink}>
-                <a className="navbar_drawer_button">
+              {data.ctaLink ? (
+                <Link href={data.ctaLink} className="navbar_drawer_button">
                   <Button {...button} title={data.ctaLabel} />
-                </a>
-              </Link>
+                </Link>
+              ) : undefined}
             </Drawer>
           </Box>
         </Box>

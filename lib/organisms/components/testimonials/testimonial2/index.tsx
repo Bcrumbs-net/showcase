@@ -21,7 +21,7 @@ const TestimonialSection = ({
   model,
   data,
 }: TestimonialSectionProps) => {
-  let testimonialLst = [];
+  let testimonialLst;
   if (data.subdata && data.subdata.length > 0) {
     testimonialLst = data.subdata.flatMap((testimonialData) => {
       return {

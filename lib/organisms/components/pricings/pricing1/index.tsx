@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Icon from 'react-icons-kit';
-import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
+import {
+  Box,
+  Text,
+  Heading,
+  Image,
+  Container,
+  Button,
+} from '../../../../atoms';
 import { GlideCarousel, GlideSlide } from '../../../../molecules';
 import PricingTable, {
   PricingHead,
@@ -11,7 +18,9 @@ import PricingTable, {
   PricingButtonWrapper,
 } from './style';
 import { checkmark } from 'react-icons-kit/icomoon/checkmark';
-import withModelToDataObjProp, { convertDataModelToDataObject } from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import withModelToDataObjProp, {
+  convertDataModelToDataObject,
+} from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
 import { GraphContent } from '@bcrumbs.net/bc-api';
 
 interface PricingSectionProps {
@@ -52,7 +61,10 @@ const PricingSection = ({
   data,
 }: PricingSectionProps) => {
   const [state, setState] = useState({
-    data: model.children.length > 0 ? model.children[0].name : null,
+    data:
+      model.children && model.children.length > 0
+        ? model.children[0].name
+        : null,
   });
   /*const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -112,8 +124,11 @@ const PricingSection = ({
           <Text {...secText} content={data.title} />
           <Heading {...secHeading} content={data.subtitle} />
           <PricingButtonWrapper>
-            {model.children.map((item, index) => {
-              const pricingTable = convertDataModelToDataObject(item) as Record<string, string>;
+            {model.children?.map((item, index) => {
+              const pricingTable = convertDataModelToDataObject(item) as Record<
+                string,
+                string
+              >;
               return (
                 <Button
                   key={`PricingTabBtn${index}`}
@@ -132,11 +147,13 @@ const PricingSection = ({
             controls={false}
           >
             <>
-              {model.children.find(m => m.name == data1) &&
+              {model.children?.find((m) => m.name == data1) &&
                 model.children
-                  .find(m => m.name == data1)
-                  .children.map((item, index) => {
-                    const pricingTable = convertDataModelToDataObject(item) as Record<string, string>;
+                  ?.find((m) => m.name == data1)
+                  ?.children?.map((item, index) => {
+                    const pricingTable = convertDataModelToDataObject(
+                      item
+                    ) as Record<string, string>;
                     return (
                       //@ts-ignore
                       <GlideSlide key={`pricing-table-${index}`}>
@@ -183,7 +200,9 @@ const PricingSection = ({
                           <PricingList>
                             {item.children &&
                               item.children.map((subitem, subIndex) => {
-                                const featureMap = convertDataModelToDataObject(subitem) as Record<string, string>;
+                                const featureMap = convertDataModelToDataObject(
+                                  subitem
+                                ) as Record<string, string>;
                                 return (
                                   <ListItem
                                     key={`pricing-table-list-${subIndex}`}
@@ -212,8 +231,6 @@ const PricingSection = ({
     </Box>
   );
 };
-
-
 
 PricingSection.defaultProps = {
   sectionWrapper: {

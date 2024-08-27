@@ -40,7 +40,7 @@ const BannerSection = ({
           title={data.ctaLabel}
           {...btnStyle}
           onClick={() => {
-            window.location.href = data.ctaUrl;
+            if (data.ctaUrl) window.location.href = data.ctaUrl;
           }}
         />
       ) : null}
@@ -49,7 +49,7 @@ const BannerSection = ({
           title={data.secCtaLabel}
           variant="textButton"
           onClick={() => {
-            window.location.href = data.secCtaBtnUrl;
+            if (data.secCtaBtnUrl) window.location.href = data.secCtaBtnUrl;
           }}
           icon={
             isAR ? (
@@ -70,11 +70,7 @@ const BannerSection = ({
       id={model.name}
     >
       <BannerMask>
-        {data.floatingParticles == true ? (
-          <ParticlesComponent />
-        ) : (
-          null
-        )}
+        {data.floatingParticles == true ? <ParticlesComponent /> : null}
         <Container>
           <Box className="row" {...row}>
             <Box
@@ -105,7 +101,6 @@ const BannerSection = ({
     </BannerWrapper>
   );
 };
-
 
 BannerSection.defaultProps = {
   row: {

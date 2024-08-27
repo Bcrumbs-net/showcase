@@ -51,7 +51,7 @@ const WorkHistory = ({
           </Box>
           <Box className="col" {...col}>
             <CounterUpArea>
-              {model.children.map((workHistory, index) => {
+              {model.children?.map((workHistory, index) => {
                 const workHistoryMap: Record<string, string> =
                   workHistory.data.reduce(function (map, obj) {
                     map[obj.Key] = obj.Value;
@@ -79,7 +79,7 @@ const WorkHistory = ({
                 <Text content="& Much More" />
                 {data.btnUrl ? (
                   <Link href={data.btnUrl}>
-                    <a>View work history</a>
+                    View work history
                   </Link>
                 ) : null}
               </Card>

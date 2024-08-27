@@ -29,7 +29,7 @@ const SocialProfile = ({
   return (
     <SocialProfileWrapper className={addAllClasses.join(" ")}>
       {model.children &&
-        model.children.map((item, index) => {
+        model.children?.map((item, index) => {
           const socialLink: Record<string, string> = item.data.reduce(function (
             map,
             obj
@@ -43,13 +43,13 @@ const SocialProfile = ({
               key={`social-item-${index}`}
               className="social_profile_item"
             >
-              <Link href={socialLink.url || "#"}>
-                <a aria-label="social icon">
-                  {/*<Icon
-                    icon={socialLink.icon || socialDribbbleOutline}
-                    size={iconSize || 22}
-                  />*/}
-                </a>
+              <Link href={socialLink.url || "#"} aria-label="social icon">
+
+                {/*<Icon
+                  icon={socialLink.icon || socialDribbbleOutline}
+                  size={iconSize || 22}
+                />*/}
+
               </Link>
             </SocialProfileItem>
           );

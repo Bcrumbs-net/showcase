@@ -199,7 +199,7 @@ const PortfolioShowcase = ({
                                               portfolioItem.featuredLink || "#"
                                             }
                                           >
-                                            <a>{portfolioItem.featuredIn}</a>
+                                            {portfolioItem.featuredIn}
                                           </Link>
                                         </MetaItem>
                                       ) : (

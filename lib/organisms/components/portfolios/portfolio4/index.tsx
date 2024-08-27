@@ -19,7 +19,7 @@ interface BlogSectionProps {
   data: Record<string, string>;
 }
 const BlogSection = ({ model, isAR, data }: BlogSectionProps) => {
-  let blogsItems = [];
+  let blogsItems;
   if (model.children && model.children.length > 0) {
     blogsItems = model.children.map((blogData) => {
       const blogMap = convertDataModelToDataObject(blogData) as Record<string, string>;
@@ -34,17 +34,17 @@ const BlogSection = ({ model, isAR, data }: BlogSectionProps) => {
             <Heading content={data.title} />
             <Text>
               {data.subtitle}
-              <Link href={data.subtitle_url}>
-                <a className="link">{data.subtitle_label}</a>
+              <Link href={data.subtitle_url} className="link">
+                {data.subtitle_label}
               </Link>
             </Text>
           </TitleArea>
           <LinkArea>
-            <Link href={data.viewAll_url}>
-              <a className="text__btn">
-                <span className="text">{data.viewAll_label}</span>
-                <span className="arrow" />
-              </a>
+            <Link href={data.viewAll_url} className="text__btn">
+
+              <span className="text">{data.viewAll_label}</span>
+              <span className="arrow" />
+
             </Link>
           </LinkArea>
         </SectionHeader>

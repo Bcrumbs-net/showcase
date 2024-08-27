@@ -114,13 +114,13 @@ const PaymentSection = ({
               description={<Text content={data.description} {...description} className="description" />}
               button={
                 <Link href={data.href}>
-                  <a>
-                    <Button
-                      title={data.button_label}
-                      {...button}
-                      {...btnStyle}
-                    />
-                  </a>
+
+                  <Button
+                    title={data.button_label}
+                    {...button}
+                    {...btnStyle}
+                  />
+
                 </Link>
               }
             />

@@ -1,34 +1,32 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 import {
   Drawer,
   NavbarWrapper,
   DrawerContext,
   HamburgMenu,
-} from "../../../../atoms";
-import { ScrollSpyMenu, Logo } from "../../../../molecules";
-import { Container } from "./style";
+} from '../../../../atoms';
+import { ScrollSpyMenu, Logo } from '../../../../molecules';
+import { Container } from './style';
 // import { openModal, closeModal } from '@redq/reuse-modal';
-import { GraphContent } from "@bcrumbs.net/bc-api";
-import withModelToDataObjProp from "../../../../../bootstrapers/showcase/utils/withModelToDataObjProp";
-import { NavbarDataType } from "../../../types/navbarTypes";
+import { GraphContent } from '@bcrumbs.net/bc-api';
+import withModelToDataObjProp from '../../../../../bootstrapers/showcase/utils/withModelToDataObjProp';
+import { NavbarDataType } from '../../../types/navbarTypes';
 
 // Default close button for modal
-const CloseModalButton = () =>
-  null;
-  // <Button
-  //   className="modalCloseBtn"
-  //   variant="fab"
-  //   onClick={() => closeModal()}
-  //   icon={<i className="flaticon-plus-symbol" />}
-  // />
-const CloseModalButtonAlt = () =>
-  null;
-  // <Button
-  //   className="modalCloseBtn alt"
-  //   variant="fab"
-  //   onClick={() => closeModal()}
-  //   icon={<i className="flaticon-plus-symbol" />}
-  // />
+const CloseModalButton = () => null;
+// <Button
+//   className="modalCloseBtn"
+//   variant="fab"
+//   onClick={() => closeModal()}
+//   icon={<i className="flaticon-plus-symbol" />}
+// />
+const CloseModalButtonAlt = () => null;
+// <Button
+//   className="modalCloseBtn alt"
+//   variant="fab"
+//   onClick={() => closeModal()}
+//   icon={<i className="flaticon-plus-symbol" />}
+// />
 interface NavbarProps {
   wrapperStyle2?: object;
   navbarStyle?: object;
@@ -92,7 +90,7 @@ const Navbar = ({
   // Toggle drawer
   const toggleHandler = () => {
     dispatch({
-      type: "TOGGLE",
+      type: 'TOGGLE',
     });
   };
 
@@ -105,7 +103,7 @@ const Navbar = ({
           title={data.logoTitle}
           logoStyle={logoStyle}
         />
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           {/* <Button
             variant="textButton"
             onClick={handleSearchModal}
@@ -125,11 +123,7 @@ const Navbar = ({
             open={state.isOpen}
             toggleHandler={toggleHandler}
           >
-            <ScrollSpyMenu
-              drawerClose={true}
-              offset={-100}
-              model={model}
-            />
+            <ScrollSpyMenu drawerClose={true} offset={-100} model={model} />
           </Drawer>
         </div>
       </Container>
@@ -139,14 +133,14 @@ const Navbar = ({
 
 Navbar.defaultProps = {
   navbarStyle: {
-    minHeight: "70px",
+    minHeight: '70px',
   },
   logoStyle: {
-    width: ["100px", "140px"],
+    width: ['100px', '140px'],
   },
   buttonStyle: {
-    minHeight: "70px",
-    color: "#fff",
+    minHeight: '70px',
+    color: '#fff',
   },
 };
 

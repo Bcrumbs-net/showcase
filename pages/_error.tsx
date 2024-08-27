@@ -3,8 +3,10 @@ import React from 'react';
 import Head from 'next/head';
 import ErrorSec from '../lib/organisms/components/errors';
 import { ResetCSS } from '../public/assets/css/style';
+import * as Sentry from '@sentry/nextjs';
+import Error from 'next/error';
 
-class Error extends React.Component<{ statusCode?: string }> {
+class ErrorPage extends React.Component<{ statusCode?: string }> {
   static async getInitialProps({ res, err }) {
     const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
     return { statusCode };
@@ -24,11 +26,19 @@ class Error extends React.Component<{ statusCode?: string }> {
         {/*@ts-ignore: Unreachable code error */}
         <ResetCSS />
         <div>
-          <ErrorSec ></ErrorSec>
+          <ErrorSec></ErrorSec>
         </div>
       </>
     );
   }
 }
 
-export default Error;
+ErrorPage.getInitialProps = async (contextData) => {
+  await Sentry.captureUnderscoreErrorException(contextData);
+
+  // ...other getInitialProps code
+
+  return Error.getInitialProps(contextData as any);
+};
+
+export default ErrorPage;

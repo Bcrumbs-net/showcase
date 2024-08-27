@@ -2,7 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 import Icon from 'react-icons-kit';
 import Fade from 'react-reveal/Fade';
-import { Box, Text, Heading, Image, Container, Button } from '../../../../atoms';
+import {
+  Box,
+  Text,
+  Heading,
+  Image,
+  Container,
+  Button,
+} from '../../../../atoms';
 import { BannerWrapper, DiscountWrapper, DiscountLabel } from './style';
 import BannerImage from './banner-image.png';
 import { ic_play_circle_filled } from 'react-icons-kit/md/ic_play_circle_filled';
@@ -39,7 +46,7 @@ const BannerSection = ({
   fillButton,
   model,
   isAR,
-  data
+  data,
 }: BannerSectionProps) => {
   return (
     <BannerWrapper id={model.name}>
@@ -50,36 +57,27 @@ const BannerSection = ({
             <DiscountWrapper>
               <DiscountLabel>
                 <Text {...discountAmount} content={data.discount} />
-                <Text
-                  {...discountText}
-                  content={data.discountLabel}
-                />
+                <Text {...discountText} content={data.discountLabel} />
               </DiscountLabel>
             </DiscountWrapper>
-            <Heading
-              {...title}
-              content={data.title}
-            />
-            <Text
-              {...description}
-              content={data.description}
-            />
+            <Heading {...title} content={data.title} />
+            <Text {...description} content={data.description} />
             <Box {...buttonWrapper}>
-              <Link href={data.ctaUrl}>
-                <a>
+              {data.ctaUrl ? (
+                <Link href={data.ctaUrl}>
                   <Button {...fillButton} title={data.ctaLabel} />
-                </a>
-              </Link>
-              <Link href={data.secCtaBtnUrl}>
-                <a>
+                </Link>
+              ) : undefined}
+              {data.secCtaBtnUrl ? (
+                <Link href={data.secCtaBtnUrl}>
                   <Button
                     {...button}
                     title={data.secCtaLabel}
                     icon={<Icon icon={ic_play_circle_filled} size={30} />}
                     iconPosition="left"
                   />
-                </a>
-              </Link>
+                </Link>
+              ) : undefined}
             </Box>
           </Box>
           <Box {...imageWrapper}>
@@ -92,7 +90,6 @@ const BannerSection = ({
     </BannerWrapper>
   );
 };
-
 
 BannerSection.defaultProps = {
   row: {

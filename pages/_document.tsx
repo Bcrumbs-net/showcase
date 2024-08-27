@@ -1,23 +1,42 @@
 /* eslint-disable @next/next/next-script-for-ga */
 /* eslint-disable react/display-name */
 import { Fragment, ReactElement } from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
-//@ts-ignore
-export default class CustomDocument extends Document<{
-  styleTags: ReactElement[];
-}> {
-  static getInitialProps({ renderPage, req }) {
+export default class CustomDocument extends Document {
+  static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
-    const domain = req.headers['host'];
-    const page = renderPage(
-      (App) => (props) => sheet.collectStyles(<App {...props} />)
-    );
+    const originalRenderPage = ctx.renderPage;
 
-    const styleTags = sheet.getStyleElement();
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        });
 
-    return { ...page, styleTags, domain };
+      const initialProps = await Document.getInitialProps(ctx);
+      const styleTags = sheet.getStyleElement();
+
+      return {
+        ...initialProps,
+        styles: (
+          <Fragment>
+            {initialProps.styles}
+            {styleTags}
+          </Fragment>
+        ),
+      };
+    } finally {
+      sheet.seal();
+    }
   }
 
   render() {
@@ -33,9 +52,9 @@ export default class CustomDocument extends Document<{
               })(window,document,'script','dataLayer','GTM-NRPT8DK');	`,
             }}
           />
-          {/*<link rel="shortcut icon" type="image/x-icon" href={FavIcon} />*/}
         </Head>
         <body>
+          <div id="fb-root"></div>
           <Main />
           <NextScript />
         </body>

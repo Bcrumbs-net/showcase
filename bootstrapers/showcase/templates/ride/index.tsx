@@ -22,10 +22,14 @@ export const RideTheme = ({
   data: GraphContent[];
 }) => {
   const data = queryData[0];
-  const rootModelData: Record<string, string> = data.data.reduce(function (map, obj) {
+  const rootModelData: Record<string, string> = data.data.reduce(function (
+    map,
+    obj
+  ) {
     map[obj.Key] = obj.Value;
     return map;
-  }, {});
+  },
+  {});
   const isAR = config.lang === 'AR';
 
   return (

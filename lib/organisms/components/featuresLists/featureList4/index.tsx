@@ -35,7 +35,7 @@ const FeatureSection = ({
   model,
   data,
 }: FeatureSectionProps) => {
-  let featureItems = [];
+  let featureItems;
   if (model.children && model.children.length > 0) {
     featureItems = model.children.map((featureData, index) => {
       const featureMap = convertDataModelToDataObject(featureData) as Record<

@@ -57,7 +57,7 @@ const QualitySection = ({
           </Box>
         </Box>
         <Box className="row" {...row} {...textArea}>
-          {model.children.map((qualitySection, index) => {
+          {model.children?.map((qualitySection, index) => {
             const qualitySectionMap: Record<string, string> =
               qualitySection.data.reduce(function (map, obj) {
                 map[obj.Key] = obj.Value;

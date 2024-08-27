@@ -16,7 +16,7 @@ const BranchSection = ({ model, isAR, data }: BranchSectionProps) => {
   const title = (text) => {
     return { __html: text };
   };
-  let branchItems = [];
+  let branchItems;
   if (model.children && model.children.length > 0) {
     branchItems = model.children.map((branchData, index) => {
       const branchMap = convertDataModelToDataObject(branchData) as Record<string, string>;
@@ -42,11 +42,11 @@ const BranchSection = ({ model, isAR, data }: BranchSectionProps) => {
                 <Heading as="h4" content={item.slogan} />
                 <h2 dangerouslySetInnerHTML={title(item.title)} />
                 <Text content={item.description} />
-                <Link href={item.linkUrl}>
-                  <a className="learn__more-btn">
-                    <span className="hyphen" />
-                    <span className="btn_text">{item.linkText}</span>
-                  </a>
+                <Link href={item.linkUrl} className="learn__more-btn">
+
+                  <span className="hyphen" />
+                  <span className="btn_text">{item.linkText}</span>
+
                 </Link>
               </div>
             </ContentWrapper>

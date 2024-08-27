@@ -48,12 +48,12 @@ const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
           <Heading content={data.heading} />
           <Heading as="h4" content={data.secHeading} />
           <Text content={data.description} />
-          <Link href={data.ctaUrl}>
-            <a className="learn__more-btn">
+          {data.ctaUrl ? (
+            <Link href={data.ctaUrl} className="learn__more-btn">
               <span className="hyphen" />
               <span className="btn_text">{data.ctaLabel}</span>
-            </a>
-          </Link>
+            </Link>
+          ) : undefined}
         </TextArea>
         <ImageArea>
           <GlideCarousel
@@ -63,7 +63,7 @@ const BannerSection = ({ model, isAR, data }: BannerSectionProps) => {
             prevButton={<span className="prev_arrow" />}
           >
             <>
-              {data.subdata.map((slideData, index) => {
+              {data.subdata?.map((slideData, index) => {
                 return (
                   // @ts-ignore
                   <GlideSlide key={slideData.id}>

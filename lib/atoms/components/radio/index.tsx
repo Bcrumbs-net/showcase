@@ -23,7 +23,7 @@ export interface RadioProps {
     /** disabled of the radio field */
     disabled?: boolean;
     isMaterial?: boolean;
-    onChange?: (value: string) => void;
+    onChange?: (value?: string) => void;
 }
 
 export const Radio = ({

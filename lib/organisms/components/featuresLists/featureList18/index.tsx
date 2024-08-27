@@ -26,7 +26,7 @@ const PromotionBlock = ({
   isAR,
   data,
 }: PromotionBlockProps) => {
-  let promotionItems = [];
+  let promotionItems;
   if (model.children && model.children.length > 0) {
     promotionItems = model.children.map((promotionData, index) => {
       const promotionMap = convertDataModelToDataObject(
@@ -51,11 +51,11 @@ const PromotionBlock = ({
                   <Item key={`list_key${item.id}`}>{item.title}</Item>
                 ))}
               </List>
-              <Link href="{data.LearnMoreLabel}">
-                <a className="learn__more-btn">
-                  <span className="hyphen" />
-                  <span className="btn_text">{data.LearnMoreLabel}</span>
-                </a>
+              <Link href="{data.LearnMoreLabel}" className="learn__more-btn">
+
+                <span className="hyphen" />
+                <span className="btn_text">{data.LearnMoreLabel}</span>
+
               </Link>
             </ContentWrapper>
           </Box>

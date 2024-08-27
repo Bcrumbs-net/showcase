@@ -56,12 +56,14 @@ export const AppTheme = ({
   header?: GraphContent;
 }) => {
   const data = queryData[0];
-  const rootModelData = convertDataModelToDataObject(data) as Record<string, string>;
+  const rootModelData = convertDataModelToDataObject(data) as Record<
+    string,
+    string
+  >;
 
   const filteredData = filterData(data.children, config);
 
   const isAR = config.lang === 'AR';
-
 
   return (
     <>
@@ -94,15 +96,15 @@ export const AppTheme = ({
           {/*@ts-ignore: Unreachable code error*/}
           <GlobalStyle />
           <AppWrapper>
-            {header && (
+            {header && header.modelId ? (
               <ComponentResolver
                 key={`HeaderComponent`}
                 modelId={header.modelId}
                 model={header}
                 isAR={isAR}
               />
-            )}
-            {filteredData.map((model: any, index: number) => (
+            ) : undefined}
+            {filteredData?.map((model: any, index: number) => (
               <ComponentResolver
                 key={`BCComponent${index}`}
                 modelId={model.modelId}
@@ -110,17 +112,15 @@ export const AppTheme = ({
                 isAR={isAR}
               />
             ))}
-            {footer && (
+            {footer && footer.modelId ? (
               <ComponentResolver
                 key={`FooterComponent`}
                 modelId={footer.modelId}
                 model={footer}
                 isAR={isAR}
               />
-            )}
-            {config.whitlabel ? (
-              null
-            ) : <BCLink />}
+            ) : undefined}
+            {config.whitlabel ? null : <BCLink />}
             {rootModelData.whatsappPhone ? (
               <WhatsAppLink phoneNumber={rootModelData.whatsappPhone} />
             ) : null}

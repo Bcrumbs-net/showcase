@@ -30,9 +30,9 @@ export function convertDataModelToDataObject(
 
 export function convertChildrenModelToDataObject(
   model: GraphContent
-): Record<string, string | unknown>[] {
-  return model.children.map((subModel) => {
-    let subdata: Record<string, string | unknown>[] = undefined;
+): Record<string, string | unknown>[] | undefined {
+  return model.children?.map((subModel) => {
+    let subdata: Record<string, string | unknown>[] | undefined = undefined;
     if (subModel.children) {
       subdata = convertChildrenModelToDataObject(subModel);
     }
@@ -47,7 +47,7 @@ const withModelToDataObjProp = (Component: React.FunctionComponent<any>) => {
     return (
       <Component
         {...props}
-        data={props.data ?? convertDataModelToDataObject(props.model)}
+        data={props.data ?? convertDataModelToDataObject(props.model!)}
       />
     );
   }
