@@ -6,6 +6,10 @@ trigger:
 - master
 - develop
 
+variables:
+- name: SENTRY_AUTH_TOKEN
+  value: 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
+
 stages:
 - stage: Build
   displayName: Build and push stage

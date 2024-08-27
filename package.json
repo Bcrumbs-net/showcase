@@ -26,6 +26,7 @@
     "@datadog/browser-rum": "^5.20.0",
     "@glidejs/glide": "^3.3.0",
     "@redq/reuse-modal": "^2.0.0",
+    "@sentry/nextjs": "^8.27.0",
     "apollo": "^2.33.9",
     "apollo-link-rest": "^0.9.0-rc.1",
     "countries-list": "^3.1.0",
