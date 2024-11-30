@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { AppProps } from 'next/app';
 import { ApolloClient } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
