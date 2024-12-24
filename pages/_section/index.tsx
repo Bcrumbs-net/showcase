@@ -47,7 +47,8 @@ export const RenderSection = ({
         templateContextId,
         root: 0,
         pages: undefined,
-        whitlabel: true
+        whitlabel: true,
+        modelId: 0, // For now this property is not used
       }}
       path={""}
       templateId={templateId}
@@ -57,10 +58,12 @@ export const RenderSection = ({
           data: [],
           name: 'rootContent',
           id: 0,
+          iId: 0,
           title: 'rootContent',
           online: true,
           metaDescription: '',
           priority: 0,
+          modelId: 0
         },
       ]}
     />

@@ -22,7 +22,7 @@
   "homepage": "https://github.com/Bcrumbs-net/showcase#readme",
   "dependencies": {
     "@apollo/client": "^3.9.5",
-    "@bcrumbs.net/bc-api": "^0.0.20",
+    "@bcrumbs.net/bc-api": "^0.0.31",
     "@datadog/browser-rum": "^5.20.0",
     "@glidejs/glide": "^3.3.0",
     "@redq/reuse-modal": "^2.0.0",
@@ -50,6 +50,7 @@
     "react-icons": "^4.2.0",
     "react-icons-kit": "^1.2.1",
     "react-image-gallery": "^0.8.18",
+    "react-markdown": "^9.0.1",
     "react-particles-js": "^2.6.0",
     "react-phone-number-input": "^3.3.9",
     "react-redux": "^7.2.6",
