@@ -8,14 +8,16 @@ import {
 } from '../bootstrapers/showcase/utils';
 import Error from './_error';
 
+
 export async function getServerSideProps({ req, query }) {
   // Fetching configuration
   const domain = query.host || req.headers['host'];
   const targetDomain = checkIfKnownDomain(domain);
-  const path = query.path;
+  const path = req.url?.split('?')[0];
 
   let config;
   let contents;
+
   let headerArr;
   let footerArr;
 
@@ -99,17 +101,7 @@ export const TemplateRouter = ({
     path += `/${query.path2}`;
   }
 
-  if (!config || !data) {
-    return <Error />;
-  }
-
-  if (
-    path &&
-    (!config.pages ||
-      !config.pages.some(
-        (m) => m.path && m.path.toLowerCase() == path.toLowerCase()
-      ))
-  ) {
+  if (!config || !data || data.length === 0 || !data[0]) {
     return <Error />;
   }
 

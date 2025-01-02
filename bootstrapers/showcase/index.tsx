@@ -23,8 +23,10 @@ const ShowcaseBootstraper = ({
     );
 
     subConfig = targetPageArr[0];
-    templateId = subConfig.templateId;
-    config.lang = subConfig.lang;
+    if(subConfig){
+      templateId = subConfig.templateId;
+      config.lang = subConfig.lang;
+    }
   }
 
   if (config?.root) {
