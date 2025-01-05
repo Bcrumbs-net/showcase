@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const MarkdownPageSectionWrapper = styled.section`
-  max-width: 720px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 120px 20px;
   overflow: hidden;
@@ -18,6 +18,13 @@ const MarkdownPageSectionWrapper = styled.section`
     display: block;
     width: 100%;
     margin-bottom: 1em; /* Optional: Add space between elements */
+  }
+
+  ul {
+    li {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
   }
 `;
 
