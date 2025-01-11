@@ -24,9 +24,9 @@ datadogRum.init({
   // version: '1.0.0',
   sessionSampleRate: 100,
   sessionReplaySampleRate: 0,
-  trackUserInteractions: true,
-  trackResources: true,
-  trackLongTasks: true,
+  trackUserInteractions: false,
+  trackResources: false,
+  trackLongTasks: false,
   defaultPrivacyLevel: 'allow',
 });
 
