@@ -74,9 +74,9 @@ const Footer = ({
                               }, {});
                             return (
                               <ListItem key={`footer-list-item-${subIndex}`}>
-                                <Link href={itemMap.url || "#"} className="ListItem">
+                                <a href={itemMap.url || "#"} className="ListItem">
                                   {itemMap.text}
-                                </Link>
+                                </a>
                               </ListItem>
                             );
                           })}

@@ -60,9 +60,9 @@ const Footer = ({
                       ) as Record<string, string>;
                       return (
                         <ListItem key={`footer-list-item-${index}`}>
-                          <Link href={itemMenuMap.Url} className="ListItem">
+                          <a href={itemMenuMap.Url} className="ListItem">
                             {itemMenuMap.title}
-                          </Link>
+                          </a>
                         </ListItem>
                       );
                     })}

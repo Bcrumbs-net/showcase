@@ -108,9 +108,9 @@ const Footer = ({
                     );
                     return (
                       <FooterNavItem key={`footer-nav-item-${index}`}>
-                        <Link href={item.path || "#"}>
+                        <a href={item.path || "#"}>
                           {item.label}
-                        </Link>
+                        </a>
                       </FooterNavItem>
                     );
                   })}

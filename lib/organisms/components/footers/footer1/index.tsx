@@ -96,11 +96,12 @@ const Footer = ({
                                   style={{ textAlign: isAR ? 'right' : 'left' }}
                                 >
                                   {menuItemMap && menuItemMap.url ? (
-                                    (<Link href={menuItemMap.url} className="ListItem">
-
+                                    <a
+                                      href={menuItemMap.url}
+                                      className="ListItem"
+                                    >
                                       {menuItemMap.text}
-
-                                    </Link>)
+                                    </a>
                                   ) : null}
                                 </ListItem>
                               );

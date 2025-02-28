@@ -102,9 +102,9 @@ const Footer = ({
                       ) as Record<string, string>;
                       return (
                         <ListItem key={`list__item-${submenuItem.id}`}>
-                          <Link href={subItemMenuMap.link}>
+                          <a href={subItemMenuMap.link}>
                             {subItemMenuMap.text}
-                          </Link>
+                          </a>
                         </ListItem>
                       );
                     })}

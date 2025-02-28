@@ -83,9 +83,9 @@ const Footer = ({
                             }, {});
                           return (
                             <ListItem key={`list__item-${subIndex}`}>
-                              <Link href={menuItemMap.url} className="ListItem">
+                              <a href={menuItemMap.url} className="ListItem">
                                 {menuItemMap.text}
-                              </Link>
+                              </a>
                             </ListItem>
                           );
                         })}
