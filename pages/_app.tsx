@@ -2,9 +2,9 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import { ApolloClient } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
-import { withShowcaseClient } from '@bcrumbs.net/bc-api';
 import { Modal } from '@redq/reuse-modal';
 import { datadogRum } from '@datadog/browser-rum';
+import { withShowcaseClient } from '../bootstrapers/showcase/clients/showcase'
 import '@redq/reuse-modal/es/index.css';
 import '../public/assets/css/flatIcon/flaticon.css';
 import '../public/assets/css/fontAwesome/font-awesome.css';
