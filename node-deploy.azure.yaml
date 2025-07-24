@@ -28,6 +28,7 @@ spec:
         app: showcase-prod
         version: v1
     spec:
+      priorityClassName: low-priority
       containers:
         - name: showcase-prod
           image: breadcrumbs.azurecr.io/showcase:#{Build.BuildId}#
